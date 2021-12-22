@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="form">
+    <div class="title">Add Shift</div>
+    <form [formGroup]="shiftForm" (ngSubmit)="onSave()" color="accent">
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>S No</mat-label>
+        <input matInput placeholder="S.No" formControlName="sno" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Shift Name</mat-label>
+        <input matInput placeholder="Shift Name" formControlName="shiftName" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Start Time</mat-label>
+        <input matInput [ngxMatTimepicker]="picker">
+        <ngx-mat-timepicker #picker color="accent"></ngx-mat-timepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>End Time</mat-label>
+        <input matInput [ngxMatTimepicker]="picker1">
+        <ngx-mat-timepicker #picker1 color="accent"></ngx-mat-timepicker>
+      </mat-form-field>
+      <div class="button">
+        <button mat-raised-button class="btn-save" type="submit" color="accent">Save</button>
+        <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

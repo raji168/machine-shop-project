@@ -1,0 +1,48 @@
+.container{
+    margin: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.table-container{
+    justify-content: center;
+}
+span{
+    align-items: center;
+}
+table{
+        width: 70%;
+    }
+th{
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: black;
+    text-align: center;
+    background-color: rgb(255, 222, 90);
+}
+
+td{
+    text-align: center;
+    padding-left: 0px;
+}
+
+th.mat-header-cell {
+    border-bottom-width: 3px;
+    border-bottom-style: solid ;
+    text-align: center;
+}
+td.mat-cell{
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+
+}
+.add-shift{
+    width: 70%;
+    .add-btn{
+        float: right;
+        padding-bottom: 20px;
+        background-color: linear();
+        
+    }
+}

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="form">
+    <div class="title">Add Shift</div>
+    <form [formGroup]="machineForm" (ngSubmit)="onSave()" color="accent">
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>S No</mat-label>
+        <input matInput placeholder="S.No" formControlName="sno" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Machine Name</mat-label>
+        <input matInput placeholder="Machine Name" formControlName="machinename" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Machine No</mat-label>
+        <input matInput placeholder="Machine No" formControlName="machineno" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Machine Brand</mat-label>
+        <input matInput placeholder="Machine Brand" formControlName="brand" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Machine Category</mat-label>
+        <input matInput placeholder="Machine Category" formControlName="category" autocomplete="off">
+      </mat-form-field>
+      <div class="button">
+        <button mat-raised-button class="btn-save" type="submit" color="accent">Save</button>
+        <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

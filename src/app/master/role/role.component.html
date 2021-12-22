@@ -1,0 +1,23 @@
+
+<div class="container">
+    <div class="role-section">
+      <button mat-raised-button (click)="addData()" class="mat-elevation-z8">
+        Add Role +
+      </button>
+    </div>
+    <div class="role-table">
+      <div class="table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+          <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
+            <th mat-header-cell *matHeaderCellDef style="text-transform: uppercase; letter-spacing: 1px;">
+              {{col}}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{element[col]}}
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
