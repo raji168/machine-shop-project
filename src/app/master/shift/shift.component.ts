@@ -7,6 +7,7 @@ import { ShiftApiService } from 'src/app/services/shift-api.service';
 import { AddShiftComponent } from './add-shift/add-shift.component';
 
 
+
 const ELEMENT_DATA: Shift[] = [];
 
 @Component({
@@ -16,13 +17,13 @@ const ELEMENT_DATA: Shift[] = [];
 })
 export class ShiftComponent implements OnInit {
 
-  shifta!: Shift;
+
   dataSource: Shift[] = [];
 
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
   constructor(
-    private shift: ShiftApiService,
+    private shiftAPi: ShiftApiService,
     private router: Router,
     public dialog: MatDialog,
     private toastr: ToastrService
@@ -32,7 +33,7 @@ export class ShiftComponent implements OnInit {
 
   ngOnInit() {
 
-    this.shift.getShiftAll().subscribe(data => {
+    this.shiftAPi.getShiftAll().subscribe(data => {
       this.dataSource = data;
       this.toastr.success('Shift Records Loaded Successfully', 'Shift');
     });
@@ -41,14 +42,15 @@ export class ShiftComponent implements OnInit {
   }
 
   onClickAdd() {
+  
     let dialogRef = this.dialog.open(AddShiftComponent);
   }
   onEdit() {
+    
     let dialogRef = this.dialog.open(AddShiftComponent);
   }
-  onDelete() {
 
-
-
+  onDelete(){
+    
   }
 }
