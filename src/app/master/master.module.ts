@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 import { MaterialModule } from "../material.module";
 import { CustomerComponent } from "./customer/customer.component";
 import { MachineComponent } from "./machine/machine.component";
@@ -11,6 +11,7 @@ import { AddMachineComponent } from './machine/add-machine/add-machine.component
 import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { RoleComponent } from './role/role.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
