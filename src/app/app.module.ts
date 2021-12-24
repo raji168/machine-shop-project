@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MasterRoutingModule } from './master/master-routing.module';
 import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 
@@ -20,8 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     MasterRoutingModule,
     MaterialModule,
+    ReactiveFormsModule,
     HttpClientModule,
- 
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-top-right',

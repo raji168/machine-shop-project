@@ -17,6 +17,7 @@ const ELEMENT_DATA: Shift[] = [];
 })
 export class ShiftComponent implements OnInit {
 
+  shift!: Shift;
 
   dataSource: Shift[] = [];
 
@@ -38,19 +39,19 @@ export class ShiftComponent implements OnInit {
       this.toastr.success('Shift Records Loaded Successfully', 'Shift');
     });
 
-
   }
 
   onClickAdd() {
-  
-    let dialogRef = this.dialog.open(AddShiftComponent);
-  }
-  onEdit() {
-    
+
     let dialogRef = this.dialog.open(AddShiftComponent);
   }
 
-  onDelete(){
-    
+  onEdit(shift:Shift) {
+
+    let dialogRef = this.dialog.open(AddShiftComponent);
+  }
+
+  onDelete(shift:Shift) {
+    this.shiftAPi.deleteShift(this.shift.id);
   }
 }

@@ -17,6 +17,5 @@ export class MachineApiService {
   addMachine(machine: Machine) {
     const url = `http://192.168.0.12:3002/machines`;
     return this.http.post<{ machinename: String }>(url, machine);
-
   }
 }

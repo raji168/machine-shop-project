@@ -25,10 +25,10 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="onEdit()">
+          <button mat-icon-button (click)="onEdit(shift)">
             <mat-icon>edit_outline</mat-icon>
           </button>
-          <button mat-icon-button (click)="onDelete()">
+          <button mat-icon-button (click)="onDelete(shift)">
             <mat-icon>delete_outline</mat-icon>
           </button>
         </td>
