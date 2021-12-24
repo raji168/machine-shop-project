@@ -1,4 +1,5 @@
 export class User {
+    serialNo: number;
     name: string;
     role:string;
     email:string;

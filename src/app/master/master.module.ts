@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
 import { InstrumentComponent } from './instrument/instrument.component';
 import { UserComponent } from './user/user.component';
+import { AddUserComponent } from './user/add-user/add-user.component';
 =======
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
@@ -35,7 +36,8 @@ import { AddInstrumentComponent } from './instrument/add-instrument/add-instrume
         AddCustomerComponent,
         InstrumentComponent,
 <<<<<<< HEAD
-        UserComponent
+        UserComponent,
+AddUserComponent
 =======
         AddInstrumentComponent
 >>>>>>> d261dbbe9b995a711f7b5383dde1fff41e5ac640

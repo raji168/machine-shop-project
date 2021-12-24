@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
 
   dataUser: User[] = [];
 
-  displayedColumns: string[] = ['name','role','email','contactNo','userName','edit','delete'];
+  displayedColumns: string[] = ['serialNo','name','role','email','contactNo','userName','edit','delete'];
   
   constructor(private shiftAPi: UserApiService,
     private router: Router,){
