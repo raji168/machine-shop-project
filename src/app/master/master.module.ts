@@ -14,6 +14,7 @@ import { RoleComponent } from './role/role.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
 import { InstrumentComponent } from './instrument/instrument.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { InstrumentComponent } from './instrument/instrument.component';
         AddMachineComponent,
         RoleComponent,
         AddCustomerComponent,
-        InstrumentComponent
+        InstrumentComponent,
+        UserComponent
     ],
     imports: [
         CommonModule,
