@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Shift } from 'src/app/models/shift.model';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
 import { AddShiftComponent } from './add-shift/add-shift.component';
+import { EditShiftComponent } from './edit-shift/edit-shift.component';
 
 
 
@@ -20,7 +21,6 @@ export class ShiftComponent implements OnInit {
   shift: Shift;
 
   dataShift: Shift[] = [];
-
 
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
@@ -44,17 +44,20 @@ export class ShiftComponent implements OnInit {
 
   onClickAdd() {
 
-    let dialogRef = this.dialog.open(AddShiftComponent);
+    this.dialog.open(AddShiftComponent);
+
+
   }
 
-  onEdit(shift) {
+  onEdit(shift: Shift) {
+    this.dialog.open(EditShiftComponent, { data: { shift } });
 
-    let dialogRef = this.dialog.open(AddShiftComponent, { data: shift });
   }
 
-  onDelete(id) {
-    this.shiftAPi.deleteShift(id).subscribe(data => {
-      console.log(data);
+  onDelete(id: string) {
+    this.shiftAPi.deleteShift(id).subscribe(res => {
+      this.dataShift = this.dataShift.filter(item => item._id !== id);
+      console.log('shift deleted Suceessfully');
     })
   }
 }

@@ -13,6 +13,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { RoleComponent } from './role/role.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
+import { EditShiftComponent } from './shift/edit-shift/edit-shift.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { AddCustomerComponent } from './customer/add-customer/add-customer.compo
         MasterComponent,
         AddMachineComponent,
         RoleComponent,
-        AddCustomerComponent
+        AddCustomerComponent,
+        EditShiftComponent
     ],
     imports: [
         CommonModule,
