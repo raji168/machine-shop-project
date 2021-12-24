@@ -12,6 +12,7 @@ import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { RoleComponent } from './role/role.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         AddShiftComponent,
         MasterComponent,
         AddMachineComponent,
-        RoleComponent
+        RoleComponent,
+        AddCustomerComponent
     ],
     imports: [
         CommonModule,

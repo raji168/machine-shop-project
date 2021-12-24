@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerApiService } from 'src/app/services/customer-api.service';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
 
 @Component({
   selector: 'app-customer',
@@ -15,7 +17,8 @@ export class CustomerComponent implements OnInit {
   displayedColumns: string[] = ['sno', 'name', 'product', 'partno', 'revno', 'drawing'];
 
   constructor(private customerApi: CustomerApiService,
-    private router: Router) { }
+    private router: Router,
+    private dialog:MatDialog) { }
 
   ngOnInit() {
 
@@ -23,6 +26,10 @@ export class CustomerComponent implements OnInit {
       this.dataSource = data;
     })
 
+  }
+
+  onClickAdd(){
+    let dialogRef = this.dialog.open(AddCustomerComponent);
   }
 
 }
