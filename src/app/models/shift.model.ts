@@ -1,5 +1,5 @@
 export interface Shift {
-    id?: string;
+    _id?: string;
     sno: number;
     shiftName: string;
     startTime: string;

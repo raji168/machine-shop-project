@@ -17,9 +17,10 @@ const ELEMENT_DATA: Shift[] = [];
 })
 export class ShiftComponent implements OnInit {
 
-  shift!: Shift;
+  shift: Shift;
 
-  dataSource: Shift[] = [];
+  dataShift: Shift[] = [];
+
 
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
@@ -35,7 +36,7 @@ export class ShiftComponent implements OnInit {
   ngOnInit() {
 
     this.shiftAPi.getShiftAll().subscribe(data => {
-      this.dataSource = data;
+      this.dataShift = data;
       this.toastr.success('Shift Records Loaded Successfully', 'Shift');
     });
 
@@ -46,12 +47,14 @@ export class ShiftComponent implements OnInit {
     let dialogRef = this.dialog.open(AddShiftComponent);
   }
 
-  onEdit(shift:Shift) {
+  onEdit(shift) {
 
-    let dialogRef = this.dialog.open(AddShiftComponent);
+    let dialogRef = this.dialog.open(AddShiftComponent, { data: shift });
   }
 
-  onDelete(shift:Shift) {
-    this.shiftAPi.deleteShift(this.shift.id);
+  onDelete(id) {
+    this.shiftAPi.deleteShift(id).subscribe(data => {
+      console.log(data);
+    })
   }
 }
