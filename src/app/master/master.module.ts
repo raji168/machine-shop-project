@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 
-import { MaterialModule } from "../material.module";
+import { MaterialModule } from "../material/material.module";
 import { CustomerComponent } from "./customer/customer.component";
 import { MachineComponent } from "./machine/machine.component";
 import { MasterRoutingModule } from "./master-routing.module";
@@ -14,6 +14,7 @@ import { RoleComponent } from './role/role.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
 import { InstrumentComponent } from './instrument/instrument.component';
+import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { InstrumentComponent } from './instrument/instrument.component';
         AddMachineComponent,
         RoleComponent,
         AddCustomerComponent,
-        InstrumentComponent
+        InstrumentComponent,
+        AddInstrumentComponent
     ],
     imports: [
         CommonModule,
