@@ -11,7 +11,7 @@ export class RoleApiService {
 
 
   getRoleAll(){
-    const url =` http://192.168.0.12:3002/roles`;
+    const url =` http://192.168.0.13:3002/roles`;
     return this.http.get<Role[]>(url);
   }
 }

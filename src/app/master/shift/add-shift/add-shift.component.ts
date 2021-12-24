@@ -12,7 +12,7 @@ import { ShiftApiService } from 'src/app/services/shift-api.service';
 })
 export class AddShiftComponent implements OnInit {
 
-  shift!: Shift;
+  shift: Shift;
 
   
   shiftForm: FormGroup;
@@ -35,11 +35,10 @@ export class AddShiftComponent implements OnInit {
 
   ngOnInit() {
 
-    // if (this.data.shift) {
-    //   // this.userForm.setValue()
-    //   // this.shiftForm.patchValue(this.data.shift);
+    if (this.shift) {
+      this.shiftForm.patchValue(this.shift);
 
-    // }
+    }
 
   }
 
@@ -47,24 +46,21 @@ export class AddShiftComponent implements OnInit {
     console.log(this.shiftForm.value);
     
 
-    this.shiftApi.editShift(this.shiftForm.value ,this.shift.id).subscribe((data)=>{
-      this.dialogRef.close(data);
-    })
-    
-    // if ( this.shift)
-    // {
-    //   this.shiftApi.editShift(this.shiftForm.value , this.shift.id).subscribe((data)=>{
-    //     this.dialogRef.close(data);
-    //   })
+    // this.shiftApi.editShift(this.shiftForm.value ,this.shift._id);    
+    if ( this.shift)
+    {
+      this.shiftApi.editShift(this.shiftForm.value , this.shift._id).subscribe((data)=>{
+        this.dialogRef.close(data);
+      })
       
-    // }
-    // else
-    // {
-    //   this.shiftApi.addShift(this.shiftForm.value).subscribe((data) => {
-    //     this.dialogRef.close(data);
-    //     this.toastr.success('Shift Records Added Successfully', 'Shift');
-    //   })
-    // }
+    }
+    else
+    {
+      this.shiftApi.addShift(this.shiftForm.value).subscribe((data) => {
+        this.dialogRef.close(data);
+        this.toastr.success('Shift Records Added Successfully', 'Shift');
+      })
+    }
 
  
 

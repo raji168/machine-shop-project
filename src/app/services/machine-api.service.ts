@@ -10,12 +10,12 @@ export class MachineApiService {
   constructor(private http: HttpClient) { }
 
   getMachineAll() {
-    const url = `http://192.168.0.12:3002/machines`;
+    const url = `http://192.168.0.13:3002/machines`;
     return this.http.get<Machine[]>(url);
   }
 
   addMachine(machine: Machine) {
-    const url = `http://192.168.0.12:3002/machines`;
+    const url = `http://192.168.0.13:3002/machines`;
     return this.http.post<{ machinename: String }>(url, machine);
   }
 }
