@@ -21,12 +21,12 @@ table {
     padding-left: 0px;
 }
 
-.demo-button-container {
-    width: 47%;
-    padding-bottom: 16px;
-    float: right;
+.add-user{
+    width: 70%;
+    .add-btn{
+        float: right;
+        padding-bottom: 20px;
+        background-color: linear();
+    }
 }
 
-.demo-button + .demo-button {
-    margin-left: 8px;
-}

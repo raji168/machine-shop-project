@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-
+import {MatButtonModule} from '@angular/material/button';
 import { MaterialModule } from "../material/material.module";
 import { CustomerComponent } from "./customer/customer.component";
 import { MachineComponent } from "./machine/machine.component";
@@ -39,6 +39,7 @@ import { AddInstrumentComponent } from './instrument/add-instrument/add-instrume
         ReactiveFormsModule,
         FormsModule,
         MasterRoutingModule,
+        MatButtonModule,
         [NgxMatTimepickerModule.setLocale('en-IN')]
 
     ],
