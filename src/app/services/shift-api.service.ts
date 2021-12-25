@@ -28,7 +28,7 @@ export class ShiftApiService {
     const url = ` http://192.168.0.13:3002/shifts`;
     return this.http.patch<Shift>(`${url}/${shift._id}`, shift)
   }
-
+$
   deleteShift(_id: string) {
     const url = ` http://192.168.0.13:3002/shifts`;
     return this.http.delete(`${url}/${_id}`);

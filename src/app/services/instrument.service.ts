@@ -10,7 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class InstrumentService {
 
    // common of url address
-   API_URL:string='http://192.168.0.12:3002' ;
+   API_URL:string='http://192.168.0.12:3002/instruments' ;
 
    MaxOrdNo:number=0;
  

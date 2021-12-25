@@ -8,6 +8,7 @@ span{
 }
 table{
         width: 70%;
+       
     }
 th{
     text-transform: uppercase; 
@@ -43,3 +44,10 @@ td.mat-cell{
         
     }
 }
+
+mat-paginator{
+    display: flex;
+    width: 70%;
+    
+}
+
