@@ -1,10 +1,10 @@
 <div class="container">
     <div class="form">
       <div class="title">Edit Shift </div>
-      <form [formGroup]="shiftForm" color="accent">
+      <form [formGroup]="shiftForm" color="accent" >
         <mat-form-field appearance="outline" color="accent">
           <mat-label>S No</mat-label>
-          <input matInput placeholder="S.No" formControlName="sno" autocomplete="off">
+          <input matInput placeholder="S.No" formControlName="sno" autocomplete="off" >
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">
           <mat-label>Shift Name</mat-label>
@@ -21,7 +21,7 @@
           <ngx-mat-timepicker #picker1 color="accent"></ngx-mat-timepicker>
         </mat-form-field>
         <div class="button">
-          <button mat-raised-button class="btn-save" color="accent" (click)="onUpdate()">Update</button>
+          <button mat-raised-button class="btn-save" color="accent" (click)="onUpdate(shift)">Update</button>
           <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
         </div>
       </form>

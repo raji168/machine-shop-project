@@ -16,53 +16,55 @@ import { InstrumentService } from 'src/app/services/instrument.service';
 
 export class InstrumentComponent implements OnInit {
 
- 
-  constructor(private _service:InstrumentService,
-    public _notification: NotificationService,
-    public _dialog : MatDialog ) { }
 
-  grdlistData: MatTableDataSource<any> ;
-  displayedColumns:string[]=['serialno','name','actions'];
-  @ViewChild(MatSort) sort:MatSort;
-  @ViewChild(MatPaginator) paginator:MatPaginator;
-  searchKey:string;
+  constructor(private _service: InstrumentService,
+    public _notification: NotificationService,
+    public _dialog: MatDialog) { }
+
+  grdlistData: MatTableDataSource<any>;
+
+  displayedColumns: string[] = ['serialno', 'name', 'actions'];
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  searchKey: string;
 
   ngOnInit(): void {
     this.fillGrid();
+    
   }
-  fillGrid(){
+  fillGrid() {
     this._service.getAlldepartment()
-    .subscribe(
-      data=>{
-        this.grdlistData=new MatTableDataSource(data);
-        this.grdlistData.sort=this.sort;
-        this.grdlistData.paginator=this.paginator;
-      
-      }
-    );
+      .subscribe(
+        data => {
+          this.grdlistData = new MatTableDataSource(data);
+          this.grdlistData.sort = this.sort;
+          this.grdlistData.paginator = this.paginator;
+
+        }
+      );
   }
-  applyFilter(){
-    this.grdlistData.filter=this.searchKey.trim().toLocaleLowerCase();
+  applyFilter() {
+    this.grdlistData.filter = this.searchKey.trim().toLocaleLowerCase();
   }
-  onSearchClear(){
-    this.searchKey="";
+  onSearchClear() {
+    this.searchKey = "";
     this.applyFilter();
   }
-  onCreate(){
-    const dialogConfig =new MatDialogConfig();
-    dialogConfig.disableClose =true;
-    dialogConfig.autoFocus =true;
-    dialogConfig.width="30%";
-    this._dialog.open(AddInstrumentComponent,dialogConfig);
+  onCreate() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    this._dialog.open(AddInstrumentComponent, dialogConfig);
   }
 
-  onEdit(){
+  onEdit() {
     this._notification.success("you clicked Edit !");
   }
-  onDelete(){
+  onDelete() {
     this._notification.warn("you clicked Delete !");
   }
-  
+
 
 }
 
@@ -70,4 +72,4 @@ export class InstrumentComponent implements OnInit {
 
 
 
-  
+

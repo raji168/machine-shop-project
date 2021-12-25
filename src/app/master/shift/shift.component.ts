@@ -49,7 +49,7 @@ export class ShiftComponent implements OnInit {
 
   }
 
-  onEdit(shift: Shift) {
+  onEdit(shift) {
     this.dialog.open(EditShiftComponent, { data: { shift } });
 
   }

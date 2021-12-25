@@ -19,7 +19,7 @@ export class EditShiftComponent implements OnInit {
   dataShift: Shift[] = [];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { shift: Shift },
+    @Inject(MAT_DIALOG_DATA) public data: { shift },
     public dialogRef: MatDialogRef<EditShiftComponent>,
     private shiftApi: ShiftApiService,
   ) {
@@ -43,20 +43,25 @@ export class EditShiftComponent implements OnInit {
 
     if(this.data.shift){
       this.shiftForm.patchValue(this.data.shift);
-    
+      this.shiftForm.get(this.shift._id).setValue(this.data.shift);
     }
 
   }
 
 
 
-  onUpdate() {
+  onUpdate(shift) {
     console.log(this.shiftForm.value);
-    this.shiftApi.editShift(this.shift._id, this.shiftForm.value).subscribe((data) => {
-      this.dialogRef.close(data);
-    });
 
-   
+    if (shift._id === 0){
+      this.shiftApi.editShift(shift).subscribe(res =>{
+        shift._id ;
+      });
+    }
+
+
+
+  
   }
 }
 
