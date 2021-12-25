@@ -10,7 +10,7 @@ export class InstrumentService {
 
   API_URL: string = 'http://192.168.0.13:3002/instruments';
 
-  MaxOrdNo: number = 0;
+
 
   constructor(private _http: HttpClient) { }
 
@@ -19,9 +19,7 @@ export class InstrumentService {
   getAlldepartment(): Observable<any> {
     return this._http.get(this.API_URL);
   }
-  // getDepartmentMaxOrNo() :Observable<number>{
-  //   return this._http.get<number>(this.API_URL+'/roles/GetDepartmentMaxOrdNo');
-  // }
+ 
   insUpDepartment(department: InstrumentModel): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this._http.post(this.API_URL + '/roles', department, httpOptions);
