@@ -2,39 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InstrumentModel } from '../models/instrument.model'
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstrumentService {
 
-  // common of url address
   API_URL: string = 'http://192.168.0.13:3002/instruments';
 
   MaxOrdNo: number = 0;
 
   constructor(private _http: HttpClient) { }
 
-  form: FormGroup = new FormGroup({
-    sno: new FormControl(''),
-    name: new FormControl(''),
-    ordno: new FormControl(''),
-    mstatus: new FormControl(''),
-    updby: new FormControl(''),
-    updon: new FormControl(''),
-  });
-
-  initializeFromGroup() {
-    this.form.setValue({
-      deptid: 0,
-      deptname: '',
-      ordno: 0,
-      mstatus: '',
-      updby: '',
-      updon: ''
-    });
-  }
+ 
 
   getAlldepartment(): Observable<any> {
     return this._http.get(this.API_URL);

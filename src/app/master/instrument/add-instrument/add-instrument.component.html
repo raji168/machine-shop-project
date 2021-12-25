@@ -1,11 +1,11 @@
 <div class="form" >
     <div class="from-title">
         <span>Add Instrument</span>
-        <button class="btn-diolog-close" mat-stroked-button (click)="onClose()" tabindex="-1">
+        <button class="form-close" mat-stroked-button  tabindex="-1">
             <mat-icon>clear</mat-icon>
         </button>
     </div>
-    <form [formGroup]="_service.form" class="normal-form">
+    <form  class="normal-form">
 
         <div class="controles-container">
             <mat-form-field appearance="outline" color="accent">
@@ -36,7 +36,7 @@
     <div class="add-form-buttons">
         <div class="button-row">
             <button mat-raised-button color="primary" type="submit">Submit</button>
-            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+            <button mat-raised-button color="warn" >Clear</button>
         </div>
     </div>
 </div>

@@ -1,19 +1,23 @@
 form{
     display:grid;
-    // grid-template-columns: 1fr 1fr;
     width: fit-content;
   
 }
-.normal-form {
-    
-    // display: grid;
-    // grid-template-rows: 1fr ;
+.form .from-title{
+    align-items: center;
+    font-weight: bold;
+    font-size: large;
 }
-.controles-container{
-    // gap: 10px ;
-    // justify-content: center;
+.form-close{
+    float: right;
+    border:transparent;
 
 }
+.controles-container {
+    margin-top: 50px;
+   
+}
+
 .add-form-buttons .button-row{
     justify-content: center;
     display: flex;

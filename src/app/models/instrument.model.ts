@@ -1,5 +1,3 @@
-
-
 export interface InstrumentModel {
     sno:number;
     name:string;
@@ -11,6 +9,3 @@ export interface InstrumentModel {
      
 }
 
-export interface Date{
-    date: "yyyy-MM-dd";
-}
