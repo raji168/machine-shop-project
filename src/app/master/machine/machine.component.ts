@@ -16,7 +16,7 @@ const ELEMENT_DATA: Machine[] = [];
 })
 export class MachineComponent implements OnInit {
 
-  dataSource: Machine[] = [];
+  dataMachine: Machine[] = [];
 
   displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
 
@@ -29,7 +29,7 @@ export class MachineComponent implements OnInit {
   ngOnInit() {
 
     this.machineApi.getMachineAll().subscribe(data => {
-      this.dataSource = data;
+      this.dataMachine = data;
     });
     this.toastr.success('Machine Records Loaded Successfully', 'Machine');
 
@@ -42,7 +42,11 @@ export class MachineComponent implements OnInit {
     let dialogRef = this.dialog.open(AddMachineComponent);
   }
 
-  onClickDelete() {
+  onClickDelete(id) {
+    this.machineApi.deleteMachine(id).subscribe(res =>{
+      this.dataMachine = this.dataMachine.filter(item => item._id !== id);
+      console.log('shift deleted Suceessfully');
+    })
 
   }
 }

@@ -18,4 +18,10 @@ export class MachineApiService {
     const url = `http://192.168.0.13:3002/machines`;
     return this.http.post<{ machinename: String }>(url, machine);
   }
+
+  deleteMachine(_id:string){
+    const url = `http://192.168.0.13:3002/machines`;
+    return this.http.delete(`${url}/${_id}`);
+
+  }
 }

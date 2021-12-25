@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-
+import {MatButtonModule} from '@angular/material/button';
 import { MaterialModule } from "../material/material.module";
 import { CustomerComponent } from "./customer/customer.component";
 import { MachineComponent } from "./machine/machine.component";
@@ -13,8 +13,12 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { RoleComponent } from './role/role.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
+import { EditShiftComponent } from './shift/edit-shift/edit-shift.component';
 import { InstrumentComponent } from './instrument/instrument.component';
+import { UserComponent } from './user/user.component';
+import { AddUserComponent } from './user/add-user/add-user.component';
 import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
+
 
 @NgModule({
     declarations: [
@@ -26,7 +30,10 @@ import { AddInstrumentComponent } from './instrument/add-instrument/add-instrume
         AddMachineComponent,
         RoleComponent,
         AddCustomerComponent,
+        EditShiftComponent,
         InstrumentComponent,
+        UserComponent,
+        AddUserComponent,
         AddInstrumentComponent
     ],
     imports: [
@@ -35,6 +42,7 @@ import { AddInstrumentComponent } from './instrument/add-instrument/add-instrume
         ReactiveFormsModule,
         FormsModule,
         MasterRoutingModule,
+        MatButtonModule,
         [NgxMatTimepickerModule.setLocale('en-IN')]
 
     ],
