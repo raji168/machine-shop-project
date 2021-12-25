@@ -23,7 +23,7 @@ export class InstrumentComponent implements OnInit {
 
   grdlistData: MatTableDataSource<any>;
 
-  displayedColumns: string[] = ['serialno', 'name', 'actions'];
+  displayedColumns: string[] = ['sno', 'name', 'referenceno','range','calibratedon','calibratedue','actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   searchKey: string;
@@ -54,7 +54,7 @@ export class InstrumentComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "30%";
+    dialogConfig.width = "40%";
     this._dialog.open(AddInstrumentComponent, dialogConfig);
   }
 

@@ -1,9 +1,16 @@
-export class InstrumentModel {
-    deptid:number;
-    departname:string;
-    ordno:number;
-    msstatus:number;
-    updby:number;
-    updon:string;
+
+
+export interface InstrumentModel {
+    sno:number;
+    name:string;
+    referenceno:number;
+    range:string;
+    calibratedon:Date;
+    calibratedue:Date;
+   
      
+}
+
+export interface Date{
+    date: "yyyy-MM-dd";
 }

@@ -3,12 +3,30 @@
     padding: 20px;
     box-sizing: border-box;
 }
-mat-table{
-   
-    color:black;
+.top-menu{
+ background-color: transparent;   
 }
 .table-instrument mat-header-cell{
     font-size: 16px;
-    background-color: yellow;
-
+    background-color: rgb(255, 222, 90);
+    color:black;
+} 
+.create-button{
+    float:right;
 }
+.search-form-field{
+    padding-left: 20px;
+    width: 25%;
+}
+.edit-button{
+    display: grid;
+    justify-content: center;
+    gap:10px 10px;
+}
+ mat-cell{
+    justify-content: center;
+}
+mat-header-cell{
+    justify-content: center;
+}
+

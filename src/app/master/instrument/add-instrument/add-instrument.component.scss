@@ -1,0 +1,21 @@
+form{
+    display:grid;
+    // grid-template-columns: 1fr 1fr;
+    width: fit-content;
+  
+}
+.normal-form {
+    
+    // display: grid;
+    // grid-template-rows: 1fr ;
+}
+.controles-container{
+    // gap: 10px ;
+    // justify-content: center;
+
+}
+.add-form-buttons .button-row{
+    justify-content: center;
+    display: flex;
+    gap: 10%;
+}
