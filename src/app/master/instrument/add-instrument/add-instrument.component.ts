@@ -10,7 +10,7 @@ import { InstrumentService } from 'src/app/services/instrument.service';
 export class AddInstrumentComponent implements OnInit {
 
   form:FormGroup;
-  constructor(public _service:InstrumentService) { }
+  constructor(public instrumentService:InstrumentService) { }
 
   ngOnInit(): void {
   }
@@ -19,7 +19,7 @@ export class AddInstrumentComponent implements OnInit {
     
   
   onClear() {
-    this._service.form.reset();
+    console.log(this.instrumentService.form.reset());
    
   }
 }

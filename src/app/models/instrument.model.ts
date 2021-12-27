@@ -3,8 +3,8 @@ export interface InstrumentModel {
     name:string;
     referenceno:number;
     range:string;
-    calibratedon:Date;
-    calibratedue:Date;
+    calibratedon: Date;
+    calibratedue: Date;
    
      
 }
