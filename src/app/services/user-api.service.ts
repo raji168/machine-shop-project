@@ -30,8 +30,12 @@ export class UserApiService {
     });
   }
 
-  getShiftAll() {
-    const url = ` http://192.168.0.13:3002/shifts`;
+  getUserAll() {
+    const url = ` http://192.168.0.13:3002/users`;
     return this.http.get<User[]>(url);
+  }
+  addUser(user: User) {
+    const url = ` http://192.168.0.13:3002/users`;
+    return this.http.post<{ _id: String }>(url, user);
   }
 }
