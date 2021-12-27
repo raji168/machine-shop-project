@@ -1,6 +1,4 @@
 <div class="container">
-<p>add-role works!</p>
- <div class="container">
     <div class="form">
       <div class="title">Add User</div>
       <form [formGroup]="roleService.roleForm" (ngSubmit)="onSave()"  color="accent">
@@ -18,10 +16,10 @@
         
         <div class="button">
           <button mat-raised-button class="btn-save" type="submit" color="accent">Save</button>
-          <!-- <button mat-raised-button (click)="onClear()">clear</button> -->
+          <!-- <button mat-raised-button (click)="onClear()">clear</button>  -->
           <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
         </div>
       </form>
     </div>
-  </div>
 </div> 
+

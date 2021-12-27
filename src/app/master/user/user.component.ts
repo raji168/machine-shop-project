@@ -52,11 +52,7 @@ export class UserComponent implements OnInit {
     this.dialog.open(AddUserComponent, dialogConfig);
   }
 
-  addData() {
-    const randomElementIndex = Math.floor(Math.random() * userData.length);
-    this.dataUser.push(userData[randomElementIndex]);
-    this.table.renderRows();
-  }
+  
 
   // removeData() {
   //   this.dataUser.pop();
