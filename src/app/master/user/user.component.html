@@ -1,12 +1,11 @@
-<div class="role-maintable">
+<div class="user-maintable">
     <div class="add-user">
-      <button mat-icon-button (click)="addData()" class="add-btn">
+      <button mat-icon-button (click)="onCreate()" class="add-btn">
         <mat-icon>add_circle_outline </mat-icon>
       </button>
     </div>
     
-    
-    <div class="table-role">
+    <div class="table-user">
       <table mat-table [dataSource]="dataUser" class="mat-elevation-z8">
     
         <!-- serialNo Column -->
@@ -55,7 +54,7 @@
         <ng-container matColumnDef="delete">
           <th mat-header-cell *matHeaderCellDef>  </th>
           <td mat-cell 
-            *matCellDef="let element"  (click)="removeData()"
+            *matCellDef="let element"  
             ><mat-icon>delete</mat-icon></td>
         </ng-container>
       

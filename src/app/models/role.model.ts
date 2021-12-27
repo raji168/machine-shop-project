@@ -1,7 +1,7 @@
 export interface Role{
     _id?:string;
-    name:string;
     serialno:number;
+    name:string;
     // sno:number;
     // shiftname:string;
     // startTime:string;

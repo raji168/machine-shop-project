@@ -33,7 +33,7 @@ export class InstrumentComponent implements OnInit {
     
   }
   fillGrid() {
-    this._service.getAlldepartment()
+    this._service.getInstrument()
       .subscribe(
         data => {
           this.grdlistData = new MatTableDataSource(data);

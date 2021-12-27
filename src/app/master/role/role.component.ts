@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 import { Role } from '../../models/role.model';
 import { RoleApiService } from '../../services/role-api.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTable } from '@angular/material/table';
+import { AddRoleComponent } from './add-role/add-role.component';
 
 
 const ELEMENT_DATA: Role[] = [];
@@ -16,28 +20,31 @@ export class RoleComponent implements OnInit {
 
   dataSource: Role[] = [];
 
-  // displayedColumns: string[] = ['sno', 'shiftname', 'startTime', 'endTime'];
-
-  displayedColumns: string[] = ['serialno', 'name'];
-  table: any;
+  displayedColumns: string[] = ['serialno', 'name','edit','delete'];
+  
 
   constructor(
     private role:RoleApiService,
-    private router: Router) { 
-    
+    private router: Router,
+    private dialog: MatDialog,
+    private notification: NotificationService) { 
   }
-  
-  addData() {
-    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
-    this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
-    this.table.renderRows();
+
+  @ViewChild(MatTable)
+  table!: MatTable<Role>;
+
+
+  onCreate(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose =true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "40%";
+    this.dialog.open(AddRoleComponent, dialogConfig);
   }
+
+ 
 
   ngOnInit(){
-
-    this.role.getRoleAll().subscribe(data =>{
-      this.dataSource = data;
-    });
   
   }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "shifts": [
     {
@@ -29,4 +30,28 @@
       "endTime": "11.00PM"
     }
   ]
+=======
+{
+    "roles": [
+        {
+            "id":1,
+            "sno": 1,
+            "name": "Indoshell"
+           
+        },
+        {
+            "id":2,
+            "sno": 2,
+            "name": "Unique Shell"
+           
+        },
+        {
+            "id":3,
+            "sno": 3,
+            "name": "Asian Knight"
+            
+        }
+       
+    ]
+>>>>>>> 3d157c81591e379c0d22807a4e9fd10371727bf6
 }
