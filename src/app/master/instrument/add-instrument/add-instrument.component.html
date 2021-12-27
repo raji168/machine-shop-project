@@ -2,10 +2,10 @@
     <div class="from-title">
         <span>Add Instrument</span>
         <button class="form-close" mat-stroked-button  tabindex="-1">
-            <mat-icon mat-dialog-close="false">clear</mat-icon>
+            <mat-icon mat-dialog-close="false">close</mat-icon>
         </button>
     </div>
-    <form [formGroup]="_service.form" class="normal-form">
+    <form [formGroup]="instrumentService.form" class="normal-form">
 
         <div  class="controles-container">
             <mat-form-field appearance="outline" color="accent">
@@ -25,12 +25,18 @@
             </mat-form-field>
 
             <mat-form-field appearance="outline" color="accent">
-                <input fromControlName="calibratedon"   matInput placeholder="Calibrated On" autocomplete="off">
+                <mat-label>Calibrated On</mat-label>
+                <input matInput [ngxMatTimepicker]="picker" fromControlName="calibratedon"   matInput placeholder="Calibrated On" autocomplete="off">
+                <ngx-mat-timepicker #picker color="accent"></ngx-mat-timepicker>
             </mat-form-field>
 
             <mat-form-field appearance="outline" color="accent">
-                <input fromControlName="calibratedue"   matInput placeholder="Calibrate Due" autocomplete="off">
+                <mat-label>Calibrated  Due</mat-label>
+                <input matInput [ngxMatTimepicker]="picker1" fromControlName="calibratedue"   matInput placeholder="Calibrate Due" autocomplete="off">
+                <ngx-mat-timepicker #picker1 color="accent"></ngx-mat-timepicker>
             </mat-form-field>
+
+
         </div>
     </form>
     <div class="add-form-buttons">
