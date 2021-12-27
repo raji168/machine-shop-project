@@ -1,7 +1,10 @@
 <div class="container">
   <div class="add-shift">
-    <mat-form-field appearance="standard">
-      <mat-label>Filter</mat-label>
+    <div class="title">
+      Machine List
+    </div>
+    <mat-form-field appearance="standard" color="accent">
+      <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
     <button mat-icon-button class="add-btn" (click)="onClickAdd()">

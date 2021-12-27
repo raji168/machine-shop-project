@@ -44,12 +44,12 @@
 
             <ng-container matColumnDef="calibratedon">
                 <mat-header-cell *matHeaderCellDef>Calibrated On</mat-header-cell>
-                <mat-cell *matCellDef="let item" > {{item.calibratedon|date:'mediumDate'}} </mat-cell>
+                <mat-cell *matCellDef="let item" > {{item.calibratedon|date:'Date'}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="calibratedue">
                 <mat-header-cell *matHeaderCellDef>Calibrate Due</mat-header-cell>
-                <mat-cell *matCellDef="let item"> {{item.calibratedue|date:'mediumDate'}} </mat-cell>
+                <mat-cell *matCellDef="let item"> {{item.calibratedue|date:'Date'}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="actions">

@@ -1,29 +1,32 @@
 {
-    "machines": [
-        {
-            "id":1,
-            "sno": 1,
-            "name": "Indoshell",
-            "product": "Engine",
-            "partno":"P-8965",
-            "revno":"R-653"
-        },
-        {
-            "id":2,
-            "sno": 2,
-            "name": "Unique Shell",
-            "product": "Disk Brake",
-            "partno":"P-2365",
-            "revno":"U-414"
-        },
-        {
-            "id":3,
-            "sno": 3,
-            "name": "Asian Knight",
-            "product": "Engine",
-            "partno":"P-5340",
-            "revno":"A-998"
-        }
-       
-    ]
+  "shifts": [
+    {
+      "id": 1,
+      "sno": 1,
+      "shiftName": "shift -1",
+      "startTime": "12.00AM",
+      "endTime": "11.00PM"
+    },
+    {
+      "id": 2,
+      "sno": 1,
+      "shiftName": "shift -1",
+      "startTime": "12.00AM",
+      "endTime": "11.00PM"
+    },
+    {
+      "id": 3,
+      "sno": 1,
+      "shiftName": "shift -1",
+      "startTime": "12.00AM",
+      "endTime": "11.00PM"
+    },
+    {
+      "id": 4,
+      "sno": 1,
+      "shiftName": "shift -1",
+      "startTime": "12.00AM",
+      "endTime": "11.00PM"
+    }
+  ]
 }

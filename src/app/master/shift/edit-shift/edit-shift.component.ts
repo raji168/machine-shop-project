@@ -2,6 +2,7 @@ import { _DisposeViewRepeaterStrategy } from '@angular/cdk/collections';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Shift } from 'src/app/models/shift.model';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
 
@@ -19,8 +20,9 @@ export class EditShiftComponent implements OnInit {
   dataShift: Shift[] = [];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { shift },
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<EditShiftComponent>,
+    private router: Router,
     private shiftApi: ShiftApiService,
   ) {
    
@@ -41,27 +43,22 @@ export class EditShiftComponent implements OnInit {
     });
 
 
-    if(this.data.shift){
-      this.shiftForm.patchValue(this.data.shift);
-      this.shiftForm.get(this.shift._id).setValue(this.data.shift);
+    if(this.data){
+      this.shiftForm.patchValue(this.shift);
     }
 
   }
 
 
 
-  onUpdate(shift) {
+  onUpdate() {
     console.log(this.shiftForm.value);
 
-    if (shift._id === 0){
-      this.shiftApi.editShift(shift).subscribe(res =>{
-        shift._id ;
-      });
-    }
+  this.shiftApi.updateShift(this.shiftForm.value , this.data.id).subscribe(data =>{
+    this.dataShift = this.dataShift.filter(item => item._id !== id);
+      this.dialogRef.close(data);
+    })
 
-
-
-  
   }
 }
 

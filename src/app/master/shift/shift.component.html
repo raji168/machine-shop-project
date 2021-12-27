@@ -1,11 +1,14 @@
 <div class="container">
   <div class="add-shift">
-    <button mat-icon-button class="add-btn" (click)="onClickAdd()">
+    <div class="title">
+      Shift Schedule
+    </div>
+    <button mat-icon-button class="add-btn " (click)="onClickAdd()">
       <mat-icon>add_circle_outline </mat-icon>
     </button>
   </div>
   <div class="table-container">
-    <div class="table">
+    <div class="table ">
       <table mat-table [dataSource]="dataShift" class="mat-elevation-z8">
         <ng-container matColumnDef="sno">
           <th mat-header-cell *matHeaderCellDef> No. </th>
