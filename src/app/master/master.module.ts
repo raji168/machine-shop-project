@@ -18,6 +18,7 @@ import { InstrumentComponent } from './instrument/instrument.component';
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
+import { AddRoleComponent } from './role/add-role/add-role.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AddInstrumentComponent } from './instrument/add-instrument/add-instrume
         InstrumentComponent,
         UserComponent,
         AddUserComponent,
-        AddInstrumentComponent
+        AddInstrumentComponent,
+        AddRoleComponent
     ],
     imports: [
         CommonModule,
