@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserApiService } from 'src/app/services/user-api.service';
+
 
 @Component({
   selector: 'app-add-user',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUserComponent implements OnInit {
 
-  constructor() { }
+  
+
+  constructor(public userService : UserApiService) { }
 
   ngOnInit(): void {
   }
