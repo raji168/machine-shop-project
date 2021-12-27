@@ -7,7 +7,7 @@
     </div>
     <form  class="normal-form">
 
-        <div class="controles-container">
+        <div  [formGroup]="_service.form" class="controles-container">
             <mat-form-field appearance="outline" color="accent">
                 <input fromControlName="sno" matInput placeholder="Serial No" autocomplete="off">
             </mat-form-field>

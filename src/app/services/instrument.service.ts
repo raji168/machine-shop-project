@@ -2,12 +2,35 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InstrumentModel } from '../models/instrument.model'
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstrumentService {
 
+
+
+
+  form:FormGroup = new FormGroup({
+    sno:new FormControl(null),
+    name:new FormControl(''),
+    referenceno:new FormControl(''),
+    range:new FormControl(''),
+    calibratedon:new FormControl(''),
+    calibratedue:new FormControl(''),
+  });
+
+  initializeFromGroup(){
+    this.form.setValue({
+      sno: 0,
+      name:'',
+      referenceno: 0,
+      range:'',
+      calibratedon:'',
+      calibratedue:''
+    });
+  }
    // common of url address
   API_URL: string = 'http://192.168.0.13:3002/instruments';
 

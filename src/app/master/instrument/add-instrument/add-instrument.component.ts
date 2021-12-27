@@ -14,6 +14,11 @@ export class AddInstrumentComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  onClear() {
+    this._service.form.reset();
+    this._service.initializeFromGroup();
+  }
+  
   // onClose() {
   //   this._service.form.reset();
     
