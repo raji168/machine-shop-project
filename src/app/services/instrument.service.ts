@@ -10,10 +10,13 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class InstrumentService {
 
 
+  API_URL: string = 'http://192.168.0.13:3002/instruments';
 
+  constructor(private _http: HttpClient) { }
 
+  
   form:FormGroup = new FormGroup({
-    sno:new FormControl(null),
+    sno:new FormControl(''),
     name:new FormControl(''),
     referenceno:new FormControl(''),
     range:new FormControl(''),
@@ -21,33 +24,29 @@ export class InstrumentService {
     calibratedue:new FormControl(''),
   });
 
-  initializeFromGroup(){
-    this.form.setValue({
-      sno: 0,
-      name:'',
-      referenceno: 0,
-      range:'',
-      calibratedon:'',
-      calibratedue:''
-    });
-  }
-   // common of url address
-  API_URL: string = 'http://192.168.0.13:3002/instruments';
+  // initializeFromGroup(){
+  //   this.form.setValue({
+  //     sno: 0,
+  //     name:'',
+  //     referenceno: 0,
+  //     range:'',
+  //     calibratedon:'',
+  //     calibratedue:''
+  //   });
+  // }
 
-  constructor(private _http: HttpClient) { }
-
-  getAlldepartment(): Observable<any> {
+  getInstrument(): Observable<any> {
     return this._http.get(this.API_URL);
   }
  
-  insUpDepartment(department: InstrumentModel): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return this._http.post(this.API_URL + '/roles', department, httpOptions);
-  }
-  delDepartment(id: number): Observable<number> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    //  soft Delete,So use post method to update msstatus=0
-    return this._http.post<number>(this.API_URL + '/roles?id=' + id, httpOptions);
-  }
+  // insUpDepartment(department: InstrumentModel): Observable<any> {
+  //   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+  //   return this._http.post(this.API_URL + '/roles', department, httpOptions);
+  // }
+  // delDepartment(id: number): Observable<number> {
+  //   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+  //   //  soft Delete,So use post method to update msstatus=0
+  //   return this._http.post<number>(this.API_URL + '/roles?id=' + id, httpOptions);
+  // }
 }
 

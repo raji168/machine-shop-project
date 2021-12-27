@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { FormGroup } from '@angular/forms';
 import { InstrumentService } from 'src/app/services/instrument.service';
 
 @Component({
@@ -9,23 +9,17 @@ import { InstrumentService } from 'src/app/services/instrument.service';
 })
 export class AddInstrumentComponent implements OnInit {
 
-  constructor(public _service:InstrumentService,public _dialogRef: MatDialogRef<AddInstrumentComponent>) { }
+  form:FormGroup;
+  constructor(public _service:InstrumentService) { }
 
   ngOnInit(): void {
   }
+
+  
+    
   
   onClear() {
     this._service.form.reset();
-    this._service.initializeFromGroup();
+   
   }
-  
-  // onClose() {
-  //   this._service.form.reset();
-    
-  
-  // onClear() {
-  //   this._service.form.reset();
-  //   this._service.initializeFromGroup();
-  // }
-
 }
