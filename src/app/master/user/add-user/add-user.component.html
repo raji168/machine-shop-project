@@ -4,27 +4,34 @@
       <form [formGroup]="userService.userForm"  color="accent">
         <mat-form-field appearance="outline" color="accent">
           <mat-label>S No</mat-label>
-          <input matInput placeholder="S.No" formControlName="serialNo" autocomplete="off">
+          <input matInput placeholder="S.No" formControlName="serialNo *" autocomplete="off">
+          <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">
           <mat-label> Name </mat-label>
-          <input matInput placeholder=" Name" formControlName="name" autocomplete="off">
+          <input matInput placeholder=" Name" formControlName="name *" autocomplete="off">
+          <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">
           <mat-label> Role </mat-label>
-          <input matInput placeholder=" Role" formControlName="role" autocomplete="off">
+          <input matInput placeholder=" Role" formControlName="role *" autocomplete="off">
+          <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">
           <mat-label> E-Mail </mat-label>
-          <input matInput placeholder=" E-Mail " formControlName="email" autocomplete="off">
+          <input matInput placeholder=" E-Mail " formControlName="email *" autocomplete="off">
+          <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">
           <mat-label> Contact No </mat-label>
-          <input matInput placeholder=" Contact No" formControlName="contactNo" autocomplete="off">
+          <input matInput placeholder=" Contact No" formControlName="contactNo *" autocomplete="off">
+          <mat-error *ngIf="userService.userForm.controls['contactNo'].errors?.max">Must have 10 numbers</mat-error>
+          <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">
           <mat-label> User Name </mat-label>
-          <input matInput placeholder=" User Name" formControlName="UserName" autocomplete="off">
+          <input matInput placeholder=" User Name" formControlName="UserName *" autocomplete="off">
+          <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
         <div class="button">
           <button mat-raised-button class="btn-save" type="submit" color="accent">Save</button>

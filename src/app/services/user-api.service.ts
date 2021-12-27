@@ -11,12 +11,12 @@ export class UserApiService {
   constructor(private http: HttpClient) { }
 
   userForm: FormGroup = new FormGroup({
-    serialNo: new FormControl(''),
-    name : new FormControl(''),
-    role : new FormControl(''),
-    email : new FormControl(''),
-    contactNo : new FormControl(''),
-    userName : new FormControl(''),
+    serialNo: new FormControl('',Validators.required),
+    name : new FormControl('',Validators.required),
+    role : new FormControl('',Validators.required),
+    email : new FormControl('',Validators.required),
+    contactNo : new FormControl('',[Validators.required,Validators.minLength(10)]),
+    userName : new FormControl('',Validators.required),
   });
    
   initializeFormGroup(){
