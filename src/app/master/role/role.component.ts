@@ -42,11 +42,7 @@ export class RoleComponent implements OnInit {
     this.dialog.open(AddRoleComponent, dialogConfig);
   }
 
-  // addData() {
-  //   const randomElementIndex = Math.floor(Math.random() * roleData.length);
-  //   this.dataRole.push(userRole[randomElementIndex]);
-  //   this.table.renderRows();
-  // }
+ 
 
   ngOnInit(){
   
