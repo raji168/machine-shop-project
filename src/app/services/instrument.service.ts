@@ -10,11 +10,7 @@ export class InstrumentService {
 
   API_URL: string = 'http://192.168.0.13:3002/instruments';
 
-
-
   constructor(private _http: HttpClient) { }
-
- 
 
   getAlldepartment(): Observable<any> {
     return this._http.get(this.API_URL);
