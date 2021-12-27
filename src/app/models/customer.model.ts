@@ -1,9 +1,9 @@
 export interface Customer {
-    id?: string;
-    name: string;
-    product: string;
-    partno: string;
+    _id?: string;
+    customername: string;
+    description: string;
+    productno: string;
     drawing: File;
-    revno: string;
+    revisionno: string;
 
 }

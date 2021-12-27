@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Machine } from 'src/app/models/machine.model';
@@ -16,9 +18,13 @@ const ELEMENT_DATA: Machine[] = [];
 })
 export class MachineComponent implements OnInit {
 
-  dataSource: Machine[] = [];
+  @ViewChild('paginator') paginator: MatPaginator;
 
+  dataMachine: Machine[] = [];
+  
   displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
+
+  dataSource: MatTableDataSource<Machine>;
 
   constructor(
     public dialog: MatDialog,
@@ -29,11 +35,18 @@ export class MachineComponent implements OnInit {
   ngOnInit() {
 
     this.machineApi.getMachineAll().subscribe(data => {
-      this.dataSource = data;
+      this.dataMachine = data;
     });
+    
     this.toastr.success('Machine Records Loaded Successfully', 'Machine');
 
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   onClickAdd() {
     let dialogRef = this.dialog.open(AddMachineComponent);
   }
@@ -42,7 +55,11 @@ export class MachineComponent implements OnInit {
     let dialogRef = this.dialog.open(AddMachineComponent);
   }
 
-  onClickDelete() {
+  onClickDelete(id) {
+    this.machineApi.deleteMachine(id).subscribe(res =>{
+      this.dataMachine = this.dataMachine.filter(item => item._id !== id);
+      console.log('shift deleted Suceessfully');
+    })
 
   }
 }

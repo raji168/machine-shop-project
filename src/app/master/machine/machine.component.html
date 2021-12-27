@@ -1,11 +1,15 @@
 <div class="container">
   <div class="add-shift">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
     <button mat-icon-button class="add-btn" (click)="onClickAdd()">
       <mat-icon>add_circle_outline</mat-icon>
     </button>
   </div>
   <div class="table">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataMachine" class="mat-elevation-z8">
       <ng-container matColumnDef="sno">
         <th mat-header-cell *matHeaderCellDef> No. </th>
         <td mat-cell *matCellDef="let element"> {{element.sno}} </td>
@@ -32,7 +36,7 @@
           <button mat-icon-button (click)="onClickEdit()">
             <mat-icon>edit_outline</mat-icon>
           </button>
-          <button mat-icon-button (click)="onClickDelete()">
+          <button mat-icon-button (click)="onClickDelete(element._id)">
             <mat-icon>delete_outline</mat-icon>
           </button>
         </td>
@@ -40,6 +44,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 aria-label="Select page of Machine">
+  </mat-paginator>
+    
   </div>
 
 </div>

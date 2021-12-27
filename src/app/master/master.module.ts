@@ -11,12 +11,14 @@ import { AddMachineComponent } from './machine/add-machine/add-machine.component
 import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { RoleComponent } from './role/role.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
+import { EditShiftComponent } from './shift/edit-shift/edit-shift.component';
 import { InstrumentComponent } from './instrument/instrument.component';
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
+
 
 @NgModule({
     declarations: [
@@ -28,6 +30,7 @@ import { AddInstrumentComponent } from './instrument/add-instrument/add-instrume
         AddMachineComponent,
         RoleComponent,
         AddCustomerComponent,
+        EditShiftComponent,
         InstrumentComponent,
         UserComponent,
         AddUserComponent,

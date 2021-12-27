@@ -14,7 +14,7 @@ export class CustomerComponent implements OnInit {
 
   dataSource: Customer[] = [];
 
-  displayedColumns: string[] = ['sno', 'name', 'product', 'partno', 'revno', 'drawing'];
+  displayedColumns: string[] = ['sno', 'customername', 'description', 'productno', 'revisionno', 'drawing'];
 
   constructor(private customerApi: CustomerApiService,
     private router: Router,
