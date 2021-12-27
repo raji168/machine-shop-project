@@ -8,9 +8,14 @@ import { InstrumentModel } from '../models/instrument.model'
 })
 export class InstrumentService {
 
+<<<<<<< HEAD
+   // common of url address
+   API_URL:string='http://192.168.0.12:3002/instruments' ;
+=======
   API_URL: string = 'http://192.168.0.13:3002/instruments';
 
   constructor(private _http: HttpClient) { }
+>>>>>>> 75067134951f9935dd0f2e91e9b6274e3cbb4aa4
 
   getAlldepartment(): Observable<any> {
     return this._http.get(this.API_URL);
