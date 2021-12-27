@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { FormControl, FormGroup, Validators } from '@angular/forms';
->>>>>>> c8237b82e5c4684718671d6b9accac54dddd1e31
+import { MatDialogRef } from '@angular/material/dialog';
+import { NotificationService } from 'src/app/services/notification.service';
+import { RoleApiService } from 'src/app/services/role-api.service';
 
 @Component({
   selector: 'app-add-role',
@@ -10,18 +10,30 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-role.component.scss']
 })
 export class AddRoleComponent implements OnInit {
-<<<<<<< HEAD
 
-  constructor() { }
+  roleForm: FormGroup;
+
+  constructor(
+    public roleService : RoleApiService,
+    public dialogRef: MatDialogRef<AddRoleComponent>,
+    public notification : NotificationService) { }
 
   ngOnInit(): void {
   }
 
-=======
-  ngOnInit(): void {
-   
+  onClear(){
+    this.roleService.roleForm.reset();
+    this.roleService.initializeFormGroup();
+  }
+
+  onSave(){
+    console.log(this.roleService.roleForm.value);
+    this.roleService.addRole(this.roleService.roleForm.value).subscribe((data) => {
+      this.dialogRef.close(data);
+      this.notification.success("successfullly data added!!");
+    })
+  } 
     
-  }
 
   // shift: Shift;
 
@@ -55,5 +67,4 @@ export class AddRoleComponent implements OnInit {
 
 
   // }
->>>>>>> c8237b82e5c4684718671d6b9accac54dddd1e31
 }

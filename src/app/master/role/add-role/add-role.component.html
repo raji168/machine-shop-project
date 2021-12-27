@@ -1,23 +1,24 @@
-<<<<<<< HEAD
-<p>add-role works!</p>
-=======
-<!-- <div class="container">
+<div class="container">
     <div class="form">
-        <div class="title">Add Role </div>
-        <form [formGroup]="shiftForm" color="accent">
-            <mat-form-field appearance="outline" color="accent">
-                <mat-label>S No</mat-label>
-                <input matInput placeholder="S.No" formControlName="sno" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" color="accent">
-                <mat-label>Shift Name</mat-label>
-                <input matInput placeholder="Shift Name" formControlName="shiftName" autocomplete="off">
-            </mat-form-field>
-            <div class="button">
-                <button mat-raised-button class="btn-save" type="submit" color="accent">Save</button>
-                <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
-            </div>
-        </form>
+      <div class="title">Add User</div>
+      <form [formGroup]="roleService.roleForm" (ngSubmit)="onSave()"  color="accent">
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>S No</mat-label>
+          <input matInput placeholder="S.No *" formControlName="serialno" autocomplete="off">
+          <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label> Name </mat-label>
+          <input matInput placeholder=" Name *" formControlName="name" autocomplete="off">
+          <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+        
+        <div class="button">
+          <button mat-raised-button class="btn-save" type="submit" color="accent">Save</button>
+          <!-- <button mat-raised-button (click)="onClear()">clear</button> -->
+          <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
+        </div>
+      </form>
     </div>
-</div> -->
->>>>>>> c8237b82e5c4684718671d6b9accac54dddd1e31
+  </div>
