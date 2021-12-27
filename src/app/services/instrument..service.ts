@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InstrumentModel } from '../models/instrument.model'
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,31 @@ import { InstrumentModel } from '../models/instrument.model'
 export class InstrumentService {
 
    // common of url address
-  API_URL: string = 'http://192.168.0.13:3002/instruments';
+   API_URL:string='http://192.168.0.13:3002/instruments' ;
 
   constructor(private _http: HttpClient) { }
+
+
+  intrumentFrom:FormGroup = new FormGroup({
+    sno:new FormControl(''),
+    name:new FormControl(''),
+    referenceno:new FormControl(''),
+    range:new FormControl(''),
+    calibratedon:new FormControl(''),
+    calibratedue:new FormControl(''),
+  });
+
+  initializeFromGroup(){
+    this.intrumentFrom.setValue({
+      sno: '',
+      name:'',
+      referenceno: '',
+      range:'',
+      calibratedon:'',
+      calibratedue:''
+    });
+  }
+
 
   getAlldepartment(): Observable<any> {
     return this._http.get(this.API_URL);
