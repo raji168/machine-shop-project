@@ -6,6 +6,7 @@ import { RoleApiService } from '../../services/role-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { AddRoleComponent } from './add-role/add-role.component';
+import { EditRoleComponent } from './edit-role/edit-role.component';
 
 
 const ELEMENT_DATA: Role[] = [];
@@ -49,9 +50,8 @@ export class RoleComponent implements OnInit {
     this.dialog.open(AddRoleComponent, dialogConfig);
   }
 
-<<<<<<< HEAD
   onEdit(){
-    let dialogRef = this.dialog.open(AddRoleComponent);
+    let dialogRef = this.dialog.open(EditRoleComponent);
   }
 
   onDelete(id){
@@ -60,9 +60,6 @@ export class RoleComponent implements OnInit {
       this.notification.success('shift deleted Suceessfully');
     })
   }
-=======
- 
->>>>>>> 99117a6f00e599fa7386347c5ddf3d5746a8fd1a
 
   ngOnInit(){
   

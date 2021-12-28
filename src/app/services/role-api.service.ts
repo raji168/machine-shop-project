@@ -30,7 +30,7 @@ export class RoleApiService {
     const url =` http://192.168.0.13:3002/roles`;
     return this.http.get<Role[]>(url);
   }
-  
+
   getRoleMaxSerialno() {
     return this.http.get<number>('http://192.168.0.13:3002/roles/GetRoleMaxSerialno')
   }
@@ -44,4 +44,10 @@ export class RoleApiService {
     const url = `http://192.168.0.13:3002/roles`;
     return this.http.delete(`${url}/${_id}`);
   }
+
+  getRoleById(_id : any){
+    const url = `http://192.168.0.13:3002/roles`;
+    return this.http.get(`${url}/${_id}`);
+  }
+  
 }
