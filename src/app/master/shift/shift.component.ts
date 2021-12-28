@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Data, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Shift } from 'src/app/models/shift.model';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
 import { AddShiftComponent } from './add-shift/add-shift.component';
-import { EditShiftComponent } from './edit-shift/edit-shift.component';
 
 
 
@@ -22,10 +24,17 @@ export class ShiftComponent implements OnInit {
 
   dataShift: Shift[] = [];
 
+  // dataSource = ELEMENT_DATA;
+
+  dataSource: MatTableDataSource<Shift>;
+
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  // @ViewChild(MatSort) sort: MatSort;
+  
   constructor(
-    private shiftAPi: ShiftApiService,
+    private shiftApi: ShiftApiService,
     private router: Router,
     public dialog: MatDialog,
     private toastr: ToastrService
@@ -35,27 +44,32 @@ export class ShiftComponent implements OnInit {
 
   ngOnInit() {
 
-    this.shiftAPi.getShiftAll().subscribe(data => {
-      this.dataShift = data;
-      this.toastr.success('Shift Records Loaded Successfully', 'Shift');
+    this.shiftApi.getShiftAll().subscribe(data => {
+      this.dataShift = data;   
     });
 
+    
   }
+
+  // refresh(){
+  //   this.myService.doSomething().subscribe((data:Shift[])=>{
+  //     this.dataSource.data = data ;
+  //   })
+  // }
+ 
 
   onClickAdd() {
 
-    let dialogRef = this.dialog.open(AddShiftComponent);
+    this.dialog.open(AddShiftComponent);
 
 
   }
-
-  onEdit(id:string) {
-    let dialogRef = this.dialog.open(EditShiftComponent);
-
+  onClickEdit(shift){
+    this.dialog.open(AddShiftComponent , { data: { shift } });
   }
 
-  onDelete(id: string) {
-    this.shiftAPi.deleteShift(id).subscribe(res => {
+  onClickDelete(id: string) {
+    this.shiftApi.deleteShift(id).subscribe(res => {
       this.dataShift = this.dataShift.filter(item => item._id !== id);
       console.log('shift deleted Suceessfully');
     })

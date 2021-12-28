@@ -1,57 +1,32 @@
-<<<<<<< HEAD
 {
   "shifts": [
     {
-      "id": 1,
+      "_id": 1,
       "sno": 1,
       "shiftName": "shift -1",
       "startTime": "12.00AM",
       "endTime": "11.00PM"
     },
     {
-      "id": 2,
+      "_id": 2,
       "sno": 1,
       "shiftName": "shift -1",
       "startTime": "12.00AM",
       "endTime": "11.00PM"
     },
     {
-      "id": 3,
+      "_id": 3,
       "sno": 1,
       "shiftName": "shift -1",
       "startTime": "12.00AM",
       "endTime": "11.00PM"
     },
     {
-      "id": 4,
+      "_id": 4,
       "sno": 1,
       "shiftName": "shift -1",
       "startTime": "12.00AM",
       "endTime": "11.00PM"
     }
   ]
-=======
-{
-    "roles": [
-        {
-            "id":1,
-            "sno": 1,
-            "name": "Indoshell"
-           
-        },
-        {
-            "id":2,
-            "sno": 2,
-            "name": "Unique Shell"
-           
-        },
-        {
-            "id":3,
-            "sno": 3,
-            "name": "Asian Knight"
-            
-        }
-       
-    ]
->>>>>>> 3d157c81591e379c0d22807a4e9fd10371727bf6
 }

@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Machine } from 'src/app/models/machine.model';
+import { Shift } from 'src/app/models/shift.model';
 import { MachineApiService } from 'src/app/services/machine-api.service';
 import { AddMachineComponent } from './add-machine/add-machine.component';
 
@@ -21,7 +23,7 @@ export class MachineComponent implements OnInit {
   
   displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
 
-  dataMachine: MatTableDataSource<any>;
+  dataMachine: MatTableDataSource<Machine>;
 
   constructor(
     public dialog: MatDialog,
@@ -30,14 +32,15 @@ export class MachineComponent implements OnInit {
 
 
     @ViewChild(MatPaginator) paginator: MatPaginator; 
+    @ViewChild(MatSort) sort: MatSort;
+
   ngOnInit() {
 
     this.machineApi.getMachineAll().subscribe(data => {
       this.dataMachine = new MatTableDataSource(data);
       this.dataMachine.paginator = this.paginator;
+      this.dataMachine.sort= this.sort;
     });
-    
-    this.toastr.success('Machine Records Loaded Successfully', 'Machine');
 
   }
 
