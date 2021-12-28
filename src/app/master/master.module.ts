@@ -16,14 +16,9 @@ import { AddCustomerComponent } from './customer/add-customer/add-customer.compo
 import { InstrumentComponent } from './instrument/instrument.component';
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
-<<<<<<< HEAD
-import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
-import { AddRoleComponent } from './role/add-role/add-role.component';
-=======
 import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
 import { AddRoleComponent } from './role/add-role/add-role.component';
 import { EditRoleComponent } from './role/edit-role/edit-role.component';
->>>>>>> e033101a74e44a782cb741c1ec2d6b12ab43cc6f
 
 
 @NgModule({

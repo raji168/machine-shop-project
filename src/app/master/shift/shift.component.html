@@ -1,53 +1,32 @@
-<div class="container">
-  <div class="add-shift">
+
+<!-- <div class="container">
+  <div class="table-container">
     <div class="title">
       Shift Schedule
     </div>
     <button mat-icon-button class="add-btn " (click)="onClickAdd()">
       <mat-icon>add_circle_outline </mat-icon>
     </button>
-  </div>
-  <div class="table-container">
-    <div class="table ">
-      <table mat-table [dataSource]="dataShift" class="mat-elevation-z8" matSort>
-        <ng-container matColumnDef="sno">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-          <td mat-cell *matCellDef="let element ;let i = index;"> {{i+1}} </td>
-        </ng-container>
-        <ng-container matColumnDef="shiftName">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Shift Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.shiftName}} </td>
-        </ng-container>
-        <ng-container matColumnDef="startTime" >
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Time </th>
-          <td mat-cell *matCellDef="let element"> {{element.startTime}} </td>
-        </ng-container>
-        <ng-container matColumnDef="endTime">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> End Time </th>
-          <td mat-cell *matCellDef="let element"> {{element.endTime}} </td>
-        </ng-container>
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Actions </th>
-          <td mat-cell *matCellDef="let element" >
-            <button mat-icon-button (click)="onClickEdit(element)">
-              <mat-icon>edit_outline</mat-icon>
-            </button>
-            <button mat-icon-button type="button" (click)="onClickDelete(element._id)">
-              <mat-icon>delete_outline</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-      showFirstLastButtons 
-      aria-label="Select page of Shift">
-      </mat-paginator> -->
-
+    <div class="table">
+      <div class="table-header">
+        <div>S.No</div>
+        <div>Shift Name</div>
+        <div>Start Time</div>
+        <div>End Time</div>
+        <div>Actions</div>
+      </div>
+      <div class="table-data" *ngFor='let shift of dataShift'>
+        <div>{{shift.shiftName}}</div>
+        <div>{{shift.startTime}}</div>
+        <div>{{shift.endTime}}</div>
+        <div>Actions</div>
+        <button mat-icon-button (click)="onClickEdit()">
+          <mat-icon>edit_outline</mat-icon>
+        </button>
+        <button mat-icon-button type="button" (click)="onClickDelete()">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </div>
     </div>
-
   </div>
-
-
-</div> 
+</div> -->

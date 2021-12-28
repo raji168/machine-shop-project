@@ -10,12 +10,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class InstrumentService {
 
    // common of url address
-<<<<<<< HEAD
-   API_URL:string='http://192.168.0.12:3002/instruments' ;
-=======
 
   API_URL: string = 'http://192.168.0.13:3002/instruments';
->>>>>>> e033101a74e44a782cb741c1ec2d6b12ab43cc6f
 
   constructor(private _http: HttpClient) { }
 

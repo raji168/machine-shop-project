@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Data, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Shift } from 'src/app/models/shift.model';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
@@ -32,7 +32,7 @@ export class ShiftComponent implements OnInit {
 
   // @ViewChild(MatPaginator) paginator: MatPaginator;
   // @ViewChild(MatSort) sort: MatSort;
-  
+
   constructor(
     private shiftApi: ShiftApiService,
     private router: Router,
@@ -45,10 +45,10 @@ export class ShiftComponent implements OnInit {
   ngOnInit() {
 
     this.shiftApi.getShiftAll().subscribe(data => {
-      this.dataShift = data;   
+      this.dataShift = data;
     });
 
-    
+
   }
 
   // refresh(){
@@ -56,7 +56,7 @@ export class ShiftComponent implements OnInit {
   //     this.dataSource.data = data ;
   //   })
   // }
- 
+
 
   onClickAdd() {
 
@@ -64,14 +64,19 @@ export class ShiftComponent implements OnInit {
 
 
   }
-  onClickEdit(shift){
-    this.dialog.open(AddShiftComponent , { data: { shift } });
-  }
+  // onClickEdit(shift){
+  //   this.dialog.open(AddShiftComponent , { data: { shift } });
+  // }
 
-  onClickDelete(id: string) {
-    this.shiftApi.deleteShift(id).subscribe(res => {
-      this.dataShift = this.dataShift.filter(item => item._id !== id);
-      console.log('shift deleted Suceessfully');
-    })
-  }
+  
+  onClickEdit() { }
+  onClickDelete() { }
+
+
+  // onClickDelete(id: string) {
+  //   this.shiftApi.deleteShift(id).subscribe(res => {
+  //     this.dataShift = this.dataShift.filter(item => item._id !== id);
+  //     console.log('shift deleted Suceessfully');
+  //   })
+  // }
 }
