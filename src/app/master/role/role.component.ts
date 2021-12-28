@@ -60,6 +60,10 @@ export class RoleComponent implements OnInit {
       this.notification.success('shift deleted Suceessfully');
     })
   }
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> c595f39570705b01665961eeb90102a144548900
 
   ngOnInit(){
   
