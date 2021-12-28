@@ -4,7 +4,7 @@
       <form [formGroup]="userService.userForm" (ngSubmit)="onSave()"  color="accent">
         <mat-form-field appearance="outline" color="accent">
           <mat-label>S No</mat-label>
-          <input matInput placeholder="S.No *" formControlName="serialNo" autocomplete="off">
+          <input matInput placeholder="S.No *" formControlName="sno" autocomplete="off">
           <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">
@@ -15,17 +15,20 @@
         <mat-form-field appearance="outline" color="accent">
           <mat-label> Role </mat-label>
           <input matInput placeholder=" Role *" formControlName="role" autocomplete="off">
+          <mat-select>
+            <option *ngFor='let role of dataRole' [value]="role._id">{{role.name}}</option>
+          </mat-select>
           <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">
           <mat-label> E-Mail </mat-label>
-          <input matInput placeholder=" E-Mail * " formControlName="email" autocomplete="off">
+          <input matInput placeholder=" E-Mail * " formControlName="emailId" autocomplete="off">
           <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">
           <mat-label> Contact No </mat-label>
-          <input matInput placeholder=" Contact No *" formControlName="contactNo" autocomplete="off">
-          <mat-error *ngIf="userService.userForm.controls['contactNo'].errors?.minLength">Must have 10 numbers</mat-error>
+          <input matInput placeholder=" Contact No *" formControlName="phoneNo" autocomplete="off">
+          <mat-error *ngIf="userService.userForm.controls['phoneNo'].errors?.minLength">Must have 10 numbers</mat-error>
           <mat-error>This field is mandatory</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">

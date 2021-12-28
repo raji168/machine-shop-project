@@ -11,21 +11,21 @@ export class UserApiService {
   constructor(private http: HttpClient) { }
 
   userForm: FormGroup = new FormGroup({
-    serialNo: new FormControl('',Validators.required),
+    sno: new FormControl('',Validators.required),
     name : new FormControl('',Validators.required),
     role : new FormControl('',Validators.required),
-    email : new FormControl('',Validators.required),
-    contactNo : new FormControl('',[Validators.required,Validators.minLength(10)]),
+    emailId : new FormControl('',Validators.required),
+    phoneNo : new FormControl('',[Validators.required,Validators.minLength(10)]),
     userName : new FormControl('',Validators.required),
   });
    
   initializeFormGroup(){
     this.userForm.setValue({
-      serialNo: '',
+      sno: '',
       name: '',
       role: '',
-      email: '',
-      contactNo:'',
+      emailId: '',
+      phoneNo:'',
       userName: ''
     });
   }
@@ -34,6 +34,7 @@ export class UserApiService {
     const url = ` http://192.168.0.13:3002/users`;
     return this.http.get<User[]>(url);
   }
+  
   addUser(user: User) {
     const url = ` http://192.168.0.13:3002/users`;
     return this.http.post<{ _id: String }>(url, user);

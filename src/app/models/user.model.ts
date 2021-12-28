@@ -1,11 +1,12 @@
-export class User {
+import { Role } from "./role.model";
+
+export interface User {
     _id?: string;
-    serialNo: number;
+    sno: number;
     name: string;
-    role:string;
-    email:string;
-    contactNo:number;
+    role:Role;
+    emailId:string;
+    phoneNo:number;
     userName:string;
-    edit:string;
-    delete:string;
+   
 }

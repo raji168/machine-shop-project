@@ -22,10 +22,8 @@ export class EditRoleComponent implements OnInit {
     public router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // console.log(this.roleService.roleForm.value);
     this.roleService.getRoleById(this)
       .subscribe((data : any)=>{
-        // console.log(data);
         this.roleService.initializeFormGroup();
       });
   }
@@ -37,10 +35,6 @@ export class EditRoleComponent implements OnInit {
 
   onUpdate(){
     console.log(this.roleService.roleForm.value);
-    // this.roleService.addRole(this.roleService.roleForm.value).subscribe((data) => {
-    //   this.dialogRef.close(data);
-    //   this.notification.success("successfullly data added!!");
-    // })
   } 
     
 

@@ -18,7 +18,7 @@ const ELEMENT_DATA: Role[] = [];
 })
 export class RoleComponent implements OnInit {
 
-
+ role :Role;
   dataRole: Role[] = [];
 
   displayedColumns: string[] = ['serialno', 'name', 'actions'];
@@ -50,8 +50,8 @@ export class RoleComponent implements OnInit {
     this.dialog.open(AddRoleComponent, dialogConfig);
   }
 
-  onEdit(){
-    let dialogRef = this.dialog.open(EditRoleComponent);
+  onEdit(role){
+    let dialogRef = this.dialog.open(EditRoleComponent , {data :{ role }});
   }
 
   onDelete(id){
@@ -60,10 +60,6 @@ export class RoleComponent implements OnInit {
       this.notification.success('shift deleted Suceessfully');
     })
   }
-<<<<<<< HEAD
-=======
- 
->>>>>>> c595f39570705b01665961eeb90102a144548900
 
   ngOnInit(){
   

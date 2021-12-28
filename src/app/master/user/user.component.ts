@@ -28,10 +28,10 @@ export class UserComponent implements OnInit {
 
   dataUser: User[] = [];
 
-  displayedColumns: string[] = ['serialNo','name','role','email','contactNo','userName','edit','delete'];
+  displayedColumns: string[] = ['sno','name','role','emailId','phoneNo','userName','actions'];
   
   constructor(
-    private userApi: UserApiService,
+    public userApi: UserApiService,
     private router: Router,
     private dialog:MatDialog,
     private notification: NotificationService){
@@ -41,9 +41,14 @@ export class UserComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<User>;
 
-  ngOnInit(): void {
+  ngOnInit(){
+
+    this.userApi.getUserAll().subscribe(data => {
+      this.dataUser = data;
+    });
       
   }
+
   onCreate(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose =true;
@@ -51,6 +56,7 @@ export class UserComponent implements OnInit {
     dialogConfig.width = "40%";
     this.dialog.open(AddUserComponent, dialogConfig);
   }
+}
 
   
 
@@ -59,64 +65,4 @@ export class UserComponent implements OnInit {
   //   this.table.renderRows();
   // }
 
-}
 
-
-// constructor(private _service:DepartmentService ,
-//   public _notification: NotificationService,
-//   public _dialog: MatDialog ) { }
-
-// grdlistData: MatTableDataSource<any>;
-// displayedColumns: string[] = ['serialno','name','actions']
-// @ViewChild(MatSort) sort: MatSort;
-// @ViewChild(MatPaginator) paginator: MatPaginator;
-// searchKey: string;
-
-
-// ngOnInit(): void {
-//   this.fillGrid();
-// }
-
-// fillGrid() {
-//   this._service.getAlldepartment()
-//     .subscribe(
-//         data => {
-//           this.grdlistData = new MatTableDataSource(data);
-//           this.grdlistData.sort = this.sort;
-//           this.grdlistData.paginator = this.paginator;
-//         }
-//     );
-// }
-
-// applyFilter(){
-//   this.grdlistData.filter = this.searchKey.trim().toLowerCase();
-// }
-
-// onSearchClear(){
-//   this.searchKey = " ";
-//   this.applyFilter();
-// }
-
-// onCreate( ){
-//   // this._service.getDepartmentMaxSerialNo()
-//   //   .subscribe(
-//   //     data =>{
-//   //       this._service.maxSerialNo = data;
-//   //       this._service.initializeFormGroup();
-//   //     }
-//   //   );
-
-//   const dialogConfig = new MatDialogConfig();
-//   dialogConfig.disableClose =true;
-//   dialogConfig.autoFocus = true;
-//   dialogConfig.width = "30%";
-//   this._dialog.open(DepartmentComponent, dialogConfig);
-// }
-
-// onEdit(){
-//   this._notification.success("you clicked Edit !");
-// }
-
-// onDelete(){
-//   this._notification.warn("you clicked Delete !");
-// }
