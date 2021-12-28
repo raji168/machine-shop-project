@@ -6,6 +6,7 @@ import { RoleApiService } from '../../services/role-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { AddRoleComponent } from './add-role/add-role.component';
+import { EditRoleComponent } from './edit-role/edit-role.component';
 
 
 const ELEMENT_DATA: Role[] = [];
@@ -17,14 +18,14 @@ const ELEMENT_DATA: Role[] = [];
 })
 export class RoleComponent implements OnInit {
 
+ role :Role;
+  dataRole: Role[] = [];
 
-  dataSource: Role[] = [];
-
-  displayedColumns: string[] = ['serialno', 'name','edit','delete'];
+  displayedColumns: string[] = ['serialno', 'name', 'actions'];
   
 
   constructor(
-    private role:RoleApiService,
+    private roleService:RoleApiService,
     private router: Router,
     private dialog: MatDialog,
     private notification: NotificationService) { 
@@ -35,6 +36,13 @@ export class RoleComponent implements OnInit {
 
 
   onCreate(){
+    this.roleService.getRoleMaxSerialno()
+      .subscribe(
+        data =>{
+          this.roleService.maxSerialno = data;
+          this.roleService.initializeFormGroup();
+        }
+      );
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose =true;
     dialogConfig.autoFocus = true;
@@ -42,9 +50,22 @@ export class RoleComponent implements OnInit {
     this.dialog.open(AddRoleComponent, dialogConfig);
   }
 
- 
+  onEdit(role){
+    let dialogRef = this.dialog.open(EditRoleComponent , {data :{ role }});
+  }
+
+  onDelete(id){
+    this.roleService.deleteRole(id).subscribe(res =>{
+      this.dataRole = this.dataRole.filter(item => item._id !== id);
+      this.notification.success('shift deleted Suceessfully');
+    })
+  }
 
   ngOnInit(){
   
+    this.roleService.getRoleAll().subscribe(data => {
+      this.dataRole = data;
+    });
+
   }
 }

@@ -29,4 +29,29 @@
       "endTime": "11.00PM"
     }
   ]
+<<<<<<< HEAD
+=======
+{
+    "roles": [
+        {
+            "id":1,
+            "sno": 1,
+            "name": "Indoshell"
+           
+        },
+        {
+            "id":2,
+            "sno": 2,
+            "name": "Unique Shell"
+           
+        },
+        {
+            "id":3,
+            "sno": 3,
+            "name": "Asian Knight"
+            
+        }
+       
+    ]
+>>>>>>> e033101a74e44a782cb741c1ec2d6b12ab43cc6f
 }
