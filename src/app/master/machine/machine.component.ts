@@ -18,24 +18,23 @@ const ELEMENT_DATA: Machine[] = [];
 })
 export class MachineComponent implements OnInit {
 
-  @ViewChild('paginator') paginator: MatPaginator;
-
-  dataMachine: Machine[] = [];
   
   displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
 
-  dataSource: MatTableDataSource<Machine>;
+  dataMachine: MatTableDataSource<any>;
 
   constructor(
     public dialog: MatDialog,
     private machineApi: MachineApiService,
-    private router: Router,
     private toastr: ToastrService) { }
 
+
+    @ViewChild(MatPaginator) paginator: MatPaginator; 
   ngOnInit() {
 
     this.machineApi.getMachineAll().subscribe(data => {
-      this.dataMachine = data;
+      this.dataMachine = new MatTableDataSource(data);
+      this.dataMachine.paginator = this.paginator;
     });
     
     this.toastr.success('Machine Records Loaded Successfully', 'Machine');
@@ -44,7 +43,7 @@ export class MachineComponent implements OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataMachine.filter = filterValue.trim().toLowerCase();
   }
 
   onClickAdd() {
@@ -56,10 +55,10 @@ export class MachineComponent implements OnInit {
   }
 
   onClickDelete(id) {
-    this.machineApi.deleteMachine(id).subscribe(res =>{
-      this.dataMachine = this.dataMachine.filter(item => item._id !== id);
-      console.log('shift deleted Suceessfully');
-    })
+    // this.machineApi.deleteMachine(id).subscribe(res =>{
+    //   this.dataMachine = this.dataMachine.filter(item => item._id !== id);
+    //   console.log('shift deleted Suceessfully');
+    // })
 
   }
 }

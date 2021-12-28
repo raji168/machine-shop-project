@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Shift } from 'src/app/models/shift.model';
@@ -44,13 +44,13 @@ export class ShiftComponent implements OnInit {
 
   onClickAdd() {
 
-    this.dialog.open(AddShiftComponent);
+    let dialogRef = this.dialog.open(AddShiftComponent);
 
 
   }
 
-  onEdit(shift) {
-    this.dialog.open(EditShiftComponent, { data: { shift } });
+  onEdit(id:string) {
+    let dialogRef = this.dialog.open(EditShiftComponent);
 
   }
 

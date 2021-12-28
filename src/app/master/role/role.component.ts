@@ -49,6 +49,7 @@ export class RoleComponent implements OnInit {
     this.dialog.open(AddRoleComponent, dialogConfig);
   }
 
+<<<<<<< HEAD
   onEdit(){
     let dialogRef = this.dialog.open(AddRoleComponent);
   }
@@ -59,6 +60,9 @@ export class RoleComponent implements OnInit {
       this.notification.success('shift deleted Suceessfully');
     })
   }
+=======
+ 
+>>>>>>> 99117a6f00e599fa7386347c5ddf3d5746a8fd1a
 
   ngOnInit(){
   

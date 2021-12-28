@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class InstrumentService {
 
+   // common of url address
 
   API_URL: string = 'http://192.168.0.13:3002/instruments';
 

@@ -11,13 +11,14 @@ import { CustomerApiService } from 'src/app/services/customer-api.service';
 })
 export class AddCustomerComponent implements OnInit {
 
-  userForm: FormGroup;
+  customerForm: FormGroup;
+  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { customer: Customer },
     public dialogRef: MatDialogRef<AddCustomerComponent>,
     private customerApi: CustomerApiService) {
 
-    this.userForm = new FormGroup({
+    this.customerForm = new FormGroup({
       name: new FormControl(null, Validators.required),
       product: new FormControl(null, Validators.required),
       partno: new FormControl(null, Validators.required),
