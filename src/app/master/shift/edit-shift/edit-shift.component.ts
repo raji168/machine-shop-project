@@ -54,10 +54,10 @@ export class EditShiftComponent implements OnInit {
   onUpdate() {
     console.log(this.shiftForm.value);
 
-  this.shiftApi.updateShift(this.shiftForm.value , this.data.id).subscribe(data =>{
-    this.dataShift = this.dataShift.filter(item => item._id !== id);
-      this.dialogRef.close(data);
-    })
+  // this.shiftApi.updateShift(this.shiftForm.value , this.data.id).subscribe(data =>{
+  //   this.dataShift = this.dataShift.filter(item => item._id !== id);
+  //     this.dialogRef.close(data);
+  //   })
 
   }
 }
