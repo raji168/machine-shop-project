@@ -18,13 +18,13 @@ const ELEMENT_DATA: Role[] = [];
 export class RoleComponent implements OnInit {
 
 
-  dataSource: Role[] = [];
+  dataRole: Role[] = [];
 
-  displayedColumns: string[] = ['serialno', 'name','edit','delete'];
+  displayedColumns: string[] = ['serialno', 'name', 'actions'];
   
 
   constructor(
-    private role:RoleApiService,
+    private roleService:RoleApiService,
     private router: Router,
     private dialog: MatDialog,
     private notification: NotificationService) { 
@@ -35,6 +35,13 @@ export class RoleComponent implements OnInit {
 
 
   onCreate(){
+    this.roleService.getRoleMaxSerialno()
+      .subscribe(
+        data =>{
+          this.roleService.maxSerialno = data;
+          this.roleService.initializeFormGroup();
+        }
+      );
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose =true;
     dialogConfig.autoFocus = true;
@@ -42,13 +49,22 @@ export class RoleComponent implements OnInit {
     this.dialog.open(AddRoleComponent, dialogConfig);
   }
 
-  // addData() {
-  //   const randomElementIndex = Math.floor(Math.random() * roleData.length);
-  //   this.dataRole.push(userRole[randomElementIndex]);
-  //   this.table.renderRows();
-  // }
+  onEdit(){
+    let dialogRef = this.dialog.open(AddRoleComponent);
+  }
+
+  onDelete(id){
+    this.roleService.deleteRole(id).subscribe(res =>{
+      this.dataRole = this.dataRole.filter(item => item._id !== id);
+      this.notification.success('shift deleted Suceessfully');
+    })
+  }
 
   ngOnInit(){
   
+    this.roleService.getRoleAll().subscribe(data => {
+      this.dataRole = data;
+    });
+
   }
 }
