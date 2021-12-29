@@ -15,12 +15,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import {MatSelectModule} from '@angular/material/select';
-<<<<<<< HEAD
-import { MatNativeDateModule } from "@angular/material/core/datetime";
+import { MatNativeDateModule } from "@angular/material/core";
 
-=======
-import { MatNativeDateModule } from '@angular/material/core';
->>>>>>> 1322923755c1b0aed7c7dfaaa29abb50d9021418
 
 @NgModule({
     exports: [
@@ -40,11 +36,7 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatSortModule,
         MatSnackBarModule,
         MatSelectModule,
-<<<<<<< HEAD
-=======
         MatNativeDateModule
->>>>>>> 1322923755c1b0aed7c7dfaaa29abb50d9021418
-
     ]
 })
 
