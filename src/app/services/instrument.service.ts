@@ -19,10 +19,10 @@ export class InstrumentService {
   form:FormGroup = new FormGroup({
     sno:new FormControl('',Validators.required),
     name:new FormControl('',Validators.required),
-    referenceno:new FormControl(''),
+    referenceno:new FormControl('',Validators.required),
     range:new FormControl('',Validators.required),
     calibratedon:new FormControl('',Validators.required),
-    calibratedue:new FormControl('',Validators.required),
+    calibratedue:new FormControl('',Validators.required)
   });
 
   initializeFromGroup(){
