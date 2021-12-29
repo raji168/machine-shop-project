@@ -31,8 +31,8 @@ export class RoleComponent implements OnInit {
     private notification: NotificationService) { 
   }
 
-  @ViewChild(MatTable)
-  table!: MatTable<Role>;
+  // @ViewChild(MatTable)
+  // table!: MatTable<Role>;
 
 
   onCreate(){
