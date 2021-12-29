@@ -1,7 +1,7 @@
 <div class="container">
   <div class="form">
     <div class="title">Add Machine</div>
-    <form [formGroup]="machineForm" (ngSubmit)="onSave()" >
+    <form [formGroup]="machineForm"  >
       <mat-form-field appearance="outline" color="accent">
         <mat-label>S No</mat-label>
         <input matInput placeholder="S.No" formControlName="sno" autocomplete="off">
@@ -23,7 +23,7 @@
         <input matInput placeholder="Machine Category" formControlName="category" autocomplete="off">
       </mat-form-field>
       <div class="button">
-        <button mat-raised-button class="btn-save" type="submit" color="accent">Save</button>
+        <button mat-raised-button class="btn-save"  color="accent" (click)="onSave()">Save</button>
         <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
       </div>
     </form>
