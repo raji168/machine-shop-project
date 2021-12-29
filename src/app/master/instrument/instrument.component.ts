@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NotificationService } from 'src/app/services/notification.service';
 import { InstrumentService } from 'src/app/services/instrument.service';
+import { InstrumentModel } from 'src/app/models/instrument.model';
 
 @Component({
   selector: 'app-instrument',
@@ -16,11 +17,12 @@ import { InstrumentService } from 'src/app/services/instrument.service';
 
 export class InstrumentComponent implements OnInit {
 
- 
+  instrumentData: InstrumentModel[] = [];
+  
   constructor(
     private _service: InstrumentService,
-    public _notification: NotificationService,
-    public _dialog: MatDialog) { }
+    private _notification: NotificationService,
+    private _dialog: MatDialog) { }
 
   grdlistData: MatTableDataSource<any>;
 
@@ -38,12 +40,16 @@ export class InstrumentComponent implements OnInit {
     this._service.getInstrumentAll()
       .subscribe(
         data => {
+          // this.instrumentData = data;
           this.grdlistData = new MatTableDataSource(data);
           this.grdlistData.sort = this.sort;
           this.grdlistData.paginator = this.paginator;
 
         }
       );
+
+
+     
   }
   applyFilter() {
     this.grdlistData.filter = this.searchKey.trim().toLocaleLowerCase();
@@ -63,12 +69,17 @@ export class InstrumentComponent implements OnInit {
   onEdit() {
     this._notification.success("you clicked Edit !");
   }
-  onDelete() {
-    this._notification.warn("you clicked Delete !");
+  onDelete(id){ 
+    this._service.deleteInstrument(id).subscribe(res =>{
+      this.instrumentData = this.instrumentData.filter(item=>item._id!==id);
+      this._notification.success('shift deleted Suceessfully');
+    })
   }
 
-
+   
 }
+
+
 
 
 

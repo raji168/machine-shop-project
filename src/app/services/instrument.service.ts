@@ -10,8 +10,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class InstrumentService {
 
   // common of url address
+  
 
   API_URL: string = 'http://192.168.0.13:3002/instruments';
+  
+
+  
 
   constructor(private _http: HttpClient) { }
 
@@ -44,6 +48,9 @@ export class InstrumentService {
     return this._http.post<{ _id: string }>(this.API_URL, instrument);
   }
 
+  deleteInstrument(_id:string){
+    return this._http.delete(`${this.API_URL}/${_id}`);
+  }
 
 }
 
