@@ -15,6 +15,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import {MatSelectModule} from '@angular/material/select';
+import { MatNativeDateModule } from "@angular/material/core/datetime";
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import {MatSelectModule} from '@angular/material/select';
         MatGridListModule,
         MatSortModule,
         MatSnackBarModule,
-        MatSelectModule
+        MatSelectModule,
 
     ]
 })
