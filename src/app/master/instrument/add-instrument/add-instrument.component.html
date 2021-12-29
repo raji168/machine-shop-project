@@ -1,11 +1,11 @@
 <div class="form" >
     <div class="from-title">
         <span>Add Instrument</span>
-        <button class="form-close" mat-stroked-button  tabindex="-1">
+        <button class="form-close" mat-stroked-button  >
             <mat-icon mat-dialog-close="false">close</mat-icon>
         </button>
     </div>
-    <form [formGroup]="instrumentService.form" class="normal-form">
+    <form [formGroup]="instrumentService.form" (ngSubmit)="onSubmit()" class="normal-form">
 
         <div  class="controles-container">
             <mat-form-field appearance="outline" color="accent">
@@ -26,20 +26,17 @@
 
             <mat-form-field appearance="outline" color="accent" >
                 <mat-label>Calibrated On</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input fromControlName="calibratedon"matInput [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Calibrated  Due</mat-label>
-                <input matInput [matDatepicker]="picker2">
+                <input  fromControlName="calibratedue"   matInput [matDatepicker]="picker2">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
-            </mat-form-field>
-
-          
-
+            </mat-form-field> 
             <div class="add-form-buttons">
                 <div class="button-row">
                     <button mat-raised-button color="accent" type="submit">Submit</button>

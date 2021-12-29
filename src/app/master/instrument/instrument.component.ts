@@ -16,7 +16,7 @@ import { InstrumentService } from 'src/app/services/instrument.service';
 
 export class InstrumentComponent implements OnInit {
 
-
+ 
   constructor(
     private _service: InstrumentService,
     public _notification: NotificationService,
