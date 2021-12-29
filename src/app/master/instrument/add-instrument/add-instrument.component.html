@@ -5,7 +5,8 @@
             <mat-icon mat-dialog-close="false">close</mat-icon>
         </button>
     </div>
-    <form [formGroup]="instrumentService.form" (ngSubmit)="onSubmit()" class="normal-form">
+    <form [formGroup]="instrumentService.insForm" (ngSubmit)="onSubmit()" class="normal-form">
+        <!-- {{instrumentService.form | json}} -->
 
         <div  class="controles-container">
             <mat-form-field appearance="outline" color="accent">

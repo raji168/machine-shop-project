@@ -9,7 +9,7 @@ import { AddRoleComponent } from './add-role/add-role.component';
 import { EditRoleComponent } from './edit-role/edit-role.component';
 
 
-const ELEMENT_DATA: Role[] = [];
+// const ELEMENT_DATA: Role[] = [];
 
 @Component({
   selector: 'app-role',
@@ -31,8 +31,8 @@ export class RoleComponent implements OnInit {
     private notification: NotificationService) { 
   }
 
-  @ViewChild(MatTable)
-  table!: MatTable<Role>;
+  // @ViewChild(MatTable)
+  // table!: MatTable<Role>;
 
 
   onCreate(){

@@ -10,13 +10,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class InstrumentService {
 
   // common of url address
+  
 
   API_URL: string = 'http://192.168.0.13:3002/instruments';
+  
+
+  
 
   constructor(private _http: HttpClient) { }
 
 
-  form: FormGroup = new FormGroup({
+  insForm: FormGroup = new FormGroup({
     sno: new FormControl(''),
     name: new FormControl(''),
     referenceno: new FormControl(''),
@@ -26,7 +30,7 @@ export class InstrumentService {
   });
 
   initializeFromGroup() {
-    this.form.setValue({
+    this.insForm.setValue({
       sno: '',
       name: '',
       referenceno: '',
@@ -36,13 +40,17 @@ export class InstrumentService {
     });
   }
 
-  getInstrument(): Observable<any> {
+  getInstrumentAll(): Observable<any> {
     return this._http.get(this.API_URL);
   }
+
   addInstrument(instrument: InstrumentModel) {
     return this._http.post<{ _id: string }>(this.API_URL, instrument);
   }
 
+  deleteInstrument(_id:string){
+    return this._http.delete(`${this.API_URL}/${_id}`);
+  }
 
 }
 
