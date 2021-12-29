@@ -33,6 +33,7 @@ import { AlertMessageComponent } from './shared/alert-message/alert-message.comp
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ConfirmDialogComponent]
 })
 export class AppModule { }

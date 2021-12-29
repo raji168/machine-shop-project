@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Shift } from 'src/app/models/shift.model';
+import { DialogService } from 'src/app/services/dialog.service';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
 import { AddShiftComponent } from './add-shift/add-shift.component';
 
@@ -37,7 +38,8 @@ export class ShiftComponent implements OnInit {
     private shiftApi: ShiftApiService,
     private router: Router,
     public dialog: MatDialog,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialogService:DialogService
   ) {
 
   }
@@ -70,7 +72,11 @@ export class ShiftComponent implements OnInit {
 
   
   onClickEdit() { }
-  onClickDelete() { }
+  onClickDelete() {
+
+    this.dialogService.openConfirmDialog();
+    
+   }
 
 
   // onClickDelete(id: string) {
