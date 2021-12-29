@@ -50,8 +50,8 @@ export class RoleComponent implements OnInit {
     this.dialog.open(AddRoleComponent, dialogConfig);
   }
 
-  onEdit(role){
-    let dialogRef = this.dialog.open(EditRoleComponent , {data :{ role }});
+  onEdit(id){
+    let dialogRef = this.dialog.open(EditRoleComponent);
   }
 
   onDelete(id){

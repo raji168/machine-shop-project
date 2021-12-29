@@ -25,16 +25,16 @@ export class InstrumentService {
     calibratedue:new FormControl(''),
   });
 
-  // initializeFromGroup(){
-  //   this.form.setValue({
-  //     sno: 0,
-  //     name:'',
-  //     referenceno: 0,
-  //     range:'',
-  //     calibratedon:'',
-  //     calibratedue:''
-  //   });
-  // }
+  initializeFromGroup(){
+    this.form.setValue({
+      sno: 0,
+      name:'',
+      referenceno: 0,
+      range:'',
+      calibratedon:'',
+      calibratedue:''
+    });
+  }
 
   getInstrument(): Observable<any> {
     return this._http.get(this.API_URL);
