@@ -20,3 +20,31 @@ snack-bar-container.notification simple-snack-bar{
     font-size: 18px;
     font-weight: bold;
 }
+
+/* mat-confirm-dialog */
+.confirm-dialog-container .mat-dialog-conatiner{
+    border-radius: .25em .25em .4em .4em;
+    padding: 0px;
+}
+
+.confirm-dialog-container .content-container{
+    margin: 5px 5px 15px 5px;
+    color:#5cb85c;
+    display: flex;
+}
+.confirm-dialog-container #close-icon{
+    margin-left: auto;
+    order:2;
+    font-weight:bolder;
+}
+.confirm-dialog-container #yes-button{
+    // background-color: rgb(255, 222, 90);
+    color:black;
+    border-radius: 5px;
+}
+
+.confirm-dialog-container #no-button{
+    // background-color:rgb(228, 59, 59);
+    color:black;
+    border-radius: 5px;
+}

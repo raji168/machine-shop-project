@@ -12,6 +12,7 @@ export class DialogService {
   openConfirmDialog(){
     this.dialog.open(ConfirmDialogComponent ,{
       width:'390px',
+      panelClass:'confirm-dialog-container',
       disableClose:true
     });
   }
