@@ -18,8 +18,8 @@ export class AddInstrumentComponent implements OnInit {
   
     
   
-  onClear() {
-    console.log(this.instrumentService.form.reset());
+  // onClear() {
+  //   console.log(this.instrumentService.form.reset());
    
-  }
+  // }
 }

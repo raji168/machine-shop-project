@@ -8,10 +8,14 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConfirmDialogComponent,
+    AlertMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ConfirmDialogComponent]
 })
 export class AppModule { }
