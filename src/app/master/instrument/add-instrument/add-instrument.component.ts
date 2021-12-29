@@ -11,7 +11,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class AddInstrumentComponent implements OnInit {
 
-  form:FormGroup;
+  insForm:FormGroup;
 
   constructor(
     public instrumentService:InstrumentService,
@@ -21,15 +21,13 @@ export class AddInstrumentComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   onSubmit(){
-    console.log(this.instrumentService.form.value);
+    console.log(this.instrumentService.insForm.value);
     // this.instrumentService.addInstrument(this.instrumentService.form.value).subscribe((data) => {
     //   this.dialogRef.close(data);
     //   this.notification.success("successfullly data added!!");
     // })
   } 
-  
-    
-  
   
 }

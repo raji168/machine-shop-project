@@ -27,6 +27,7 @@ export class InstrumentComponent implements OnInit {
   displayedColumns: string[] = ['sno', 'name', 'referenceno','range','calibratedon','calibratedue','actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  
   searchKey: string;
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class InstrumentComponent implements OnInit {
     
   }
   fillGrid() {
-    this._service.getInstrument()
+    this._service.getInstrumentAll()
       .subscribe(
         data => {
           this.grdlistData = new MatTableDataSource(data);
