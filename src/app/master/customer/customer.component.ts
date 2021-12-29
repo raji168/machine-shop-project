@@ -32,4 +32,12 @@ export class CustomerComponent implements OnInit {
     let dialogRef = this.dialog.open(AddCustomerComponent);
   }
 
+  onClickEdit(){
+
+  }
+
+  onClickDelete(){
+    
+  }
+
 }
