@@ -21,13 +21,13 @@ const ELEMENT_DATA: Shift[] = [];
 })
 export class ShiftComponent implements OnInit {
 
-  shift: Shift;
+  // shift: Shift;
 
   dataShift: Shift[] = [];
 
   // dataSource = ELEMENT_DATA;
 
-  dataSource: MatTableDataSource<Shift>;
+  // dataSource: MatTableDataSource<Shift>;
 
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
@@ -53,12 +53,6 @@ export class ShiftComponent implements OnInit {
 
   }
 
-  // refresh(){
-  //   this.myService.doSomething().subscribe((data:Shift[])=>{
-  //     this.dataSource.data = data ;
-  //   })
-  // }
-
 
   onClickAdd() {
 
@@ -66,23 +60,17 @@ export class ShiftComponent implements OnInit {
 
 
   }
-  // onClickEdit(shift){
-  //   this.dialog.open(AddShiftComponent , { data: { shift } });
-  // }
-
-  
-  onClickEdit() { }
-  onClickDelete() {
-
-    this.dialogService.openConfirmDialog();
-    
-   }
 
 
-  // onClickDelete(id: string) {
-  //   this.shiftApi.deleteShift(id).subscribe(res => {
-  //     this.dataShift = this.dataShift.filter(item => item._id !== id);
-  //     console.log('shift deleted Suceessfully');
-  //   })
-  // }
+  onClickEdit(shift){
+    this.dialog.open(AddShiftComponent , { data: { shift } });
+  }
+
+
+  onClickDelete(id: string) {
+    this.shiftApi.deleteShift(id).subscribe(res => {
+      this.dataShift = this.dataShift.filter(item => item._id !== id);
+      console.log('shift deleted Suceessfully');
+    })
+  }
 }
