@@ -1,7 +1,10 @@
 <div class="container">
   <div class="add-shift">
-    <mat-form-field appearance="standard">
-      <mat-label>Filter</mat-label>
+    <div class="title">
+      Machine List
+    </div>
+    <mat-form-field appearance="standard" color="accent">
+      <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
     <button mat-icon-button class="add-btn" (click)="onClickAdd()">
@@ -44,7 +47,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+    <mat-paginator class="mat-elevation-z8" [pageSizeOptions]="[1,5, 10,15,20]"
                  showFirstLastButtons 
                  aria-label="Select page of Machine">
   </mat-paginator>

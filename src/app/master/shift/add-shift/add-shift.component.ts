@@ -1,7 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Shift } from 'src/app/models/shift.model';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
@@ -17,9 +16,12 @@ export class AddShiftComponent implements OnInit {
 
   shiftForm: FormGroup;
 
+  dataShift: Shift[] = [];
+
 
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: Shift,
     public dialogRef: MatDialogRef<AddShiftComponent>,
     private shiftApi: ShiftApiService,
     private toastr: ToastrService
@@ -35,17 +37,37 @@ export class AddShiftComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.shiftApi.getShiftAll().subscribe(data => {
+      this.dataShift = data;
+    });
+
+    if (this.shift) {
+      this.shiftForm.patchValue(this.shift);
+    }
+
+
   }
 
   onSave() {
-    console.log(this.shiftForm.value);
-    this.shiftApi.addShift(this.shiftForm.value).subscribe((data) => {
-      this.dialogRef.close(data);
-      this.toastr.success('Shift Records Added Successfully', 'Shift');
-    })
+    this.shiftApi.addShift(this.shiftForm.value).subscribe(data => {
+          this.dialogRef.close(data);
+        });
+        this.shiftForm.reset();
+    // if (this.shift) {
+    //   this.shiftApi.updateShift( this.shiftForm.value , this.shift._id).subscribe(res => {
+    //     this.dialogRef.close(res);
+    //   });
+    // } else {
+    //   this.shiftApi.addShift(this.shiftForm.value).subscribe(data => {
+    //     this.dialogRef.close(data);
+    //   });
 
-
+    // }
   }
+
+
 }
+
 
 

@@ -13,12 +13,12 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { RoleComponent } from './role/role.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
-import { EditShiftComponent } from './shift/edit-shift/edit-shift.component';
 import { InstrumentComponent } from './instrument/instrument.component';
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
 import { AddRoleComponent } from './role/add-role/add-role.component';
+import { EditRoleComponent } from './role/edit-role/edit-role.component';
 
 
 @NgModule({
@@ -31,12 +31,12 @@ import { AddRoleComponent } from './role/add-role/add-role.component';
         AddMachineComponent,
         RoleComponent,
         AddCustomerComponent,
-        EditShiftComponent,
         InstrumentComponent,
         UserComponent,
         AddUserComponent,
         AddInstrumentComponent,
-        AddRoleComponent
+        AddRoleComponent,
+        EditRoleComponent
     ],
     imports: [
         CommonModule,

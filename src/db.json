@@ -1,4 +1,37 @@
 {
+  "shifts": [
+    {
+      "_id": 1,
+      "sno": 1,
+      "shiftName": "shift -1",
+      "startTime": "12.00AM",
+      "endTime": "11.00PM"
+    },
+    {
+      "_id": 2,
+      "sno": 1,
+      "shiftName": "shift -1",
+      "startTime": "12.00AM",
+      "endTime": "11.00PM"
+    },
+    {
+      "_id": 3,
+      "sno": 1,
+      "shiftName": "shift -1",
+      "startTime": "12.00AM",
+      "endTime": "11.00PM"
+    },
+    {
+      "_id": 4,
+      "sno": 1,
+      "shiftName": "shift -1",
+      "startTime": "12.00AM",
+      "endTime": "11.00PM"
+    }
+  ]
+<<<<<<< HEAD
+=======
+{
     "roles": [
         {
             "id":1,
@@ -20,4 +53,5 @@
         }
        
     ]
+>>>>>>> e033101a74e44a782cb741c1ec2d6b12ab43cc6f
 }

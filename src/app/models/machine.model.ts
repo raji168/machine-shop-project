@@ -1,4 +1,3 @@
-
 export interface Machine {
     _id?: string;
     sno: number;

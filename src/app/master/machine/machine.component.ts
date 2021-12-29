@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Machine } from 'src/app/models/machine.model';
+import { Shift } from 'src/app/models/shift.model';
 import { MachineApiService } from 'src/app/services/machine-api.service';
 import { AddMachineComponent } from './add-machine/add-machine.component';
 
@@ -18,33 +20,33 @@ const ELEMENT_DATA: Machine[] = [];
 })
 export class MachineComponent implements OnInit {
 
-  @ViewChild('paginator') paginator: MatPaginator;
-
-  dataMachine: Machine[] = [];
   
   displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
 
-  dataSource: MatTableDataSource<Machine>;
+  dataMachine: MatTableDataSource<Machine>;
 
   constructor(
     public dialog: MatDialog,
     private machineApi: MachineApiService,
-    private router: Router,
     private toastr: ToastrService) { }
+
+
+    @ViewChild(MatPaginator) paginator: MatPaginator; 
+    @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
 
     this.machineApi.getMachineAll().subscribe(data => {
-      this.dataMachine = data;
+      this.dataMachine = new MatTableDataSource(data);
+      this.dataMachine.paginator = this.paginator;
+      this.dataMachine.sort= this.sort;
     });
-    
-    this.toastr.success('Machine Records Loaded Successfully', 'Machine');
 
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataMachine.filter = filterValue.trim().toLowerCase();
   }
 
   onClickAdd() {
@@ -56,10 +58,10 @@ export class MachineComponent implements OnInit {
   }
 
   onClickDelete(id) {
-    this.machineApi.deleteMachine(id).subscribe(res =>{
-      this.dataMachine = this.dataMachine.filter(item => item._id !== id);
-      console.log('shift deleted Suceessfully');
-    })
+    // this.machineApi.deleteMachine(id).subscribe(res =>{
+    //   this.dataMachine = this.dataMachine.filter(item => item._id !== id);
+    //   console.log('shift deleted Suceessfully');
+    // })
 
   }
 }
