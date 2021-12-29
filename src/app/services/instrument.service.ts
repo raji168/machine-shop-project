@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InstrumentModel } from '../models/instrument.model'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -9,38 +9,52 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class InstrumentService {
 
-   // common of url address
+  // common of url address
 
   API_URL: string = 'http://192.168.0.13:3002/instruments';
 
   constructor(private _http: HttpClient) { }
 
-  
-  form:FormGroup = new FormGroup({
-    sno:new FormControl('',Validators.required),
-    name:new FormControl('',Validators.required),
-    referenceno:new FormControl('',Validators.required),
-    range:new FormControl('',Validators.required),
-    calibratedon:new FormControl('',Validators.required),
-    calibratedue:new FormControl('',Validators.required)
+
+  form: FormGroup = new FormGroup({
+    sno: new FormControl(''),
+    name: new FormControl(''),
+    referenceno: new FormControl(''),
+    range: new FormControl(''),
+    calibratedon: new FormControl(''),
+    calibratedue: new FormControl('')
   });
 
-  initializeFromGroup(){
+  initializeFromGroup() {
     this.form.setValue({
-      sno: 0,
-      name:'',
-      referenceno: 0,
-      range:'',
-      calibratedon:'',
-      calibratedue:''
+      sno: '',
+      name: '',
+      referenceno: '',
+      range: '',
+      calibratedon: '',
+      calibratedue: ''
     });
   }
 
   getInstrument(): Observable<any> {
     return this._http.get(this.API_URL);
   }
- 
-  // insUpDepartment(department: InstrumentModel): Observable<any> {
+  addInstrument(instrument: InstrumentModel) {
+    return this._http.post<{ _id: string }>(this.API_URL, instrument);
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+// insUpDepartment(department: InstrumentModel): Observable<any> {
   //   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
   //   return this._http.post(this.API_URL + '/roles', department, httpOptions);
   // }
@@ -49,5 +63,3 @@ export class InstrumentService {
   //   //  soft Delete,So use post method to update msstatus=0
   //   return this._http.post<number>(this.API_URL + '/roles?id=' + id, httpOptions);
   // }
-}
-
