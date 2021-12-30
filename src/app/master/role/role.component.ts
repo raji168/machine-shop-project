@@ -6,7 +6,6 @@ import { RoleApiService } from '../../services/role-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { AddRoleComponent } from './add-role/add-role.component';
-import { EditRoleComponent } from './edit-role/edit-role.component';
 
 
 // const ELEMENT_DATA: Role[] = [];
@@ -50,7 +49,7 @@ export class RoleComponent implements OnInit {
   }
 
   onEdit(id){
-    let dialogRef = this.dialog.open(EditRoleComponent);
+    let dialogRef = this.dialog.open(AddRoleComponent);
   }
 
   onDelete(id){

@@ -63,6 +63,15 @@ export class InstrumentService {
     );
   }
 
+  updateInstrument(instrument: Partial<InstrumentModel>, id) {
+    return this._http.patch<InstrumentModel>(`${this.API_URL}/${id}`, instrument)
+    .pipe(
+      tap(() =>{
+        this.reFresh.next();
+      })
+    );
+  }
+
   deleteInstrument(_id:string){
     return this._http.delete(`${this.API_URL}/${_id}`);
   }

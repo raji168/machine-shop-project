@@ -9,12 +9,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+<<<<<<< HEAD
 
+=======
+import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+>>>>>>> 7697c5382d06ad86cf25dfe42fc624842b29d682
 
 @NgModule({
   declarations: [
     AppComponent,
     ConfirmDialogComponent,
+<<<<<<< HEAD
+=======
+    AlertMessageComponent,
+    MatConfirmDialogComponent
+>>>>>>> 7697c5382d06ad86cf25dfe42fc624842b29d682
   ],
   imports: [
     BrowserModule,
@@ -33,6 +43,6 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[ConfirmDialogComponent]
+  entryComponents:[ConfirmDialogComponent,MatConfirmDialogComponent]
 })
 export class AppModule { }

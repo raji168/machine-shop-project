@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'instrument', component: InstrumentComponent },
     { path: 'user', component: UserComponent }
 
-]
+];
 
 @NgModule({
 

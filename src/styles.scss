@@ -31,7 +31,7 @@ snack-bar-container.notification simple-snack-bar{
 
 .confirm-dialog-container .content-container{
     margin: 5px 5px 15px 5px;
-    color:#5cb85c;
+    color:#8f9cb5;
     display: flex;
 }
 .confirm-dialog-container #close-icon{
@@ -39,14 +39,33 @@ snack-bar-container.notification simple-snack-bar{
     order:2;
     font-weight:bolder;
 }
+.confirm-dialog-container #close-icon:hover{
+    cursor: pointer;
+}
+.confirm-dialog-container #no-button{
+    height: 50px;
+    width: 50%;
+    background-color: #fc7169;
+    color:white;
+    border-radius: 0px;
+    // background-color:rgb(228, 59, 59);
+    // color:black;
+    // border-radius: 5px;
+}
 .confirm-dialog-container #yes-button{
+    height: 50px;
+    width: 50%;
+    background-color: #b6bece;
+    color: white;
+    border-radius: 0px;
+
     // background-color: rgb(255, 222, 90);
-    color:black;
-    border-radius: 5px;
+    // color:black;
+    // border-radius: 5px;
+}
+.confirm-dialog-container span.content-span{
+    padding:35px 16px;
+    text-align: center;
+    font-size: 20px
 }
 
-.confirm-dialog-container #no-button{
-    // background-color:rgb(228, 59, 59);
-    color:black;
-    border-radius: 5px;
-}
