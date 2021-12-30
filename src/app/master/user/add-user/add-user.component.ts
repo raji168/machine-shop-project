@@ -14,35 +14,37 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-  
+
   userForm: FormGroup;
 
-  dataRole :Role[] =[];
+  dataRole: Role[] = [];
 
-  constructor(public userService : UserApiService,
-    private roleApi:RoleApiService,
-    public dialogRef:MatDialogRef<AddUserComponent>,
+  constructor(public userService: UserApiService,
+    private roleApi: RoleApiService,
+    public dialogRef: MatDialogRef<AddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { user: User },
-    public notification : NotificationService) { }
+    public notification: NotificationService) { }
 
   ngOnInit() {
     this.roleApi.getRoleAll().subscribe(data => {
       this.dataRole = data;
     });
 
-    if (this.data.user) {
-      // this.userForm.setValue()
-      this.userForm.patchValue(this.data.user);
-      this.userForm.get('role')?.setValue(this.data.user.role._id);
-    }
+
+    // role data get
+
+    // if (this.data.user) {
+    //   this.userForm.patchValue(this.data.user);
+    //   this.userForm.get('role')?.setValue(this.data.user.role._id);
+    // }
   }
 
-  onClear(){
+  onClear() {
     this.userService.userForm.reset();
     this.userService.initializeFormGroup();
   }
 
-  onSave(){
+  onSave() {
     console.log(this.userService.userForm.value);
     this.userService.addUser(this.userService.userForm.value).subscribe((data) => {
       this.dialogRef.close(data);
