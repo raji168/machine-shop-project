@@ -6,7 +6,7 @@
         </button>
     </div>
     {{ form.value | json }}
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="normal-form">
+    <form [formGroup]="form" ngRepeat="" (ngSubmit)="onSubmit()" class="normal-form">
 
         <div  class="controles-container">
             <!-- <mat-form-field appearance="outline" color="accent">

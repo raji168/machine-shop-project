@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NotificationService } from 'src/app/services/notification.service';
 import { InstrumentService } from 'src/app/services/instrument.service';
 import { InstrumentModel } from 'src/app/models/instrument.model';
+import { DialogService } from 'src/app/services/dialog.service';
+
 
 @Component({
   selector: 'app-instrument',
@@ -22,11 +24,12 @@ export class InstrumentComponent implements OnInit {
   constructor(
     private _service: InstrumentService,
     private _notification: NotificationService,
-    private _dialog: MatDialog) { }
+    private _dialog: MatDialog,
+    private dialogBox:DialogService) { }
 
   grdlistData: MatTableDataSource<any>;
 
-  displayedColumns: string[] = ['sno', 'name', 'referenceno','range','calibratedon','calibratedue','actions'];
+  displayedColumns: string[] = ['checkBox','sno', 'name', 'referenceno','range','calibratedon','calibratedue','actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
@@ -68,8 +71,8 @@ export class InstrumentComponent implements OnInit {
     this._dialog.open(AddInstrumentComponent, dialogConfig);
   }
 
-  onEdit() {
-    this._notification.success("you clicked Edit !");
+  onEdit(instrument) {
+    this._dialog.open(AddInstrumentComponent,{data:{instrument}});
   }
   onDelete(id){ 
     this._service.deleteInstrument(id).subscribe(res =>{
@@ -78,18 +81,8 @@ export class InstrumentComponent implements OnInit {
       this._notification.success(' deleted Suceessfully');
     })
   }
+  
+  
 
-   
-}
-
-
-
-
-
-
-
-
-function id(id: any) {
-  throw new Error('Function not implemented.');
 }
 
