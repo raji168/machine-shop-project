@@ -22,10 +22,7 @@ export class EditRoleComponent implements OnInit {
     public router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.roleService.getRoleById(this)
-      .subscribe((data : any)=>{
-        this.roleService.initializeFormGroup();
-      });
+  
   }
 
   onClear(){
@@ -34,7 +31,9 @@ export class EditRoleComponent implements OnInit {
   }
 
   onUpdate(){
-    console.log(this.roleService.roleForm.value);
+    // console.log(this.roleService.roleForm.value);
+    this.roleService.roleForm.controls['sno'].setValue(this.roleForm.setControl);
+    this.roleService.roleForm.controls['Name'].setValue(this.roleService.roleForm.setControl);
   } 
     
 

@@ -18,7 +18,6 @@ import { EditRoleComponent } from './edit-role/edit-role.component';
 })
 export class RoleComponent implements OnInit {
 
- role :Role;
   dataRole: Role[] = [];
 
   displayedColumns: string[] = ['serialno', 'name', 'actions'];
