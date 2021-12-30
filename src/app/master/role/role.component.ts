@@ -18,7 +18,6 @@ const ELEMENT_DATA: Role[] = [];
 })
 export class RoleComponent implements OnInit {
 
- role :Role;
   dataRole: Role[] = [];
 
   displayedColumns: string[] = ['serialno', 'name', 'actions'];

@@ -19,6 +19,7 @@ import { AddUserComponent } from './user/add-user/add-user.component';
 import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
 import { AddRoleComponent } from './role/add-role/add-role.component';
 import { EditRoleComponent } from './role/edit-role/edit-role.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { EditRoleComponent } from './role/edit-role/edit-role.component';
         AddUserComponent,
         AddInstrumentComponent,
         AddRoleComponent,
-        EditRoleComponent
+        EditRoleComponent,
+        ConfirmDialogComponent
     ],
     imports: [
         CommonModule,
