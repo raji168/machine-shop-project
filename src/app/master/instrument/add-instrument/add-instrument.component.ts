@@ -1,8 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup,FormControl} from '@angular/forms';
 import { InstrumentService } from 'src/app/services/instrument.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
+
+
+
+
+
+
+
+
+
 
 @Component({
   selector: 'app-add-instrument',
@@ -11,7 +20,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class AddInstrumentComponent implements OnInit {
 
-  insForm:FormGroup;
+  form:FormGroup;
 
   constructor(
     public instrumentService:InstrumentService,
@@ -20,14 +29,23 @@ export class AddInstrumentComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      sno: new FormControl(''),
+      name: new FormControl(''),
+      referenceno: new FormControl(''),
+      range: new FormControl(''),
+      calibratedon: new FormControl(''),
+      calibratedue: new FormControl('')
+    });
+    
   }
   
   onSubmit(){
-    console.log(this.instrumentService.insForm.value);
-    // this.instrumentService.addInstrument(this.instrumentService.form.value).subscribe((data) => {
-    //   this.dialogRef.close(data);
-    //   this.notification.success("successfullly data added!!");
-    // })
+    console.log(this.form.value);
+    this.instrumentService.addInstrument(this.form.value).subscribe((data) => {
+      this.dialogRef.close(data);
+      this.notification.success("successfullly data added!!");
+    })
   } 
   
 }

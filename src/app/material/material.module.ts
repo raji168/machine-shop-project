@@ -17,7 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
 import {MatSelectModule} from '@angular/material/select';
 import { MatNativeDateModule } from "@angular/material/core";
 
-
+import { FormsModule } from "@angular/forms";
 @NgModule({
     exports: [
         MatToolbarModule,
@@ -36,7 +36,8 @@ import { MatNativeDateModule } from "@angular/material/core";
         MatSortModule,
         MatSnackBarModule,
         MatSelectModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        FormsModule
     ]
 })
 

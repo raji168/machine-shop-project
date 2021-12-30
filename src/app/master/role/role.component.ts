@@ -18,7 +18,6 @@ import { EditRoleComponent } from './edit-role/edit-role.component';
 })
 export class RoleComponent implements OnInit {
 
- role :Role;
   dataRole: Role[] = [];
 
   displayedColumns: string[] = ['serialno', 'name', 'actions'];
@@ -28,7 +27,7 @@ export class RoleComponent implements OnInit {
     private roleService:RoleApiService,
     private router: Router,
     private dialog: MatDialog,
-    private notification: NotificationService) { 
+    private notification: NotificationService) {   
   }
 
   // @ViewChild(MatTable)
@@ -57,7 +56,7 @@ export class RoleComponent implements OnInit {
   onDelete(id){
     this.roleService.deleteRole(id).subscribe(res =>{
       this.dataRole = this.dataRole.filter(item => item._id !== id);
-      this.notification.success('shift deleted Suceessfully');
+      this.notification.success('role deleted Suceessfully');
     })
   }
 

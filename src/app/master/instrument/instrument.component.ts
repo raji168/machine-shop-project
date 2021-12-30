@@ -33,23 +33,25 @@ export class InstrumentComponent implements OnInit {
   searchKey: string;
 
   ngOnInit(): void {
+    this._service.getreFreshAll()
+    .subscribe(() =>{
+      this.fillGrid();
+    })
     this.fillGrid();
-    
+   
   }
   fillGrid() {
     this._service.getInstrumentAll()
       .subscribe(
         data => {
-          // this.instrumentData = data;
+          this.instrumentData = data;
           this.grdlistData = new MatTableDataSource(data);
           this.grdlistData.sort = this.sort;
           this.grdlistData.paginator = this.paginator;
 
         }
       );
-
-
-     
+    
   }
   applyFilter() {
     this.grdlistData.filter = this.searchKey.trim().toLocaleLowerCase();
@@ -72,7 +74,8 @@ export class InstrumentComponent implements OnInit {
   onDelete(id){ 
     this._service.deleteInstrument(id).subscribe(res =>{
       this.instrumentData = this.instrumentData.filter(item=>item._id!==id);
-      this._notification.success('shift deleted Suceessfully');
+      this.ngOnInit();
+      this._notification.success(' deleted Suceessfully');
     })
   }
 
@@ -85,4 +88,8 @@ export class InstrumentComponent implements OnInit {
 
 
 
+
+function id(id: any) {
+  throw new Error('Function not implemented.');
+}
 
