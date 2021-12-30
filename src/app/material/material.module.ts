@@ -16,12 +16,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import {MatSelectModule} from '@angular/material/select';
 import { MatNativeDateModule } from "@angular/material/core";
-<<<<<<< HEAD
-import {FormsModule} from '@angular/forms';
 
-=======
 import { FormsModule } from "@angular/forms";
->>>>>>> 7838422746e8115d18216edaf0b42fbd2033c581
 @NgModule({
     exports: [
         MatToolbarModule,
@@ -40,13 +36,8 @@ import { FormsModule } from "@angular/forms";
         MatSortModule,
         MatSnackBarModule,
         MatSelectModule,
-<<<<<<< HEAD
         MatNativeDateModule,
         FormsModule
-=======
-        MatNativeDateModule,FormsModule
-        
->>>>>>> 7838422746e8115d18216edaf0b42fbd2033c581
     ]
 })
 
