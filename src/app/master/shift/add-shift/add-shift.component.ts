@@ -2,9 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Shift } from 'src/app/models/shift.model';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
+import { AlertService } from 'src/app/shared/alert.service';
 
 @Component({
   selector: 'app-add',
@@ -25,9 +25,9 @@ export class AddShiftComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { shift: Shift },
     public dialogRef: MatDialogRef<AddShiftComponent>,
     private shiftApi: ShiftApiService,
-    private toastr: ToastrService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alert:AlertService
   ) {
     this.shiftForm = new FormGroup({
       sno: new FormControl(null, [Validators.required, Validators.maxLength(1)]),
@@ -40,12 +40,9 @@ export class AddShiftComponent implements OnInit {
   ngOnInit() {
     this.shift = this.data?.shift;
 
-
     this.shiftApi.getShiftAll().subscribe(data => {
       this.dataShift = data;
     });
-
-
 
     if (this.shift) {
       this.shiftForm.patchValue(this.data.shift);
@@ -56,16 +53,15 @@ export class AddShiftComponent implements OnInit {
   onSave() {
 
     if (this.shift ) {
-      this.shiftApi.updateShift(this.shiftForm.value, this.shift._id).subscribe(res => {
-        this.dialogRef.close;
-        console.log('Update done');
+      this.shiftApi.updateShift(this.shiftForm.value, this.shift._id).subscribe(data => {
+        this.dialogRef.close(data);
+        this.alert.showSuccess('Data Updated Suceessfully...!', 'Shift');
       });
     } else {
       this.shiftApi.addShift(this.shiftForm.value).subscribe(data => {
         this.dialogRef.close(data);
-        console.log('Add done ');
+        this.alert.showSuccess('Data Added Suceessfully...!' , 'Shift');
       });
-
     }
   }
 

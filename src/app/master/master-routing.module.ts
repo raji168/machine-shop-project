@@ -8,15 +8,14 @@ import { ShiftComponent } from "./shift/shift.component";
 import { UserComponent } from "./user/user.component";
 
 const routes: Routes = [
-    { path: '', component: RoleComponent },
-    { path:'shift',component:ShiftComponent},
+    { path: 'shift', component: ShiftComponent },
     { path: 'machine', component: MachineComponent },
     { path: 'customer', component: CustomerComponent },
     { path: 'role', component: RoleComponent },
     { path: 'instrument', component: InstrumentComponent },
     { path: 'user', component: UserComponent }
 
-]
+];
 
 @NgModule({
 
