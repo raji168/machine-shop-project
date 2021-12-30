@@ -11,7 +11,7 @@ body { margin: 0;
 
 // notification
 snack-bar-container.success{
-    background-color: #5cb85c;
+    background-color: #29da29;
     color:white
 }
 snack-bar-container.warn{
@@ -20,7 +20,7 @@ snack-bar-container.warn{
 }
 snack-bar-container.notification simple-snack-bar{
     font-size: 18px;
-    font-weight: bold;
+    font-weight: medium;
 }
 
 /* mat-confirm-dialog */

@@ -3,11 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Data, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Machine } from 'src/app/models/machine.model';
-import { Shift } from 'src/app/models/shift.model';
 import { MachineApiService } from 'src/app/services/machine-api.service';
+import { AlertService } from 'src/app/shared/alert.service';
 import { AddMachineComponent } from './add-machine/add-machine.component';
 
 
@@ -20,8 +18,8 @@ const ELEMENT_DATA: Machine[] = [];
 })
 export class MachineComponent implements OnInit {
 
-  dataMachine : Machine[] = [];
-  
+  dataMachine: Machine[] = [];
+
   machineDataSource;
 
   displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
@@ -30,11 +28,11 @@ export class MachineComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private machineApi: MachineApiService,
-    private toastr: ToastrService) { }
+    private alert: AlertService) { }
 
 
-    @ViewChild(MatPaginator) paginator: MatPaginator; 
-    @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
 
@@ -42,7 +40,7 @@ export class MachineComponent implements OnInit {
       this.dataMachine = data;
       this.machineDataSource = new MatTableDataSource(this.dataMachine);
       this.machineDataSource.paginator = this.paginator;
-      this.machineDataSource.sort= this.sort;
+      this.machineDataSource.sort = this.sort;
     });
 
   }
@@ -52,17 +50,17 @@ export class MachineComponent implements OnInit {
   }
 
   onClickAdd() {
-    let dialogRef = this.dialog.open(AddMachineComponent);
+    this.dialog.open(AddMachineComponent);
   }
 
-  onClickEdit() {
-    let dialogRef = this.dialog.open(AddMachineComponent);
+  onClickEdit(machine: Machine) {
+    this.dialog.open(AddMachineComponent, { data: { machine } });
   }
 
-  onClickDelete(id:string) {
-    this.machineApi.deleteMachine(id).subscribe(res =>{
-      this.dataMachine= this.dataMachine.filter(item => item._id !== id);
-      console.log('Machine deleted Suceessfully');
+  onClickDelete(id: string) {
+    this.machineApi.deleteMachine(id).subscribe(res => {
+      this.dataMachine = this.dataMachine.filter(item => item._id !== id);
+      this.alert.showError('Data Deleted Suceessfully...!', 'Machine');
     })
 
   }
