@@ -42,9 +42,7 @@ export class AddInstrumentComponent implements OnInit {
     })
 
     this.instrument= this.data?.instrument;
-    // this.instrumentService.getInstrumentAll().subscribe(data => {
-    //   this.dataInstrument =data;
-    // });
+    
 
     if(this.instrument) {
       this.form.patchValue(this.data.instrument);
