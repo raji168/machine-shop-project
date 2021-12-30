@@ -39,11 +39,25 @@ export class AddInstrumentComponent implements OnInit {
   }
   
   onSubmit(){
-    console.log(this.form.value);
-    this.instrumentService.addInstrument(this.form.value).subscribe((data) => {
-      this.dialogRef.close(data);
-      this.notification.success("successfullly data added!!");
-    })
+    // console.log(this.form.value);
+    // this.instrumentService.addInstrument(this.form.value).subscribe((data) => {
+    //   this.dialogRef.close(data);
+    //   this.notification.success("successfullly data added!!");
+    // })
+
+
+    if (this.instrument ) {
+      this.instrumentService.updateInstrument(this.form.value, this.instrument._id).subscribe(res => {
+        this.dialogRef.close;
+        console.log('Update done');
+      });
+    } else {
+      this.instrumentService.addInstrument(this.form.value).subscribe(data => {
+        this.dialogRef.close(data);
+        console.log('Add done ');
+      });
+
+    }
   } 
   
 }
