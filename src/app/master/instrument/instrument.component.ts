@@ -40,7 +40,7 @@ export class InstrumentComponent implements OnInit {
     this._service.getInstrumentAll()
       .subscribe(
         data => {
-          // this.instrumentData = data;
+          this.instrumentData = data;
           this.grdlistData = new MatTableDataSource(data);
           this.grdlistData.sort = this.sort;
           this.grdlistData.paginator = this.paginator;
@@ -72,7 +72,7 @@ export class InstrumentComponent implements OnInit {
   onDelete(id){ 
     this._service.deleteInstrument(id).subscribe(res =>{
       this.instrumentData = this.instrumentData.filter(item=>item._id!==id);
-      this._notification.success('shift deleted Suceessfully');
+      this._notification.success('insturment deleted Suceessfully');
     })
   }
 
