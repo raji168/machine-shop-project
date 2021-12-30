@@ -9,6 +9,9 @@
     font-size: 16px;
     font-weight: 500;
 }
+.add-btn{
+    padding: 20px;
+}
 span{
     align-items: center;
 }
@@ -21,26 +24,26 @@ th{
     letter-spacing: 1px;
     font-weight: 700;
     color: black;
-    text-align: center;
+    // text-align: center;
     background-color: rgb(255, 222, 90);
 }
 
 td{
-    text-align: center;
+    // text-align: center;
     padding-left: 0px;
 }
 
 th.mat-header-cell {
     border-bottom-width: 3px;
     border-bottom-style: solid ;
-    text-align: center;
+    // text-align: center;
 }
 td.mat-cell{
     border-bottom-width: 3px;
     border-bottom-style: solid;
 
 }
-.add-shift{
+.add-customer{
     width: 80vw;
     .add-btn{
         float: right;
@@ -48,4 +51,15 @@ td.mat-cell{
         background-color: linear();
         
     }
+}
+
+mat-paginator{
+    display: flex;
+    width: 80vw;
+    flex-direction: row-reverse;
+    color: #0c08f5;
+    font-size: 14px;
+    font-weight: 500;
+    height: 50px;
+    
 }

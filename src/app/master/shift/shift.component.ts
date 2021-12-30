@@ -21,18 +21,14 @@ const ELEMENT_DATA: Shift[] = [];
 })
 export class ShiftComponent implements OnInit {
 
-  shift: Shift;
-
   dataShift: Shift[] = [];
 
-  // dataSource = ELEMENT_DATA;
-
-  dataSource: MatTableDataSource<Shift>;
+  shiftDataSource;
 
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-  // @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private shiftApi: ShiftApiService,
@@ -48,16 +44,17 @@ export class ShiftComponent implements OnInit {
 
     this.shiftApi.getShiftAll().subscribe(data => {
       this.dataShift = data;
+      this.shiftDataSource = new MatTableDataSource(this.dataShift);
+      this.shiftDataSource.paginator = this.paginator;
+      this.shiftDataSource.sort = this.sort;
     });
-
 
   }
 
-  // refresh(){
-  //   this.myService.doSomething().subscribe((data:Shift[])=>{
-  //     this.dataSource.data = data ;
-  //   })
-  // }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.shiftDataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 
   onClickAdd() {
@@ -66,23 +63,17 @@ export class ShiftComponent implements OnInit {
 
 
   }
-  // onClickEdit(shift){
-  //   this.dialog.open(AddShiftComponent , { data: { shift } });
-  // }
-
-  
-  onClickEdit() { }
-  onClickDelete() {
-
-    this.dialogService.openConfirmDialog();
-    
-   }
 
 
-  // onClickDelete(id: string) {
-  //   this.shiftApi.deleteShift(id).subscribe(res => {
-  //     this.dataShift = this.dataShift.filter(item => item._id !== id);
-  //     console.log('shift deleted Suceessfully');
-  //   })
-  // }
+  onClickEdit(shift){
+    this.dialog.open(AddShiftComponent , { data: { shift } });
+  }
+
+
+  onClickDelete(id: string) {
+    this.shiftApi.deleteShift(id).subscribe(res => {
+      this.dataShift = this.dataShift.filter(item => item._id !== id);
+      console.log('shift deleted Suceessfully');
+    })
+  }
 }
