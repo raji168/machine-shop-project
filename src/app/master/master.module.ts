@@ -6,9 +6,7 @@ import { CustomerComponent } from "./customer/customer.component";
 import { MachineComponent } from "./machine/machine.component";
 import { MasterRoutingModule } from "./master-routing.module";
 import { MasterComponent } from "./master.component";
-import { ShiftComponent } from "./shift/shift.component";
 import { AddMachineComponent } from './machine/add-machine/add-machine.component';
-import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { RoleComponent } from './role/role.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -18,15 +16,18 @@ import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
 import { AddRoleComponent } from './role/add-role/add-role.component';
-import { EditRoleComponent } from './role/edit-role/edit-role.component';
+import { EditRoleComponent } from './role/edit-role/edit-role.component'
+import { ShiftComponent } from "./shift/shift.component";
+import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
+
 
 
 @NgModule({
     declarations: [
         ShiftComponent,
+        AddShiftComponent,
         MachineComponent,
         CustomerComponent,
-        AddShiftComponent,
         MasterComponent,
         AddMachineComponent,
         RoleComponent,

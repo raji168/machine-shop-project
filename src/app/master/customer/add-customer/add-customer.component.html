@@ -2,6 +2,10 @@
     <div class="table-form">
         <div class="title">Add Customer</div>
         <form [formGroup]="customerForm">
+            <!-- <mat-form-field appearance="outline" color="accent">
+                <mat-label>S.No</mat-label>
+                <input matInput type="text" placeholder="Sno" formControlName="sno" autocomplete="off" >
+            </mat-form-field> -->
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Customer Name</mat-label>
                 <input matInput type="text" placeholder="Customer Name" formControlName="customername" autocomplete="off">
@@ -20,7 +24,7 @@
             </mat-form-field>
             <div class="drawing">
                 <mat-label class="drawing-title" >Drawing</mat-label>
-                <input formControlName="drawing" type="file" placeholder="image file ">
+                <input  formControlName="drawing" type="file" placeholder="image file ">
             </div>
             <div class="button">
                 <button mat-raised-button class="btn-save" color="accent" (click)="onSave()">Save</button>

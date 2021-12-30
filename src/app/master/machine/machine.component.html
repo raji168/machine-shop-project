@@ -5,7 +5,7 @@
     </div>
     <mat-form-field appearance="standard" color="accent">
       <mat-label>Search</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex.mac" #input>
     </mat-form-field>
     <button mat-icon-button class="add-btn" (click)="onClickAdd()">
       <mat-icon>add_circle_outline</mat-icon>
@@ -47,7 +47,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator class="mat-elevation-z8" [pageSizeOptions]="[5, 10,15,20]"
+    <mat-paginator class="mat-elevation-z8"  [pageSize]="3" [pageSizeOptions]="[1,5, 10,15,20]"
                  showFirstLastButtons 
                  aria-label="Select page of Machine">
   </mat-paginator>
