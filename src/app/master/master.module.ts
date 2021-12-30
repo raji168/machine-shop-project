@@ -16,7 +16,6 @@ import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
 import { AddRoleComponent } from './role/add-role/add-role.component';
-import { EditRoleComponent } from './role/edit-role/edit-role.component'
 import { ShiftComponent } from "./shift/shift.component";
 import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
 
@@ -36,8 +35,7 @@ import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
         UserComponent,
         AddUserComponent,
         AddInstrumentComponent,
-        AddRoleComponent,
-        EditRoleComponent,
+        AddRoleComponent
     ],
     imports: [
         CommonModule,
