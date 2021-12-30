@@ -36,10 +36,9 @@ export class InstrumentComponent implements OnInit {
     this._service.getreFreshAll()
     .subscribe(() =>{
       this.fillGrid();
-      
     })
     this.fillGrid();
-    
+   
   }
   fillGrid() {
     this._service.getInstrumentAll()
@@ -73,9 +72,9 @@ export class InstrumentComponent implements OnInit {
     this._notification.success("you clicked Edit !");
   }
   onDelete(id){ 
-    
     this._service.deleteInstrument(id).subscribe(res =>{
       this.instrumentData = this.instrumentData.filter(item=>item._id!==id);
+      this.ngOnInit();
       this._notification.success(' deleted Suceessfully');
     })
   }
@@ -89,4 +88,8 @@ export class InstrumentComponent implements OnInit {
 
 
 
+
+function id(id: any) {
+  throw new Error('Function not implemented.');
+}
 
