@@ -72,7 +72,7 @@ export class InstrumentComponent implements OnInit {
   onDelete(id){ 
     this._service.deleteInstrument(id).subscribe(res =>{
       this.instrumentData = this.instrumentData.filter(item=>item._id!==id);
-      this._notification.success('shift deleted Suceessfully');
+      this._notification.success(' deleted Suceessfully');
     })
   }
 
