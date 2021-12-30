@@ -14,6 +14,7 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
+  
   userForm: FormGroup;
 
   dataRole :Role[] =[];
