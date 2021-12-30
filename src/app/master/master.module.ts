@@ -35,11 +35,7 @@ import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
         UserComponent,
         AddUserComponent,
         AddInstrumentComponent,
-<<<<<<< HEAD
         AddRoleComponent
-=======
-        AddRoleComponent,
->>>>>>> 973002cd2aeb15bcf916b4fad7a2a06f09d72625
     ],
     imports: [
         CommonModule,
