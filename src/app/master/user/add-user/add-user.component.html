@@ -1,46 +1,50 @@
 <div class="container">
-    <div class="form">
-      <div class="title">Add User</div>
-      <form [formGroup]="userService.userForm" (ngSubmit)="onSave()"  class="normal-form" color="accent">
-        <mat-form-field appearance="outline" color="accent">
-          <mat-label>S No</mat-label>
-          <input matInput placeholder="S.No *" formControlName="sno" autocomplete="off">
-          <!-- <mat-error>This field is mandatory</mat-error> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline" color="accent">
-          <mat-label> Name </mat-label>
-          <input matInput placeholder=" Name *" formControlName="name" autocomplete="off">
-          <!-- <mat-error>This field is mandatory</mat-error> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline" color="accent">
-          <mat-label> Role </mat-label>
-          <input matInput placeholder=" Role *" formControlName="role" autocomplete="off">
-          <mat-select>
-            <option *ngFor='let role of dataRole' [value]="role._id">{{role.name}}</option>
-          </mat-select>
-          <!-- <mat-error>This field is mandatory</mat-error> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline" color="accent">
-          <mat-label> E-Mail </mat-label>
-          <input matInput placeholder=" E-Mail * " formControlName="emailId" autocomplete="off">
-          <!-- <mat-error>This field is mandatory</mat-error> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline" color="accent">
-          <mat-label> Contact No </mat-label>
-          <input matInput placeholder=" Contact No *" formControlName="phoneNo" autocomplete="off">
-          <mat-error *ngIf="userService.userForm.controls['phoneNo'].errors?.minLength">Must have 10 numbers</mat-error>
-          <!-- <mat-error>This field is mandatory</mat-error> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline" color="accent">
-          <mat-label> User Name </mat-label>
-          <input matInput placeholder=" User Name *" formControlName="userName" autocomplete="off">
-          <!-- <mat-error>This field is mandatory</mat-error> -->
-        </mat-form-field>
-        <div class="button">
-          <button mat-raised-button class="btn-save" type="submit" color="accent">Save</button>
-          <!-- <button mat-raised-button (click)="onClear()">clear</button> -->
-          <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
-        </div>
-      </form>
-    </div>
+  <div class="form">
+    <div class="title">Add User</div>
+    {{userService.userForm.value | json}}
+    <form [formGroup]="userService.userForm" (ngSubmit)="onSave()" class="normal-form" color="accent">
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>S No</mat-label>
+        <input matInput placeholder="S.No *" formControlName="sno" autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label> Name </mat-label>
+        <input matInput placeholder=" Name *" formControlName="name" autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label> Role </mat-label>
+        <input matInput placeholder=" Role *" formControlName="role" autocomplete="off">
+        <mat-select>
+          <option *ngFor='let role of dataRole' [value]="role._id">{{role.name}}</option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label> E-Mail </mat-label>
+        <input matInput placeholder=" E-Mail * " formControlName="emailId" autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label> Contact No </mat-label>
+        <input matInput placeholder=" Contact No *" formControlName="phoneNo" autocomplete="off">
+        <mat-error *ngIf="userService.userForm.controls['phoneNo'].errors?.minLength">Must have 10 numbers</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label> User Name </mat-label>
+        <input matInput placeholder=" User Name *" formControlName="userName" autocomplete="off">
+      </mat-form-field>
+
+      <div class="add-form-buttons">
+        <button mat-raised-button class="btn-save" type="submit" color="accent">Save</button>
+        <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
+      </div>
+
+    </form>
+
   </div>
+
+</div>
