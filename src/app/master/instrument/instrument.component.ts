@@ -71,8 +71,8 @@ export class InstrumentComponent implements OnInit {
     this._dialog.open(AddInstrumentComponent, dialogConfig);
   }
 
-  onEdit(instrument) {
-    this._dialog.open(AddInstrumentComponent,{data:{instrument}});
+  onEdit(instrument:InstrumentModel) {
+    this._dialog.open(AddInstrumentComponent , { data : { instrument } });
   }
   onDelete(id){ 
     this._service.deleteInstrument(id).subscribe(res =>{

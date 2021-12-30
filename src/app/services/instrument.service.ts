@@ -63,8 +63,8 @@ export class InstrumentService {
     );
   }
 
-  updateInstrument(instrument: Partial<InstrumentModel>, _id:string) {
-    return this._http.patch<InstrumentModel>(`${this.API_URL}/${_id}`, instrument);
+  updateInstrument(instrument: Partial<InstrumentModel>, id) {
+    return this._http.patch<InstrumentModel>(`${this.API_URL}/${id}`, instrument);
   }
 
   deleteInstrument(_id:string){
