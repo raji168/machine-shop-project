@@ -4,10 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Shift } from 'src/app/models/shift.model';
 import { DialogService } from 'src/app/services/dialog.service';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
+import { AlertService } from 'src/app/shared/alert.service';
 import { AddShiftComponent } from './add-shift/add-shift.component';
 
 
@@ -35,8 +35,8 @@ export class ShiftComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
-    private toastr: ToastrService,
-    private dialogService:DialogService
+    private dialogService:DialogService,
+    private alert:AlertService
   ) {
 
   }
@@ -75,7 +75,7 @@ export class ShiftComponent implements OnInit {
     
     this.shiftApi.deleteShift(id).subscribe(res => {
       this.dataShift = this.dataShift.filter(item => item._id !== id);
-      console.log('shift deleted Suceessfully');
+      this.alert.showError('Data Deleted Suceessfully...!','Shift');
     })
   }
 }

@@ -8,7 +8,7 @@ import { ShiftComponent } from "./shift/shift.component";
 import { UserComponent } from "./user/user.component";
 
 const routes: Routes = [
-    { path:'shift',component:ShiftComponent},
+    { path: 'shift', component: ShiftComponent },
     { path: 'machine', component: MachineComponent },
     { path: 'customer', component: CustomerComponent },
     { path: 'role', component: RoleComponent },
