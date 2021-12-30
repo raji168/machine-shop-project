@@ -26,9 +26,10 @@ export class InstrumentComponent implements OnInit {
     private _dialog: MatDialog,
     private dialogService:DialogsService) { }
 
+
   grdlistData: MatTableDataSource<any>;
 
-  displayedColumns: string[] = ['sno', 'name', 'referenceno','range','calibratedon','calibratedue','actions'];
+  displayedColumns: string[] = ['checkBox','sno', 'name', 'referenceno','range','calibratedon','calibratedue','actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
@@ -70,8 +71,8 @@ export class InstrumentComponent implements OnInit {
     this._dialog.open(AddInstrumentComponent, dialogConfig);
   }
 
-  onEdit() {
-    this._notification.success("you clicked Edit !");
+  onEdit(instrument) {
+    this._dialog.open(AddInstrumentComponent,{data:{instrument}});
   }
   onDelete(id){ 
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
@@ -86,18 +87,8 @@ export class InstrumentComponent implements OnInit {
       }
     });
   }
+  
+  
 
-   
-}
-
-
-
-
-
-
-
-
-function id(id: any) {
-  throw new Error('Function not implemented.');
 }
 

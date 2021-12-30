@@ -3,13 +3,7 @@ import { FormGroup,FormControl} from '@angular/forms';
 import { InstrumentService } from 'src/app/services/instrument.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
-
-
-
-
-
-
-
+import { InstrumentModel } from 'src/app/models/instrument.model';
 
 
 
@@ -20,6 +14,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class AddInstrumentComponent implements OnInit {
 
+  instrument: InstrumentModel;
   form:FormGroup;
 
   constructor(
@@ -38,6 +33,9 @@ export class AddInstrumentComponent implements OnInit {
       calibratedue: new FormControl('')
     });
     
+    if(this.instrument) {
+      this.form.patchValue(this.instrument);
+    }
   }
   
   onSubmit(){

@@ -16,6 +16,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import {MatSelectModule} from '@angular/material/select';
 import { MatNativeDateModule } from "@angular/material/core";
+<<<<<<< HEAD
+=======
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+>>>>>>> 5474b9e668c0d4026b65892784658879d8d5ecc4
 import { FormsModule } from "@angular/forms";
 @NgModule({
     exports: [
@@ -36,7 +41,7 @@ import { FormsModule } from "@angular/forms";
         MatSnackBarModule,
         MatSelectModule,
         MatNativeDateModule,
-        FormsModule
+        FormsModule,MatCheckboxModule
     ]
 })
 
