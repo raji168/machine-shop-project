@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NotificationService } from 'src/app/services/notification.service';
 import { InstrumentService } from 'src/app/services/instrument.service';
 import { InstrumentModel } from 'src/app/models/instrument.model';
+import { DialogsService } from 'src/app/services/dialogs.service';
 
 @Component({
   selector: 'app-instrument',
@@ -22,7 +23,8 @@ export class InstrumentComponent implements OnInit {
   constructor(
     private _service: InstrumentService,
     private _notification: NotificationService,
-    private _dialog: MatDialog) { }
+    private _dialog: MatDialog,
+    private dialogService:DialogsService) { }
 
   grdlistData: MatTableDataSource<any>;
 
@@ -72,11 +74,17 @@ export class InstrumentComponent implements OnInit {
     this._notification.success("you clicked Edit !");
   }
   onDelete(id){ 
-    this._service.deleteInstrument(id).subscribe(res =>{
-      this.instrumentData = this.instrumentData.filter(item=>item._id!==id);
-      this.ngOnInit();
-      this._notification.success(' deleted Suceessfully');
-    })
+    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+    .afterClosed().subscribe(res => {
+      // console.log(res);
+      if(res){
+         this._service.deleteInstrument(id).subscribe(res =>{
+            this.instrumentData = this.instrumentData.filter(item=>item._id!==id);
+            this.ngOnInit();
+            this._notification.success(' deleted Suceessfully');
+          })
+      }
+    });
   }
 
    
