@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { InstrumentModel } from '../models/instrument.model'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { tap  } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,8 @@ export class InstrumentService {
   
 
   constructor(private _http: HttpClient) { }
+
+  private reFresh = new Subject<void>();
 
 
   form: FormGroup = new FormGroup({
@@ -40,12 +43,24 @@ export class InstrumentService {
     });
   }
 
+  getreFreshAll(){
+    return this.reFresh;
+  }
+
+
+
+
   getInstrumentAll(): Observable<any> {
     return this._http.get(this.API_URL);
   }
 
   addInstrument(instrument: InstrumentModel) {
-    return this._http.post<{ _id: string }>(this.API_URL, instrument);
+    return this._http.post<{ _id: string }>(this.API_URL, instrument)
+    .pipe(
+      tap(() =>{
+        this.reFresh.next();
+      })
+    );
   }
 
   deleteInstrument(_id:string){
