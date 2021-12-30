@@ -10,12 +10,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConfirmDialogComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
+    MatConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,6 @@ import { AlertMessageComponent } from './shared/alert-message/alert-message.comp
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[ConfirmDialogComponent]
+  entryComponents:[ConfirmDialogComponent,MatConfirmDialogComponent]
 })
 export class AppModule { }
