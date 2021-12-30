@@ -8,11 +8,14 @@
     font-size: 16px;
     font-weight: 500;
 }
+.add-btn{
+    padding: 20px;
+}
 span{
     align-items: center;
 }
 table{
-        width: 70%;
+        width: 80vw;
        
     }
 th{
@@ -41,18 +44,23 @@ td.mat-cell{
 
 }
 .add-shift{
-    width: 70%;
+    width: 80vw;
     .add-btn{
         float: right;
         padding-bottom: 20px;
         background-color: linear();
+        
         
     }
 }
 
 mat-paginator{
     display: flex;
-    width: 70%;
+    width: 80vw;
+    flex-direction: row-reverse;
+    color: #0c08f5;
+    font-size: 14px;
+    font-weight: 500;
+    height: 50px;
     
 }
-

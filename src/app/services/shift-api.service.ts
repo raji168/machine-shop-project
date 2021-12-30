@@ -24,9 +24,9 @@ export class ShiftApiService {
     return this.http.post<{ _id: String }>(url, shift);
   }
 
-  updateShift( shift:Partial<Shift> ,_id :string ){
+  updateShift(shift: Partial<Shift>, _id: string) {
     const url = ` http://192.168.0.13:3002/shifts`;
-    return this.http.patch<Shift>(`${url}/${_id}`,shift);
+    return this.http.patch<Shift>(`${url}/${_id}`, shift);
   }
 
   deleteShift(_id: string) {

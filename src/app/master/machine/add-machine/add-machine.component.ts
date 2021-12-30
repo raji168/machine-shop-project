@@ -39,7 +39,6 @@ export class AddMachineComponent implements OnInit {
 
     this.machineApi.addMachine(this.machineForm.value).subscribe(data => {
       this.dialogRef.close(data);
-      this.toastr.success('Machine Records Added Successfully', 'Machine');
     })
 
   }

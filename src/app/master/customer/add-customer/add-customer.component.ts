@@ -19,15 +19,21 @@ export class AddCustomerComponent implements OnInit {
     private customerApi: CustomerApiService) {
 
     this.customerForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      product: new FormControl(null, Validators.required),
-      partno: new FormControl(null, Validators.required),
-      revno: new FormControl(null, Validators.required),
-      drawing: new FormControl(null, Validators.required)
+      customername: new FormControl(null, Validators.required),
+      description: new FormControl(null, Validators.required),
+      productno: new FormControl(null, Validators.required),
+      revisionno: new FormControl(null, Validators.required),
+      drawing: new FormControl(null, [Validators.required ])
     });
   }
 
   ngOnInit(): void {
+  }
+
+  onSave(){
+    this.customerApi.addCustomer(this.customerForm.value).subscribe(data => {
+      this.dialogRef.close(data);
+    });
   }
 
 }

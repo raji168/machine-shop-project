@@ -21,18 +21,14 @@ const ELEMENT_DATA: Shift[] = [];
 })
 export class ShiftComponent implements OnInit {
 
-  // shift: Shift;
-
   dataShift: Shift[] = [];
 
-  // dataSource = ELEMENT_DATA;
-
-  // dataSource: MatTableDataSource<Shift>;
+  shiftDataSource;
 
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-  // @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private shiftApi: ShiftApiService,
@@ -48,9 +44,16 @@ export class ShiftComponent implements OnInit {
 
     this.shiftApi.getShiftAll().subscribe(data => {
       this.dataShift = data;
+      this.shiftDataSource = new MatTableDataSource(this.dataShift);
+      this.shiftDataSource.paginator = this.paginator;
+      this.shiftDataSource.sort = this.sort;
     });
 
+  }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.shiftDataSource.filter = filterValue.trim().toLowerCase();
   }
 
 
