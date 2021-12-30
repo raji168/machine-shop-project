@@ -6,6 +6,7 @@ import { RoleApiService } from '../../services/role-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { AddRoleComponent } from './add-role/add-role.component';
+import { DialogsService } from 'src/app/services/dialogs.service';
 
 
 // const ELEMENT_DATA: Role[] = [];
@@ -17,7 +18,7 @@ import { AddRoleComponent } from './add-role/add-role.component';
 })
 export class RoleComponent implements OnInit {
 
-  dataRole: Role[] = [];
+  roleData: Role[] = [];
 
   displayedColumns: string[] = ['serialno', 'name', 'actions'];
   
@@ -26,7 +27,8 @@ export class RoleComponent implements OnInit {
     private roleService:RoleApiService,
     private router: Router,
     private dialog: MatDialog,
-    private notification: NotificationService) {   
+    private notification: NotificationService,
+    private dialogService:DialogsService) {   
   }
 
   // @ViewChild(MatTable)
@@ -45,31 +47,30 @@ export class RoleComponent implements OnInit {
     let dialogRef = this.dialog.open(AddRoleComponent);
   }
 
-  onDelete(id){
-    this.roleService.deleteRole(id).subscribe(res =>{
-      this.dataRole = this.dataRole.filter(item => item._id !== id);
-      this.notification.success('role deleted Suceessfully');
-    })
+  onDelete(id){ 
+    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+    .afterClosed().subscribe(res => {
+      // console.log(res);
+      if(res){
+         this.roleService.deleteRole(id).subscribe(res =>{
+            this.roleData = this.roleData.filter(item=>item._id!==id);
+            this.ngOnInit();
+            this.notification.success(' deleted Suceessfully');
+          })
+      }
+    });
   }
 
   ngOnInit(){
 
-    this.roleService.getreFreshAll()
-    .subscribe(() =>{
-      this.onGet();
-    })
-    this.onGet();
+   
 
-    // this.roleService.getRoleAll().subscribe(data => {
-    //   this.dataRole = data;
-    // });
+    this.roleService.getRoleAll().subscribe(data => {
+      this.roleData = data;
+    });
 
   }
 
- onGet(){
-  this.roleService.getRoleAll().subscribe(data => {
-    this.dataRole = data;
-  });
- }
+ 
 
 }
