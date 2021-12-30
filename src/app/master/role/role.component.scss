@@ -1,13 +1,46 @@
-table {
-    width: 70%;
-    color: #000;
-}
 .role-maintable{
     margin: 20px;
     padding: 20px;
     box-sizing: border-box;
     justify-content: center;
 }
+table {
+    width: 70%;
+    color: #000;
+}
+.top-menu {
+    background-color: transparent;   
+    
+}
+.create-button{
+    float:right;
+    margin-bottom: 30px;
+}
+.role-table table{
+    margin-left: 20%;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .role-table th{
     text-transform: uppercase; 
     letter-spacing: 1px;
@@ -21,20 +54,7 @@ table {
     padding-left: 0px;
 }
 
-.add-role{
-    width: 70%;
-    .add-btn{
-        float: right;
-        padding-bottom: 20px;
-        background-color: linear();
-    }
-}
+
 
 
 // 
-.create-button{
-    float:right;
-}
-.top-menu{
-    background-color: transparent;   
-   }
