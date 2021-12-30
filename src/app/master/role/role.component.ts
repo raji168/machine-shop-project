@@ -56,7 +56,7 @@ export class RoleComponent implements OnInit {
   onDelete(id){
     this.roleService.deleteRole(id).subscribe(res =>{
       this.dataRole = this.dataRole.filter(item => item._id !== id);
-      this.notification.success('shift deleted Suceessfully');
+      this.notification.success('role deleted Suceessfully');
     })
   }
 
