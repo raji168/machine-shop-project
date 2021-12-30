@@ -27,7 +27,7 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 3000,
     positionClass: 'toast-top-right',
     preventDuplicates: true,
     })

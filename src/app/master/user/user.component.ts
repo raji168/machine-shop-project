@@ -60,9 +60,6 @@ export class UserComponent implements OnInit {
 
   
 
-  // removeData() {
-  //   this.dataUser.pop();
-  //   this.table.renderRows();
-  // }
+  
 
 

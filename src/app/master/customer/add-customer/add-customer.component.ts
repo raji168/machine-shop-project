@@ -53,12 +53,12 @@ export class AddCustomerComponent implements OnInit {
     if (this.customer) {
       this.customerApi.updateCustomer(this.customerForm.value, this.customer._id).subscribe(data => {
         this.dialogRef.close(data);
-        this.alert.showSuccess('Customer Updated Suceessfully...!','Customer');
+        this.alert.showSuccess('Data Updated Suceessfully...!','Customer');
       });
     } else {
       this.customerApi.addCustomer(this.customerForm.value).subscribe(data => {
         this.dialogRef.close(data);
-        this.alert.showSuccess('Customer Added Suceessfully...!','Customer');
+        this.alert.showSuccess('Data Added Suceessfully...!','Customer');
       });
 
     }
