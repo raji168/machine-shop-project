@@ -20,7 +20,7 @@ export class InstrumentService {
   constructor(private _http: HttpClient) { }
 
 
-  insForm: FormGroup = new FormGroup({
+  form: FormGroup = new FormGroup({
     sno: new FormControl(''),
     name: new FormControl(''),
     referenceno: new FormControl(''),
@@ -30,7 +30,7 @@ export class InstrumentService {
   });
 
   initializeFromGroup() {
-    this.insForm.setValue({
+    this.form.setValue({
       sno: '',
       name: '',
       referenceno: '',

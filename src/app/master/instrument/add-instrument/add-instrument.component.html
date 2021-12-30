@@ -5,36 +5,36 @@
             <mat-icon mat-dialog-close="false">close</mat-icon>
         </button>
     </div>
-    <form [formGroup]="instrumentService.insForm" (ngSubmit)="onSubmit()" class="normal-form">
-        <!-- {{instrumentService.form | json}} -->
+    {{ form.value | json }}
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="normal-form">
 
         <div  class="controles-container">
+            <!-- <mat-form-field appearance="outline" color="accent">
+                <input formControlName="sno"   matInput placeholder="Serial No" autocomplete="off">
+            </mat-form-field> -->
+
             <mat-form-field appearance="outline" color="accent">
-                <input fromControlName="sno"   matInput placeholder="Serial No" autocomplete="off">
+                <input formControlName="name"  matInput placeholder="Instrument Name " autocomplete="off">
             </mat-form-field>
 
             <mat-form-field appearance="outline" color="accent">
-                <input fromControlName="name"  matInput placeholder="Instrument Name " autocomplete="off">
+                <input formControlName="referenceno"  matInput placeholder="Reference Number" autocomplete="off">
             </mat-form-field>
 
             <mat-form-field appearance="outline" color="accent">
-                <input fromControlName="referenceno"  matInput placeholder="Reference Number" autocomplete="off">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" color="accent">
-                <input fromControlName="range"   matInput placeholder="Range" autocomplete="off">
+                <input formControlName="range"   matInput placeholder="Range" autocomplete="off">
             </mat-form-field>
 
             <mat-form-field appearance="outline" color="accent" >
                 <mat-label>Calibrated On</mat-label>
-                <input fromControlName="calibratedon"matInput [matDatepicker]="picker">
+                <input formControlName="calibratedon"matInput [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Calibrated  Due</mat-label>
-                <input  fromControlName="calibratedue"   matInput [matDatepicker]="picker2">
+                <input  formControlName="calibratedue"   matInput [matDatepicker]="picker2">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
             </mat-form-field> 
@@ -53,12 +53,12 @@
 
      <!-- <mat-form-field appearance="outline" color="accent">
                 <mat-label>Calibrated On</mat-label>
-                <input matInput [ngxMatTimepicker]="picker" fromControlName="calibratedon"   matInput placeholder="Calibrated On" autocomplete="off">
+                <input matInput [ngxMatTimepicker]="picker" formControlName="calibratedon"   matInput placeholder="Calibrated On" autocomplete="off">
                 <ngx-mat-timepicker #picker color="accent"></ngx-mat-timepicker>
             </mat-form-field>
 
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Calibrated  Due</mat-label>
-                <input matInput [ngxMatTimepicker]="picker1" fromControlName="calibratedue"   matInput placeholder="Calibrate Due" autocomplete="off">
+                <input matInput [ngxMatTimepicker]="picker1" formControlName="calibratedue"   matInput placeholder="Calibrate Due" autocomplete="off">
                 <ngx-mat-timepicker #picker1 color="accent"></ngx-mat-timepicker>
             </mat-form-field> -->
