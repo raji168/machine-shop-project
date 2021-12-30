@@ -7,12 +7,11 @@
     </div>
     {{ form.value | json }}
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="normal-form">
-        <!-- {{instrumentService.form | json}} -->
 
         <div  class="controles-container">
-            <mat-form-field appearance="outline" color="accent">
+            <!-- <mat-form-field appearance="outline" color="accent">
                 <input formControlName="sno"   matInput placeholder="Serial No" autocomplete="off">
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-form-field appearance="outline" color="accent">
                 <input formControlName="name"  matInput placeholder="Instrument Name " autocomplete="off">
