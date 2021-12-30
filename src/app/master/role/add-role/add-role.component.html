@@ -1,7 +1,7 @@
 <div class="container">
     <div class="form">
       <div class="title">Add Role</div>
-      <form [formGroup]="roleService.roleForm" (ngSubmit)="onSave()"  color="accent">
+      <form [formGroup]="roleService.roleForm" ngRepeat="" (ngSubmit)="onSave()"  color="accent" class="normal-form">
         <!-- <mat-form-field appearance="outline" color="accent">
           <mat-label>S No</mat-label>
           <input matInput placeholder="S.No *" formControlName="serialno" autocomplete="off">
@@ -17,7 +17,7 @@
         <div class="button">
           <button mat-raised-button class="btn-save" type="submit" color="accent">Save</button>
           <!-- <button mat-raised-button (click)="onClear()">clear</button>  -->
-          <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
+          <button mat-raised-button class="btn-cancel" mat-dialog-close="false" type="reset" color="accent">Clear</button>
         </div>
       </form>
     </div>

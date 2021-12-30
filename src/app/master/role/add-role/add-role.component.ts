@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Role } from 'src/app/models/role.model';
 import { NotificationService } from 'src/app/services/notification.service';
 import { RoleApiService } from 'src/app/services/role-api.service';
 
@@ -11,27 +12,56 @@ import { RoleApiService } from 'src/app/services/role-api.service';
 })
 export class AddRoleComponent implements OnInit {
 
+  role: Role;
+  dataRole: Role[] = [];
   roleForm: FormGroup;
+  _id: string;
+
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data : {role: Role},
     public roleService : RoleApiService,
     public dialogRef: MatDialogRef<AddRoleComponent>,
     public notification : NotificationService) { }
 
   ngOnInit(): void {
+    this.role= this.data?.role;
+    this.roleService.getRoleAll().subscribe(data => {
+      this.dataRole =data;
+    });
+
+    if(this.role) {
+      this.roleForm.patchValue(this.data.role);
+    }
+
   }
 
-  onClear(){
-    this.roleService.roleForm.reset();
-    this.roleService.initializeFormGroup();
-  }
-
+  
   onSave(){
-    console.log(this.roleService.roleForm.value);
-    this.roleService.addRole(this.roleService.roleForm.value).subscribe((data) => {
-      this.dialogRef.close(data);
-      this.notification.success("successfullly data added!!");
-    })
+    // console.log(this.roleService.roleForm.value);
+    // this.roleService.addRole(this.roleService.roleForm.value).subscribe((data) => {
+    //   this.dialogRef.close(data);
+    //   this.notification.success("successfullly data added!!");
+    // })
+
+
+    if (this.role ) {
+      this.roleService.updateInstrument(this.roleForm.value, this.role._id).subscribe(data => {
+        this.dialogRef.close(data);
+        this.ngOnInit();
+        // console.log('Update done');
+        this.notification.success("Edited successfullly  ");
+      });
+    } else {
+      this.roleService.addRole(this.roleForm.value).subscribe(data => {
+        this.dialogRef.close(data);
+        this.ngOnInit();
+        // console.log('Add done ');
+        this.notification.success("Added  successfullly  ");
+
+      });
+
+    }
   } 
     
 
