@@ -16,7 +16,7 @@
       <!-- serialNo Column -->
       <ng-container matColumnDef="serialno">
         <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.serialno}} </td>
+        <td mat-cell *matCellDef="let element ; let i=index"> {{i+1}} </td>
       </ng-container>
 
       <!-- Name Column -->

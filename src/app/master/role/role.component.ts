@@ -34,13 +34,6 @@ export class RoleComponent implements OnInit {
 
 
   onCreate(){
-    this.roleService.getRoleMaxSerialno()
-      .subscribe(
-        data =>{
-          this.roleService.maxSerialno = data;
-          this.roleService.initializeFormGroup();
-        }
-      );
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose =true;
     dialogConfig.autoFocus = true;
@@ -60,10 +53,23 @@ export class RoleComponent implements OnInit {
   }
 
   ngOnInit(){
-  
-    this.roleService.getRoleAll().subscribe(data => {
-      this.dataRole = data;
-    });
+
+    this.roleService.getreFreshAll()
+    .subscribe(() =>{
+      this.onGet();
+    })
+    this.onGet();
+
+    // this.roleService.getRoleAll().subscribe(data => {
+    //   this.dataRole = data;
+    // });
 
   }
+
+ onGet(){
+  this.roleService.getRoleAll().subscribe(data => {
+    this.dataRole = data;
+  });
+ }
+
 }
