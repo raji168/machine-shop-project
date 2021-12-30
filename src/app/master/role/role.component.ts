@@ -28,7 +28,7 @@ export class RoleComponent implements OnInit {
     private roleService:RoleApiService,
     private router: Router,
     private dialog: MatDialog,
-    private notification: NotificationService) { 
+    private notification: NotificationService) {   
   }
 
   // @ViewChild(MatTable)
