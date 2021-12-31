@@ -4,7 +4,7 @@
     <form [formGroup]="shiftForm"  ngRepeat="">
       <mat-form-field appearance="outline" color="accent">
         <mat-label>S No</mat-label>
-        <input matInput placeholder="S.No" formControlName="sno" autocomplete="off" value="{{i}}" >
+        <input matInput placeholder="S.No" formControlName="sno" autocomplete="off" [defaultValue]="1" >
       </mat-form-field>
       <mat-form-field appearance="outline" color="accent">
         <mat-label>Shift Name</mat-label>

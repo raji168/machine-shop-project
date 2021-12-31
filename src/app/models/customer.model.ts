@@ -4,7 +4,7 @@ export interface Customer {
     customername: string;
     description: string;
     productno: string;
-    drawing: File;
+    drawing: string;
     revisionno: string;
 
 }
