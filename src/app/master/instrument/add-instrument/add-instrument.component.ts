@@ -36,11 +36,6 @@ export class AddInstrumentComponent implements OnInit {
       calibratedue: new FormControl('')
     });
 
-    // this.instrumentService.getreFreshAll()
-    // .subscribe(() =>{
-    //   this.onGet();
-    // })
-
     this.instrument= this.data?.instrument;
     this.instrumentService.getInstrumentAll().subscribe(data => {
       this.dataInstrument =data;
@@ -50,30 +45,19 @@ export class AddInstrumentComponent implements OnInit {
       this.form.patchValue(this.data.instrument);
     }
   }
-  // onGet(){
-    
-  
-  // }
-
+ 
   onSubmit(){
-    // console.log(this.form.value);
-    // this.instrumentService.addInstrument(this.form.value).subscribe((data) => {
-    //   this.dialogRef.close(data);
-    //   this.notification.success("successfullly data added!!");
-    // })
-
+   
     if (this.instrument ) {
       this.instrumentService.updateInstrument(this.form.value, this.instrument._id).subscribe(data => {
         this.dialogRef.close(data);
         this.ngOnInit();
-        // console.log('Update done');
         this.notification.success("Edited successfullly  ");
       });
     } else {
       this.instrumentService.addInstrument(this.form.value).subscribe(data => {
         this.dialogRef.close(data);
         this.ngOnInit();
-        // console.log('Add done ');
         this.notification.success("Added  successfullly  ");
 
       });
