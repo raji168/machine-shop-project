@@ -69,8 +69,6 @@ export class ShiftComponent implements OnInit {
   }
 
   onClickDelete(id: string) {
-
-  
   this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
   .afterClosed().subscribe(res => {
     if(res){
