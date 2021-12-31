@@ -1,70 +1,80 @@
-<div class="user-maintable">
-  <div class="add-user">
-    <button mat-icon-button (click)="onCreate()" class="add-btn">
-      <mat-icon>add_circle_outline </mat-icon>
-    </button>
-  </div>
-  <!-- <button mat-raised-button class="create-button" color="accent" (click)="onCreate()">
-    <mat-icon>add</mat-icon>Add
-</button> -->
+<div class="container">
 
-  <div class="table-user">
-    <table mat-table [dataSource]="dataUser" class="mat-elevation-z8">
+  <mat-toolbar class="top-menu">
+      <span>User List</span>
+  </mat-toolbar>
+  <div class="search-div">
 
-      <!-- serialNo Column -->
-      <ng-container matColumnDef="sno">
-        <th mat-header-cell *matHeaderCellDef> SNo. </th>
-        <td mat-cell *matCellDef="let element"> {{element.sno}} </td>
-      </ng-container>
+      <button mat-raised-button class="create-button" color="accent" (click)="onCreate()">
+          <mat-icon>add</mat-icon>Add
+      </button>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
-
-      <!-- role Column -->
-      <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef> Role </th>
-        <td mat-cell *matCellDef="let element">{{element.role?.name}} </td>
-      </ng-container>
-
-      <!-- email Column -->
-      <ng-container matColumnDef="emailId">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
-      </ng-container>
-
-      <!-- contactNo Column -->
-      <ng-container matColumnDef="phoneNo">
-        <th mat-header-cell *matHeaderCellDef> contactNo </th>
-        <td mat-cell *matCellDef="let element"> {{element.phoneNo}} </td>
-      </ng-container>
-
-      <!-- userName Column -->
-      <ng-container matColumnDef="userName">
-        <th mat-header-cell *matHeaderCellDef> userName </th>
-        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
-      </ng-container>
-
-      <!-- edit & delete column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button>
-            <mat-icon>edit_outline</mat-icon>
+      <mat-form-field class="search-form-field" floatLable="never">
+          <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+          <button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
+              <mat-icon>close</mat-icon>
           </button>
-          <button mat-icon-button>
-            <mat-icon>delete_outline</mat-icon>
-          </button>
-        </td>
-      </ng-container>
+      </mat-form-field>
 
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
   </div>
 
+  <div class=" table-instrument mat-elevation-z8" role="table" >
 
+      <mat-table [dataSource]="listData" matSort>
+
+          <ng-container matColumnDef="checkBox">
+              <mat-header-cell *matHeaderCellDef mat-sort-header >checkBox</mat-header-cell>
+              <mat-cell *matCellDef="let element "> 
+                  <mat-checkbox class="checkBox" [(ngModel)]="element.isDelete"></mat-checkbox>
+              </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="sno">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>SNo.</mat-header-cell>
+              <mat-cell *matCellDef="let element ;  let i = index"> {{i+1}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef mat-sort-header >Name</mat-header-cell>
+              <mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="role">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Role </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.role?.name}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="emailId">
+              <mat-header-cell *matHeaderCellDef>E-Mail</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.emailId}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="phoneNo">
+            <mat-header-cell *matHeaderCellDef>ContactNo</mat-header-cell>
+            <mat-cell *matCellDef="let element" > {{element.phoneNo}} </mat-cell>
+        </ng-container>
+
+          <ng-container matColumnDef="userName">
+              <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+              <mat-cell *matCellDef="let element" > {{element.userName}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                  <button class="edit-button" mat-icon-button color="primary" title="Edit" (click)="onEdit(element)">
+                      <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button class="delete-button"color="accent" title="Delete" (click)="onDelete(element._id)">
+                      <mat-icon>delete_forever</mat-icon>
+                  </button>
+              </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+
+`   </div>
 </div>

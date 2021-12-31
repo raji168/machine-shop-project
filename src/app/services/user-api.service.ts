@@ -2,11 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../models/user.model';
+import { Observable, Subject } from 'rxjs';
+import { tap  } from 'rxjs/operators';
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserApiService {
+
+  private reFresh = new Subject<void>();
+
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +38,10 @@ export class UserApiService {
     });
   }
 
+  getreFreshAll(){
+    return this.reFresh;
+  }
+
   getUserAll() {
     const url = ` http://192.168.0.13:3002/users`;
     return this.http.get<User[]>(url);
@@ -37,6 +49,28 @@ export class UserApiService {
   
   addUser(user: User) {
     const url = ` http://192.168.0.13:3002/users`;
-    return this.http.post<{ _id: String }>(url, user);
+    return this.http.post<{ _id: String }>(url, user)
+    .pipe(
+      tap(() =>{
+        this.reFresh.next();
+      })
+    );
   }
+
+  updateUser(user: Partial<User>, id) {
+    const url =` http://192.168.0.13:3002/users`;
+    return this.http.patch<User>(`${url}/${id}`, user)
+    .pipe(
+      tap(() =>{
+        this.reFresh.next();
+      })
+    );
+  }
+
+  deleteUser(_id:string){
+    const url = `http://192.168.0.13:3002/users`;
+    return this.http.delete(`${url}/${_id}`);
+  }
+
+
 }
