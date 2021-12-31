@@ -18,10 +18,11 @@ export class AddUserComponent implements OnInit {
   user: User;
   userForm: FormGroup;
 
-  userdata: User[] = [];
+  roleData: Role[] = [];
   _id: string;
 
   constructor(
+    public roleService :RoleApiService,
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { user: User },
@@ -30,8 +31,8 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
 
     this.user = this.data?.user;
-    this.userService.getUserAll().subscribe(data => {
-      this.userdata = data;
+    this.roleService.getRoleAll().subscribe(data => {
+      this.roleData = data;
     });
 
     if (this.user) {
