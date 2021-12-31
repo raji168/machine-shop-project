@@ -6,6 +6,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { RoleApiService } from 'src/app/services/role-api.service';
 import { Role } from 'src/app/models/role.model';
 import { User } from 'src/app/models/user.model';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -14,39 +15,44 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
+  user: User;
   userForm: FormGroup;
 
-  dataRole :Role[] =[];
+  userdata: User[] = [];
+  _id: string;
 
-  constructor(public userService : UserApiService,
-    private roleApi:RoleApiService,
-    public dialogRef:MatDialogRef<AddUserComponent>,
+  constructor(
+    public userService: UserApiService,
+    public dialogRef: MatDialogRef<AddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { user: User },
-    public notification : NotificationService) { }
+    public notification: NotificationService) { }
 
   ngOnInit() {
-    this.roleApi.getRoleAll().subscribe(data => {
-      this.dataRole = data;
+
+    this.user = this.data?.user;
+    this.userService.getUserAll().subscribe(data => {
+      this.userdata = data;
     });
 
-    if (this.data.user) {
-      // this.userForm.setValue()
-      this.userForm.patchValue(this.data.user);
-      this.userForm.get('role')?.setValue(this.data.user.role._id);
+    if (this.user) {
+      this.userService.userForm.patchValue(this.data.user);
     }
+
   }
 
-  onClear(){
-    this.userService.userForm.reset();
-    this.userService.initializeFormGroup();
-  }
 
-  onSave(){
-    console.log(this.userService.userForm.value);
-    this.userService.addUser(this.userService.userForm.value).subscribe((data) => {
-      this.dialogRef.close(data);
-      this.notification.success("successfullly data added!!");
-    })
+  onSave() {
+    if (this.user) {
+      this.userService.updateUser(this.userService.userForm.value, this.user._id).subscribe(data => {
+        this.dialogRef.close(data);
+        this.notification.success("edited successfully!!");
+      });
+    } else {
+      this.userService.addUser(this.userService.userForm.value).subscribe(data => {
+        this.dialogRef.close(data);
+        this.notification.success("Added successfully!!");
+      })
+    }
   }
 
 }

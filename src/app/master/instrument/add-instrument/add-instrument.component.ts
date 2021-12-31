@@ -65,14 +65,14 @@ export class AddInstrumentComponent implements OnInit {
     if (this.instrument ) {
       this.instrumentService.updateInstrument(this.form.value, this.instrument._id).subscribe(data => {
         this.dialogRef.close(data);
-        this.ngOnInit();
+        // this.ngOnInit();
         // console.log('Update done');
         this.notification.success("Edited successfullly  ");
       });
     } else {
       this.instrumentService.addInstrument(this.form.value).subscribe(data => {
         this.dialogRef.close(data);
-        this.ngOnInit();
+        // this.ngOnInit();
         // console.log('Add done ');
         this.notification.success("Added  successfullly  ");
 

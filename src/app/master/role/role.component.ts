@@ -31,20 +31,38 @@ export class RoleComponent implements OnInit {
     private dialogService:DialogsService) {   
   }
 
-  // @ViewChild(MatTable)
-  // table!: MatTable<Role>;
+  
 
 
+
+  ngOnInit() : void {
+    // this.roleService.getRoleAll().subscribe(data => {
+    //   this.roleData = data;
+    // });
+    this.roleService.getreFreshAll()
+    .subscribe(() =>{
+      this.getData();
+    })
+    this.getData();
+  }
+  
+  getData(){
+    this.roleService.getRoleAll().subscribe(data => {
+      this.roleData = data;
+    });
+
+  }
+ 
   onCreate(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose =true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "30%";
+    dialogConfig.width = "20%";
     this.dialog.open(AddRoleComponent, dialogConfig);
   }
 
-  onEdit(id){
-    let dialogRef = this.dialog.open(AddRoleComponent);
+  onEdit(role: Role){
+    this.dialog.open(AddRoleComponent , { data : { role } });
   }
 
   onDelete(id){ 
@@ -60,14 +78,5 @@ export class RoleComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit(){
-    this.roleService.getRoleAll().subscribe(data => {
-      this.roleData = data;
-    });
-
-  }
-
- 
 
 }
