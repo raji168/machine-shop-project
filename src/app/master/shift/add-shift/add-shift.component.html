@@ -4,7 +4,7 @@
     <form [formGroup]="shiftForm"  ngRepeat="">
       <mat-form-field appearance="outline" color="accent">
         <mat-label>S No</mat-label>
-        <input matInput placeholder="S.No" formControlName="sno" autocomplete="off" >
+        <input matInput placeholder="S.No" formControlName="sno" autocomplete="off" value="{{i}}" >
       </mat-form-field>
       <mat-form-field appearance="outline" color="accent">
         <mat-label>Shift Name</mat-label>
@@ -17,8 +17,8 @@
       </mat-form-field>
       <mat-form-field appearance="outline" color="accent">
         <mat-label>End Time</mat-label>
-        <input matInput [ngxMatTimepicker]="picker1" formControlName="endTime" autocomplete="off">
-        <ngx-mat-timepicker #picker1 color="accent"></ngx-mat-timepicker>
+        <input matInput [ngxMatTimepicker]="picker" formControlName="endTime"   autocomplete="off">
+        <ngx-mat-timepicker #picker  color="accent"></ngx-mat-timepicker>
       </mat-form-field>
       <div class="button">
         <button mat-raised-button class="btn-save" color="accent"  (click)="onSave()" >Save</button>
