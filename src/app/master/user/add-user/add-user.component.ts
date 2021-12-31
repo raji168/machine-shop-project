@@ -36,8 +36,8 @@ export class AddUserComponent implements OnInit {
     });
 
     if (this.user) {
-      this.userService.userForm.patchValue(this.user);
-      this.userService.userForm.get('role')?.setValue(this.user.role._id);
+      this.userService.userForm.patchValue(this.data.user);
+      this.userService.userForm.get('role')?.setValue(this.data.user.role._id);
     }
 
   }
