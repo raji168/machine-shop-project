@@ -25,13 +25,14 @@ export class AddRoleComponent implements OnInit {
     public notification : NotificationService) { }
 
   ngOnInit(): void {
-    this.role= this.data?.role;
+    this.role = this.data?.role;
+
     this.roleService.getRoleAll().subscribe(data => {
-      this.dataRole =data;
+      this.dataRole = data;
     });
 
-    if(this.role) {
-      this.roleForm.patchValue(this.data.role);
+    if (this.role) {
+      this.roleService.roleForm.patchValue(this.data.role);
     }
 
   }
@@ -41,24 +42,22 @@ export class AddRoleComponent implements OnInit {
     // console.log(this.roleService.roleForm.value);
     // this.roleService.addRole(this.roleService.roleForm.value).subscribe((data) => {
     //   this.dialogRef.close(data);
+    //   this.ngOnInit();
     //   this.notification.success("successfullly data added!!");
     // })
 
 
-    if (this.role ) {
-      this.roleService.updateInstrument(this.roleForm.value, this.role._id).subscribe(data => {
+    if (this.role) {
+      this.roleService.updateRole(this.roleService.roleForm.value, this.role._id).subscribe(data => {
         this.dialogRef.close(data);
         this.ngOnInit();
-        // console.log('Update done');
-        this.notification.success("Edited successfullly  ");
+        this.notification.success("successfullly data Edited!!");
       });
     } else {
-      this.roleService.addRole(this.roleForm.value).subscribe(data => {
+      this.roleService.addRole(this.roleService.roleForm.value).subscribe(data => {
         this.dialogRef.close(data);
         this.ngOnInit();
-        // console.log('Add done ');
-        this.notification.success("Added  successfullly  ");
-
+        this.notification.success("successfullly data added!!");
       });
 
     }

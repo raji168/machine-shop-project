@@ -35,20 +35,25 @@ export class RoleApiService {
   getRoleAll(){
     const url =` http://192.168.0.13:3002/roles`;
     return this.http.get<Role[]>(url)
-    .pipe(
-      tap(() =>{
-        this.reFresh.next();
-      })
-    );
+    // .pipe(
+    //   tap(() =>{
+    //     this.reFresh.next();
+    //   })
+    // );
   }
 
 
   addRole(role:Role){
     const url =` http://192.168.0.13:3002/roles`;
-    return this.http.post<{_id:string}>(url,role);
+    return this.http.post<{_id:string}>(url,role)
+    .pipe(
+        tap(() =>{
+          this.reFresh.next();
+        })
+      );
   }
 
-  updateInstrument(role: Partial<Role>, id) {
+  updateRole(role: Partial<Role>, id) {
     const url =` http://192.168.0.13:3002/roles`;
     return this.http.patch<Role>(`${url}/${id}`, role)
     .pipe(
