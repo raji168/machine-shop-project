@@ -12,13 +12,18 @@
       </mat-form-field>
       <mat-form-field appearance="outline" color="accent">
         <mat-label>Start Time</mat-label>
-        <input matInput [ngxMatTimepicker]="picker" formControlName="startTime" autocomplete="off">
-        <ngx-mat-timepicker #picker color="accent"></ngx-mat-timepicker>
+        <input matInput [ngxMatTimepicker]="picker1" formControlName="startTime" autocomplete="off">
+        <ngx-mat-timepicker #picker1 color="accent"></ngx-mat-timepicker>
       </mat-form-field>
       <mat-form-field appearance="outline" color="accent">
         <mat-label>End Time</mat-label>
+<<<<<<< HEAD
         <input matInput [ngxMatTimepicker]="picker1" formControlName="endTime"   autocomplete="off">
         <ngx-mat-timepicker #picker1  color="accent"></ngx-mat-timepicker>
+=======
+        <input matInput [ngxMatTimepicker]="picker2" formControlName="endTime"   autocomplete="off">
+        <ngx-mat-timepicker #picker2  color="accent"></ngx-mat-timepicker>
+>>>>>>> 306433a0837fa37d56f0b8784a5fcb08d5c8c49b
       </mat-form-field>
       <div class="button">
         <button mat-raised-button class="btn-save" color="accent" (click)="onSave()" >Save</button>
