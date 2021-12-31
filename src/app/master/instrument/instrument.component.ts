@@ -24,7 +24,7 @@ export class InstrumentComponent implements OnInit {
     private _service: InstrumentService,
     private _notification: NotificationService,
     private _dialog: MatDialog,
-    private dialogService:DialogsService) { }
+    private dialogsService:DialogsService) { }
 
 
   grdlistData: MatTableDataSource<any>;
@@ -47,7 +47,7 @@ export class InstrumentComponent implements OnInit {
     this._service.getInstrumentAll()
       .subscribe(
         data => {
-          this.instrumentData = data;
+          // this.instrumentData = data;
           this.grdlistData = new MatTableDataSource(data);
           this.grdlistData.sort = this.sort;
           this.grdlistData.paginator = this.paginator;
@@ -75,7 +75,7 @@ export class InstrumentComponent implements OnInit {
     this._dialog.open(AddInstrumentComponent , { data : { instrument } });
   }
   onDelete(id){ 
-    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+    this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
     .afterClosed().subscribe(res => {
       // console.log(res);
       if(res){
