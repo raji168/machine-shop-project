@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild ,ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -37,22 +37,30 @@ export class ShiftComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     private alert: AlertService,
-    private changeDetectorRef:ChangeDetectorRef,
-    private dialogsService:DialogsService
+    private changeDetectorRef: ChangeDetectorRef,
+    private dialogsService: DialogsService
   ) {
 
   }
 
   ngOnInit() {
+    this.shiftApi.getreFreshAll()
+      .subscribe(() => {
+        this.getData();
+      })
+    this.getData();
 
+
+  }
+  getData() {
     this.shiftApi.getShiftAll().subscribe(data => {
       this.dataShift = data;
       this.shiftDataSource = new MatTableDataSource(this.dataShift);
       this.shiftDataSource.paginator = this.paginator;
       this.shiftDataSource.sort = this.sort;
     });
-
   }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -69,17 +77,17 @@ export class ShiftComponent implements OnInit {
   }
 
   onClickDelete(id: string) {
-  this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
-  .afterClosed().subscribe(res => {
-    if(res){
-      this.shiftApi.deleteShift(id).subscribe(res => {
-        this.dataShift = this.dataShift.filter(item => item._id !== id);
-        this.ngOnInit();
-        this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
-      })
-    }
-  });
+    this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.shiftApi.deleteShift(id).subscribe(res => {
+            this.dataShift = this.dataShift.filter(item => item._id !== id);
+            this.ngOnInit();
+            this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
+          })
+        }
+      });
 
-}
+  }
 
 }
