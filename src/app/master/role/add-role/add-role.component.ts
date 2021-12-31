@@ -5,6 +5,8 @@ import { Role } from 'src/app/models/role.model';
 import { NotificationService } from 'src/app/services/notification.service';
 import { RoleApiService } from 'src/app/services/role-api.service';
 
+
+
 @Component({
   selector: 'app-add-role',
   templateUrl: './add-role.component.html',
@@ -19,10 +21,10 @@ export class AddRoleComponent implements OnInit {
 
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data : {role: Role},
-    public roleService : RoleApiService,
+    @Inject(MAT_DIALOG_DATA) public data: { role: Role },
+    public roleService: RoleApiService,
     public dialogRef: MatDialogRef<AddRoleComponent>,
-    public notification : NotificationService) { }
+    public notification: NotificationService) { }
 
   ngOnInit(): void {
     this.role = this.data?.role;
@@ -37,16 +39,8 @@ export class AddRoleComponent implements OnInit {
 
   }
 
-  
-  onSave(){
-    // console.log(this.roleService.roleForm.value);
-    // this.roleService.addRole(this.roleService.roleForm.value).subscribe((data) => {
-    //   this.dialogRef.close(data);
-    //   this.ngOnInit();
-    //   this.notification.success("successfullly data added!!");
-    // })
 
-
+  onSave() {
     if (this.role) {
       this.roleService.updateRole(this.roleService.roleForm.value, this.role._id).subscribe(data => {
         this.dialogRef.close(data);
@@ -61,7 +55,10 @@ export class AddRoleComponent implements OnInit {
       });
 
     }
-  } 
-    
+  }
 
 }
+
+
+
+

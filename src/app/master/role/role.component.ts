@@ -48,7 +48,7 @@ export class RoleComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose =true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "30%";
+    dialogConfig.width = "20%";
     this.dialog.open(AddRoleComponent, dialogConfig);
   }
 
@@ -69,6 +69,5 @@ export class RoleComponent implements OnInit {
       }
     });
   }
-
 
 }
