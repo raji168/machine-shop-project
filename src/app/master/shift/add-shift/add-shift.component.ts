@@ -21,6 +21,8 @@ export class AddShiftComponent implements OnInit {
 
   _id: string;
 
+  i : number;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { shift: Shift },
     public dialogRef: MatDialogRef<AddShiftComponent>,
@@ -49,23 +51,25 @@ export class AddShiftComponent implements OnInit {
     }
 
   }
-
+ 
   onSave() {
 
     if (this.shift ) {
       this.shiftApi.updateShift(this.shiftForm.value, this.shift._id).subscribe(data => {
         this.dialogRef.close(data);
         this.alert.showSuccess('Data Updated Suceessfully...!', 'Shift');
+
       });
     } else {
       this.shiftApi.addShift(this.shiftForm.value).subscribe(data => {
         this.dialogRef.close(data);
         this.alert.showSuccess('Data Added Suceessfully...!' , 'Shift');
+  
       });
     }
   }
-
 }
+
 
 
 

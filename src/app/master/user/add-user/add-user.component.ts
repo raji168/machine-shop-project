@@ -16,11 +16,20 @@ export class AddUserComponent implements OnInit {
 
   user: User;
   userForm: FormGroup;
+<<<<<<< HEAD
   userdata: User[] = [];
   _id: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { user: User },
+=======
+
+  roleData: Role[] = [];
+  _id: string;
+
+  constructor(
+    public roleService :RoleApiService,
+>>>>>>> bc37cd62d57e8e54d7c4e14c834088de4df01794
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService) { }
@@ -28,12 +37,13 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
 
     this.user = this.data?.user;
-    this.userService.getUserAll().subscribe(data => {
-      this.userdata = data;
+    this.roleService.getRoleAll().subscribe(data => {
+      this.roleData = data;
     });
 
     if (this.user) {
       this.userService.userForm.patchValue(this.data.user);
+      this.userService.userForm.get('role')?.setValue(this.data.user.role._id);
     }
 
   }

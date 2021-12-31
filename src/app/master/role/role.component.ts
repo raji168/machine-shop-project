@@ -31,8 +31,7 @@ export class RoleComponent implements OnInit {
     private dialogService:DialogsService) {   
   }
 
-  // @ViewChild(MatTable)
-  // table!: MatTable<Role>;
+  
 
 
 
@@ -44,9 +43,9 @@ export class RoleComponent implements OnInit {
     .subscribe(() =>{
       this.getData();
     })
-
     this.getData();
   }
+  
   getData(){
     this.roleService.getRoleAll().subscribe(data => {
       this.roleData = data;

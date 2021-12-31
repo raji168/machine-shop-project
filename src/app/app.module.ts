@@ -8,14 +8,13 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConfirmDialogComponent,
+ 
     MatConfirmDialogComponent
   ],
   imports: [
@@ -35,6 +34,6 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[ConfirmDialogComponent,MatConfirmDialogComponent]
+  entryComponents:[MatConfirmDialogComponent]
 })
 export class AppModule { }

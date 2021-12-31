@@ -62,7 +62,4 @@ export class RoleApiService {
     const url = `http://192.168.0.13:3002/roles`;
     return this.http.delete(`${url}/${_id}`);
   }
-
- 
-  
 }
