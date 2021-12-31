@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild ,ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -28,7 +28,6 @@ export class ShiftComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
 
   constructor(
@@ -37,8 +36,8 @@ export class ShiftComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     private alert: AlertService,
-    private changeDetectorRef:ChangeDetectorRef,
-    private dialogsService:DialogsService
+    private changeDetectorRef: ChangeDetectorRef,
+    private dialogsService: DialogsService
   ) {
 
   }
@@ -61,6 +60,7 @@ export class ShiftComponent implements OnInit {
 
   onClickAdd() {
     this.dialog.open(AddShiftComponent);
+
   }
 
 
@@ -70,18 +70,17 @@ export class ShiftComponent implements OnInit {
 
   onClickDelete(id: string) {
 
-  
-  this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
-  .afterClosed().subscribe(res => {
-    if(res){
-      this.shiftApi.deleteShift(id).subscribe(res => {
-        this.dataShift = this.dataShift.filter(item => item._id !== id);
-        this.ngOnInit();
-        this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
-      })
-    }
-  });
+    this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.shiftApi.deleteShift(id).subscribe(res => {
+            this.dataShift = this.dataShift.filter(item => item._id !== id);
+            this.ngOnInit();
+            this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
+          })
+        }
+      });
 
-}
+  }
 
 }
