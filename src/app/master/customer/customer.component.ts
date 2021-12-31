@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerApiService } from 'src/app/services/customer-api.service';
+import { DialogsService } from 'src/app/services/dialogs.service';
 import { AlertService } from 'src/app/shared/alert.service';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 
@@ -29,7 +30,8 @@ export class CustomerComponent implements OnInit {
   constructor(private customerApi: CustomerApiService,
     private router: Router,
     private dialog: MatDialog,
-    private alert:AlertService) { }
+    private dialogsService: DialogsService,
+    private alert: AlertService) { }
 
   ngOnInit() {
 
@@ -39,7 +41,6 @@ export class CustomerComponent implements OnInit {
       this.customerDataSource.paginator = this.paginator;
       this.customerDataSource.sort = this.sort
     })
-
   }
 
   applyFilter(event: Event) {
@@ -60,13 +61,17 @@ export class CustomerComponent implements OnInit {
   }
 
   onClickDelete(id: string) {
-    this.customerApi.deleteCustomer(id).subscribe(res => {
-      this.dataCustomer = this.dataCustomer.filter(item => item._id !== id);
-      this.alert.showError('Data Deleted Suceessfully...!' ,'Customer');
-    })
 
+    this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.customerApi.deleteCustomer(id).subscribe(res => {
+            this.dataCustomer = this.dataCustomer.filter(item => item._id !== id);
+            this.alert.showError('Data Deleted Suceessfully...!', 'Customer');
+          })
+        }
+      });
   }
-
 
 
 }
