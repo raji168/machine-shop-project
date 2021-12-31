@@ -30,7 +30,6 @@
       <mat-form-field appearance="outline" color="accent">
         <mat-label> Contact No </mat-label>
         <input matInput placeholder=" Contact No *" formControlName="phoneNo" autocomplete="off">
-        <mat-error *ngIf="userService.userForm.controls['phoneNo'].errors?.minLength">Must have 10 numbers</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" color="accent">

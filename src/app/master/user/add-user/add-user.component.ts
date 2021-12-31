@@ -45,13 +45,11 @@ export class AddUserComponent implements OnInit {
     if (this.user) {
       this.userService.updateUser(this.userService.userForm.value, this.user._id).subscribe(data => {
         this.dialogRef.close(data);
-        this.ngOnInit();
         this.notification.success("edited successfully!!");
       });
     } else {
       this.userService.addUser(this.userService.userForm.value).subscribe(data => {
         this.dialogRef.close(data);
-        this.ngOnInit();
         this.notification.success("Added successfully!!");
       })
     }

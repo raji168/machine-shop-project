@@ -35,7 +35,10 @@ export class RoleComponent implements OnInit {
 
 
 
-  ngOnInit(){
+  ngOnInit() : void {
+    // this.roleService.getRoleAll().subscribe(data => {
+    //   this.roleData = data;
+    // });
     this.roleService.getreFreshAll()
     .subscribe(() =>{
       this.getData();
