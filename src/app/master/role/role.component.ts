@@ -31,22 +31,18 @@ export class RoleComponent implements OnInit {
     private dialogService:DialogsService) {   
   }
 
-  // @ViewChild(MatTable)
-  // table!: MatTable<Role>;
+  
 
 
 
   ngOnInit(){
-    // this.roleService.getRoleAll().subscribe(data => {
-    //   this.roleData = data;
-    // });
     this.roleService.getreFreshAll()
     .subscribe(() =>{
       this.getData();
     })
-
     this.getData();
   }
+  
   getData(){
     this.roleService.getRoleAll().subscribe(data => {
       this.roleData = data;
