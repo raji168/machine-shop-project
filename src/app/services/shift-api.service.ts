@@ -1,5 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
+=======
+import { Subject } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+>>>>>>> 645f78bcd32aa1f3363c0e9c79058160a4d4cef9
 import { Shift } from '../models/shift.model';
 import {  Observable,Subject } from 'rxjs';
 import { tap  } from 'rxjs/operators';
@@ -12,6 +17,8 @@ import { tap  } from 'rxjs/operators';
 
 
 export class ShiftApiService {
+
+  private reFresh = new Subject<void>();
 
   constructor(private http: HttpClient) { }
   private reFresh = new Subject<void>();

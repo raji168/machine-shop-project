@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Machine } from 'src/app/models/machine.model';
+import { DialogsService } from 'src/app/services/dialogs.service';
 import { MachineApiService } from 'src/app/services/machine-api.service';
 import { AlertService } from 'src/app/shared/alert.service';
 import { AddMachineComponent } from './add-machine/add-machine.component';
@@ -28,7 +29,8 @@ export class MachineComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private machineApi: MachineApiService,
-    private alert: AlertService) { }
+    private alert: AlertService,
+    private dialogsService: DialogsService) { }
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -58,10 +60,14 @@ export class MachineComponent implements OnInit {
   }
 
   onClickDelete(id: string) {
-    this.machineApi.deleteMachine(id).subscribe(res => {
-      this.dataMachine = this.dataMachine.filter(item => item._id !== id);
-      this.alert.showError('Data Deleted Suceessfully...!', 'Machine');
-    })
-
+    this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.machineApi.deleteMachine(id).subscribe(res => {
+            this.dataMachine = this.dataMachine.filter(item => item._id !== id);
+            this.alert.showError('Data Deleted Suceessfully...!', 'Machine');
+          })
+        }
+      });
   }
 }

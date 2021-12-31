@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Role } from '../../models/role.model';
 import { RoleApiService } from '../../services/role-api.service';
@@ -9,13 +8,14 @@ import { AddRoleComponent } from './add-role/add-role.component';
 import { DialogsService } from 'src/app/services/dialogs.service';
 
 
-// const ELEMENT_DATA: Role[] = [];
-
 @Component({
   selector: 'app-role',
   templateUrl: './role.component.html',
   styleUrls: ['./role.component.scss']
 })
+
+
+
 export class RoleComponent implements OnInit {
 
   roleData: Role[] = [];
@@ -25,7 +25,6 @@ export class RoleComponent implements OnInit {
 
   constructor(
     private roleService:RoleApiService,
-    private router: Router,
     private dialog: MatDialog,
     private notification: NotificationService,
     private dialogService:DialogsService) {   

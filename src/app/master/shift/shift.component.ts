@@ -28,7 +28,6 @@ export class ShiftComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
 
   constructor(
@@ -69,6 +68,7 @@ export class ShiftComponent implements OnInit {
 
   onClickAdd() {
     this.dialog.open(AddShiftComponent);
+
   }
 
 
@@ -77,6 +77,11 @@ export class ShiftComponent implements OnInit {
   }
 
   onClickDelete(id: string) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+>>>>>>> 645f78bcd32aa1f3363c0e9c79058160a4d4cef9
     this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
         if (res) {
@@ -89,5 +94,22 @@ export class ShiftComponent implements OnInit {
       });
 
   }
+<<<<<<< HEAD
+=======
+=======
+  this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
+  .afterClosed().subscribe(res => {
+    if(res){
+      this.shiftApi.deleteShift(id).subscribe(res => {
+        this.dataShift = this.dataShift.filter(item => item._id !== id);
+        this.ngOnInit();
+        this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
+      })
+    }
+  });
+
+}
+>>>>>>> 306433a0837fa37d56f0b8784a5fcb08d5c8c49b
+>>>>>>> 645f78bcd32aa1f3363c0e9c79058160a4d4cef9
 
 }
