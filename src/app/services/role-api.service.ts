@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Role} from '../models/role.model';
-import { Observable, Subject } from 'rxjs';
-import { tap  } from 'rxjs/operators';
+import { Role } from '../models/role.model';
+import {  Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -15,33 +15,46 @@ export class RoleApiService {
 
   private reFresh = new Subject<void>();
 
-  constructor( private http:HttpClient) { }
+  roles: Role[] = [];
 
-  roleForm: FormGroup= new FormGroup({
+  roleUpdated = new Subject();
+
+  constructor(private http: HttpClient) { }
+
+  roleForm: FormGroup = new FormGroup({
     serialno: new FormControl(''),
     name: new FormControl('')
   });
 
-  initializeFormGroup(){
+  getRoles() {
+    return [...this.roles]
+  }
+
+  addRoleData(roleData) {
+    this.roles = [...this.roles, roleData]
+    this.roleUpdated.next(this.roles);
+  }
+
+  initializeFormGroup() {
     this.roleForm.setValue({
-      serialno:'',
-      name:''
+      serialno: '',
+      name: ''
     });
   }
 
-  getreFreshAll(){
+  getreFreshAll() {
     return this.reFresh;
   }
 
-  getRoleAll(){
+  getRoleAll() {
     return this.http.get<Role[]>(this.url)
   }
 
 
-  addRole(role:Role){
-    return this.http.post<{_id:string}>(this.url,role)
-    .pipe(
-        tap(() =>{
+  addRole(role: Role) {
+    return this.http.post<{ _id: string }>(this.url, role)
+      .pipe(
+        tap(() => {
           this.reFresh.next();
         })
       );
@@ -49,14 +62,14 @@ export class RoleApiService {
 
   updateRole(role: Partial<Role>, id) {
     return this.http.patch<Role>(`${this.url}/${id}`, role)
-    .pipe(
-      tap(() =>{
-        this.reFresh.next();
-      })
-    );
+      .pipe(
+        tap(() => {
+          this.reFresh.next();
+        })
+      );
   }
 
-  deleteRole(_id:string){
+  deleteRole(_id: string) {
     return this.http.delete(`${this.url}/${_id}`);
   }
 }
