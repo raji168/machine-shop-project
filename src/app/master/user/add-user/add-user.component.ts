@@ -17,43 +17,35 @@ import { Role } from 'src/app/models/role.model';
 export class AddUserComponent implements OnInit {
 
   user: User;
-  userForm: FormGroup;
-<<<<<<< HEAD
-  roleData: Role[] = [];
-  _id: string;
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { user :User },
-    public roleService: RoleApiService,
-=======
-  userdata: User[] = [];
+  userForm: FormGroup;
+
+  roleData: Role[] = [];
+
   _id: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { user: User },
->>>>>>> e26e5b1ab3c7eb58fc4d0177380bc821634a96c7
+    public roleService: RoleApiService,
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService) { }
 
   ngOnInit() {
-
     this.user = this.data?.user;
-    this.userService.getUserAll().subscribe(data => {
-      this.userdata = data;
+    this.roleService.getRoleAll().subscribe(data => {
+      this.roleData = data;
     });
 
     if (this.user) {
       this.userService.userForm.patchValue(this.data.user);
+      this.userService.userForm.get('role').setValue(this.data.user.role._id);
+      this.userService.userForm.get('password').clearValidators();
     }
 
   }
 
   onSave() {
-<<<<<<< HEAD
-
-=======
->>>>>>> e26e5b1ab3c7eb58fc4d0177380bc821634a96c7
     if (this.user) {
       this.userService.updateUser(this.userService.userForm.value, this.user._id).subscribe(data => {
         this.dialogRef.close(data);

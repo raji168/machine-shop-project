@@ -16,9 +16,8 @@
 
       <mat-form-field appearance="outline" color="accent">
         <mat-label> Role </mat-label>
-        <input matInput placeholder=" Role *" formControlName="role" autocomplete="off">
-        <mat-select>
-          <!-- <mat-option *ngFor="let role of roleData" [value]="role._id">{{role.name}}</mat-option> -->
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let role of roleData " [value]="role._id">{{role.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
