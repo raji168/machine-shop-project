@@ -28,12 +28,7 @@ export class ShiftApiService {
 
   addShift(shift: Shift) {
     const url = ` http://192.168.0.13:3002/shifts`;
-    return this.http.post<{ _id: String }>(url, shift)
-    .pipe(
-      tap(() =>{
-        this.reFresh.next();
-      })
-    );
+    return this.http.post<{ _id: String }>(url, shift);
   }
 
 
