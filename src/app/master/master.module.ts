@@ -35,9 +35,6 @@ import { CustomerRoutingModule } from "./customer/customer-routing.module";
         ReactiveFormsModule,
         FlexLayoutModule,
         MasterRoutingModule,
-        ShiftRoutingModule,
-        MachineRoutingModule,
-        CustomerRoutingModule,
         MatButtonModule,
 
     ],
