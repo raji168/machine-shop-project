@@ -16,9 +16,11 @@ export class ShiftApiService {
   private reFresh = new Subject<void>();
 
   constructor(private http: HttpClient) { }
-  getreFreshAll(){
+
+  refreshAll(){
     return this.reFresh;
   }
+
   getShiftAll() {
     const url = ` http://192.168.0.13:3002/shifts`;
     return this.http.get<Shift[]>(url);
@@ -47,8 +49,12 @@ export class ShiftApiService {
 
   deleteShift(_id: string) {
     const url = ` http://192.168.0.13:3002/shifts`;
-    return this.http.delete(`${url}/${_id}`);
-
+    return this.http.delete(`${url}/${_id}`)
+    .pipe(
+      tap(()=>{
+        this.reFresh.next();
+      })
+    )
   }
 
 }

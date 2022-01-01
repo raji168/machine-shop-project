@@ -45,8 +45,8 @@ snack-bar-container.notification simple-snack-bar{
 .confirm-dialog-container #no-button{
     height: 50px;
     width: 50%;
-    background-color: #fc7169;
-    color:white;
+    background-color: rgb(214, 52, 52);
+    color:rgb(255, 255, 255);
     border-radius: 0px;
     // background-color:rgb(228, 59, 59);
     // color:black;
@@ -55,7 +55,7 @@ snack-bar-container.notification simple-snack-bar{
 .confirm-dialog-container #yes-button{
     height: 50px;
     width: 50%;
-    background-color: #b6bece;
+    background-color: #71c97b;
     color: white;
     border-radius: 0px;
 
