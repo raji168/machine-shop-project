@@ -86,12 +86,3 @@ export class InstrumentService {
 
 
 
-// insUpDepartment(department: InstrumentModel): Observable<any> {
-  //   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-  //   return this._http.post(this.API_URL + '/roles', department, httpOptions);
-  // }
-  // delDepartment(id: number): Observable<number> {
-  //   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-  //   //  soft Delete,So use post method to update msstatus=0
-  //   return this._http.post<number>(this.API_URL + '/roles?id=' + id, httpOptions);
-  // }

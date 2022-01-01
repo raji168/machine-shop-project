@@ -42,6 +42,7 @@ export class ShiftComponent implements OnInit {
 
   }
 
+<<<<<<< HEAD
   ngOnInit(): void  {
     this.shiftApi.refreshAll()
     .subscribe(() =>{
@@ -51,6 +52,18 @@ export class ShiftComponent implements OnInit {
   }
 
   shiftFill(){
+=======
+  ngOnInit() {
+    this.shiftApi.getreFreshAll()
+      .subscribe(() => {
+        this.getData();
+      })
+    this.getData();
+
+
+  }
+  getData() {
+>>>>>>> e26e5b1ab3c7eb58fc4d0177380bc821634a96c7
     this.shiftApi.getShiftAll().subscribe(data => {
       this.dataShift = data;
       this.shiftDataSource = new MatTableDataSource(this.dataShift);
@@ -58,6 +71,7 @@ export class ShiftComponent implements OnInit {
       this.shiftDataSource.sort = this.sort;
     });
   }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -76,6 +90,8 @@ export class ShiftComponent implements OnInit {
 
   onClickDelete(id: string) {
 
+=======
+>>>>>>> 8f17f16a8cf222b674cbfec4b65c8b649695f3b6
     this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
         if (res) {
@@ -87,5 +103,13 @@ export class ShiftComponent implements OnInit {
         }
       });
   }
+<<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
 
 }
+=======
+>>>>>>> e26e5b1ab3c7eb58fc4d0177380bc821634a96c7
+}
+>>>>>>> 8f17f16a8cf222b674cbfec4b65c8b649695f3b6

@@ -1,44 +1,36 @@
-.role-maintable{
-    margin: 20px;
+.container{
+    margin:20px;
     padding: 20px;
     box-sizing: border-box;
+}
+.top-menu{
+ background-color: transparent;   
+}
+.table-role mat-header-cell{
+    font-size: 16px;
+    background-color: rgb(255, 222, 90);
+    color:black;
+} 
+.create-button{
+    float:right;
+    margin-top: -50px;
+}
+.search-form-field{
+    padding-left: 20px;
+    width: 25%;
+}
+.edit-button{
+    display: grid;
+    justify-content: center;
+    gap:10px 10px;
+}
+ mat-cell{
     justify-content: center;
 }
-table {
-    width: 70%;
-    color: #000;
+mat-header-cell{
+    justify-content: center;
 }
-.top-menu {
-    background-color: transparent; 
-    font-size: 25px;
-    align-items: center;
-    margin-left: 20%;  
-    
-}
-.create-button{
-    margin-top: 20px;
-    margin-left: 83%;
-    
+ng-container{
+    display: grid;
 }
 
-.role-table table{
-    margin-left: 20%;
-    margin-top: 20px;
-}
-.role-table th{
-    text-transform: uppercase; 
-    letter-spacing: 1px;
-    font-weight: 700;
-    color: black;
-    text-align: center;
-    background-color: rgb(255, 222, 90);
-}
-.role-table td{
-    text-align: center;
-    padding-left: 0px;
-}
-
-
-
-
-// 

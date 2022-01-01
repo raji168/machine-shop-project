@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Role } from 'src/app/models/role.model';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -27,6 +27,14 @@ export class AddRoleComponent implements OnInit {
     public notification: NotificationService) { }
 
   ngOnInit(): void {
+
+    this.roleForm = new FormGroup({
+      serialno: new FormControl(''),
+      name: new FormControl('')
+    });
+
+
+
     this.role = this.data?.role;
 
     this.roleService.getRoleAll().subscribe(data => {
@@ -40,7 +48,7 @@ export class AddRoleComponent implements OnInit {
   }
 
 
-  onSave() {
+  onSubmit() {
     if (this.role) {
       this.roleService.updateRole(this.roleService.roleForm.value, this.role._id).subscribe(data => {
         this.dialogRef.close(data);

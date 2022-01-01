@@ -18,12 +18,20 @@ export class AddUserComponent implements OnInit {
 
   user: User;
   userForm: FormGroup;
+<<<<<<< HEAD
   roleData: Role[] = [];
   _id: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { user :User },
     public roleService: RoleApiService,
+=======
+  userdata: User[] = [];
+  _id: string;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { user: User },
+>>>>>>> e26e5b1ab3c7eb58fc4d0177380bc821634a96c7
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService) { }
@@ -31,19 +39,21 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
 
     this.user = this.data?.user;
-    this.roleService.getRoleAll().subscribe(data => {
-      this.roleData = data;
+    this.userService.getUserAll().subscribe(data => {
+      this.userdata = data;
     });
 
     if (this.user) {
       this.userService.userForm.patchValue(this.data.user);
-      this.userService.userForm.get('role')?.setValue(this.data.user.role._id);
     }
 
   }
 
   onSave() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> e26e5b1ab3c7eb58fc4d0177380bc821634a96c7
     if (this.user) {
       this.userService.updateUser(this.userService.userForm.value, this.user._id).subscribe(data => {
         this.dialogRef.close(data);
