@@ -80,7 +80,7 @@ export class ShiftComponent implements OnInit {
         if (res) {
           this.shiftApi.deleteShift(id).subscribe(res => {
             this.dataShift = this.dataShift.filter(item => item._id !== id);
-            this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
+            this.alert.showError('Shift Deleted Successfully...!', 'Shift');
           })
         }
       });
