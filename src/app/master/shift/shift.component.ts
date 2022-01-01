@@ -24,7 +24,7 @@ export class ShiftComponent implements OnInit {
 
   shiftDataSource;
 
-  displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions' ,'select'];
+  displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -55,10 +55,6 @@ export class ShiftComponent implements OnInit {
       this.shiftDataSource.paginator = this.paginator;
       this.shiftDataSource.sort = this.sort;
     });
-  }
-  multiDelete(){
-    var selectedData = this.shiftDataSource.filter(source => source.isDelete === false);
-    this.shiftDataSource = selectedData;
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
