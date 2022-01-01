@@ -42,15 +42,21 @@ export class ShiftComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit(): void  {
+    this.shiftApi.refreshAll()
+    .subscribe(() =>{
+      this.shiftFill();
+    })
+    this.shiftFill();
+  }
 
+  shiftFill(){
     this.shiftApi.getShiftAll().subscribe(data => {
       this.dataShift = data;
       this.shiftDataSource = new MatTableDataSource(this.dataShift);
       this.shiftDataSource.paginator = this.paginator;
       this.shiftDataSource.sort = this.sort;
     });
-
   }
 
   applyFilter(event: Event) {
@@ -69,33 +75,17 @@ export class ShiftComponent implements OnInit {
   }
 
   onClickDelete(id: string) {
-<<<<<<< HEAD
 
     this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
         if (res) {
           this.shiftApi.deleteShift(id).subscribe(res => {
             this.dataShift = this.dataShift.filter(item => item._id !== id);
-            this.ngOnInit();
+            // this.ngOnInit();
             this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
           })
         }
       });
-
   }
-=======
-  this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
-  .afterClosed().subscribe(res => {
-    if(res){
-      this.shiftApi.deleteShift(id).subscribe(res => {
-        this.dataShift = this.dataShift.filter(item => item._id !== id);
-        this.ngOnInit();
-        this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
-      })
-    }
-  });
-
-}
->>>>>>> 306433a0837fa37d56f0b8784a5fcb08d5c8c49b
 
 }

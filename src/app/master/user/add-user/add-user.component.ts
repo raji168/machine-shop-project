@@ -4,6 +4,8 @@ import { UserApiService } from 'src/app/services/user-api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { User } from 'src/app/models/user.model';
+import { RoleApiService } from 'src/app/services/role-api.service';
+import { Role } from 'src/app/models/role.model';
 
 
 @Component({
@@ -16,20 +18,12 @@ export class AddUserComponent implements OnInit {
 
   user: User;
   userForm: FormGroup;
-<<<<<<< HEAD
-  userdata: User[] = [];
-  _id: string;
-
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { user: User },
-=======
-
   roleData: Role[] = [];
   _id: string;
 
   constructor(
-    public roleService :RoleApiService,
->>>>>>> bc37cd62d57e8e54d7c4e14c834088de4df01794
+    @Inject(MAT_DIALOG_DATA) public data: { user :User },
+    public roleService: RoleApiService,
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService) { }
@@ -49,7 +43,7 @@ export class AddUserComponent implements OnInit {
   }
 
   onSave() {
-    
+
     if (this.user) {
       this.userService.updateUser(this.userService.userForm.value, this.user._id).subscribe(data => {
         this.dialogRef.close(data);

@@ -35,6 +35,14 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit() {
 
+    this.customerApi.refreshAll()
+    .subscribe(()=>{
+      this.customerFill();
+    })
+    this.customerFill();
+  }
+
+  customerFill(){
     this.customerApi.getCustomerAll().subscribe(data => {
       this.dataCustomer = data;
       this.customerDataSource = new MatTableDataSource(this.dataCustomer);
