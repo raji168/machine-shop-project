@@ -52,11 +52,13 @@ export class AddRoleComponent implements OnInit {
     if (this.role) {
       this.roleService.updateRole(this.roleService.roleForm.value, this.role._id).subscribe(data => {
         this.dialogRef.close(data);
+        this.roleService.roleForm.reset();
         this.notification.success("successfullly data Edited!!");
       });
     } else {
       this.roleService.addRole(this.roleService.roleForm.value).subscribe(data => {
         this.dialogRef.close(data);
+        this.roleService.roleForm.reset();
         this.notification.success("successfullly data added!!");
       });
 

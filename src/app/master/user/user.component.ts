@@ -10,9 +10,6 @@ import { DialogsService } from 'src/app/services/dialogs.service';
 
 
 
-
-
-
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',

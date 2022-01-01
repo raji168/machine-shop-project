@@ -31,7 +31,7 @@ export class UserApiService {
     this.userForm.setValue({
       sno: '',
       name: '',
-      role: '',
+      role: 'Role',
       emailId: '',
       phoneNo:'',
       userName: ''

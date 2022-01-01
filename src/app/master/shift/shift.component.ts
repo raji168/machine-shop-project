@@ -38,20 +38,17 @@ export class ShiftComponent implements OnInit {
     private alert: AlertService,
     private changeDetectorRef: ChangeDetectorRef,
     private dialogsService: DialogsService
-  ) {
+  ) { }
 
+  ngOnInit(): void  {
+    this.shiftApi.refreshAll()
+    .subscribe(() =>{
+      this.shiftFill();
+    })
+    this.shiftFill();
   }
 
-  ngOnInit() {
-    this.shiftApi.getreFreshAll()
-      .subscribe(() => {
-        this.getData();
-      })
-    this.getData();
-
-
-  }
-  getData() {
+  shiftFill(){
     this.shiftApi.getShiftAll().subscribe(data => {
       this.dataShift = data;
       this.shiftDataSource = new MatTableDataSource(this.dataShift);
@@ -83,12 +80,13 @@ export class ShiftComponent implements OnInit {
         if (res) {
           this.shiftApi.deleteShift(id).subscribe(res => {
             this.dataShift = this.dataShift.filter(item => item._id !== id);
-            this.ngOnInit();
             this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
           })
         }
       });
-
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5c17394db42e9a590140806fac65c784380db94e
 }

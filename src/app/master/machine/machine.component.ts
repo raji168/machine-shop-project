@@ -37,7 +37,14 @@ export class MachineComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
+    this.machineApi.refreshAll()
+    .subscribe(()=>{
+      this.machineFill();
+    })
+    this.machineFill();
+  }
 
+  machineFill(){
     this.machineApi.getMachineAll().subscribe(data => {
       this.dataMachine = data;
       this.machineDataSource = new MatTableDataSource(this.dataMachine);

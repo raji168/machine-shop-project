@@ -4,6 +4,8 @@ import { UserApiService } from 'src/app/services/user-api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { User } from 'src/app/models/user.model';
+import { RoleApiService } from 'src/app/services/role-api.service';
+import { Role } from 'src/app/models/role.model';
 
 
 @Component({
@@ -15,25 +17,30 @@ import { User } from 'src/app/models/user.model';
 export class AddUserComponent implements OnInit {
 
   user: User;
+
   userForm: FormGroup;
-  userdata: User[] = [];
+
+  roleData: Role[] = [];
+
   _id: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { user: User },
+    public roleService: RoleApiService,
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService) { }
 
   ngOnInit() {
-
     this.user = this.data?.user;
-    this.userService.getUserAll().subscribe(data => {
-      this.userdata = data;
+    this.roleService.getRoleAll().subscribe(data => {
+      this.roleData = data;
     });
 
     if (this.user) {
       this.userService.userForm.patchValue(this.data.user);
+      this.userService.userForm.get('role').setValue(this.data.user.role._id);
+      this.userService.userForm.get('password').clearValidators();
     }
 
   }
