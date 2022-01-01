@@ -11,6 +11,7 @@ import { tap  } from 'rxjs/operators';
 })
 export class RoleApiService {
 
+  url: string = 'http://192.168.0.13:3002/roles';
 
   private reFresh = new Subject<void>();
 
@@ -33,14 +34,12 @@ export class RoleApiService {
   }
 
   getRoleAll(){
-    const url =` http://192.168.0.13:3002/roles`;
-    return this.http.get<Role[]>(url)
+    return this.http.get<Role[]>(this.url)
   }
 
 
   addRole(role:Role){
-    const url =` http://192.168.0.13:3002/roles`;
-    return this.http.post<{_id:string}>(url,role)
+    return this.http.post<{_id:string}>(this.url,role)
     .pipe(
         tap(() =>{
           this.reFresh.next();
@@ -49,8 +48,7 @@ export class RoleApiService {
   }
 
   updateRole(role: Partial<Role>, id) {
-    const url =` http://192.168.0.13:3002/roles`;
-    return this.http.patch<Role>(`${url}/${id}`, role)
+    return this.http.patch<Role>(`${this.url}/${id}`, role)
     .pipe(
       tap(() =>{
         this.reFresh.next();
@@ -59,7 +57,6 @@ export class RoleApiService {
   }
 
   deleteRole(_id:string){
-    const url = `http://192.168.0.13:3002/roles`;
-    return this.http.delete(`${url}/${_id}`);
+    return this.http.delete(`${this.url}/${_id}`);
   }
 }

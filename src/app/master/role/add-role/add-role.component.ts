@@ -27,6 +27,14 @@ export class AddRoleComponent implements OnInit {
     public notification: NotificationService) { }
 
   ngOnInit(): void {
+
+    this.roleForm = new FormGroup({
+      serialno: new FormControl(''),
+      name: new FormControl('')
+    });
+
+
+
     this.role = this.data?.role;
 
     this.roleService.getRoleAll().subscribe(data => {

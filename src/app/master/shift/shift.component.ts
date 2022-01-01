@@ -69,7 +69,6 @@ export class ShiftComponent implements OnInit {
   }
 
   onClickDelete(id: string) {
-<<<<<<< HEAD
 
     this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
@@ -83,19 +82,5 @@ export class ShiftComponent implements OnInit {
       });
 
   }
-=======
-  this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
-  .afterClosed().subscribe(res => {
-    if(res){
-      this.shiftApi.deleteShift(id).subscribe(res => {
-        this.dataShift = this.dataShift.filter(item => item._id !== id);
-        this.ngOnInit();
-        this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
-      })
-    }
-  });
-
-}
->>>>>>> 306433a0837fa37d56f0b8784a5fcb08d5c8c49b
 
 }
