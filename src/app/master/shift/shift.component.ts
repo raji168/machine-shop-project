@@ -56,8 +56,6 @@ export class ShiftComponent implements OnInit {
       this.shiftDataSource.sort = this.sort;
     });
   }
-
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.shiftDataSource.filter = filterValue.trim().toLowerCase();
