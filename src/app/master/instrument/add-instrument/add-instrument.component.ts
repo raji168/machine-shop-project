@@ -27,6 +27,7 @@ export class AddInstrumentComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    
     this.form = new FormGroup({
       sno: new FormControl(''),
       name: new FormControl(''),

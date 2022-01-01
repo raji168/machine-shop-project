@@ -43,15 +43,23 @@ export class ShiftComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.shiftApi.getreFreshAll()
+      .subscribe(() => {
+        this.getData();
+      })
+    this.getData();
 
+
+  }
+  getData() {
     this.shiftApi.getShiftAll().subscribe(data => {
       this.dataShift = data;
       this.shiftDataSource = new MatTableDataSource(this.dataShift);
       this.shiftDataSource.paginator = this.paginator;
       this.shiftDataSource.sort = this.sort;
     });
-
   }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -69,7 +77,10 @@ export class ShiftComponent implements OnInit {
   }
 
   onClickDelete(id: string) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8f17f16a8cf222b674cbfec4b65c8b649695f3b6
     this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
         if (res) {
@@ -82,5 +93,9 @@ export class ShiftComponent implements OnInit {
       });
 
   }
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> 8f17f16a8cf222b674cbfec4b65c8b649695f3b6
