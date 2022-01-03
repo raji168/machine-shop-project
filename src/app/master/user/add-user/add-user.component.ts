@@ -33,7 +33,7 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.data?.user;
-    this.roleService.getRoleAll().subscribe(data => {
+    this.roleService.get().subscribe(data => {
       this.roleData = data;
     });
 

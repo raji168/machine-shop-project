@@ -37,7 +37,7 @@ export class AddRoleComponent implements OnInit {
 
     this.role = this.data?.role;
 
-    this.roleService.getRoleAll().subscribe(data => {
+    this.roleService.get().subscribe(data => {
       this.dataRole = data;
     });
 

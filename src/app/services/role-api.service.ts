@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Role } from '../models/role.model';
 import {  Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { RoleDataService } from '../data-services/role-data.service';
 
 
 @Injectable({
@@ -19,43 +20,50 @@ export class RoleApiService {
 
   roleUpdated = new Subject();
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private roleDataService: RoleDataService
+    ) { }
 
   roleForm: FormGroup = new FormGroup({
     serialno: new FormControl(''),
     name: new FormControl('')
   });
 
-  getRoles() {
-    return [...this.roles]
-  }
+  // getRoles() {
+  //   return [...this.roles]
+  // }
 
-  addRoleData(roleData) {
-    this.roles = [...this.roles, roleData]
-    this.roleUpdated.next(this.roles);
-  }
+  // addRoleData(roleData) {
+  //   this.roles = [...this.roles, roleData]
+  //   this.roleUpdated.next(this.roles);
+  // }
 
-  initializeFormGroup() {
-    this.roleForm.setValue({
-      serialno: '',
-      name: ''
-    });
-  }
+  // initializeFormGroup() {
+  //   this.roleForm.setValue({
+  //     serialno: '',
+  //     name: ''
+  //   });
+  // }
 
-  getreFreshAll() {
-    return this.reFresh;
-  }
+  // getreFreshAll() {
+  //   return this.reFresh;
+  // }
 
-  getRoleAll() {
-    return this.http.get<Role[]>(this.url)
+  get() {
+    return this.http.get<Role[]>(this.url).pipe(
+      tap((roles) => {
+          this.roleDataService.loadRoles(roles)
+      })
+    )
   }
 
 
   addRole(role: Role) {
-    return this.http.post<{ _id: string }>(this.url, role)
+    return this.http.post<Role>(this.url, role)
       .pipe(
-        tap(() => {
-          this.reFresh.next();
+        tap((role) => {
+          this.roleDataService.addRole(role)
         })
       );
   }
@@ -63,8 +71,8 @@ export class RoleApiService {
   updateRole(role: Partial<Role>, id) {
     return this.http.patch<Role>(`${this.url}/${id}`, role)
       .pipe(
-        tap(() => {
-          this.reFresh.next();
+        tap(role => {
+          this.roleDataService.updateRole(role)
         })
       );
   }

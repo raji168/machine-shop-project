@@ -18,6 +18,7 @@ import { AddInstrumentComponent } from './instrument/add-instrument/add-instrume
 import { AddRoleComponent } from './role/add-role/add-role.component';
 import { ShiftComponent } from "./shift/shift.component";
 import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
+import { RoleDataService } from "../data-services/role-data.service";
 
 
 
@@ -47,7 +48,6 @@ import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
         [NgxMatTimepickerModule.setLocale('en-IN')]
 
     ],
-    providers: []
 })
 
 
