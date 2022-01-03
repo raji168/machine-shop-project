@@ -32,5 +32,6 @@ export class RoleDataService {
         this.roles[updateRoleIndex] = updatedRole
         this.roleUpdated$.next(this.roles);
     }
+    
 
 }

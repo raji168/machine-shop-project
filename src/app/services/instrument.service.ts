@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import {  Subject } from 'rxjs';
 import { InstrumentModel } from '../models/instrument.model'
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { tap  } from 'rxjs/operators';
+import { InstrumentDataService } from '../data-services/instrument-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstrumentService {
-
-  // common of url address
   
+  API_URL : string = 'http://192.168.0.13:3002/instruments';
 
-  API_URL: string = 'http://192.168.0.13:3002/instruments';
-  
+  // private reFresh = new Subject<void>();
 
   
+  instruments : InstrumentModel[] = [];  
+  
+  instrumentUpdated = new Subject();
 
-  constructor(private _http: HttpClient) { }
-
-  private reFresh = new Subject<void>();
-
+  constructor(
+    private _http: HttpClient,
+    private instrumentDataServivce : InstrumentDataService
+  ) { }
 
   form: FormGroup = new FormGroup({
     sno: new FormControl(''),
@@ -32,33 +34,22 @@ export class InstrumentService {
     calibratedue: new FormControl('')
   });
 
-  initializeFromGroup() {
-    this.form.setValue({
-      sno: '',
-      name: '',
-      referenceno: '',
-      range: '',
-      calibratedon: '',
-      calibratedue: ''
-    });
+
+  get() {
+    return this._http.get(this.API_URL)
+    .pipe(
+      tap((instruments) => {
+      this.instrumentDataServivce.loadInstrument(instruments)
+      })
+    )
   }
 
-  getreFreshAll(){
-    return this.reFresh;
-  }
-
-
-
-
-  getInstrumentAll(): Observable<any> {
-    return this._http.get(this.API_URL);
-  }
 
   addInstrument(instrument: InstrumentModel) {
-    return this._http.post<{ _id: string }>(this.API_URL, instrument)
+    return this._http.post<InstrumentModel>(this.API_URL, instrument)
     .pipe(
-      tap(() =>{
-        this.reFresh.next();
+      tap((instrument) =>{
+        this.instrumentDataServivce.addInstrument(instrument)
       })
     );
   }
@@ -67,7 +58,7 @@ export class InstrumentService {
     return this._http.patch<InstrumentModel>(`${this.API_URL}/${id}`, instrument)
     .pipe(
       tap(() =>{
-        this.reFresh.next();
+        this.instrumentDataServivce.updateInstrument(instrument)
       })
     );
   }

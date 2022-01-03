@@ -38,8 +38,9 @@ export class AddInstrumentComponent implements OnInit {
     });
 
     this.instrument= this.data?.instrument;
-    this.instrumentService.getInstrumentAll().subscribe(data => {
-      this.dataInstrument =data;
+
+    this.instrumentService.get().subscribe(data => {
+      this.dataInstrument = data;
     });
 
     if(this.instrument) {
