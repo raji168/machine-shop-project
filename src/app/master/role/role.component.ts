@@ -9,6 +9,7 @@ import { DialogsService } from 'src/app/services/dialogs.service';
 import { RoleDataService } from 'src/app/data-services/role-data.service';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -19,11 +20,11 @@ import { takeUntil } from 'rxjs/operators';
 
 
 
-export class RoleComponent implements OnInit, OnDestroy {
+export class RoleComponent implements OnInit,OnDestroy {
 
   roleData: Role[] = [];
 
-  displayedColumns: string[] = ['serialno', 'name', 'actions'];
+  displayedColumns: string[] = [ 'serialno','name', 'actions'];
 
   // subscription: Subscription;
 
@@ -38,21 +39,17 @@ export class RoleComponent implements OnInit, OnDestroy {
     private dialogService: DialogsService) {
 
   }
+  roleForm: FormGroup = new FormGroup({
+    serialno: new FormControl(''),
+    name: new FormControl('')
+  });
 
 
 
 
 
   ngOnInit(): void {
-    // this.roleService.getRoleAll().subscribe(data => {
-    //   this.roleData = data;
-    // });
-    // this.roleService.getreFreshAll()
-    // .subscribe(() =>{
-    //   this.getData();
-    // })
-    // this.getData();
-
+  
     this.roleData = this.roleDataService.getRoles()
     this.roleDataService.roleUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(roles => {
       this.roleData = roles
@@ -61,20 +58,12 @@ export class RoleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // if (this.subscription) {
-    //   this.subscription.unsubscribe()
-    // }
+   
     this.destroyed$.next();
     this.destroyed$.complete();
   }
 
-  getData() {
-    // this.roleService.getRoleAll().subscribe(data => {
-    //   this.roleData = data;
-    // });
-
-  }
-
+ 
   onCreate() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -90,11 +79,9 @@ export class RoleComponent implements OnInit, OnDestroy {
   onDelete(id) {
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
-        // console.log(res);
         if (res) {
           this.roleService.deleteRole(id).subscribe(res => {
             this.roleData = this.roleData.filter(item => item._id !== id);
-            this.ngOnInit();
             this.notification.success(' deleted Suceessfully');
           })
         }

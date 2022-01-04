@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Role } from '../models/role.model';
 import {  Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -14,7 +13,6 @@ export class RoleApiService {
 
   url: string = 'http://192.168.0.13:3002/roles';
 
-  // private reFresh = new Subject<void>();
 
   roles: Role[] = [];
 
@@ -25,31 +23,7 @@ export class RoleApiService {
     private roleDataService: RoleDataService
   ) { }
 
-  roleForm: FormGroup = new FormGroup({
-    serialno: new FormControl(''),
-    name: new FormControl('')
-  });
-
-  // getRoles() {
-  //   return [...this.roles]
-  // }
-
-  // addRoleData(roleData) {
-  //   this.roles = [...this.roles, roleData]
-  //   this.roleUpdated.next(this.roles);
-  // }
-
-  // initializeFormGroup() {
-  //   this.roleForm.setValue({
-  //     serialno: '',
-  //     name: ''
-  //   });
-  // }
-
-  // getreFreshAll() {
-  //   return this.reFresh;
-  // }
-
+  
   get() {
     return this.http.get<Role[]>(this.url).pipe(
       tap((roles) => {
@@ -80,5 +54,6 @@ export class RoleApiService {
 
   deleteRole(_id: string) {
     return this.http.delete(`${this.url}/${_id}`);
+
   }
 }

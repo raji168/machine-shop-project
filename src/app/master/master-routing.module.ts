@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { InstrumentResolver } from "../resolvers/instrument.resolver";
 import { RoleResolver } from "../resolvers/role.resolver";
 import { CustomerComponent } from "./customer/customer.component";
 import { InstrumentComponent } from "./instrument/instrument.component";
@@ -17,7 +18,9 @@ const routes: Routes = [
     { path: 'role', component: RoleComponent, resolve: {
         roles: RoleResolver
     } },
-    { path: 'instrument', component: InstrumentComponent },
+    { path: 'instrument', component: InstrumentComponent, resolve:{
+        instrument :InstrumentResolver
+    } },
     { path: 'user', component: UserComponent }
 
 ];

@@ -38,7 +38,7 @@ export class InstrumentService {
   get() {
     return this._http.get<InstrumentModel[]>(this.API_URL).pipe(
       tap((instruments) => {
-        this.instrumentDataServivce.loadInstrument(instruments);
+        this.instrumentDataServivce.loadInstrument(instruments)
       })
     )
   }
