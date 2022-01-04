@@ -14,7 +14,7 @@ export class RoleApiService {
 
   url: string = 'http://192.168.0.13:3002/roles';
 
-  private reFresh = new Subject<void>();
+  // private reFresh = new Subject<void>();
 
   roles: Role[] = [];
 
@@ -23,7 +23,7 @@ export class RoleApiService {
   constructor(
     private http: HttpClient,
     private roleDataService: RoleDataService
-    ) { }
+  ) { }
 
   roleForm: FormGroup = new FormGroup({
     serialno: new FormControl(''),

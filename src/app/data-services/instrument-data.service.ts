@@ -14,8 +14,8 @@ export class InstrumentDataService{
         return[...this.instruments]
     }
 
-    loadInstrument(instruments :InstrumentModel[]){
-        this.instruments =instruments;
+    loadInstrument(instruments : InstrumentModel[]) {
+        this.instruments = instruments;
     }
 
     
@@ -26,8 +26,8 @@ export class InstrumentDataService{
     updateInstrument(instrumentResponse :InstrumentModel){
         const updateInstrument = this.instruments.find(instrument => instrument._id === instrument._id)
         const updateInstrumentIndex  =this.instruments.findIndex(instrument => instrument._id === instrument._id)
-        const updateInstruments = { ...updateInstrument, ...instrumentResponse}
-        this.instruments[updateInstrumentIndex] =updateInstruments
+        const updatedInstrument = { ...updateInstrument, ...instrumentResponse}
+        this.instruments[updateInstrumentIndex] =updatedInstrument
         this.instrumentUpdated$.next(this.instruments);
     }
 

@@ -36,10 +36,9 @@ export class InstrumentService {
 
 
   get() {
-    return this._http.get(this.API_URL)
-    .pipe(
+    return this._http.get<InstrumentModel[]>(this.API_URL).pipe(
       tap((instruments) => {
-      this.instrumentDataServivce.loadInstrument(instruments)
+        this.instrumentDataServivce.loadInstrument(instruments);
       })
     )
   }
@@ -48,7 +47,7 @@ export class InstrumentService {
   addInstrument(instrument: InstrumentModel) {
     return this._http.post<InstrumentModel>(this.API_URL, instrument)
     .pipe(
-      tap((instrument) =>{
+      tap((instrument) => {
         this.instrumentDataServivce.addInstrument(instrument)
       })
     );
@@ -57,7 +56,7 @@ export class InstrumentService {
   updateInstrument(instrument: Partial<InstrumentModel>, id) {
     return this._http.patch<InstrumentModel>(`${this.API_URL}/${id}`, instrument)
     .pipe(
-      tap(() =>{
+      tap(instrument => {
         this.instrumentDataServivce.updateInstrument(instrument)
       })
     );
