@@ -12,7 +12,7 @@ export class ShiftResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    return this.shift.getShift()
+    return this.shift.getShiftAll()
 
   }
 }

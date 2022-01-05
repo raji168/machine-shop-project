@@ -12,7 +12,7 @@ export class MachineResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    return this.machine.getMachine()
+    return this.machine.getMachineAll()
 
   }
 }

@@ -39,7 +39,7 @@ export class AddCustomerComponent implements OnInit {
   ngOnInit() {
     this.customer = this.data?.customer;
 
-    this.customerApi.getCustomer().subscribe(data => {
+    this.customerApi.getCustomerAll().subscribe(data => {
       this.dataMachine = data;
     });
 

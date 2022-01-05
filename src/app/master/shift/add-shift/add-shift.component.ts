@@ -41,7 +41,7 @@ export class AddShiftComponent implements OnInit {
   ngOnInit() {
     this.shift = this.data?.shift;
 
-    this.shiftApi.getShift().subscribe(data => {
+    this.shiftApi.getShiftAll().subscribe(data => {
       this.dataShift = data;
     });
 

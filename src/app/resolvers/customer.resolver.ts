@@ -13,7 +13,7 @@ export class CustomerResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    return this.customer.getCustomer()
+    return this.customer.getCustomerAll()
 
   }
 }

@@ -17,7 +17,7 @@ export class CustomerApiService {
     return this.reFresh;
   }
 
-  getCustomer() {
+  getCustomerAll() {
     const url = `http://192.168.0.13:3002/customers`;
     return this.http.get<Customer[]>(url);
   }
