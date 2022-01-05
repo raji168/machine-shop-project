@@ -57,13 +57,13 @@ export class AddShiftComponent implements OnInit {
     if (this.shift ) {
       this.shiftApi.updateShift(this.shiftForm.value, this.shift._id).subscribe(data => {
         this.dialogRef.close(data);
-        this.alert.showSuccess('Data Updated Suceessfully...!', 'Shift');
+        this.alert.showSuccess('Shift Updated Successfully...!', 'Shift');
         
       });
     } else {
       this.shiftApi.addShift(this.shiftForm.value).subscribe(data => {
         this.dialogRef.close(data);
-        this.alert.showSuccess('Data Added Suceessfully...!' , 'Shift');
+        this.alert.showSuccess('Shift Added Successfully...! ', 'Shift');
       });
     }
   }
