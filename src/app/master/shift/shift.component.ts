@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 import { Shift } from 'src/app/models/shift.model';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
 import { AlertService } from 'src/app/shared/alert.service';
@@ -11,6 +10,7 @@ import { AddShiftComponent } from './add-shift/add-shift.component';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { ShiftDataService } from 'src/app/data-services/shift-data.service';
 import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 
 const ELEMENT_DATA: Shift[] = [];
@@ -25,6 +25,8 @@ export class ShiftComponent implements OnInit {
   shiftData: Shift[] = [];
 
   shiftDataSource;
+
+  destroyed$ = new Subject();
 
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
