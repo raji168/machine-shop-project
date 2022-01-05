@@ -54,12 +54,12 @@ export class AddMachineComponent implements OnInit {
     if (this.machine) {
       this.machineApi.updateMachine(this.machineForm.value, this.machine._id).subscribe(data => {
         this.dialogRef.close(data);
-        this.alert.showSuccess('Data Updated Suceessfully...!', 'Machine');
+        this.alert.showSuccess('Machine Updated Successfully...!', 'Machine');
       });
     } else {
       this.machineApi.addMachine(this.machineForm.value).subscribe(data => {
         this.dialogRef.close(data);
-        this.alert.showSuccess('Data Added Suceessfully...!','Machine');
+        this.alert.showSuccess('Machine Added Successfully...!','Machine');
       });
 
     }

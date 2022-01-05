@@ -17,9 +17,9 @@ export class ShiftApiService {
 
   constructor(private http: HttpClient) { }
 
-  refreshAll(){
-    return this.reFresh;
-  }
+  // refreshAll(){
+  //   return this.reFresh;
+  // }
 
   getShiftAll() {
     const url = ` http://192.168.0.13:3002/shifts`;

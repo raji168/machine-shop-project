@@ -47,6 +47,7 @@ export class ShiftComponent implements OnInit {
     this.shiftDataService.shiftUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(shifts => {
       this.shiftData = shifts
     })
+    this.shiftFill();
   }
 
   ngOnDestroy(): void {
@@ -89,7 +90,7 @@ export class ShiftComponent implements OnInit {
         if (res) {
           this.shiftApi.deleteShift(id).subscribe(res => {
             this.shiftData = this.shiftData.filter(item => item._id !== id);
-            this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
+            this.alert.showError('Shift Deleted Successfully...!', 'Shift');
           })
         }
       });
