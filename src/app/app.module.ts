@@ -12,12 +12,16 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
 
 @NgModule({
+
   declarations: [
+
     AppComponent,
- 
     MatConfirmDialogComponent
+
   ],
+
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -27,13 +31,15 @@ import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confi
     HttpClientModule,
     ToastrModule.forRoot({
       timeOut: 3000,
-    positionClass: 'toast-top-right',
-    preventDuplicates: true,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
     })
 
   ],
+
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[MatConfirmDialogComponent]
+  entryComponents: [MatConfirmDialogComponent]
 })
+
 export class AppModule { }

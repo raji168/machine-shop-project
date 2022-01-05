@@ -11,12 +11,12 @@ import { AlertService } from 'src/app/shared/alert.service';
   styleUrls: ['./add-machine.component.scss']
 })
 export class AddMachineComponent implements OnInit {
-  
+
   machine: Machine;
 
   machineForm: FormGroup;
 
-  dataMachine: Machine[] = [];
+  machineData: Machine[] = [];
 
   _id: string;
 
@@ -24,7 +24,7 @@ export class AddMachineComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { machine: Machine },
     public dialogRef: MatDialogRef<AddMachineComponent>,
     private machineApi: MachineApiService,
-    private alert:AlertService) {
+    private alert: AlertService) {
 
 
     this.machineForm = new FormGroup({
@@ -34,6 +34,7 @@ export class AddMachineComponent implements OnInit {
       brand: new FormControl(null, Validators.required),
       category: new FormControl(null, Validators.required)
     });
+
   }
 
   ngOnInit() {
@@ -41,12 +42,13 @@ export class AddMachineComponent implements OnInit {
     this.machine = this.data?.machine;
 
     this.machineApi.getMachineAll().subscribe(data => {
-      this.dataMachine = data;
+      this.machineData = data;
     });
 
     if (this.data.machine) {
       this.machineForm.patchValue(this.data.machine);
     }
+
   }
 
   onSave() {
@@ -56,10 +58,11 @@ export class AddMachineComponent implements OnInit {
         this.dialogRef.close(data);
         this.alert.showSuccess('Machine Updated Successfully...!', 'Machine');
       });
+      
     } else {
       this.machineApi.addMachine(this.machineForm.value).subscribe(data => {
         this.dialogRef.close(data);
-        this.alert.showSuccess('Machine Added Successfully...!','Machine');
+        this.alert.showSuccess('Machine Added Successfully...!', 'Machine');
       });
 
     }

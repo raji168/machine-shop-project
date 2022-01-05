@@ -7,11 +7,12 @@ import { CustomerComponent } from "./customer.component";
 
 
 @NgModule({
-    declarations:[
+    
+    declarations: [
         CustomerComponent,
         AddCustomerComponent
     ],
-    imports:[
+    imports: [
         ReactiveFormsModule,
         CustomerRoutingModule,
         MaterialModule
@@ -20,4 +21,4 @@ import { CustomerComponent } from "./customer.component";
 })
 
 
-export class CustomerModule{}
+export class CustomerModule { }

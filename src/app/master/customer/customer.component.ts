@@ -4,6 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { CustomerDataService } from 'src/app/data-services/customer-data.service';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerApiService } from 'src/app/services/customer-api.service';
 import { DialogsService } from 'src/app/services/dialogs.service';
@@ -17,9 +20,11 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 })
 export class CustomerComponent implements OnInit {
 
-  dataCustomer: Customer[] = [];
+  customerData: Customer[] = [];
 
   customerDataSource;
+
+  destroy$ = new Subject();
 
   displayedColumns: string[] = ['sno', 'customername', 'description', 'productno', 'revisionno', 'drawing', 'actions'];
 
@@ -27,45 +32,48 @@ export class CustomerComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private customerApi: CustomerApiService,
+  constructor(
+    private customerApi: CustomerApiService,
+    private customerDataService: CustomerDataService,
     private router: Router,
     private dialog: MatDialog,
     private dialogsService: DialogsService,
     private alert: AlertService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
-    this.customerApi.refreshAll()
-    .subscribe(()=>{
-      this.customerFill();
+    this.customerData = this.customerDataService.getCustomer()
+    this.customerDataService.customerUpdated$.pipe(takeUntil(this.destroy$)).subscribe(customer => {
+      this.customerData = customer
     })
-    this.customerFill();
+
   }
 
-  customerFill(){
-    this.customerApi.getCustomerAll().subscribe(data => {
-      this.dataCustomer = data;
-      this.customerDataSource = new MatTableDataSource(this.dataCustomer);
-      this.customerDataSource.paginator = this.paginator;
-      this.customerDataSource.sort = this.sort
-    })
+  customerFill() {
+
+    this.customerDataSource = new MatTableDataSource(this.customerData);
+    this.customerDataSource.paginator = this.paginator;
+    this.customerDataSource.sort = this.sort
+
   }
 
   applyFilter(event: Event) {
+
     const filterValue = (event.target as HTMLInputElement).value;
     this.customerDataSource.filter = filterValue.trim().toLowerCase();
-  }
 
-  pageEvent(event: any) {
-    let result = confirm('Your changes will be lost . Do you want to continue ?');
   }
 
   onClickAdd() {
+
     this.dialog.open(AddCustomerComponent);
+
   }
 
   onClickEdit(customer: Customer) {
+
     this.dialog.open(AddCustomerComponent, { data: { customer } });
+
   }
 
   onClickDelete(id: string) {
@@ -74,11 +82,12 @@ export class CustomerComponent implements OnInit {
       .afterClosed().subscribe(res => {
         if (res) {
           this.customerApi.deleteCustomer(id).subscribe(res => {
-            this.dataCustomer = this.dataCustomer.filter(item => item._id !== id);
+            this.customerData = this.customerData.filter(item => item._id !== id);
             this.alert.showError('Customer Deleted Successfully...!', 'Customer');
           })
         }
       });
+
   }
 
 

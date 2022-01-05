@@ -43,11 +43,20 @@ export class ShiftComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.shiftData = this.shiftDataService.getShift()
     this.shiftDataService.shiftUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(shifts => {
       this.shiftData = shifts
-   
     })
+
+  }
+
+  shiftFill() {
+
+    this.shiftDataSource = new MatTableDataSource(this.shiftData)
+    this.shiftDataSource.paginator = this.paginator;
+    this.shiftDataSource.sort = this.sort;
+    
   }
 
   ngOnDestroy(): void {
@@ -58,13 +67,6 @@ export class ShiftComponent implements OnInit {
   }
 
 
-  shiftFill() {
-
-    this.shiftDataSource = new MatTableDataSource(this.shiftData);
-    this.shiftDataSource.paginator = this.paginator;
-    this.shiftDataSource.sort = this.sort;
-
-  }
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
