@@ -44,7 +44,7 @@ export class AddInstrumentComponent implements OnInit {
     });
 
     if(this.instrument) {
-      this.form.patchValue(this.data.instrument);
+      this.form.patchValue(this.instrument);
     }
   }
  

@@ -72,7 +72,7 @@ export class MachineComponent implements OnInit {
         if (res) {
           this.machineApi.deleteMachine(id).subscribe(res => {
             this.dataMachine = this.dataMachine.filter(item => item._id !== id);
-            this.alert.showError('Data Deleted Suceessfully...!', 'Machine');
+            this.alert.showError('Machine Deleted Successfully...!', 'Machine');
           })
         }
       });

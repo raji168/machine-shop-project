@@ -24,33 +24,18 @@ export class MachineApiService {
 
   addMachine(machine: Machine) {
     const url = `http://192.168.0.13:3002/machines`;
-    return this.http.post<{ machinename: String }>(url, machine)
-    .pipe(
-      tap(()=>{
-        this.reFresh.next();
-      })
-    )
+    return this.http.post<{ machinename: String }>(url, machine);
   }
   
 
   updateMachine(machine: Partial<Machine>, _id: string) {
     const url = ` http://192.168.0.13:3002/machines`;
-    return this.http.patch<Machine>(`${url}/${_id}`, machine)
-    .pipe(
-      tap(()=>{
-        this.reFresh.next();
-      })
-    )
+    return this.http.patch<Machine>(`${url}/${_id}`, machine);
   }
 
   deleteMachine(_id: string) {
     const url = `http://192.168.0.13:3002/machines`;
-    return this.http.delete(`${url}/${_id}`)
-    .pipe(
-      tap(()=>{
-        this.reFresh.next();
-      })
-    )
+    return this.http.delete(`${url}/${_id}`);
   }
 
 }
