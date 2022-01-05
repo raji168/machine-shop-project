@@ -4,7 +4,6 @@ import {MatButtonModule} from '@angular/material/button';
 import { MaterialModule } from "../material/material.module";
 import { MasterRoutingModule } from "./master-routing.module";
 import { MasterComponent } from "./master.component";
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { RoleComponent } from './role/role.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { InstrumentComponent } from './instrument/instrument.component';
@@ -39,7 +38,6 @@ import { CustomerRoutingModule } from "./customer/customer-routing.module";
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
-        FlexLayoutModule,
         MasterRoutingModule,
         MatButtonModule,
 

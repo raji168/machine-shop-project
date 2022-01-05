@@ -6,9 +6,10 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddRoleComponent } from './add-role/add-role.component';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { RoleDataService } from 'src/app/data-services/role-data.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil, tap } from 'rxjs/operators';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -19,15 +20,16 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 
 
-export class RoleComponent implements OnInit,OnDestroy {
-
-  roleData: Role[] = [];
+export class RoleComponent implements OnInit {
 
   displayedColumns: string[] = [ 'serialno','name', 'actions'];
 
-  // subscription: Subscription;
+  roleForm: FormGroup = new FormGroup({
+    serialno: new FormControl(''),
+    name: new FormControl('')
+  });
 
-  destroyed$ = new Subject();
+  roleDataSource$: Observable<MatTableDataSource<Role>>;
 
 
   constructor(
@@ -38,30 +40,15 @@ export class RoleComponent implements OnInit,OnDestroy {
     private dialogService: DialogsService) {
 
   }
-  roleForm: FormGroup = new FormGroup({
-    serialno: new FormControl(''),
-    name: new FormControl('')
-  });
-
-
-
 
 
   ngOnInit(): void {
   
-    this.roleData = this.roleDataService.getRoles()
-    this.roleDataService.roleUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(roles => {
-      this.roleData = roles
-    })
+    this.roleDataSource$ =  this.roleDataService.roleUpdated$.pipe(map(roles => {
+      return new MatTableDataSource(roles)
+    }))
 
   }
-
-  ngOnDestroy(): void {
-   
-    this.destroyed$.next();
-    this.destroyed$.complete();
-  }
-
  
   onCreate() {
     const dialogConfig = new MatDialogConfig();
@@ -80,7 +67,6 @@ export class RoleComponent implements OnInit,OnDestroy {
       .afterClosed().subscribe(res => {
         if (res) {
           this.roleService.deleteRole(id).subscribe(res => {
-            this.roleData = this.roleData.filter(item => item._id !== id);
             this.notification.success(' deleted Suceessfully');
           })
         }
