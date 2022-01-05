@@ -49,7 +49,7 @@ export class ShiftComponent implements OnInit {
   }
 
   shiftFill(){
-    this.shiftApi.getShiftAll().subscribe(data => {
+    this.shiftApi.getShift().subscribe(data => {
       this.dataShift = data;
       this.shiftDataSource = new MatTableDataSource(this.dataShift);
       this.shiftDataSource.paginator = this.paginator;

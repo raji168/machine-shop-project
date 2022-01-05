@@ -17,7 +17,7 @@ export class MachineApiService {
     return this.reFresh;
   }
 
-  getMachineAll() {
+  getMachine() {
     const url = `http://192.168.0.13:3002/machines`;
     return this.http.get<Machine[]>(url);
   }

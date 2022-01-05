@@ -40,7 +40,7 @@ export class AddMachineComponent implements OnInit {
 
     this.machine = this.data?.machine;
 
-    this.machineApi.getMachineAll().subscribe(data => {
+    this.machineApi.getMachine().subscribe(data => {
       this.dataMachine = data;
     });
 

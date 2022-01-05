@@ -45,7 +45,7 @@ export class MachineComponent implements OnInit {
   }
 
   machineFill(){
-    this.machineApi.getMachineAll().subscribe(data => {
+    this.machineApi.getMachine().subscribe(data => {
       this.dataMachine = data;
       this.machineDataSource = new MatTableDataSource(this.dataMachine);
       this.machineDataSource.paginator = this.paginator;

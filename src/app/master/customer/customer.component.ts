@@ -43,7 +43,7 @@ export class CustomerComponent implements OnInit {
   }
 
   customerFill(){
-    this.customerApi.getCustomerAll().subscribe(data => {
+    this.customerApi.getCustomer().subscribe(data => {
       this.dataCustomer = data;
       this.customerDataSource = new MatTableDataSource(this.dataCustomer);
       this.customerDataSource.paginator = this.paginator;

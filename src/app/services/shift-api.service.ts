@@ -21,7 +21,7 @@ export class ShiftApiService {
     return this.reFresh;
   }
 
-  getShiftAll() {
+  getShift() {
     const url = ` http://192.168.0.13:3002/shifts`;
     return this.http.get<Shift[]>(url);
   }
