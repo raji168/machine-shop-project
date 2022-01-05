@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Shift } from '../models/shift.model';
 import { tap  } from 'rxjs/operators';
+import { ShiftDataService } from '../data-services/shift-data.service';
 
 
 
@@ -13,48 +14,50 @@ import { tap  } from 'rxjs/operators';
 
 export class ShiftApiService {
 
-  private reFresh = new Subject<void>();
+  baseUrl : string = ` http://192.168.0.13:3002/shifts`;
 
-  constructor(private http: HttpClient) { }
+  shifts : Shift[] =[];
 
-  // refreshAll(){
-  //   return this.reFresh;
-  // }
+  shiftUpdated = new Subject();
+
+  constructor(
+    private http: HttpClient,
+    private shiftDataService:ShiftDataService
+    ) { }
 
   getShiftAll() {
-    const url = ` http://192.168.0.13:3002/shifts`;
-    return this.http.get<Shift[]>(url);
+    return this.http.get<Shift[]>(this.baseUrl).pipe(
+      tap((shifts)=>{
+        this.shiftDataService.loadShift(shifts)
+      })
+    )
   }
 
   addShift(shift: Shift) {
-    const url = ` http://192.168.0.13:3002/shifts`;
-    return this.http.post<{ _id: String }>(url, shift)
+
+    return this.http.post<Shift>(this.baseUrl, shift)
     .pipe(
-      tap(() =>{
-        this.reFresh.next();
+      tap((shift) =>{
+        this.shiftDataService.addShift(shift)
       })
     );
   }
 
 
   updateShift(shift: Partial<Shift>, id) {
-    const url = ` http://192.168.0.13:3002/shifts`;
-    return this.http.patch<Shift>(`${url}/${id}`, shift)
+   
+    return this.http.patch<Shift>(`${this.baseUrl}/${id}`, shift)
     .pipe(
-      tap(() =>{
-        this.reFresh.next();
+      tap((shift) =>{
+        this.shiftDataService.updateShift(shift)
       })
     );
   }
 
   deleteShift(_id: string) {
-    const url = ` http://192.168.0.13:3002/shifts`;
-    return this.http.delete(`${url}/${_id}`)
-    .pipe(
-      tap(()=>{
-        this.reFresh.next();
-      })
-    )
+
+    return this.http.delete(`${this.baseUrl}/${_id}`);
+  
   }
 
 }

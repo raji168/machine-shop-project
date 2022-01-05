@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -46,8 +46,8 @@ export class ShiftComponent implements OnInit {
     this.shiftData = this.shiftDataService.getShift()
     this.shiftDataService.shiftUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(shifts => {
       this.shiftData = shifts
+   
     })
-    this.shiftFill();
   }
 
   ngOnDestroy(): void {

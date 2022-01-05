@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Shift } from "../models/shift.model";
 
@@ -7,11 +7,13 @@ import { Shift } from "../models/shift.model";
 })
 
 
-export class ShiftDataService implements OnInit {
+export class ShiftDataService  {
 
     private shifts: Shift[] = [];
 
     shiftUpdated$ = new Subject<Shift[]>()
+
+    shiftDeleted$ = new Subject<Shift[]>()
 
     getShift() {
 
@@ -37,7 +39,12 @@ export class ShiftDataService implements OnInit {
         this.shiftUpdated$.next(this.shifts);
     }
 
-    ngOnInit(): void {
-
+    deleteShift(shiftResponse : Shift){
+        const deleteShift = this.shifts.filter(shift => shift._id === shift._id)
+        const deleteShiftIndex = this.shifts.findIndex(shift => shift._id === shift._id)
+        const deletedShift = {...deleteShift,...shiftResponse}
+        this.shifts[deleteShiftIndex] = deletedShift
+        this.shiftDeleted$.next(this.shifts);
     }
-}
+  
+} 
