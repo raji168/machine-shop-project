@@ -21,7 +21,7 @@ const routes: Routes = [
     { path: 'instrument', component: InstrumentComponent, resolve:{
         instrument :InstrumentResolver
     } },
-    { path: 'user', component: UserComponent }
+    { path: 'user', component: UserComponent },
 
 
     { path: 'role', component: RoleComponent },
