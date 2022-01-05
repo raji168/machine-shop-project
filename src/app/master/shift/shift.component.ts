@@ -56,8 +56,6 @@ export class ShiftComponent implements OnInit {
       this.shiftDataSource.sort = this.sort;
     });
   }
-
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.shiftDataSource.filter = filterValue.trim().toLowerCase();
@@ -80,10 +78,9 @@ export class ShiftComponent implements OnInit {
         if (res) {
           this.shiftApi.deleteShift(id).subscribe(res => {
             this.dataShift = this.dataShift.filter(item => item._id !== id);
-            this.alert.showError('Data Deleted Suceessfully...!', 'Shift');
+            this.alert.showError('Shift Deleted Successfully...!', 'Shift');
           })
         }
       });
   }
-
 }

@@ -11,7 +11,7 @@ const routes: Routes = [
         path: 'master', loadChildren: () => import('./master/master.module').then(m => m.MasterModule),
       }
     ]
-  }
+  },
 
 ];
 

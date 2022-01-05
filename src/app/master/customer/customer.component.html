@@ -3,12 +3,12 @@
     <div class="title">
       Customer List
     </div>
-    <mat-form-field #Search appearance="standard" color="accent">
+    <mat-form-field appearance="standard" color="accent">
       <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
-    <button mat-icon-button class="add-btn" (click)="onClickAdd()">
-      <mat-icon>add_circle_outline</mat-icon>
+    <button mat-raised-button class="add-btn" (click)="onClickAdd()">
+      <mat-icon>add_circle</mat-icon>ADD
     </button>
   </div>
   <div class="table">

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Role} from '../models/role.model';
-import { Observable, Subject } from 'rxjs';
-import { tap  } from 'rxjs/operators';
+import { Role } from '../models/role.model';
+import {  Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { RoleDataService } from '../data-services/role-data.service';
 
 
 @Injectable({
@@ -13,50 +13,47 @@ export class RoleApiService {
 
   url: string = 'http://192.168.0.13:3002/roles';
 
-  private reFresh = new Subject<void>();
 
-  constructor( private http:HttpClient) { }
+  roles: Role[] = [];
 
-  roleForm: FormGroup= new FormGroup({
-    serialno: new FormControl(''),
-    name: new FormControl('')
-  });
+  roleUpdated = new Subject();
 
-  initializeFormGroup(){
-    this.roleForm.setValue({
-      serialno:'',
-      name:''
-    });
+  constructor(
+    private http: HttpClient,
+    private roleDataService: RoleDataService
+  ) { }
+
+  
+  get():Observable<any> {
+    return this.http.get<Role[]>(this.url).pipe(
+      tap((roles) => {
+          this.roleDataService.loadRoles(roles)
+      })
+    )
   }
 
-  getreFreshAll(){
-    return this.reFresh;
-  }
+  
 
-  getRoleAll(){
-    return this.http.get<Role[]>(this.url)
-  }
-
-
-  addRole(role:Role){
-    return this.http.post<{_id:string}>(this.url,role)
-    .pipe(
-        tap(() =>{
-          this.reFresh.next();
+  addRole(role: Role) {
+    return this.http.post<Role>(this.url, role)
+      .pipe(
+        tap((role) => {
+          this.roleDataService.addRole(role)
         })
       );
   }
 
   updateRole(role: Partial<Role>, id) {
     return this.http.patch<Role>(`${this.url}/${id}`, role)
-    .pipe(
-      tap(() =>{
-        this.reFresh.next();
-      })
-    );
+      .pipe(
+        tap(role => {
+          this.roleDataService.updateRole(role)
+        })
+      );
   }
 
-  deleteRole(_id:string){
+  deleteRole(_id: string) {
     return this.http.delete(`${this.url}/${_id}`);
+
   }
 }
