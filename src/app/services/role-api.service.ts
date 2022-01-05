@@ -53,7 +53,11 @@ export class RoleApiService {
   }
 
   deleteRole(_id: string) {
-    return this.http.delete(`${this.url}/${_id}`);
+    return this.http.delete<Role>(`${this.url}/${_id}`).pipe(
+      tap(role => {
+        this.roleDataService.deleteRole(role._id)
+      })
+    );;
 
   }
 }

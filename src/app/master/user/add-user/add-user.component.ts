@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -20,9 +20,6 @@ export class AddUserComponent implements OnInit {
 
   userForm: FormGroup;
 
-  // roleData: Role[] = [];
-  userData: User[] = [];
-
   _id: string;
 
   constructor(
@@ -30,23 +27,20 @@ export class AddUserComponent implements OnInit {
     public roleService: RoleApiService,
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
-    public notification: NotificationService) { }
+    public notification: NotificationService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.userForm = new FormGroup({
-      sno: new FormControl(''),
-      name: new FormControl(''),
-      role: new FormControl(''),
-      emailId: new FormControl(''),
-      phoneNo: new FormControl(''),
-      userName: new FormControl('')
+    this.userForm = this.fb.group({
+      sno: '',
+      name: '',
+      role: '',
+      emailId: '',
+      phoneNo: '',
+      userName: ''
     })
 
     this.user = this.data?.user;
-
-    this.userService.get().subscribe(data => {
-      this.userData = data;
-    })
 
     if (this.user) {
       this.userForm.patchValue(this.data.user);
