@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
@@ -7,7 +7,10 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogsService } from 'src/app/services/dialogs.service';
-import { RoleDataService } from 'src/app/data-services/role-data.service';
+import { Subject } from 'rxjs';
+import { UserDataService } from 'src/app/data-services/user-data.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { takeUntil } from 'rxjs/operators';
 
 
 
@@ -20,73 +23,79 @@ export class UserComponent implements OnInit {
 
   userData: User[] = [];
 
-  listData: MatTableDataSource<any>;
+  displayedColumns: string[] = ['sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
 
-  displayedColumns: string[] = ['sno','name','role','emailId','phoneNo','userName','actions'];
-  
+  destroyed$ = new Subject();
+
+  searchKey: string;
+
   constructor(
     public userService: UserApiService,
-    private dialog:MatDialog,
+    private userDataService: UserDataService,
+    private dialog: MatDialog,
     private notification: NotificationService,
-    private dialogsService: DialogsService){
-      
-    }
+    private dialogsService: DialogsService) {
 
-    searchKey: string;
+  }
 
-  ngOnInit(){
-    this.userService.getreFreshAll()
-    .subscribe(() =>{
-      this.getData();
+  userForm: FormGroup = new FormGroup({
+    sno: new FormControl(''),
+    name: new FormControl(''),
+    role: new FormControl(''),
+    emailId: new FormControl(''),
+    phoneNo: new FormControl(''),
+    userName: new FormControl('')
+  })
+
+  ngOnInit() {
+    this.userData = this.userDataService.getUsers()
+    this.userDataService.userUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(users => {
+      this.userData = users
     })
-
-    this.getData();
-  }
-  getData(){
-    this.userService.getUserAll().subscribe(data => {
-      this.userData = data;
-      this.listData = new MatTableDataSource(data);
-
-    });
   }
 
-  applyFilter(){
-    this.listData.filter = this.searchKey.trim().toLocaleLowerCase();
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
-  onSearchClear(){
-    this.searchKey = "";
-    this.applyFilter();
-  }
-
-  onCreate(){
+  onCreate() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose =true;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "40%";
     this.dialog.open(AddUserComponent, dialogConfig);
   }
 
-  onEdit(user: User){
-    this.dialog.open(AddUserComponent , {data : {user}});
+  onEdit(user: User) {
+    this.dialog.open(AddUserComponent, { data: { user } });
   }
 
-  onDelete(id){
+  // applyFilter(){
+  //   this.userData.filter = this.searchKey.trim().toLocaleLowerCase();
+  // }
+
+  // onSearchClear(){
+  //   this.searchKey = "";
+  //   this.applyFilter();
+  // }
+
+  onDelete(id) {
     this.dialogsService.openConfirmDialog('Are you sure to delete this record?')
-    .afterClosed().subscribe(res =>{
-      if(res){
-        this.userService.deleteUser(id).subscribe(res =>{
-          this.userData = this.userData.filter(item => item._id !== id);
-          this.ngOnInit();
-          this.notification.success('deleted successfully!!!!');
-        })
-      }
-    })
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.userService.deleteUser(id).subscribe(res => {
+            this.userData = this.userData.filter(item => item._id !== id);
+            this.ngOnInit();
+            this.notification.success('deleted successfully!!!!');
+          })
+        }
+      })
   }
 }
 
-  
 
-  
+
+
 
 

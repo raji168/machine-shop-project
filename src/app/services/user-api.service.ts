@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../models/user.model';
 import { Observable, Subject } from 'rxjs';
-import { tap  } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
+import { UserDataService } from '../data-services/user-data.service';
 
 
 
@@ -13,64 +14,45 @@ import { tap  } from 'rxjs/operators';
 })
 export class UserApiService {
 
-  private reFresh = new Subject<void>();
+  url: string = 'http://192.168.0.13:3002/users';
+
+  users: User[] = [];
+
+  userUpdated = new Subject();
+
+  constructor(
+    private http: HttpClient,
+    private userDataService: UserDataService
+  ) { }
 
 
-  constructor(private http: HttpClient) { }
-
-  userForm: FormGroup = new FormGroup({
-    sno: new FormControl(''),
-    name : new FormControl(''),
-    role : new FormControl(''),
-    emailId : new FormControl(''),
-    phoneNo : new FormControl(''),
-    userName : new FormControl(''),
-  });
-   
-  initializeFormGroup(){
-    this.userForm.setValue({
-      sno: '',
-      name: '',
-      role: 'Role',
-      emailId: '',
-      phoneNo:'',
-      userName: ''
-    });
-  }
-
-  getreFreshAll(){
-    return this.reFresh;
-  }
-
-  getUserAll() {
-    const url = ` http://192.168.0.13:3002/users`;
-    return this.http.get<User[]>(url);
-  }
-  
-  addUser(user: User) {
-    const url = ` http://192.168.0.13:3002/users`;
-    return this.http.post<{ _id: String }>(url, user)
-    .pipe(
-      tap(() =>{
-        this.reFresh.next();
+  get() {
+    return this.http.get<User[]>(this.url).pipe(
+      tap((users) => {
+        this.userDataService.loadUsers(users)
       })
-    );
+    )
+  }
+
+  addUser(user: User) {
+    return this.http.post<User>(this.url, user)
+      .pipe(
+        tap((user) => {
+          this.userDataService.addUser(user)
+        })
+      );
   }
 
   updateUser(user: Partial<User>, id) {
-    const url =` http://192.168.0.13:3002/users`;
-    return this.http.patch<User>(`${url}/${id}`, user)
-    .pipe(
-      tap(() =>{
-        this.reFresh.next();
-      })
-    );
+    return this.http.patch<User>(`${this.url}/${id}`, user)
+      .pipe(
+        tap(user => {
+          this.userDataService.updateUser(user)
+        })
+      );
   }
 
-  deleteUser(_id:string){
-    const url = `http://192.168.0.13:3002/users`;
-    return this.http.delete(`${url}/${_id}`);
+  deleteUser(_id: string) {
+    return this.http.delete(`${this.url}/${_id}`);
   }
-
-
 }
