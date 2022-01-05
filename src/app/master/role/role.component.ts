@@ -3,11 +3,10 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { Role } from '../../models/role.model';
 import { RoleApiService } from '../../services/role-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { MatTable } from '@angular/material/table';
 import { AddRoleComponent } from './add-role/add-role.component';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { RoleDataService } from 'src/app/data-services/role-data.service';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { FormControl, FormGroup } from '@angular/forms';
 

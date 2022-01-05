@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddInstrumentComponent } from './add-instrument/add-instrument.component';
 import { MatPaginator } from '@angular/material/paginator';
@@ -9,6 +9,9 @@ import { InstrumentService } from 'src/app/services/instrument.service';
 import { InstrumentModel } from 'src/app/models/instrument.model';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { InstrumentDataService } from 'src/app/data-services/instrument-data.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-instrument',
@@ -17,19 +20,33 @@ import { InstrumentDataService } from 'src/app/data-services/instrument-data.ser
 })
 
 
-export class InstrumentComponent implements OnInit {
+export class InstrumentComponent implements OnInit,OnDestroy {
 
   instrumentData: InstrumentModel[] = [];
 
   displayedColumns: string[] = ['checkBox','sno', 'name', 'referenceno','range','calibratedon','calibratedue','actions'];
+  
+  destroyed$ = new Subject();
 
   constructor(
     private instrumentService: InstrumentService,
     private instrumentDataService : InstrumentDataService,
     private _notification: NotificationService,
     private _dialog: MatDialog,
-    private dialogsService:DialogsService
-  ) { }
+    private dialogsService:DialogsService) { 
+
+  }
+
+  form = new FormGroup({
+    sno: new FormControl(''),
+    name: new FormControl(''),
+    referenceno: new FormControl(''),
+    range: new FormControl(''),
+    calibratedon: new FormControl(''),
+    calibratedue: new FormControl('')
+  });
+
+  
 
 
   grdlistData: MatTableDataSource<any>;
@@ -40,13 +57,21 @@ export class InstrumentComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
   searchKey: string;
+ 
 
   ngOnInit(): void {
     
     this.instrumentData = this.instrumentDataService.getInstrument()
-    
-   
+    this.instrumentDataService.instrumentUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(instruments => {
+      this.instrumentData =instruments
+    })
   }
+  ngOnDestroy(): void {
+   
+    this.destroyed$.next();
+    this.destroyed$.complete();
+  }
+
   fillGrid() {
     this.instrumentService.get()
       .subscribe(
