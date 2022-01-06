@@ -48,14 +48,18 @@ export class ShiftComponent implements OnInit {
     this.shiftDataService.shiftUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(shifts => {
       this.shiftData = shifts
     })
+    this.shiftFill();
 
   }
 
   shiftFill() {
-
-    this.shiftDataSource = new MatTableDataSource(this.shiftData)
-    this.shiftDataSource.paginator = this.paginator;
-    this.shiftDataSource.sort = this.sort;
+    this.shiftApi.getShiftAll().subscribe(res=>{
+      this.shiftDataSource = new MatTableDataSource(res);
+      this.shiftDataSource.paginator = this.paginator;
+      this.shiftDataSource.sort = this.sort;
+    })
+    
+   
     
   }
 
