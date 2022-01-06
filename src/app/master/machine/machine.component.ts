@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { MachineDataService } from 'src/app/data-services/machine-data.service';
 import { Machine } from 'src/app/models/machine.model';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MachineApiService } from 'src/app/services/machine-api.service';
@@ -19,62 +22,78 @@ const ELEMENT_DATA: Machine[] = [];
 })
 export class MachineComponent implements OnInit {
 
-  dataMachine: Machine[] = [];
 
-  machineDataSource;
+  machineData: Machine[] = [];
+
+  // machineDataSource;
+
+  destroyed$ = new Subject();
 
   displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
-
-
-  constructor(
-    public dialog: MatDialog,
-    private machineApi: MachineApiService,
-    private alert: AlertService,
-    private dialogsService: DialogsService) { }
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  ngOnInit() {
-    this.machineApi.refreshAll()
-    .subscribe(()=>{
-      this.machineFill();
+  constructor(
+    public dialog: MatDialog,
+    private machineApi: MachineApiService,
+    private alert: AlertService,
+    private machineDataService: MachineDataService,
+    private dialogsService: DialogsService
+  ) { }
+
+
+
+  ngOnInit(): void {
+    
+    this.machineData = this.machineDataService.getMachine()
+    this.machineDataService.machineUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(machines => {
+    this.machineData = machines
+      
     })
-    this.machineFill();
+    
   }
 
-  machineFill(){
-    this.machineApi.getMachineAll().subscribe(data => {
-      this.dataMachine = data;
-      this.machineDataSource = new MatTableDataSource(this.dataMachine);
-      this.machineDataSource.paginator = this.paginator;
-      this.machineDataSource.sort = this.sort;
-    });
+  ngOnDestroy(): void {
+
+    this.destroyed$.next();
+    this.destroyed$.complete();
 
   }
+  
+
+  
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.machineDataSource.filter = filterValue.trim().toLowerCase();
+
+    // const filterValue = (event.target as HTMLInputElement).value;
+    // this.machineDataSource.filter = filterValue.trim().toLowerCase();
+
   }
 
   onClickAdd() {
+
     this.dialog.open(AddMachineComponent);
+
   }
 
   onClickEdit(machine: Machine) {
+
     this.dialog.open(AddMachineComponent, { data: { machine } });
+
   }
 
   onClickDelete(id: string) {
+
     this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
         if (res) {
           this.machineApi.deleteMachine(id).subscribe(res => {
-            this.dataMachine = this.dataMachine.filter(item => item._id !== id);
+            this.machineData = this.machineData.filter(item => item._id !== id);
             this.alert.showError('Machine Deleted Successfully...!', 'Machine');
           })
         }
       });
+
   }
 }

@@ -2,40 +2,59 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Machine } from '../models/machine.model';
-import { tap  } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
+import { MachineDataService } from '../data-services/machine-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MachineApiService {
 
-  private reFresh = new Subject<void>();
+  baseUrl: string = `http://192.168.0.13:3002/machines`;
 
-  constructor(private http: HttpClient) { }
+  machines: Machine[] = [];
 
-  refreshAll(){
-    return this.reFresh;
-  }
+  machineUpdated = new Subject();
+
+  constructor(
+    private http: HttpClient,
+    private machineDataService: MachineDataService
+  ) { }
 
   getMachineAll() {
-    const url = `http://192.168.0.13:3002/machines`;
-    return this.http.get<Machine[]>(url);
+
+    return this.http.get<Machine[]>(this.baseUrl)
+      .pipe(
+        tap((machines) => {
+          this.machineDataService.loadMachine(machines)
+        })
+      )
   }
 
   addMachine(machine: Machine) {
-    const url = `http://192.168.0.13:3002/machines`;
-    return this.http.post<{ machinename: String }>(url, machine);
-  }
-  
 
-  updateMachine(machine: Partial<Machine>, _id: string) {
-    const url = ` http://192.168.0.13:3002/machines`;
-    return this.http.patch<Machine>(`${url}/${_id}`, machine);
+
+    return this.http.post<Machine>(this.baseUrl, machine)
+      .pipe(
+        tap((machine) => {
+          this.machineDataService.addMachine(machine)
+        })
+      )
+  }
+
+
+  updateMachine(machine: Partial<Machine>, _id) {
+
+    return this.http.patch<Machine>(`${this.baseUrl}/${_id}`, machine)
+      .pipe(
+        tap((machine) => {
+          this.machineDataService.updateMachine(machine)
+        })
+      )
   }
 
   deleteMachine(_id: string) {
-    const url = `http://192.168.0.13:3002/machines`;
-    return this.http.delete(`${url}/${_id}`);
-  }
+
+    return this.http.delete(`${this.baseUrl}/${_id}`);
 
 }
