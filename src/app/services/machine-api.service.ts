@@ -33,6 +33,7 @@ export class MachineApiService {
 
   addMachine(machine: Machine) {
 
+
     return this.http.post<Machine>(this.baseUrl, machine)
       .pipe(
         tap((machine) => {
@@ -55,7 +56,5 @@ export class MachineApiService {
   deleteMachine(_id: string) {
 
     return this.http.delete(`${this.baseUrl}/${_id}`);
-
-  }
 
 }

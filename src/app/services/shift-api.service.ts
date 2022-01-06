@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Shift } from '../models/shift.model';
+
 import { tap } from 'rxjs/operators';
 import { ShiftDataService } from '../data-services/shift-data.service';
 
@@ -42,10 +43,12 @@ export class ShiftApiService {
           this.shiftDataService.addShift(shift)
         })
       );
+
   }
 
 
   updateShift(shift: Partial<Shift>, id) {
+
 
     return this.http.patch<Shift>(`${this.baseUrl}/${id}`, shift)
       .pipe(
@@ -58,9 +61,7 @@ export class ShiftApiService {
   deleteShift(_id: string) {
 
     return this.http.delete(`${this.baseUrl}/${_id}`);
-
   }
-
 }
 
 

@@ -37,12 +37,12 @@ export class AddRoleComponent implements OnInit {
 
     this.role = this.data?.role;
 
-    this.roleService.getRoleAll().subscribe(data => {
-      this.dataRole = data;
-    });
+    // this.roleService.get().subscribe(data => {
+    //   this.dataRole = data;
+    // });
 
     if (this.role) {
-      this.roleService.roleForm.patchValue(this.role);
+      this.roleForm.patchValue(this.role);
     }
 
   }
@@ -50,12 +50,12 @@ export class AddRoleComponent implements OnInit {
 
   onSubmit() {
     if (this.role) {
-      this.roleService.updateRole(this.roleService.roleForm.value, this.role._id).subscribe(data => {
+      this.roleService.updateRole(this.roleForm.value, this.role._id).subscribe(data => {
         this.dialogRef.close(data);
         this.notification.success("successfullly data Edited!!");
       });
     } else {
-      this.roleService.addRole(this.roleService.roleForm.value).subscribe(data => {
+      this.roleService.addRole(this.roleForm.value).subscribe(data => {
         this.dialogRef.close(data);
         this.notification.success("successfullly data added!!");
       });

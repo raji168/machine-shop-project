@@ -98,4 +98,3 @@ export class ShiftComponent implements OnInit {
       });
   }
 }
-

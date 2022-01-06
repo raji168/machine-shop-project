@@ -11,17 +11,19 @@
 
     </div>
 
+    <!-- {{ roles$ | async | json }} -->
+
     <div class=" table-role mat-elevation-z8" role="table">
 
-        <mat-table [dataSource]="roleData" matSort>
+        <mat-table [dataSource]="roleDataSource$ | async" matSort>
             <ng-container matColumnDef="serialno">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</mat-header-cell>
-                <mat-cell *matCellDef="let element ;  let i = index"> {{i+1}} </mat-cell>
+                <mat-cell *matCellDef="let role ;  let i = index"> {{i+1}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                <mat-cell *matCellDef="let role"> {{role.name}} </mat-cell>
             </ng-container>
 
 
@@ -31,8 +33,7 @@
                     <button class="edit-button" mat-icon-button color="primary" title="Edit" (click)="onEdit(element)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button class="delete-button" color="accent" title="Delete"
-                        (click)="onDelete(element._id)">
+                    <button mat-icon-button class="delete-button" color="accent" title="Delete" (click)="onDelete(element._id)">
                         <mat-icon>delete_forever</mat-icon>
                     </button>
                 </mat-cell>

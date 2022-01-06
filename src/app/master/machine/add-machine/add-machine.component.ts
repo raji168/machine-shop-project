@@ -57,6 +57,7 @@ export class AddMachineComponent implements OnInit {
       this.machineApi.updateMachine(this.machineForm.value, this.machine._id).subscribe(data => {
         this.dialogRef.close(data);
         this.alert.showSuccess('Machine Updated Successfully...!', 'Machine');
+
       });
       
     } else {

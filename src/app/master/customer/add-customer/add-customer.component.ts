@@ -59,7 +59,9 @@ export class AddCustomerComponent implements OnInit {
     } else {
       this.customerApi.addCustomer(this.customerForm.value).subscribe(data => {
         this.dialogRef.close(data);
+
         this.alert.showSuccess('Customer Added Successfully...!', 'Customer');
+
       });
 
     }
