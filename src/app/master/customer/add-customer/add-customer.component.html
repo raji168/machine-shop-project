@@ -25,7 +25,9 @@
             </mat-form-field>
             <div class="drawing">
                 <mat-label class="drawing-title">Drawing</mat-label>
-                <input type="file" placeholder="image file ">
+                <input style='display: none;'type="file" placeholder="image file" #fileInput>
+                <!-- <button mat-icon-button (click)="fileInput.click()"><mat-icon>attach_file</mat-icon></button>
+                <button mat-icon-button (click)="onUpload()"><mat-icon>upload</mat-icon></button>  -->
             </div>
             <div class="button">
                 <button mat-raised-button class="btn-save" color="accent" (click)="onSave()">Save</button>
