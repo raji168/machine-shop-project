@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../models/user.model';
 import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -26,7 +25,7 @@ export class UserApiService {
   ) { }
 
 
-  get() {
+  get(): Observable<any> {
     return this.http.get<User[]>(this.url).pipe(
       tap((users) => {
         this.userDataService.loadUsers(users)
@@ -53,6 +52,10 @@ export class UserApiService {
   }
 
   deleteUser(_id: string) {
-    return this.http.delete(`${this.url}/${_id}`);
+    return this.http.delete<User>(`${this.url}/${_id}`).pipe(
+      tap(user => {
+        this.userDataService.deleteUser(user._id)
+      })
+    );
   }
 }

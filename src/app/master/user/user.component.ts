@@ -1,20 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { AddUserComponent } from './add-user/add-user.component';
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogsService } from 'src/app/services/dialogs.service';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { UserDataService } from 'src/app/data-services/user-data.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { takeUntil } from 'rxjs/operators';
-
-
+import { map, takeUntil } from 'rxjs/operators';
 import { RoleDataService } from 'src/app/data-services/role-data.service';
-
 
 
 
@@ -25,13 +21,20 @@ import { RoleDataService } from 'src/app/data-services/role-data.service';
 })
 export class UserComponent implements OnInit {
 
-  userData: User[] = [];
 
   displayedColumns: string[] = ['sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
 
-  destroyed$ = new Subject();
-
   searchKey: string;
+  userForm: FormGroup = new FormGroup({
+    sno: new FormControl(''),
+    name: new FormControl(''),
+    role: new FormControl(''),
+    emailId: new FormControl(''),
+    phoneNo: new FormControl(''),
+    userName: new FormControl('')
+  })
+
+  userDataSource$ : Observable<MatTableDataSource<User>>;
 
   constructor(
     public userService: UserApiService,
@@ -42,25 +45,12 @@ export class UserComponent implements OnInit {
 
   }
 
-  userForm: FormGroup = new FormGroup({
-    sno: new FormControl(''),
-    name: new FormControl(''),
-    role: new FormControl(''),
-    emailId: new FormControl(''),
-    phoneNo: new FormControl(''),
-    userName: new FormControl('')
-  })
-
+  
   ngOnInit() {
-    this.userData = this.userDataService.getUsers()
-    this.userDataService.userUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(users => {
-      this.userData = users
-    })
-  }
-
-  ngOnDestroy(): void {
-    this.destroyed$.next();
-    this.destroyed$.complete();
+    this.userDataSource$ = this.userDataService.userUpdated$.pipe(map(users => {
+      return new MatTableDataSource(users)
+    }))
+    
   }
 
   onCreate() {
@@ -89,12 +79,10 @@ export class UserComponent implements OnInit {
       .afterClosed().subscribe(res => {
         if (res) {
           this.userService.deleteUser(id).subscribe(res => {
-            this.userData = this.userData.filter(item => item._id !== id);
-            this.ngOnInit();
             this.notification.success('deleted successfully!!!!');
           })
         }
-      })
+      });
   }
 }
 

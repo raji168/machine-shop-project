@@ -1,13 +1,13 @@
 <div class="container">
   <div class="form">
     <div class="title">Add User</div>
-    {{userForm.value | json}}
+    <!-- {{userForm.value | json}} -->
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="normal-form" color="accent">
 
-      <mat-form-field appearance="outline" color="accent">
+      <!-- <mat-form-field appearance="outline" color="accent">
         <mat-label>S No</mat-label>
         <input matInput placeholder="S.No *" formControlName="sno" autocomplete="off">
-      </mat-form-field>
+      </mat-form-field> -->
 
       <mat-form-field appearance="outline" color="accent">
         <mat-label> Name </mat-label>
@@ -16,12 +16,10 @@
 
       <mat-form-field appearance="outline" color="accent">
         <mat-label> Role </mat-label>
-
-        <input matInput placeholder=" Role *" formControlName="role" autocomplete="off">
-
-        <!-- <mat-select formControlName="role">
+        <!-- <input matInput placeholder=" Role *" formControlName="role" autocomplete="off"> -->
+        <mat-select formControlName="role">
           <mat-option [value]="role._id" *ngFor="let role of roleData " >{{role.name}}</mat-option>
-        </mat-select> -->
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="outline" color="accent">
@@ -37,6 +35,11 @@
       <mat-form-field appearance="outline" color="accent">
         <mat-label> User Name </mat-label>
         <input matInput placeholder=" User Name *" formControlName="userName" autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label> Password </mat-label>
+        <input matInput placeholder=" Password *" formControlName="password" autocomplete="off">
       </mat-form-field>
 
       <div class="add-form-buttons">

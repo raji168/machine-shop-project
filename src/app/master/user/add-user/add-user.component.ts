@@ -1,7 +1,4 @@
 import { Component, Inject, OnInit } from '@angular/core';
-
-import { FormControl, FormGroup } from '@angular/forms';
-
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { UserApiService } from 'src/app/services/user-api.service';
@@ -10,6 +7,10 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { User } from 'src/app/models/user.model';
 import { RoleApiService } from 'src/app/services/role-api.service';
 import { Role } from 'src/app/models/role.model';
+import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
+import { RoleDataService } from 'src/app/data-services/role-data.service';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -21,14 +22,18 @@ import { Role } from 'src/app/models/role.model';
 export class AddUserComponent implements OnInit {
 
   user: User;
-
+  dataUser: User[] = [];
   userForm: FormGroup;
+
 
   // roleData: Role[] = [];
   userData: User[] = [];
 
 
+
   _id: string;
+  roleData: Role[] = [];
+  roleDataSource$ : Observable<MatTableDataSource<Role>>;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { user: User },
@@ -36,7 +41,8 @@ export class AddUserComponent implements OnInit {
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private roleDataService : RoleDataService) { }
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -45,30 +51,28 @@ export class AddUserComponent implements OnInit {
       role: '',
       emailId: '',
       phoneNo: '',
-      userName: ''
+      userName: '',
+      password:''
     })
 
-  ngOnInit(): void {
-    this.userForm = new FormGroup({
-      sno: new FormControl(''),
-      name: new FormControl(''),
-      role: new FormControl(''),
-      emailId: new FormControl(''),
-      phoneNo: new FormControl(''),
-      userName: new FormControl('')
+    this.roleService.get().subscribe(data =>{
+      this.roleData = data;
     })
 
-    this.user = this.data?.user;
+  
 
-    this.userService.get().subscribe(data => {
-      this.userData = data;
-    })
+    // this.user = this.data?.user;
+
+    // this.userService.get().subscribe(data => {
+    //   this.userData = data;
+    // })
 
     this.user = this.data?.user;
 
 
     if (this.user) {
       this.userForm.patchValue(this.data.user);
+      this.userForm.get('role')?.setValue(this.data.user.role._id);
     }
   }
 
