@@ -37,7 +37,7 @@ export class RoleComponent implements OnInit {
     private roleDataService: RoleDataService,
     private dialog: MatDialog,
     private notification: NotificationService,
-    private dialogService: DialogsService) {
+    private dialogService: DialogsService,) {
 
   }
 

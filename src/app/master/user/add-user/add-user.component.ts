@@ -49,11 +49,7 @@ export class AddUserComponent implements OnInit {
 
   
 
-    // this.user = this.data?.user;
-
-    // this.userService.get().subscribe(data => {
-    //   this.userData = data;
-    // })
+ 
 
     this.user = this.data?.user;
 
