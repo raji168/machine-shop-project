@@ -18,11 +18,13 @@ import { Role } from 'src/app/models/role.model';
 export class AddUserComponent implements OnInit {
 
   user: User;
-
+  dataUser: User[] = [];
   userForm: FormGroup;
+
 
   // roleData: Role[] = [];
   userData: User[] = [];
+
 
 
   _id: string;
