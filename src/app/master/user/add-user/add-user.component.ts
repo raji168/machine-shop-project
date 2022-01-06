@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
 import { UserApiService } from 'src/app/services/user-api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -23,6 +24,13 @@ export class AddUserComponent implements OnInit {
   user: User;
   dataUser: User[] = [];
   userForm: FormGroup;
+
+
+  // roleData: Role[] = [];
+  userData: User[] = [];
+
+
+
   _id: string;
   roleData: Role[] = [];
   roleDataSource$ : Observable<MatTableDataSource<Role>>;
@@ -51,7 +59,16 @@ export class AddUserComponent implements OnInit {
       this.roleData = data;
     })
 
+  
+
+    // this.user = this.data?.user;
+
+    // this.userService.get().subscribe(data => {
+    //   this.userData = data;
+    // })
+
     this.user = this.data?.user;
+
 
     if (this.user) {
       this.userForm.patchValue(this.data.user);
@@ -72,4 +89,5 @@ export class AddUserComponent implements OnInit {
       })
     }
   }
+
 }

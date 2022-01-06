@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ShiftRoutingModule } from '../shift/shift-routing.module';
 import { ShiftComponent } from './shift.component';
 import { AddShiftComponent } from './add-shift/add-shift.component';
