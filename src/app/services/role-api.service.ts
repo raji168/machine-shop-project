@@ -57,7 +57,7 @@ export class RoleApiService {
       tap(role => {
         this.roleDataService.deleteRole(role._id)
       })
-    );;
+    );
 
   }
 }

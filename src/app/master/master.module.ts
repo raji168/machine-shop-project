@@ -12,10 +12,6 @@ import { AddUserComponent } from './user/add-user/add-user.component';
 import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
 import { AddRoleComponent } from './role/add-role/add-role.component';
 
-import { ShiftComponent } from "./shift/shift.component";
-import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
-import { RoleDataService } from "../data-services/role-data.service";
-
 import { ShiftRoutingModule } from "./shift/shift-routing.module";
 import { MachineRoutingModule } from "./machine/machine-routing.module";
 import { CustomerRoutingModule } from "./customer/customer-routing.module";
@@ -32,15 +28,15 @@ import { CustomerRoutingModule } from "./customer/customer-routing.module";
         UserComponent,
         AddUserComponent,
         AddInstrumentComponent,
-        AddRoleComponent
+        AddRoleComponent,
     ],
     imports: [
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
         MasterRoutingModule,
-        MatButtonModule,
-
+        MatButtonModule
+        
     ],
 })
 
