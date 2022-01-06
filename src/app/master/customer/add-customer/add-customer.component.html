@@ -1,14 +1,15 @@
 <div class="container">
     <div class="table-form">
-        <div class="title" *ngIf="!isEditable" > Customer</div>
+        <div class="title" *ngIf="!isEditable"> Customer</div>
         <form [formGroup]="customerForm">
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>S.No</mat-label>
-                <input matInput type="text" placeholder="Sno" formControlName="sno" autocomplete="off" >
+                <input matInput type="text" placeholder="Sno" formControlName="sno" autocomplete="off">
             </mat-form-field>
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Customer Name</mat-label>
-                <input matInput type="text" placeholder="Customer Name" formControlName="customername" autocomplete="off">
+                <input matInput type="text" placeholder="Customer Name" formControlName="customername"
+                    autocomplete="off">
             </mat-form-field>
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Description</mat-label>
@@ -23,8 +24,8 @@
                 <input matInput type="text" placeholder="Revision No" formControlName="revisionno" autocomplete="off">
             </mat-form-field>
             <div class="drawing">
-                <mat-label class="drawing-title" >Drawing</mat-label>
-                <input  type="file" placeholder="image file ">
+                <mat-label class="drawing-title">Drawing</mat-label>
+                <input type="file" placeholder="image file ">
             </div>
             <div class="button">
                 <button mat-raised-button class="btn-save" color="accent" (click)="onSave()">Save</button>

@@ -7,11 +7,11 @@ import { MachineComponent } from "./machine.component";
 
 @NgModule({
 
-    declarations:[
+    declarations: [
         MachineComponent,
         AddMachineComponent
     ],
-    imports:[
+    imports: [
         MaterialModule,
         ReactiveFormsModule,
         MachineRoutingModule
@@ -21,6 +21,6 @@ import { MachineComponent } from "./machine.component";
 })
 
 
-export class MachineModule{
+export class MachineModule {
 
 }
