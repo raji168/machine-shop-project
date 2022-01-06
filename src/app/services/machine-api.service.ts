@@ -58,3 +58,4 @@ export class MachineApiService {
     return this.http.delete(`${this.baseUrl}/${_id}`);
 
 }
+}
