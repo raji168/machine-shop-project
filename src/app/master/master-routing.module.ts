@@ -15,25 +15,9 @@ import { UserComponent } from "./user/user.component";
 const routes: Routes = [
     { path: '', component: RoleComponent },
 
-    { path: 'machine', component: MachineComponent },
-
-    { path: 'customer', component: CustomerComponent },
-    { path: 'role', component: RoleComponent, resolve: {
-        roles: RoleResolver
-    } },
-    { path: 'instrument', component: InstrumentComponent, resolve:{
-        instrument :InstrumentResolver
-    } },
-    { path: 'user', component: UserComponent },
 
 
-    { path: 'role', component: RoleComponent },
-    { path: 'instrument', component: InstrumentComponent },
-    { path: 'user', component: UserComponent },
-    { path: 'shift', loadChildren: () => import('./shift/shift.module').then(s => s.ShiftModule) },
-    { path: 'machine', loadChildren: () => import('./machine/machine.module').then(m => m.MachineModule) },
-    { path: 'customer', loadChildren: () => import('./customer/customer.module').then(c => c.CustomerModule) }
-
+   
 
     {
         path: 'role', component: RoleComponent, resolve: {
