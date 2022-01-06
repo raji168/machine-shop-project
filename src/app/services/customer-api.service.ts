@@ -29,7 +29,7 @@ export class CustomerApiService {
         tap((customers) => {
           this.customerDataService.loadCustomer(customers)
         })
-      )
+      );
 
   }
 
@@ -41,7 +41,7 @@ export class CustomerApiService {
         tap((customer) => {
           this.customerDataService.addCustomer(customer)
         })
-      )
+      );
   }
 
   updateCustomer(customer: Partial<Customer>, _id: string) {
@@ -51,12 +51,16 @@ export class CustomerApiService {
         tap((customer) => {
           this.customerDataService.updateCustomer(customer)
         })
-      )
+      );
   }
 
   deleteCustomer(_id: string) {
 
-    return this.http.delete(`${this.baseUrl}/${_id}`);
-
+    return this.http.delete<Customer>(`${this.baseUrl}/${_id}`)
+    .pipe(
+      tap(customer =>{
+        this.customerDataService.deleteCustomer(customer._id)
+      })
+    );
   }
 }

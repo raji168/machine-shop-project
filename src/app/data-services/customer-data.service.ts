@@ -40,4 +40,11 @@ export class CustomerDataService {
         this.customers[updateCustomerIndex] = updatedCustomer
         this.customerUpdated$.next(this.customers);
     }
+
+    deleteCustomer(id:string){
+
+        this.customers = this.customers.filter(item => item._id !== id)
+        this.customerUpdated$.next(this.customers);
+        
+    }
 }

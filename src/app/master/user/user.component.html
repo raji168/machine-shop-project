@@ -12,7 +12,7 @@
 
       <!-- <mat-form-field class="search-form-field" floatLable="never">
 
-        <!-- <mat-form-field class="search-form-field" floatLable="never">
+        <mat-form-field class="search-form-field" floatLable="never">
 
           <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
           <button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
@@ -21,66 +21,6 @@
       </mat-form-field> -->
 
   </div>
-
-  <div class=" table-instrument mat-elevation-z8" role="table" >
-
-      <mat-table [dataSource]="userDataSource$ | async" matSort>
-
-          <ng-container matColumnDef="checkBox">
-              <mat-header-cell *matHeaderCellDef mat-sort-header >checkBox</mat-header-cell>
-              <mat-cell *matCellDef="let element "> 
-                  <mat-checkbox class="checkBox" [(ngModel)]="element.isDelete"></mat-checkbox>
-              </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="sno">
-              <mat-header-cell *matHeaderCellDef mat-sort-header>SNo.</mat-header-cell>
-              <mat-cell *matCellDef="let element ;  let i = index"> {{i+1}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="name">
-              <mat-header-cell *matHeaderCellDef mat-sort-header >Name</mat-header-cell>
-              <mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="role">
-              <mat-header-cell *matHeaderCellDef mat-sort-header>Role </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.role?.name}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="emailId">
-              <mat-header-cell *matHeaderCellDef>E-Mail</mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.emailId}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="phoneNo">
-            <mat-header-cell *matHeaderCellDef>ContactNo</mat-header-cell>
-            <mat-cell *matCellDef="let element" > {{element.phoneNo}} </mat-cell>
-        </ng-container>
-
-          <ng-container matColumnDef="userName">
-              <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
-              <mat-cell *matCellDef="let element" > {{element.userName}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="actions">
-              <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                  <button class="edit-button" mat-icon-button color="primary" title="Edit" (click)="onEdit(element)">
-                      <mat-icon>edit</mat-icon>
-                  </button>
-                  <button mat-icon-button class="delete-button"color="accent" title="Delete" (click)="onDelete(element._id)">
-                      <mat-icon>delete_forever</mat-icon>
-                  </button>
-              </mat-cell>
-          </ng-container>
-
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-      </mat-table>
-
-    </div>
 
     <div class=" table-user mat-elevation-z8" role="table">
 
@@ -144,3 +84,5 @@
 
   </div>
 </div>
+
+

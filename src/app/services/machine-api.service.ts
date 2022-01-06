@@ -28,7 +28,7 @@ export class MachineApiService {
         tap((machines) => {
           this.machineDataService.loadMachine(machines)
         })
-      )
+      );
   }
 
   addMachine(machine: Machine) {
@@ -39,7 +39,7 @@ export class MachineApiService {
         tap((machine) => {
           this.machineDataService.addMachine(machine)
         })
-      )
+      );
   }
 
 
@@ -50,12 +50,19 @@ export class MachineApiService {
         tap((machine) => {
           this.machineDataService.updateMachine(machine)
         })
-      )
+      );
   }
 
   deleteMachine(_id: string) {
 
-    return this.http.delete(`${this.baseUrl}/${_id}`);
+    return this.http.delete<Machine>(`${this.baseUrl}/${_id}`)
+    .pipe(
+      tap(machine=>{
+        this.machineDataService.deleteMachine(machine._id)
+      })
+    );
 
 }
+
 }
+
