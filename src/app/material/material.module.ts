@@ -37,7 +37,8 @@ import { FormsModule } from "@angular/forms";
         MatSnackBarModule,
         MatSelectModule,
         MatNativeDateModule,
-        FormsModule,MatCheckboxModule
+        FormsModule,MatCheckboxModule,
+        MatFormFieldModule
     ]
 })
 
