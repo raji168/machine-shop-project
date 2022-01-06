@@ -39,4 +39,11 @@ export class MachineDataService {
     this.machineUpdated$.next(this.machines);
   }
 
+  deleteMachine(id:string){
+     
+    this.machines = this.machines.filter(item=> item._id !== id)
+    this.machineUpdated$.next(this.machines);
+    
+  }
+
 }

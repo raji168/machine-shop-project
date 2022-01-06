@@ -40,9 +40,9 @@ export class ShiftDataService {
 
     }
 
-    deleteShift(shiftResponse: Shift) {
-        const deleteShift = this.shifts.filter(shift => shift._id === shift._id)
-    
+    deleteShift(id:string) {
+        this.shifts = this.shifts.filter(shift => shift._id !== shift._id)
+        this.shiftUpdated$.next(this.shifts);
     }
 
 } 
