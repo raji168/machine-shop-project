@@ -41,7 +41,8 @@ export class ShiftDataService {
     }
 
     deleteShift(id:string) {
-        this.shifts = this.shifts.filter(shift => shift._id !== shift._id)
+
+        this.shifts = this.shifts.filter(shift => shift._id !== id)
         this.shiftUpdated$.next(this.shifts);
     }
 
