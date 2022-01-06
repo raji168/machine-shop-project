@@ -17,9 +17,8 @@ import { Role } from 'src/app/models/role.model';
 export class AddUserComponent implements OnInit {
 
   user: User;
-
+  dataUser: User[] = [];
   userForm: FormGroup;
-
   _id: string;
 
   constructor(
