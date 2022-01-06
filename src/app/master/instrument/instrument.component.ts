@@ -47,13 +47,11 @@ export class InstrumentComponent implements OnInit {
 
   }
 
-  grdlistData$: MatTableDataSource<any>;
-
+  grdlistData: MatTableDataSource<any>;
 
   @ViewChild(MatSort) sort: MatSort;
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
+  
   searchKey: string;
 
 
@@ -69,16 +67,16 @@ export class InstrumentComponent implements OnInit {
     this.instrumentService.get()
       .subscribe(
         data => {
-          this.grdlistData$ = new MatTableDataSource();
-          this.grdlistData$.sort = this.sort;
-          this.grdlistData$.paginator = this.paginator;
+          this.grdlistData = new MatTableDataSource();
+          this.grdlistData.sort = this.sort;
+          this.grdlistData.paginator = this.paginator;
 
         }
       );
 
   }
   applyFilter() {
-    this.grdlistData$.filter = this.searchKey.trim().toLocaleLowerCase();
+    this.grdlistData.filter = this.searchKey.trim().toLocaleLowerCase();
   }
   onSearchClear() {
     this.searchKey = "";
