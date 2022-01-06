@@ -3,15 +3,17 @@ import { RouterModule, Routes } from "@angular/router";
 import { MachineComponent } from "./machine.component";
 
 
+const routes: Routes = [
 
-const routes : Routes = [
-    {path:'' , component:MachineComponent}
-    
+    { path: '', component: MachineComponent }
+
 ]
+
 @NgModule({
-    imports:[RouterModule.forChild(routes)],
-    exports:[RouterModule]
+
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
 
 
-export class MachineRoutingModule{}
+export class MachineRoutingModule { }
