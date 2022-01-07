@@ -22,6 +22,7 @@ export class ShiftDataService {
     loadShift(shifts: Shift[]) {
 
         this.shifts = shifts;
+        this.shiftUpdated$.next(this.shifts);
     }
 
     addShift(shift: Shift) {

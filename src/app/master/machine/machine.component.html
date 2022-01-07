@@ -3,16 +3,16 @@
     <div class="title">
       Machine List
     </div>
-    <!-- <mat-form-field appearance="standard" color="accent">
+    <mat-form-field appearance="standard" color="accent">
       <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex.mac" #input>
-    </mat-form-field> -->
+    </mat-form-field>
     <button mat-raised-button class="add-btn" (click)="onClickAdd()">
       <mat-icon>add_circle</mat-icon>ADD
     </button>
   </div>
-  <div class="table mat-elevation-z8">
-    <table mat-table [dataSource]="machineDataSource$ | async" matSort>
+  <div class="table ">
+    <table class="mat-elevation-z8 "mat-table [dataSource]="machineDataSource$ | async" matSort>
       <ng-container matColumnDef="sno">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No </th>
         <td mat-cell *matCellDef="let element ; let i =index "> {{i+1}} </td>
@@ -48,7 +48,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <mat-paginator class="mat-elevation-z8" [pageSize]="3" [pageSizeOptions]="[1,5, 10,15,20]" showFirstLastButtons
-      aria-label="Select page ">
+      aria-label="Select page Machine">
     </mat-paginator>
   </div>
 

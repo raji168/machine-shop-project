@@ -23,7 +23,7 @@ const ELEMENT_DATA: Machine[] = [];
 export class MachineComponent implements OnInit {
 
 
-  machineData: Machine[] = [];
+  // machineData: Machine[] = [];
 
   displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
 
