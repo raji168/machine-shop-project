@@ -32,7 +32,7 @@ export class ShiftApiService {
       tap((shifts) => {
         this.shiftDataService.loadShift(shifts)
       })
-    )
+    );
   }
 
   addShift(shift: Shift) {
@@ -60,7 +60,11 @@ export class ShiftApiService {
 
   deleteShift(_id: string) {
 
-    return this.http.delete(`${this.baseUrl}/${_id}`);
+    return this.http.delete<Shift>(`${this.baseUrl}/${_id}`).pipe(
+      tap(shift=>{
+        this.shiftDataService.deleteShift(shift._id);
+      })
+    );
   }
 }
 
