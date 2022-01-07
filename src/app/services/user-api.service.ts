@@ -17,7 +17,7 @@ export class UserApiService {
 
   users: User[] = [];
 
-  userUpdated = new Subject();
+  // userUpdated = new Subject();
 
   constructor(
     private http: HttpClient,

@@ -9,7 +9,6 @@ import { Role } from 'src/app/models/role.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { RoleDataService } from 'src/app/data-services/role-data.service';
-import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -23,7 +22,6 @@ export class AddUserComponent implements OnInit {
   user: User;
   dataUser: User[] = [];
   userForm: FormGroup;
-  // roleData: Role[] = [];
   userData: User[] = [];
   _id: string;
   roleData: Role[] = [];

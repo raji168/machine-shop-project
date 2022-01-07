@@ -76,14 +76,7 @@ export class UserComponent implements OnInit {
       });
   }
 
-  // applyFilter(){
-  //   this.userData.filter = this.searchKey.trim().toLocaleLowerCase();
-  // }
-
-  // onSearchClear(){
-  //   this.searchKey = "";
-  //   this.applyFilter();
-  // }
+ 
 
 }
 
