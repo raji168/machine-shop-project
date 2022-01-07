@@ -1,7 +1,7 @@
 <div class="container">
   <div class="form">
     <div class="title">Add User</div>
-    <!-- {{userForm.value | json}} -->
+    {{userForm.value | json}}
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="normal-form" color="accent">
 
       <mat-form-field appearance="outline" color="accent">
