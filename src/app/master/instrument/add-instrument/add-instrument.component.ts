@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup,FormControl} from '@angular/forms';
+import { FormGroup,FormControl, FormBuilder} from '@angular/forms';
 import { InstrumentService } from 'src/app/services/instrument.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -23,25 +23,26 @@ export class AddInstrumentComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data : {instrument: InstrumentModel},
     public instrumentService:InstrumentService,
     public dialogRef: MatDialogRef<AddInstrumentComponent>,
-    public notification : NotificationService
-    ) { }
+    public notification : NotificationService,
+    private fb :FormBuilder
+  ) { }
 
   ngOnInit(): void {
     
-    this.form = new FormGroup({
-      sno: new FormControl(''),
-      name: new FormControl(''),
-      referenceno: new FormControl(''),
-      range: new FormControl(''),
-      calibratedon: new FormControl(''),
-      calibratedue: new FormControl('')
+    this.form = this.fb.group({
+      sno:  '' ,
+      name:  '' ,
+      referenceno:  '' ,
+      range:  '' ,
+      calibratedon:  '' ,
+      calibratedue:  '' 
     });
 
     this.instrument = this.data?.instrument;
 
-    this.instrumentService.get().subscribe(data => {
-      this.dataInstrument = data;
-    });
+    // this.instrumentService.get().subscribe(data => {
+    //   this.dataInstrument = data;
+    // });
 
     if(this.instrument) {
       this.form.patchValue(this.instrument);

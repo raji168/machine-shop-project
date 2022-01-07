@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Role } from '../models/role.model';
-import {  Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { RoleDataService } from '../data-services/role-data.service';
 
@@ -23,16 +23,16 @@ export class RoleApiService {
     private roleDataService: RoleDataService
   ) { }
 
-  
-  get():Observable<any> {
+
+  get(): Observable<any> {
     return this.http.get<Role[]>(this.url).pipe(
       tap((roles) => {
-          this.roleDataService.loadRoles(roles)
+        this.roleDataService.loadRoles(roles)
       })
     )
   }
 
-  
+
 
   addRole(role: Role) {
     return this.http.post<Role>(this.url, role)
@@ -57,7 +57,7 @@ export class RoleApiService {
       tap(role => {
         this.roleDataService.deleteRole(role._id)
       })
-    );;
+    );
 
   }
 }

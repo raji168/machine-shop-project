@@ -4,7 +4,7 @@ import { MasterComponent } from './master/master.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: 'master/role', pathMatch: 'full' },
+  { path: '', redirectTo: 'master/instrument', pathMatch: 'full' },
   {
     path: '', component: MasterComponent, children: [
       {

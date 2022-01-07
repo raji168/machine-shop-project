@@ -49,10 +49,12 @@ export class AddUserComponent implements OnInit {
       password:''
     })
 
+
     this.roleService.get().subscribe(data =>{
       this.roleData = data;
     })
     
+
     this.user = this.data?.user;
 
 
