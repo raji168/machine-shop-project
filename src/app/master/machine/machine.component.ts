@@ -25,7 +25,7 @@ export class MachineComponent implements OnInit {
 
   machineData: Machine[] = [];
 
-  // machineDataSource;
+  machineDataSource;
 
   destroyed$ = new Subject();
 
@@ -50,7 +50,9 @@ export class MachineComponent implements OnInit {
     this.machineData = this.machineDataService.getMachine()
     this.machineDataService.machineUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(machines => {
     this.machineData = machines
-      
+    // this.machineDataSource = new MatTableDataSource(this.machineData);
+    // this.machineDataSource.paginator = this.paginator;
+    // this.machineDataSource.sort = this.sort;
     })
     
   }
@@ -66,8 +68,8 @@ export class MachineComponent implements OnInit {
   
   applyFilter(event: Event) {
 
-    // const filterValue = (event.target as HTMLInputElement).value;
-    // this.machineDataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.machineDataSource.filter = filterValue.trim().toLowerCase();
 
   }
 

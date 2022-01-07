@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -20,11 +21,14 @@ export class AddCustomerComponent implements OnInit {
 
   dataMachine: Customer[] = [];
 
+  selectedFile :File ;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { customer: Customer },
     public dialogRef: MatDialogRef<AddCustomerComponent>,
     private customerApi: CustomerApiService,
-    private alert: AlertService) {
+    private alert: AlertService,
+    private http:HttpClient) {
 
     this.customerForm = new FormGroup({
       sno: new FormControl(null, Validators.required),
@@ -48,6 +52,14 @@ export class AddCustomerComponent implements OnInit {
     }
   }
 
+  // onFileChanged(event){
+  //   // const file = event.target.files;
+  // }
+
+  // onUpload(){
+  //   // const uploadData = new FormData();
+  //   // uploadData.append('myFile', this.selectedFile , this.selectedFile.name);
+  // }
   onSave() {
 
     if (this.customer) {

@@ -8,7 +8,6 @@ import { InstrumentResolver } from "../resolvers/instrument.resolver";
 import { RoleResolver } from "../resolvers/role.resolver";
 import { UserResolver } from "../resolvers/user.resolver";
 import { InstrumentComponent } from "./instrument/instrument.component";
-import { MachineComponent } from "./machine/machine.component";
 import { RoleComponent } from "./role/role.component";
 import { UserComponent } from "./user/user.component";
 
