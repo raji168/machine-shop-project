@@ -51,7 +51,7 @@ export class InstrumentComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  
+
   searchKey: string;
 
 
@@ -67,7 +67,8 @@ export class InstrumentComponent implements OnInit {
     this.instrumentService.get()
       .subscribe(
         data => {
-          this.grdlistData = new MatTableDataSource();
+          // this.grdlistData = new MatTableDataSource();
+
           this.grdlistData.sort = this.sort;
           this.grdlistData.paginator = this.paginator;
 
