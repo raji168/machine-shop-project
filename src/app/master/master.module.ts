@@ -21,15 +21,15 @@ import { AddRoleComponent } from './role/add-role/add-role.component';
         UserComponent,
         AddUserComponent,
         AddInstrumentComponent,
-        AddRoleComponent
+        AddRoleComponent,
     ],
     imports: [
         CommonModule,
         MaterialModule,
         ReactiveFormsModule,
         MasterRoutingModule,
-        MatButtonModule,
-
+        MatButtonModule
+        
     ],
 })
 

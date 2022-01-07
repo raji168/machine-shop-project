@@ -29,11 +29,12 @@
 
             <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                    <button class="edit-button" mat-icon-button color="primary" title="Edit" (click)="onEdit(element)">
+                <mat-cell *matCellDef="let role">
+                    <button class="edit-button" mat-icon-button color="primary" title="Edit" (click)="onEdit(role)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button class="delete-button" color="accent" title="Delete" (click)="onDelete(element._id)">
+                    <button mat-icon-button class="delete-button" color="accent" title="Delete"
+                        (click)="onDelete(role._id)">
                         <mat-icon>delete_forever</mat-icon>
                     </button>
                 </mat-cell>

@@ -1,31 +1,27 @@
-<div class="form" >
-  <div class="from-title">
-      <span>Add Role</span>
-  </div>
-  {{ roleForm.value | json }}
-  <form [formGroup]="roleForm" ngRepeat="" (ngSubmit)="onSubmit()" class="normal-form">
+<div class="form">
+    <div class="from-title">
+        <span>Add Role</span>
+    </div>
+    {{ roleForm.value | json }}
+    <form [formGroup]="roleForm" ngRepeat="" (ngSubmit)="onSubmit()" class="normal-form">
 
-      <div  class="controles-container">
-          <mat-form-field appearance="outline" color="accent">
-              <input formControlName="serialno"   matInput placeholder="Serial No" autocomplete="off">
-          </mat-form-field>
+        <div class="controles-container">
+            <mat-form-field appearance="outline" color="accent">
+                <input formControlName="serialno" matInput placeholder="Serial No" autocomplete="off">
+            </mat-form-field>
 
-          <mat-form-field appearance="outline" color="accent">
-            <mat-label> Name </mat-label>
-            <input matInput placeholder=" Name *" formControlName="name" autocomplete="off">
-          </mat-form-field>
-        
-          <div class="add-form-buttons">
-              <div class="button-row">
-                  <button mat-raised-button color="accent" type="submit">Submit</button>
-                  <button mat-raised-button color="warn" type="reset" mat-dialog-close="false" >Close</button>
-              </div>
-          </div>
-      </div>
-  </form>
-  
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label> Name </mat-label>
+                <input matInput placeholder=" Name *" formControlName="name" autocomplete="off">
+            </mat-form-field>
+
+            <div class="add-form-buttons">
+                <div class="button-row">
+                    <button mat-raised-button color="accent" type="submit">Submit</button>
+                    <button mat-raised-button color="warn" type="reset" mat-dialog-close="false">Close</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
 </div>
-
-
-
- 

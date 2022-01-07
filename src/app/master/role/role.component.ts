@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Role } from '../../models/role.model';
 import { RoleApiService } from '../../services/role-api.service';
@@ -6,8 +6,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddRoleComponent } from './add-role/add-role.component';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { RoleDataService } from 'src/app/data-services/role-data.service';
-import { Observable, Subject } from 'rxjs';
-import { map, takeUntil, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -22,7 +22,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 export class RoleComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'serialno','name', 'actions'];
+  displayedColumns: string[] = ['serialno', 'name', 'actions'];
 
   roleForm: FormGroup = new FormGroup({
     serialno: new FormControl(''),
@@ -37,19 +37,19 @@ export class RoleComponent implements OnInit {
     private roleDataService: RoleDataService,
     private dialog: MatDialog,
     private notification: NotificationService,
-    private dialogService: DialogsService) {
+    private dialogService: DialogsService,) {
 
   }
 
 
   ngOnInit(): void {
-  
-    this.roleDataSource$ =  this.roleDataService.roleUpdated$.pipe(map(roles => {
+
+    this.roleDataSource$ = this.roleDataService.roleUpdated$.pipe(map(roles => {
       return new MatTableDataSource(roles)
     }))
 
   }
- 
+
   onCreate() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

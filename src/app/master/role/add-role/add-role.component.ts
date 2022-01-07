@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Role } from 'src/app/models/role.model';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -24,13 +24,15 @@ export class AddRoleComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { role: Role },
     public roleService: RoleApiService,
     public dialogRef: MatDialogRef<AddRoleComponent>,
-    public notification: NotificationService) { }
+    public notification: NotificationService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
 
-    this.roleForm = new FormGroup({
-      serialno: new FormControl(''),
-      name: new FormControl('')
+    this.roleForm = this.fb.group({
+      serialno: '',
+      name: ''
     });
 
 
@@ -52,12 +54,12 @@ export class AddRoleComponent implements OnInit {
     if (this.role) {
       this.roleService.updateRole(this.roleForm.value, this.role._id).subscribe(data => {
         this.dialogRef.close(data);
-        this.notification.success("successfullly data Edited!!");
+        this.notification.success(" Edited successfullly!!");
       });
     } else {
       this.roleService.addRole(this.roleForm.value).subscribe(data => {
         this.dialogRef.close(data);
-        this.notification.success("successfullly data added!!");
+        this.notification.success(" Data added successfullly!!");
       });
 
     }
