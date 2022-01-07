@@ -10,9 +10,9 @@ import { User } from '../models/user.model';
 })
 export class UserDataService {
 
-  private users: User[] =[]
+  // private users: User[] =[]
   
-  userUpdated$ = new Subject<User[]>()
+  // userUpdated$ = new Subject<User[]>()
 
   private users: User[] = []
 
