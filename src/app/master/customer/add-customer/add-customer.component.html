@@ -3,10 +3,6 @@
         <div class="title" *ngIf="!isEditable"> Customer</div>
         <form [formGroup]="customerForm">
             <mat-form-field appearance="outline" color="accent">
-                <mat-label>S.No</mat-label>
-                <input matInput type="text" placeholder="Sno" formControlName="sno" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" color="accent">
                 <mat-label>Customer Name</mat-label>
                 <input matInput type="text" placeholder="Customer Name" formControlName="customername"
                     autocomplete="off">

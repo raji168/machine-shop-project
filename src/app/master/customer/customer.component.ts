@@ -82,9 +82,7 @@ export class CustomerComponent implements OnInit {
       .afterClosed().subscribe(res => {
         if (res) {
           this.customerApi.deleteCustomer(id).subscribe(res => {
-
-            this.customerData = this.customerData.filter(item => item._id !== id);
-
+            this.customerDataService.deleteCustomer(id);
             this.alert.showError('Customer Deleted Successfully...!', 'Customer');
           })
         }

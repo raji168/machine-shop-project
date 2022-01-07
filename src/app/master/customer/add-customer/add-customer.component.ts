@@ -31,7 +31,6 @@ export class AddCustomerComponent implements OnInit {
     private http:HttpClient) {
 
     this.customerForm = new FormGroup({
-      sno: new FormControl(null, Validators.required),
       customername: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
       productno: new FormControl(null, Validators.required),
