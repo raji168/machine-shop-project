@@ -24,6 +24,7 @@ export class InstrumentComponent implements OnInit {
 
   // instrumentData: InstrumentModel[] = [];
 
+
   displayedColumns: string[] = [ 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
   form = new FormGroup({
@@ -47,7 +48,7 @@ export class InstrumentComponent implements OnInit {
 
   }
 
-  grdlistData: MatTableDataSource<any>;
+  grdlistData ;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -60,20 +61,30 @@ export class InstrumentComponent implements OnInit {
       return new MatTableDataSource(instruments)
     }
     ))
+    this.instrumentDataSource$.subscribe({
+      next:((res)=>{
+        this.grdlistData = res.data;
+        this.grdlistData = new MatTableDataSource(this.grdlistData);
+
+          this.grdlistData.sort = this.sort;
+          this.grdlistData.paginator = this.paginator;
+      })
+    })
+    // this.fillGrid();
   }
 
 
   fillGrid() {
-    this.instrumentService.get()
-      .subscribe(
-        data => {
-          // this.grdlistData = new MatTableDataSource();
+    // this.instrumentService.get()
+    //   .subscribe(
+    //     data => {
+          this.grdlistData = new MatTableDataSource();
 
           this.grdlistData.sort = this.sort;
           this.grdlistData.paginator = this.paginator;
 
-        }
-      );
+      //   }
+      // );
 
   }
   applyFilter() {
