@@ -37,7 +37,7 @@ export class ShiftDataService {
         const updateShiftIndex = this.shifts.findIndex(shift => shift._id === shift._id)
         const updatedShift = { ...updateShift, ...shiftResponse }
         this.shifts[updateShiftIndex] = updatedShift
-        this.shiftUpdated$.next(this.shifts);
+        // this.shiftUpdated$.next(this.shifts);
 
     }
 

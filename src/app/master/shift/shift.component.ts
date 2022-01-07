@@ -11,6 +11,7 @@ import { DialogsService } from 'src/app/services/dialogs.service';
 import { ShiftDataService } from 'src/app/data-services/shift-data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Data } from '@angular/router';
 
 
 const ELEMENT_DATA: Shift[] = [];
@@ -23,10 +24,13 @@ const ELEMENT_DATA: Shift[] = [];
 export class ShiftComponent implements OnInit {
 
   shiftData : Shift[] ;
-   
+
+    
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
   
   shiftDataSource$: Observable<MatTableDataSource<Shift>>;
+
+  dataS ;
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -46,13 +50,21 @@ export class ShiftComponent implements OnInit {
       return new MatTableDataSource(shifts)
     }
     ))
-
+    this.shiftDataSource$.subscribe({
+      next:((result)=>{
+        this.dataS = result.data;
+        console.log(this.dataS);
+      })
+    })
+    this.dataS = new MatTableDataSource(this.dataS);
+    this.dataS.paginator = this.paginator;
+    this.dataS.sort = this.sort;
   }
   
   applyFilter(event: Event) {
 
-    // const filterValue = (event.target as HTMLInputElement).value;
-    // this.shiftDataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataS.filter = filterValue.trim().toLowerCase();
 
   }
 
