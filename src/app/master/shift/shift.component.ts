@@ -9,8 +9,9 @@ import { AlertService } from 'src/app/shared/alert.service';
 import { AddShiftComponent } from './add-shift/add-shift.component';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { ShiftDataService } from 'src/app/data-services/shift-data.service';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Data } from '@angular/router';
 
 
 const ELEMENT_DATA: Shift[] = [];
@@ -22,14 +23,15 @@ const ELEMENT_DATA: Shift[] = [];
 })
 export class ShiftComponent implements OnInit {
 
-  shiftData: Shift[] = [];
+  shiftData : Shift[] ;
 
-  shiftDataSource;
-
-  destroyed$ = new Subject();
-
+    
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
+  
+  shiftDataSource$: Observable<MatTableDataSource<Shift>>;
 
+  dataS ;
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -44,33 +46,25 @@ export class ShiftComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.shiftData = this.shiftDataService.getShift()
-    this.shiftDataService.shiftUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(shifts => {
-      this.shiftData = shifts
+    this.shiftDataSource$ = this.shiftDataService.shiftUpdated$.pipe(map(shifts => {
+      return new MatTableDataSource(shifts)
+    }
+    ))
+    this.shiftDataSource$.subscribe({
+      next:((result)=>{
+        this.dataS = result.data;
+        console.log(this.dataS);
+      })
     })
-
+    this.dataS = new MatTableDataSource(this.dataS);
+    this.dataS.paginator = this.paginator;
+    this.dataS.sort = this.sort;
   }
-
-  shiftFill() {
-
-    this.shiftDataSource = new MatTableDataSource(this.shiftData)
-    this.shiftDataSource.paginator = this.paginator;
-    this.shiftDataSource.sort = this.sort;
-    
-  }
-
-  ngOnDestroy(): void {
-
-    this.destroyed$.next();
-    this.destroyed$.complete();
-
-  }
-
-
+  
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.shiftDataSource.filter = filterValue.trim().toLowerCase();
+    this.dataS.filter = filterValue.trim().toLowerCase();
 
   }
 
@@ -87,11 +81,10 @@ export class ShiftComponent implements OnInit {
 
   onClickDelete(id: string) {
 
-    this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
+    this.dialogsService.openConfirmDialog('Are you sure to delete this record  ?')
       .afterClosed().subscribe(res => {
         if (res) {
           this.shiftApi.deleteShift(id).subscribe(res => {
-            this.shiftData = this.shiftData.filter(item => item._id !== id);
             this.alert.showError('Shift Deleted Successfully...!', 'Shift');
           })
         }

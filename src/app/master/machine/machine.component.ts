@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 import { MachineDataService } from 'src/app/data-services/machine-data.service';
 import { Machine } from 'src/app/models/machine.model';
 import { DialogsService } from 'src/app/services/dialogs.service';
@@ -23,14 +23,11 @@ const ELEMENT_DATA: Machine[] = [];
 export class MachineComponent implements OnInit {
 
 
-  machineData: Machine[] = [];
-
-  machineDataSource;
-
-  destroyed$ = new Subject();
+  // machineData: Machine[] = [];
 
   displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
 
+  machineDataSource$ : Observable<MatTableDataSource<Machine>>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -47,29 +44,22 @@ export class MachineComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.machineData = this.machineDataService.getMachine()
-    this.machineDataService.machineUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(machines => {
-    this.machineData = machines
+    // this.machineData = this.machineDataService.getMachine()
+    // this.machineDataService.machineUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(machines => {
+    // this.machineData = machines
     // this.machineDataSource = new MatTableDataSource(this.machineData);
     // this.machineDataSource.paginator = this.paginator;
     // this.machineDataSource.sort = this.sort;
-    })
-    
+       
+     this.machineDataSource$ = this.machineDataService.machineUpdated$.pipe(map(machines =>{
+       return new MatTableDataSource(machines)
+     }))
   }
-
-  ngOnDestroy(): void {
-
-    this.destroyed$.next();
-    this.destroyed$.complete();
-
-  }
-  
-
   
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.machineDataSource.filter = filterValue.trim().toLowerCase();
+    // this.machineDataSource.filter = filterValue.trim().toLowerCase();
 
   }
 
@@ -91,7 +81,6 @@ export class MachineComponent implements OnInit {
       .afterClosed().subscribe(res => {
         if (res) {
           this.machineApi.deleteMachine(id).subscribe(res => {
-            this.machineData = this.machineData.filter(item => item._id !== id);
             this.alert.showError('Machine Deleted Successfully...!', 'Machine');
           })
         }

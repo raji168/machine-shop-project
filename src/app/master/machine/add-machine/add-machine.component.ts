@@ -28,7 +28,6 @@ export class AddMachineComponent implements OnInit {
 
 
     this.machineForm = new FormGroup({
-      sno: new FormControl(null, [Validators.required, Validators.maxLength(2)]),
       machinename: new FormControl(null, Validators.required),
       machineno: new FormControl(null, Validators.required),
       brand: new FormControl(null, Validators.required),

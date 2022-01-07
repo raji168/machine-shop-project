@@ -11,11 +11,6 @@ import { RoleComponent } from "./role/role.component";
 import { UserComponent } from "./user/user.component";
 
 const routes: Routes = [
-
-    { path: '', component: InstrumentComponent },
-
-    { path: '', component: RoleComponent },
-
     {
         path: 'role', component: RoleComponent, 
         resolve: {

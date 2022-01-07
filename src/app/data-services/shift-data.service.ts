@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { Shift } from "../models/shift.model";
 
 @Injectable({
@@ -11,7 +11,7 @@ export class ShiftDataService {
 
     private shifts: Shift[] = [];
 
-    shiftUpdated$ = new Subject<Shift[]>()
+    shiftUpdated$ = new BehaviorSubject<Shift[]>([])
 
 
     getShift() {
@@ -22,6 +22,7 @@ export class ShiftDataService {
     loadShift(shifts: Shift[]) {
 
         this.shifts = shifts;
+        this.shiftUpdated$.next(this.shifts);
     }
 
     addShift(shift: Shift) {
@@ -36,7 +37,7 @@ export class ShiftDataService {
         const updateShiftIndex = this.shifts.findIndex(shift => shift._id === shift._id)
         const updatedShift = { ...updateShift, ...shiftResponse }
         this.shifts[updateShiftIndex] = updatedShift
-        this.shiftUpdated$.next(this.shifts);
+        // this.shiftUpdated$.next(this.shifts);
 
     }
 
