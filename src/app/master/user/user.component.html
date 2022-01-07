@@ -10,17 +10,14 @@
         </button>
 
 
-      <!-- <mat-form-field class="search-form-field" floatLable="never">
-
-        <mat-form-field class="search-form-field" floatLable="never">
-
+        <!-- <mat-form-field class="search-form-field" floatLable="never">
           <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
           <button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
               <mat-icon>close</mat-icon>
           </button>
       </mat-form-field> -->
 
-  </div>
+    </div>
 
     <div class=" table-user mat-elevation-z8" role="table">
 
@@ -69,8 +66,7 @@
                     <button class="edit-button" mat-icon-button color="primary" title="Edit" (click)="onEdit(user)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button class="delete-button" color="accent" title="Delete"
-                        (click)="onDelete(user._id)">
+                    <button mat-icon-button class="delete-button" color="accent" title="Delete" (click)="onDelete(user._id)">
                         <mat-icon>delete_forever</mat-icon>
                     </button>
                 </mat-cell>
@@ -80,9 +76,5 @@
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
         </mat-table>
-
-
-  </div>
+    </div>
 </div>
-
-

@@ -13,7 +13,6 @@ import { UserComponent } from "./user/user.component";
 
 const routes: Routes = [
     { path: '', component: RoleComponent },
-
     {
         path: 'role', component: RoleComponent, resolve: {
             roles: RoleResolver
