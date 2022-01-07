@@ -16,10 +16,8 @@ export class UserDataService {
   }
 
   loadUsers(users: User[]) {
-
     this.users = users;
     this.userUpdated$.next(this.users)
-
   }
 
   addUser(user: User) {
@@ -35,6 +33,7 @@ export class UserDataService {
     console.log(this.users)
     this.userUpdated$.next(this.users);
   }
+
   deleteUser(id: string) {
     this.users = this.users.filter(user => user._id !== id);
     this.userUpdated$.next(this.users);
