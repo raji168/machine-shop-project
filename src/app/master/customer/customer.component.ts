@@ -4,8 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 import { CustomerDataService } from 'src/app/data-services/customer-data.service';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerApiService } from 'src/app/services/customer-api.service';
@@ -22,11 +22,9 @@ export class CustomerComponent implements OnInit {
 
   customerData: Customer[] = [];
 
-  customerDataSource;
-
-  destroy$ = new Subject();
-
   displayedColumns: string[] = ['sno', 'customername', 'description', 'productno', 'revisionno', 'drawing', 'actions'];
+
+  customerDataSource$ : Observable<MatTableDataSource<Customer>>;
 
   // @ViewChild('paginator' , {read : MatPaginator , static: false}) paginator:MatPaginator; 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -42,25 +40,21 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.customerData = this.customerDataService.getCustomer()
-    this.customerDataService.customerUpdated$.pipe(takeUntil(this.destroy$)).subscribe(customer => {
-      this.customerData = customer
-    })
+    // this.customerData = this.customerDataService.getCustomer()
+    // this.customerDataService.customerUpdated$.pipe(takeUntil(this.destroy$)).subscribe(customer => {
+    //   this.customerData = customer
+    // })
 
-  }
-
-  customerFill() {
-
-    this.customerDataSource = new MatTableDataSource(this.customerData);
-    this.customerDataSource.paginator = this.paginator;
-    this.customerDataSource.sort = this.sort
+    this.customerDataSource$ = this.customerDataService.customerUpdated$.pipe(map(customers =>{
+      return new MatTableDataSource(customers)
+    }))
 
   }
 
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.customerDataSource.filter = filterValue.trim().toLowerCase();
+    // this.customerDataSource.filter = filterValue.trim().toLowerCase();
 
   }
 
@@ -82,7 +76,6 @@ export class CustomerComponent implements OnInit {
       .afterClosed().subscribe(res => {
         if (res) {
           this.customerApi.deleteCustomer(id).subscribe(res => {
-            this.customerDataService.deleteCustomer(id);
             this.alert.showError('Customer Deleted Successfully...!', 'Customer');
           })
         }

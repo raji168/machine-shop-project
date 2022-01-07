@@ -17,8 +17,6 @@ export class AddShiftComponent implements OnInit {
 
   shiftForm: FormGroup;
 
-  destroyed$ = new Subject();
-
   shiftData: Shift[] = [];
 
   _id: string;
@@ -32,7 +30,7 @@ export class AddShiftComponent implements OnInit {
   ) {
 
     this.shiftForm = new FormGroup({
-      sno: new FormControl(null, [Validators.required, Validators.maxLength(1)]),
+      // sno: new FormControl(null, [Validators.required, Validators.maxLength(1)]),
       shiftName: new FormControl(null, Validators.required),
       startTime: new FormControl(null, Validators.required),
       endTime: new FormControl(null, Validators.required)

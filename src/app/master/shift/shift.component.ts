@@ -23,15 +23,11 @@ const ELEMENT_DATA: Shift[] = [];
 export class ShiftComponent implements OnInit {
 
   shiftData : Shift[] ;
-
-  shiftDataSource;
    
-  shiftDataSource$: Observable<MatTableDataSource<Shift>>;
-
-  // destroyed$ = new Subject();
-
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
-
+  
+  shiftDataSource$: Observable<MatTableDataSource<Shift>>;
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -52,14 +48,7 @@ export class ShiftComponent implements OnInit {
     ))
 
   }
-
-  shiftFill() {
-    this.shiftApi.getShiftAll().subscribe(res=>{
-      // this.shiftData = new MatTableDataSource(res);
-      // this.shiftData.paginator = this.paginator;
-      // this.shiftData.sort = this.sort;
-    })
-  }
+  
   applyFilter(event: Event) {
 
     // const filterValue = (event.target as HTMLInputElement).value;
@@ -80,11 +69,10 @@ export class ShiftComponent implements OnInit {
 
   onClickDelete(id: string) {
 
-    this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
+    this.dialogsService.openConfirmDialog('Are you sure to delete this record  ?')
       .afterClosed().subscribe(res => {
         if (res) {
           this.shiftApi.deleteShift(id).subscribe(res => {
-            this.shiftDataService.deleteShift(id);
             this.alert.showError('Shift Deleted Successfully...!', 'Shift');
           })
         }
