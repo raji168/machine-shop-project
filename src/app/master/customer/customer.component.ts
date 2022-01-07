@@ -20,7 +20,7 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 })
 export class CustomerComponent implements OnInit {
 
-  customerData: Customer[] = [];
+  // customerData: Customer[] = [];
 
   displayedColumns: string[] = ['sno', 'customername', 'description', 'productno', 'revisionno', 'drawing', 'actions'];
 
