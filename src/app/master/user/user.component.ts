@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/models/user.model';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { AddUserComponent } from './add-user/add-user.component';
@@ -10,7 +10,6 @@ import { Observable, Subject } from 'rxjs';
 import { UserDataService } from 'src/app/data-services/user-data.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { map, takeUntil } from 'rxjs/operators';
-import { RoleDataService } from 'src/app/data-services/role-data.service';
 
 
 
@@ -25,6 +24,7 @@ export class UserComponent implements OnInit {
   displayedColumns: string[] = ['sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
 
   searchKey: string;
+
   userForm: FormGroup = new FormGroup({
     sno: new FormControl(''),
     name: new FormControl(''),
@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
     emailId: new FormControl(''),
     phoneNo: new FormControl(''),
     userName: new FormControl('')
-  })
+  });
 
   userDataSource$ : Observable<MatTableDataSource<User>>;
 
@@ -65,6 +65,17 @@ export class UserComponent implements OnInit {
     this.dialog.open(AddUserComponent, { data: { user } });
   }
 
+  onDelete(id) {
+    this.dialogsService.openConfirmDialog('Are you sure to delete this record?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.userService.deleteUser(id).subscribe(res => {
+            this.notification.success('deleted successfully!!!');
+          })
+        }
+      });
+  }
+
   // applyFilter(){
   //   this.userData.filter = this.searchKey.trim().toLocaleLowerCase();
   // }
@@ -74,16 +85,6 @@ export class UserComponent implements OnInit {
   //   this.applyFilter();
   // }
 
-  onDelete(id) {
-    this.dialogsService.openConfirmDialog('Are you sure to delete this record?')
-      .afterClosed().subscribe(res => {
-        if (res) {
-          this.userService.deleteUser(id).subscribe(res => {
-            this.notification.success('deleted successfully!!!!');
-          })
-        }
-      });
-  }
 }
 
 
