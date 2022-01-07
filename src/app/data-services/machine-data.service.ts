@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { Machine } from "../models/machine.model";
 
 @Injectable({
@@ -10,7 +10,7 @@ export class MachineDataService {
 
   private machines: Machine[] = [];
 
-  machineUpdated$ = new Subject<Machine[]>()
+  machineUpdated$ = new BehaviorSubject<Machine[]>([])
 
   getMachine() {
 
@@ -20,6 +20,7 @@ export class MachineDataService {
   loadMachine(machines: Machine[]) {
 
     this.machines = machines;
+    this.machineUpdated$.next(this.machines);
 
   }
 

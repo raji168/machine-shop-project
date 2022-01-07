@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { Customer } from "../models/customer.model";
 
 @Injectable({
@@ -11,7 +11,7 @@ export class CustomerDataService {
 
     private customers: Customer[] = [];
 
-    customerUpdated$ = new Subject<Customer[]>()
+    customerUpdated$ = new BehaviorSubject<Customer[]>([])
 
     getCustomer() {
 
@@ -22,6 +22,7 @@ export class CustomerDataService {
     loadCustomer(customers: Customer[]) {
 
         this.customers = customers;
+        this.customerUpdated$.next(this.customers);
 
     }
 

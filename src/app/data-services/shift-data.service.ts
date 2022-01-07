@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { Shift } from "../models/shift.model";
 
 @Injectable({
@@ -11,7 +11,7 @@ export class ShiftDataService {
 
     private shifts: Shift[] = [];
 
-    shiftUpdated$ = new Subject<Shift[]>()
+    shiftUpdated$ = new BehaviorSubject<Shift[]>([])
 
 
     getShift() {
