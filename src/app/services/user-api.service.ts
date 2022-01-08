@@ -17,7 +17,7 @@ export class UserApiService {
 
   users: User[] = [];
 
-  // userUpdated = new Subject();
+  userUpdated = new Subject();
 
   constructor(
     private http: HttpClient,
@@ -26,7 +26,8 @@ export class UserApiService {
 
 
   get(): Observable<any> {
-    return this.http.get<User[]>(this.url).pipe(
+    return this.http.get<User[]>(this.url)
+    .pipe(
       tap((users) => {
         this.userDataService.loadUsers(users)
       })
@@ -52,7 +53,8 @@ export class UserApiService {
   }
 
   deleteUser(_id: string) {
-    return this.http.delete<User>(`${this.url}/${_id}`).pipe(
+    return this.http.delete<User>(`${this.url}/${_id}`)
+    .pipe(
       tap(user => {
         this.userDataService.deleteUser(user._id)
       })
