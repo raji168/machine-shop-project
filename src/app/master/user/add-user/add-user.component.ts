@@ -66,6 +66,7 @@ export class AddUserComponent implements OnInit {
     if (this.user) {
       this.userService.updateUser(this.userForm.value, this.user._id).subscribe(data => {
         this.dialogRef.close(data);
+        console.log(data);
         this.notification.success("Edited successfully!!");
       });
     } else {
