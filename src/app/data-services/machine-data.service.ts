@@ -33,18 +33,18 @@ export class MachineDataService {
 
   updateMachine(machineResponse: Machine) {
 
-    const updateMachine = this.machines.find(machine => machine._id === machine._id)
-    const updateMachineIndex = this.machines.findIndex(machine => machine._id === machine._id)
+    const updateMachine = this.machines.find(machine => machineResponse._id === machine._id)
+    const updateMachineIndex = this.machines.findIndex(machine => machineResponse._id === machine._id)
     const updatedMachine = { ...updateMachine, machineResponse }
     this.machines[updateMachineIndex] = updatedMachine
     this.machineUpdated$.next(this.machines);
   }
 
-  deleteMachine(id:string){
-     
-    this.machines = this.machines.filter(item=> item._id !== id)
+  deleteMachine(id: string) {
+
+    this.machines = this.machines.filter(machine => machine._id !== id)
     this.machineUpdated$.next(this.machines);
-    
+
   }
 
 }

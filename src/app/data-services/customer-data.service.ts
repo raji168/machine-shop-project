@@ -35,17 +35,17 @@ export class CustomerDataService {
 
     updateCustomer(customerResponse: Customer) {
 
-        const updateCustomer = this.customers.find(customer => customer._id === customer._id)
-        const updateCustomerIndex = this.customers.findIndex(customer => customer._id === customer._id)
+        const updateCustomer = this.customers.find(customer => customer._id === customerResponse._id)
+        const updateCustomerIndex = this.customers.findIndex(customer => customer._id === customerResponse._id)
         const updatedCustomer = { ...updateCustomer, ...customerResponse }
         this.customers[updateCustomerIndex] = updatedCustomer
         this.customerUpdated$.next(this.customers);
     }
 
-    deleteCustomer(id:string){
+    deleteCustomer(id: string) {
 
-        this.customers = this.customers.filter(item => item._id !== id)
+        this.customers = this.customers.filter(customer => customer._id !== id);
         this.customerUpdated$.next(this.customers);
-        
+
     }
 }
