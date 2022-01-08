@@ -1,7 +1,7 @@
 <div class="container">
     <div class="table-form">
-        <div class="title" *ngIf="!isEditable"> Customer</div>
-        <form [formGroup]="customerForm">
+        <div class="title" > Customer</div>
+        <form [formGroup]="customerForm" (ngSubmit)="onSave()">
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Customer Name</mat-label>
                 <input matInput type="text" placeholder="Customer Name" formControlName="customername"
@@ -26,7 +26,7 @@
                 <button mat-icon-button (click)="onUpload()"><mat-icon>upload</mat-icon></button>  -->
             </div>
             <div class="button">
-                <button mat-raised-button class="btn-save" color="accent" (click)="onSave()">Save</button>
+                <button mat-raised-button class="btn-save" color="accent" type="submit" >Save</button>
                 <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
             </div>
         </form>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Machine } from '../models/machine.model';
 import { tap } from 'rxjs/operators';
 import { MachineDataService } from '../data-services/machine-data.service';
@@ -14,14 +14,14 @@ export class MachineApiService {
 
   machines: Machine[] = [];
 
-  machineUpdated = new Subject();
+  // machineUpdated = new Subject();
 
   constructor(
     private http: HttpClient,
     private machineDataService: MachineDataService
   ) { }
 
-  getMachineAll() {
+  getMachineAll():Observable<any> {
 
     return this.http.get<Machine[]>(this.baseUrl)
       .pipe(
@@ -43,9 +43,9 @@ export class MachineApiService {
   }
 
 
-  updateMachine(machine: Partial<Machine>, _id) {
+  updateMachine(machine: Partial<Machine>, id) {
 
-    return this.http.patch<Machine>(`${this.baseUrl}/${_id}`, machine)
+    return this.http.patch<Machine>(`${this.baseUrl}/${id}`, machine)
       .pipe(
         tap((machine) => {
           this.machineDataService.updateMachine(machine)

@@ -1,14 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder,  FormGroup } from '@angular/forms';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { User } from 'src/app/models/user.model';
 import { RoleApiService } from 'src/app/services/role-api.service';
 import { Role } from 'src/app/models/role.model';
-import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
-import { RoleDataService } from 'src/app/data-services/role-data.service';
 
 
 @Component({
@@ -20,12 +17,13 @@ import { RoleDataService } from 'src/app/data-services/role-data.service';
 export class AddUserComponent implements OnInit {
 
   user: User;
-  dataUser: User[] = [];
+  // dataUser: User[] = [];
   userForm: FormGroup;
-  userData: User[] = [];
-  _id: string;
+  // userData: User[] = [];
+  // _id: string;
   roleData: Role[] = [];
-  roleDataSource$ : Observable<MatTableDataSource<Role>>;
+
+  // roleDataSource$ : Observable<MatTableDataSource<Role>>;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { user: User },
@@ -33,26 +31,26 @@ export class AddUserComponent implements OnInit {
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService,
-    private fb: FormBuilder,
-    private roleDataService : RoleDataService) { }
+    private fb: FormBuilder,) {
 
-  ngOnInit(): void {
-    this.userForm = this.fb.group({
-      sno: '',
-      name: '',
-      role: '',
-      emailId: '',
-      phoneNo: '',
-      userName: '',
-      password:''
-    })
+      this.userForm = this.fb.group({
+        sno: '',
+        name: '',
+        role: '',
+        emailId: '',
+        phoneNo: '',
+        userName: '',
+        password:''
+      })
 
+
+     }
+
+  ngOnInit(){
 
     this.roleService.get().subscribe(data =>{
       this.roleData = data;
     })
-
-    
 
     this.user = this.data?.user;
 
@@ -67,9 +65,7 @@ export class AddUserComponent implements OnInit {
     if (this.user) {
       this.userService.updateUser(this.userForm.value, this.user._id).subscribe(data => {
         this.dialogRef.close(data);
-        console.log(data);
         this.notification.success("Edited successfully!!");
-        console.log(data);
       });
     } else {
       this.userService.addUser(this.userForm.value).subscribe(data => {
