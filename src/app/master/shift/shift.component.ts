@@ -23,15 +23,15 @@ const ELEMENT_DATA: Shift[] = [];
 })
 export class ShiftComponent implements OnInit {
 
-  shiftData : Shift[] ;
+  shiftData: Shift[];
 
-    
+
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
-  
+
   shiftDataSource$: Observable<MatTableDataSource<Shift>>;
 
-  dataS ;
-  
+  dataS;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -45,22 +45,31 @@ export class ShiftComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.shiftDataSource$ = this.shiftDataService.shiftUpdated$.pipe(map(shifts => {
       return new MatTableDataSource(shifts)
     }
     ))
-    this.shiftDataSource$.subscribe({
-      next:((result)=>{
+    this.shiftDataSource$.subscribe(
+      ((result) => {
         this.dataS = result.data;
-        console.log(this.dataS);
+        this.dataS.paginator = this.paginator;
+        this.dataS.sort = this.sort;
+        // console.log(this.dataS);
       })
-    })
-    this.dataS = new MatTableDataSource(this.dataS);
-    this.dataS.paginator = this.paginator;
-    this.dataS.sort = this.sort;
+    )
   }
-  
+
+  // initShift(){
+  //   this.shiftDataSource$.subscribe({
+  //     next: ((result) => {
+  //       this.dataS = result.data;
+  //       this.dataS.paginator = this.paginator;
+  //       this.dataS.sort = this.sort;
+  //       console.log(this.dataS);
+  //     })
+  //   })
+  // }
+
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;

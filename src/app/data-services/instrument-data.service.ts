@@ -15,8 +15,6 @@ export class InstrumentDataService{
 
     getInstruments(){
         return[...this.instruments]
-
-
     }
 
     loadInstruments(instruments : InstrumentModel[]) {
