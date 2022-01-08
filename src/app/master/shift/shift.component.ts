@@ -11,7 +11,7 @@ import { DialogsService } from 'src/app/services/dialogs.service';
 import { ShiftDataService } from 'src/app/data-services/shift-data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Data } from '@angular/router';
+
 
 
 const ELEMENT_DATA: Shift[] = [];
