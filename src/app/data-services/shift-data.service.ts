@@ -33,15 +33,15 @@ export class ShiftDataService {
 
     updateShift(shiftResponse: Shift) {
 
-        const updateShift = this.shifts.find(shift => shift._id === shift._id)
-        const updateShiftIndex = this.shifts.findIndex(shift => shift._id === shift._id)
+        const updateShift = this.shifts.find(shift => shift._id === shiftResponse._id)
+        const updateShiftIndex = this.shifts.findIndex(shift => shift._id === shiftResponse._id)
         const updatedShift = { ...updateShift, ...shiftResponse }
         this.shifts[updateShiftIndex] = updatedShift
-        // this.shiftUpdated$.next(this.shifts);
+        this.shiftUpdated$.next(this.shifts);
 
     }
 
-    deleteShift(id:string) {
+    deleteShift(id: string) {
 
         this.shifts = this.shifts.filter(shift => shift._id !== id)
         this.shiftUpdated$.next(this.shifts);

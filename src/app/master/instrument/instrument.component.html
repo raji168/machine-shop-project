@@ -20,8 +20,8 @@
 
     <div class=" table-instrument mat-elevation-z8" role="table">
 
-        <mat-table [dataSource]="instrumentDataSource$ | async" matSort>
-            <!-- <mat-table [dataSource]="deviceData" matSort> -->
+        <!-- <mat-table [dataSource]="instrumentDataSource$ | async" matSort> -->
+            <mat-table [dataSource]="grdlistData" matSort>
 
                 <!-- <ng-container matColumnDef="checkBox">
                 <mat-header-cell *matHeaderCellDef mat-sort-header >checkBox</mat-header-cell>
