@@ -27,6 +27,9 @@ export class InstrumentComponent implements OnInit {
 
   displayedColumns: string[] = ['sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
+  searchKey: string;
+
+
   form = new FormGroup({
     sno: new FormControl(''),
     name: new FormControl(''),
@@ -38,6 +41,8 @@ export class InstrumentComponent implements OnInit {
 
   instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private instrumentService: InstrumentService,
@@ -50,10 +55,8 @@ export class InstrumentComponent implements OnInit {
 
   grdlistData;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+ 
 
-  searchKey: string;
 
 
   ngOnInit(): void {
@@ -65,7 +68,6 @@ export class InstrumentComponent implements OnInit {
       ((res) => {
         this.grdlistData = res.data;
         this.grdlistData = new MatTableDataSource(res.data);
-
         this.grdlistData.sort = this.sort;
         this.grdlistData.paginator = this.paginator;
       })
