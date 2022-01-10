@@ -41,6 +41,14 @@ export class AddCustomerComponent implements OnInit {
       this.customerForm.patchValue(this.customer);
     }
   }
+  
+  onSelectedFile(event){
+    if(event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.customerForm.get('drawing').setValue(file);
+    }
+
+  }
 
   onSave() {
 
@@ -53,7 +61,8 @@ export class AddCustomerComponent implements OnInit {
     } else {
       this.customerApi.addCustomer(this.customerForm.value).subscribe(data => {
         this.dialogRef.close(data);
-
+        const formData = new FormData();
+        formData.append('drawing', this.customerForm.get('drawing').value);
         this.alert.showSuccess('Customer Added Successfully...!', 'Customer');
 
       });

@@ -14,10 +14,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from "@angular/material/core";
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import { FormsModule } from "@angular/forms";
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+
+
 @NgModule({
     exports: [
         MatToolbarModule,
@@ -37,9 +40,10 @@ import { FormsModule } from "@angular/forms";
         MatSnackBarModule,
         MatSelectModule,
         MatNativeDateModule,
-        FormsModule,MatCheckboxModule,
-        MatFormFieldModule
-    ]
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatExpansionModule,
+      ]
 })
 
 

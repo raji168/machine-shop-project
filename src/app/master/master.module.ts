@@ -6,6 +6,7 @@ import { MasterRoutingModule } from "./master-routing.module";
 import { MasterComponent } from "./master.component";
 import { RoleComponent } from './role/role.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { InstrumentComponent } from './instrument/instrument.component';
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
@@ -28,6 +29,7 @@ import { AddRoleComponent } from './role/add-role/add-role.component';
         MaterialModule,
         ReactiveFormsModule,
         MasterRoutingModule,
+        FormsModule,
         MatButtonModule
         
     ],

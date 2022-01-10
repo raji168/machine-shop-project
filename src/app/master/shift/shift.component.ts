@@ -11,7 +11,7 @@ import { DialogsService } from 'src/app/services/dialogs.service';
 import { ShiftDataService } from 'src/app/data-services/shift-data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { FormControl, FormGroup } from '@angular/forms';
+
 
 
 const ELEMENT_DATA: Shift[] = [];
@@ -27,12 +27,11 @@ export class ShiftComponent implements OnInit {
 
   shiftDataSource$: Observable<MatTableDataSource<Shift>>;
 
-  dataS;
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  
+  dataS;
+
   constructor(
     private shiftApi: ShiftApiService,
     public dialog: MatDialog,
@@ -46,29 +45,7 @@ export class ShiftComponent implements OnInit {
       return new MatTableDataSource(shifts)
     }
     ))
-    this.shiftDataSource$.subscribe(
-      ((res) => {
-        this.dataS = res.data;
-        this.dataS = new MatTableDataSource(res.data);
-        this.dataS.paginator = this.paginator;
-        this.dataS.sort = this.sort;
-        // console.log(this.dataS);
-      })
-    )
   }
-
-
-
-  // initShift(){
-  //   this.shiftDataSource$.subscribe({
-  //     next: ((result) => {
-  //       this.dataS = result.data;
-  //       this.dataS.paginator = this.paginator;
-  //       this.dataS.sort = this.sort;
-  //       console.log(this.dataS);
-  //     })
-  //   })
-  // }
 
   applyFilter(event: Event) {
 
@@ -100,3 +77,7 @@ export class ShiftComponent implements OnInit {
       });
   }
 }
+  function ngAfterViewInit(): (error: any) => void {
+    throw new Error('Function not implemented.');
+  }
+
