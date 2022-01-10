@@ -10,7 +10,7 @@ import { CustomerDataService } from '../data-services/customer-data.service';
 })
 export class CustomerApiService {
 
-  baseUrl: string = `http://192.168.0.13:3002/customers`;
+  baseUrl: string = `http://192.168.0.17:3002/customers`;
 
   customers: Customer[] = [];
 
