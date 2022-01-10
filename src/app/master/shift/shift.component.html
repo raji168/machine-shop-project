@@ -12,8 +12,8 @@
     </button>
   </div>
   <div class="table ">
-    <!-- <table mat-table [dataSource]="shiftData" class="mat-elevation-z8" matSort> -->
-      <table  class="mat-elevation-z8" mat-table [dataSource]="dataS "   matSort>
+    <table mat-table [dataSource]="shiftDataSource$ | async " class="mat-elevation-z8" matSort>
+      <!-- <table  class="mat-elevation-z8" mat-table [dataSource]="dataS"   matSort> -->
       <ng-container matColumnDef="sno">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No </th>
         <td mat-cell *matCellDef="let element ; let i =index "> {{i+1}} </td>
