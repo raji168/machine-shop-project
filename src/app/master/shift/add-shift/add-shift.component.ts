@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Subject } from 'rxjs';
 import { Shift } from 'src/app/models/shift.model';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
 import { AlertService } from 'src/app/shared/alert.service';
@@ -19,21 +18,18 @@ export class AddShiftComponent implements OnInit {
 
   shiftData: Shift[] = [];
 
-  _id: string;
-
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { shift: Shift },
     public dialogRef: MatDialogRef<AddShiftComponent>,
     private shiftApi: ShiftApiService,
-    private alert: AlertService
+    private alert: AlertService,
+    private fb:FormBuilder
   ) {
 
-    this.shiftForm = new FormGroup({
-      // sno: new FormControl(null, [Validators.required, Validators.maxLength(1)]),
-      shiftName: new FormControl(null, Validators.required),
-      startTime: new FormControl(null, Validators.required),
-      endTime: new FormControl(null, Validators.required)
+    this.shiftForm = this.fb.group({
+      shiftName: '',
+      startTime: '',
+      endTime: ''
     });
 
   }
@@ -42,12 +38,8 @@ export class AddShiftComponent implements OnInit {
 
     this.shift = this.data?.shift;
 
-    this.shiftApi.getShiftAll().subscribe(data => {
-      this.shiftData = data;
-    })
-
     if (this.shift) {
-      this.shiftForm.patchValue(this.data.shift);
+      this.shiftForm.patchValue(this.shift);
     }
 
   }

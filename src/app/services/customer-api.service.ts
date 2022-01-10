@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Customer } from '../models/customer.model';
 import { tap } from 'rxjs/operators';
 import { CustomerDataService } from '../data-services/customer-data.service';
@@ -14,15 +14,13 @@ export class CustomerApiService {
 
   customers: Customer[] = [];
 
-  customerUpdated = new Subject();
-
   constructor(
     private http: HttpClient,
     private customerDataService: CustomerDataService
   ) { }
 
 
-  getCustomerAll() {
+  getCustomerAll():Observable<any> {
 
     return this.http.get<Customer[]>(this.baseUrl)
       .pipe(
@@ -44,9 +42,9 @@ export class CustomerApiService {
       );
   }
 
-  updateCustomer(customer: Partial<Customer>, _id: string) {
+  updateCustomer(customer: Partial<Customer>, id) {
 
-    return this.http.patch<Customer>(`${this.baseUrl}/${_id}`, customer)
+    return this.http.patch<Customer>(`${this.baseUrl}/${id}`, customer)
       .pipe(
         tap((customer) => {
           this.customerDataService.updateCustomer(customer)

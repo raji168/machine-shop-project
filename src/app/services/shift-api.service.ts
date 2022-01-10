@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Shift } from '../models/shift.model';
 
 import { tap } from 'rxjs/operators';
@@ -19,14 +19,14 @@ export class ShiftApiService {
 
   shifts: Shift[] = [];
 
-  shiftUpdated = new Subject();
+  // shiftUpdated = new Subject();
 
   constructor(
     private http: HttpClient,
     private shiftDataService: ShiftDataService
   ) { }
 
-  getShiftAll() {
+  getShiftAll():Observable<any> {
 
     return this.http.get<Shift[]>(this.baseUrl).pipe(
       tap((shifts) => {
@@ -43,12 +43,10 @@ export class ShiftApiService {
           this.shiftDataService.addShift(shift)
         })
       );
-
   }
 
 
   updateShift(shift: Partial<Shift>, id) {
-
 
     return this.http.patch<Shift>(`${this.baseUrl}/${id}`, shift)
       .pipe(

@@ -12,8 +12,6 @@ import { ShiftDataService } from 'src/app/data-services/shift-data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-
-
 const ELEMENT_DATA: Shift[] = [];
 
 @Component({
@@ -22,9 +20,6 @@ const ELEMENT_DATA: Shift[] = [];
   styleUrls: ['./shift.component.scss']
 })
 export class ShiftComponent implements OnInit {
-
-  shiftData: Shift[];
-
 
   displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
@@ -35,7 +30,7 @@ export class ShiftComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-
+  
   constructor(
     private shiftApi: ShiftApiService,
     public dialog: MatDialog,
@@ -50,14 +45,17 @@ export class ShiftComponent implements OnInit {
     }
     ))
     this.shiftDataSource$.subscribe(
-      ((result) => {
-        this.dataS = result.data;
+      ((res) => {
+        this.dataS = res.data;
+        this.dataS = new MatTableDataSource(res.data);
         this.dataS.paginator = this.paginator;
         this.dataS.sort = this.sort;
         // console.log(this.dataS);
       })
     )
   }
+
+
 
   // initShift(){
   //   this.shiftDataSource$.subscribe({

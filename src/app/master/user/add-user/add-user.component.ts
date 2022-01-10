@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder,  FormGroup } from '@angular/forms';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -8,6 +8,7 @@ import { RoleApiService } from 'src/app/services/role-api.service';
 import { Role } from 'src/app/models/role.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
+
 
 
 @Component({
@@ -19,9 +20,14 @@ import { Observable } from 'rxjs';
 export class AddUserComponent implements OnInit {
 
   user: User;
+  // dataUser: User[] = [];
   userForm: FormGroup;
+  // userData: User[] = [];
+  // _id: string;
+
   roleData: Role[] = [];
-  roleDataSource$ : Observable<MatTableDataSource<Role>>;
+
+  // roleDataSource$ : Observable<MatTableDataSource<Role>>;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { user: User },
@@ -43,6 +49,12 @@ export class AddUserComponent implements OnInit {
       password:''
     })
 
+
+  ngOnInit(){
+
+    this.roleService.get().subscribe(data =>{
+      this.roleData = data;
+    })
 
 
     this.user = this.data?.user;

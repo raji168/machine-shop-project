@@ -29,6 +29,7 @@ export class CustomerComponent implements OnInit {
   // @ViewChild('paginator' , {read : MatPaginator , static: false}) paginator:MatPaginator; 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  customerData: any;
 
   constructor(
     private customerApi: CustomerApiService,
@@ -44,7 +45,6 @@ export class CustomerComponent implements OnInit {
     // this.customerDataService.customerUpdated$.pipe(takeUntil(this.destroy$)).subscribe(customer => {
     //   this.customerData = customer
     // })
-
     this.customerDataSource$ = this.customerDataService.customerUpdated$.pipe(map(customers =>{
       return new MatTableDataSource(customers)
     }))
@@ -54,7 +54,7 @@ export class CustomerComponent implements OnInit {
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    // this.customerDataSource.filter = filterValue.trim().toLowerCase();
+    this.customerData.filter = filterValue.trim().toLowerCase();
 
   }
 
