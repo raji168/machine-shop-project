@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder,  FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -36,7 +36,7 @@ export class AddUserComponent implements OnInit {
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService,
     private fb: FormBuilder,
-   ) { }
+  ) { }
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -46,31 +46,30 @@ export class AddUserComponent implements OnInit {
       emailId: '',
       phoneNo: '',
       userName: '',
-      password:''
+      password: ''
     })
 
-
-  ngOnInit(){
-
-    this.roleService.get().subscribe(data =>{
-      this.roleData = data;
-    })
+      this.roleService.get().subscribe(data => {
+        this.roleData = data;
+      })
 
 
-    this.user = this.data?.user;
+      this.user = this.data?.user;
 
 
-    this.roleService.get().subscribe(data =>{
-      this.roleData = data;
-    })
+      this.roleService.get().subscribe(data => {
+        this.roleData = data;
+      })
 
-    if (this.user) {
-      this.userForm.patchValue(this.data.user);
-      this.userForm.get('role')?.setValue(this.data.user.role._id);
+      if (this.user) {
+        this.userForm.patchValue(this.data.user);
+        this.userForm.get('role')?.setValue(this.data.user.role._id);
+      }
     }
-  }
+  
 
   onSubmit() {
+
     if (this.user) {
       this.userService.updateUser(this.userForm.value, this.user._id).subscribe(data => {
         this.dialogRef.close(data);
@@ -80,8 +79,9 @@ export class AddUserComponent implements OnInit {
       this.userService.addUser(this.userForm.value).subscribe(data => {
         this.dialogRef.close(data);
         this.notification.success("Added successfully!!");
-      })
+      });
     }
   }
 
 }
+

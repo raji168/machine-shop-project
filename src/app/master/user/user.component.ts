@@ -8,7 +8,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { Observable} from 'rxjs';
 import { UserDataService } from 'src/app/data-services/user-data.service';
-import { FormControl, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
