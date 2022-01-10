@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-master',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./master.component.scss']
 })
 export class MasterComponent implements OnInit {
+
+  @ViewChild(MatAccordion) accordion: MatAccordion;
 
   constructor() { }
 

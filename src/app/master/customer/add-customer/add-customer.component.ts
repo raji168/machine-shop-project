@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerApiService } from 'src/app/services/customer-api.service'
@@ -13,53 +12,44 @@ import { AlertService } from 'src/app/shared/alert.service';
 })
 export class AddCustomerComponent implements OnInit {
 
-  isEditable: boolean = false;
-
   customer: Customer;
 
   customerForm: FormGroup;
 
   dataMachine: Customer[] = [];
 
-  selectedFile :File ;
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { customer: Customer },
     public dialogRef: MatDialogRef<AddCustomerComponent>,
     private customerApi: CustomerApiService,
     private alert: AlertService,
-    private http:HttpClient) {
+    private fb:FormBuilder) {
 
-    this.customerForm = new FormGroup({
-      sno: new FormControl(null, Validators.required),
-      customername: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      productno: new FormControl(null, Validators.required),
-      revisionno: new FormControl(null, Validators.required),
-      drawing: new FormControl(null, [Validators.required])
+    this.customerForm = this.fb.group({
+      customername: '',
+      description: '',
+      productno: '',
+      revisionno: '',
+      drawing: ''
     });
   }
 
   ngOnInit() {
     this.customer = this.data?.customer;
 
-    this.customerApi.getCustomerAll().subscribe(data => {
-      this.dataMachine = data;
-    });
-
     if (this.customer) {
-      this.customerForm.patchValue(this.data.customer);
+      this.customerForm.patchValue(this.customer);
     }
   }
+  
+  onSelectedFile(event){
+    if(event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.customerForm.get('drawing').setValue(file);
+    }
 
-  // onFileChanged(event){
-  //   // const file = event.target.files;
-  // }
+  }
 
-  // onUpload(){
-  //   // const uploadData = new FormData();
-  //   // uploadData.append('myFile', this.selectedFile , this.selectedFile.name);
-  // }
   onSave() {
 
     if (this.customer) {
@@ -71,7 +61,8 @@ export class AddCustomerComponent implements OnInit {
     } else {
       this.customerApi.addCustomer(this.customerForm.value).subscribe(data => {
         this.dialogRef.close(data);
-
+        const formData = new FormData();
+        formData.append('drawing', this.customerForm.get('drawing').value);
         this.alert.showSuccess('Customer Added Successfully...!', 'Customer');
 
       });

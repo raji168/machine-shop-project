@@ -9,12 +9,9 @@ export class InstrumentResolver implements Resolve<any>{
 
     constructor(
         private instrumentApi : InstrumentService
-    ) {
-
-    }
+    ) {  }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return this.instrumentApi.get()
-        
     }
 }

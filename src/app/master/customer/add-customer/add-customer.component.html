@@ -1,11 +1,7 @@
 <div class="container">
     <div class="table-form">
-        <div class="title" *ngIf="!isEditable"> Customer</div>
-        <form [formGroup]="customerForm">
-            <mat-form-field appearance="outline" color="accent">
-                <mat-label>S.No</mat-label>
-                <input matInput type="text" placeholder="Sno" formControlName="sno" autocomplete="off">
-            </mat-form-field>
+        <div class="title" > Customer</div>
+        <form [formGroup]="customerForm" (ngSubmit)="onSave()">
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Customer Name</mat-label>
                 <input matInput type="text" placeholder="Customer Name" formControlName="customername"
@@ -25,12 +21,10 @@
             </mat-form-field>
             <div class="drawing">
                 <mat-label class="drawing-title">Drawing</mat-label>
-                <input style='display: none;'type="file" placeholder="image file" #fileInput>
-                <!-- <button mat-icon-button (click)="fileInput.click()"><mat-icon>attach_file</mat-icon></button>
-                <button mat-icon-button (click)="onUpload()"><mat-icon>upload</mat-icon></button>  -->
+                <input type="file" id="image" (change)="onSelectedFile($event)" >
             </div>
             <div class="button">
-                <button mat-raised-button class="btn-save" color="accent" (click)="onSave()">Save</button>
+                <button mat-raised-button class="btn-save" color="accent" type="submit" >Save</button>
                 <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
             </div>
         </form>

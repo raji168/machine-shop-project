@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Machine } from 'src/app/models/machine.model';
 import { MachineApiService } from 'src/app/services/machine-api.service';
@@ -18,21 +18,19 @@ export class AddMachineComponent implements OnInit {
 
   machineData: Machine[] = [];
 
-  _id: string;
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { machine: Machine },
     public dialogRef: MatDialogRef<AddMachineComponent>,
     private machineApi: MachineApiService,
-    private alert: AlertService) {
+    private alert: AlertService,
+    private fb:FormBuilder) {
 
 
-    this.machineForm = new FormGroup({
-      sno: new FormControl(null, [Validators.required, Validators.maxLength(2)]),
-      machinename: new FormControl(null, Validators.required),
-      machineno: new FormControl(null, Validators.required),
-      brand: new FormControl(null, Validators.required),
-      category: new FormControl(null, Validators.required)
+    this.machineForm = this.fb.group({
+      machinename: '',
+      machineno: '',
+      brand: '',
+      category:''
     });
 
   }
@@ -41,12 +39,8 @@ export class AddMachineComponent implements OnInit {
 
     this.machine = this.data?.machine;
 
-    this.machineApi.getMachineAll().subscribe(data => {
-      this.machineData = data;
-    });
-
-    if (this.data.machine) {
-      this.machineForm.patchValue(this.data.machine);
+    if (this.machine) {
+      this.machineForm.patchValue(this.machine);
     }
 
   }

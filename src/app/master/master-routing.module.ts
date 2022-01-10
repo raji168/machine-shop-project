@@ -6,30 +6,29 @@ import { ShiftResolver } from "../resolvers/shift.resolver";
 import { InstrumentResolver } from "../resolvers/instrument.resolver";
 import { RoleResolver } from "../resolvers/role.resolver";
 import { UserResolver } from "../resolvers/user.resolver";
-import { InstrumentComponent } from "./instrument/instrument.component";
-import { RoleComponent } from "./role/role.component";
-import { UserComponent } from "./user/user.component";
 
 const routes: Routes = [
 
-    { path: '', component: InstrumentComponent },
 
   
 
     {
-        path: 'role', component: RoleComponent, 
+        path : '' , redirectTo: 'master' , pathMatch: 'full'
+    },
+    {
+        path: 'role', loadChildren: () => import('./role/role.module').then(r => r.RoleModule), 
         resolve: {
             roles: RoleResolver
         }
     },
     {
-        path: 'instrument', component: InstrumentComponent, 
+        path: 'instrument', loadChildren: () => import('./instrument/instrument.module').then(i => i.InstrumentModule) , 
         resolve: {
             instrument: InstrumentResolver
         }
     },
     {
-        path: 'user', component: UserComponent, 
+        path: 'user', loadChildren: () => import('./user/user.module').then(u => u.UserModule), 
         resolve: {
             user: UserResolver
         }

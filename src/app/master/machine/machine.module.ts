@@ -1,3 +1,4 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "src/app/material/material.module";
@@ -12,6 +13,7 @@ import { MachineComponent } from "./machine.component";
         AddMachineComponent
     ],
     imports: [
+        CommonModule,
         MaterialModule,
         ReactiveFormsModule,
         MachineRoutingModule

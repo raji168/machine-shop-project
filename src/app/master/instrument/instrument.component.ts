@@ -24,7 +24,11 @@ export class InstrumentComponent implements OnInit {
 
   // instrumentData: InstrumentModel[] = [];
 
-  displayedColumns: string[] = [ 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
+
+  displayedColumns: string[] = ['sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
+
+  searchKey: string;
+
 
   form = new FormGroup({
     sno: new FormControl(''),
@@ -37,6 +41,8 @@ export class InstrumentComponent implements OnInit {
 
   instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private instrumentService: InstrumentService,
@@ -47,12 +53,10 @@ export class InstrumentComponent implements OnInit {
 
   }
 
-  grdlistData: MatTableDataSource<any>;
+  grdlistData;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+ 
 
-  searchKey: string;
 
 
   ngOnInit(): void {
@@ -60,8 +64,20 @@ export class InstrumentComponent implements OnInit {
       return new MatTableDataSource(instruments)
     }
     ))
+    this.instrumentDataSource$.subscribe(
+      ((res) => {
+        this.grdlistData = res.data;
+        this.grdlistData = new MatTableDataSource(res.data);
+        this.grdlistData.sort = this.sort;
+        this.grdlistData.paginator = this.paginator;
+      })
+    )
+    // this.fillGrid();
   }
+  // ngAfterInit() {
+  //   this.fillGrid();
 
+  // }
 
   fillGrid() {
     this.instrumentService.get()
@@ -73,6 +89,20 @@ export class InstrumentComponent implements OnInit {
 
         }
       );
+    // this.instrumentService.get()
+    //   .subscribe(
+    //     data => {
+    // this.grdlistData = new MatTableDataSource();
+    // this.instrumentDataSource$.subscribe(
+    //   ((res) => {
+    //     this.grdlistData = res.data;
+    //     this.grdlistData = new MatTableDataSource(res.data);
+    //     this.grdlistData.sort = this.sort;
+    //     this.grdlistData.paginator = this.paginator;
+    //   })
+    // )
+    //   }
+    // );
 
   }
   applyFilter() {
