@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder,  FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -35,40 +35,33 @@ export class AddUserComponent implements OnInit {
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService,
-    private fb: FormBuilder,
-   ) { }
-
-  ngOnInit(): void {
+    private fb: FormBuilder) {
     this.userForm = this.fb.group({
+
       sno: '',
       name: '',
       role: '',
       emailId: '',
       phoneNo: '',
       userName: '',
-      password:''
-    })
+      password: ''
+    });
+  }
 
+  ngOnInit() {
 
-  ngOnInit(){
-
-    this.roleService.get().subscribe(data =>{
+    this.roleService.get().subscribe(data => {
       this.roleData = data;
     })
-
 
     this.user = this.data?.user;
-
-
-    this.roleService.get().subscribe(data =>{
-      this.roleData = data;
-    })
 
     if (this.user) {
       this.userForm.patchValue(this.data.user);
       this.userForm.get('role')?.setValue(this.data.user.role._id);
     }
   }
+
 
   onSubmit() {
     if (this.user) {
@@ -82,6 +75,6 @@ export class AddUserComponent implements OnInit {
         this.notification.success("Added successfully!!");
       })
     }
-  }
+}
 
 }
