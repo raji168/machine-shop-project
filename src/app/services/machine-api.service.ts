@@ -10,7 +10,7 @@ import { MachineDataService } from '../data-services/machine-data.service';
 })
 export class MachineApiService {
 
-  baseUrl: string = `http://192.168.0.13:3002/machines`;
+  baseUrl: string = `http://192.168.0.17:3002/machines`;
 
   machines: Machine[] = [];
 
