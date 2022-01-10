@@ -5,6 +5,8 @@ import { MaterialModule } from "../material/material.module";
 import { MasterRoutingModule } from "./master-routing.module";
 import { MasterComponent } from "./master.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
+
 
 @NgModule({
     declarations: [
@@ -16,6 +18,7 @@ import { ReactiveFormsModule } from "@angular/forms";
         MaterialModule,
         ReactiveFormsModule,
         MasterRoutingModule,
+        FormsModule,
         MatButtonModule
     ],
 })

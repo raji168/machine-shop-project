@@ -37,7 +37,6 @@ export class AddUserComponent implements OnInit {
     public notification: NotificationService,
     private fb: FormBuilder) {
     this.userForm = this.fb.group({
-
       sno: '',
       name: '',
       role: '',
@@ -59,11 +58,13 @@ export class AddUserComponent implements OnInit {
     if (this.user) {
       this.userForm.patchValue(this.data.user);
       this.userForm.get('role')?.setValue(this.data.user.role._id);
+    })
     }
-  }
+  
 
 
   onSubmit() {
+
     if (this.user) {
       this.userService.updateUser(this.userForm.value, this.user._id).subscribe(data => {
         this.dialogRef.close(data);
@@ -73,7 +74,7 @@ export class AddUserComponent implements OnInit {
       this.userService.addUser(this.userForm.value).subscribe(data => {
         this.dialogRef.close(data);
         this.notification.success("Added successfully!!");
-      })
+      });
     }
 }
 
