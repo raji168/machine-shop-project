@@ -15,7 +15,7 @@ import { ShiftDataService } from '../data-services/shift-data.service';
 
 export class ShiftApiService {
 
-  baseUrl: string = ` http://192.168.0.13:3002/shifts`;
+  baseUrl: string = ` http://192.168.0.17:3002/shifts`;
 
   shifts: Shift[] = [];
 
