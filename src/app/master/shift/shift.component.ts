@@ -13,7 +13,6 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 
-
 const ELEMENT_DATA: Shift[] = [];
 
 @Component({

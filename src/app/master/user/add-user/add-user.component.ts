@@ -6,6 +6,9 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { User } from 'src/app/models/user.model';
 import { RoleApiService } from 'src/app/services/role-api.service';
 import { Role } from 'src/app/models/role.model';
+import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
+
 
 
 @Component({
@@ -21,6 +24,7 @@ export class AddUserComponent implements OnInit {
   userForm: FormGroup;
   // userData: User[] = [];
   // _id: string;
+
   roleData: Role[] = [];
 
   // roleDataSource$ : Observable<MatTableDataSource<Role>>;
@@ -31,20 +35,20 @@ export class AddUserComponent implements OnInit {
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService,
-    private fb: FormBuilder,) {
+    private fb: FormBuilder,
+   ) { }
 
-      this.userForm = this.fb.group({
-        sno: '',
-        name: '',
-        role: '',
-        emailId: '',
-        phoneNo: '',
-        userName: '',
-        password:''
-      })
+  ngOnInit(): void {
+    this.userForm = this.fb.group({
+      sno: '',
+      name: '',
+      role: '',
+      emailId: '',
+      phoneNo: '',
+      userName: '',
+      password:''
+    })
 
-
-     }
 
   ngOnInit(){
 
@@ -52,8 +56,13 @@ export class AddUserComponent implements OnInit {
       this.roleData = data;
     })
 
+
     this.user = this.data?.user;
 
+
+    this.roleService.get().subscribe(data =>{
+      this.roleData = data;
+    })
 
     if (this.user) {
       this.userForm.patchValue(this.data.user);

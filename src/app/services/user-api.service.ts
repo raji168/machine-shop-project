@@ -6,8 +6,6 @@ import { tap } from 'rxjs/operators';
 import { UserDataService } from '../data-services/user-data.service';
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +15,7 @@ export class UserApiService {
 
   users: User[] = [];
 
-  userUpdated = new Subject();
+  // userUpdated = new Subject();
 
   constructor(
     private http: HttpClient,
