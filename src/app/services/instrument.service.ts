@@ -10,7 +10,7 @@ import { InstrumentDataService } from '../data-services/instrument-data.service'
 })
 export class InstrumentService {
   
-  API_URL : string = 'http://192.168.0.13:3002/instruments';
+  API_URL : string = 'http://192.168.0.17:3002/instruments';
 
   
   instruments : InstrumentModel[] = [];  
