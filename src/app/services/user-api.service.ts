@@ -11,7 +11,7 @@ import { UserDataService } from '../data-services/user-data.service';
 })
 export class UserApiService {
 
-  url: string = 'http://192.168.0.13:3002/users';
+  url: string = 'http://192.168.0.17:3002/users';
 
   users: User[] = [];
 
