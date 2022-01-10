@@ -35,10 +35,7 @@ export class AddUserComponent implements OnInit {
     public userService: UserApiService,
     public dialogRef: MatDialogRef<AddUserComponent>,
     public notification: NotificationService,
-    private fb: FormBuilder,
-  ) { }
-
-  ngOnInit(): void {
+    private fb: FormBuilder) {
     this.userForm = this.fb.group({
       sno: '',
       name: '',
@@ -47,26 +44,24 @@ export class AddUserComponent implements OnInit {
       phoneNo: '',
       userName: '',
       password: ''
+    });
+  }
+
+  ngOnInit() {
+
+    this.roleService.get().subscribe(data => {
+      this.roleData = data;
     })
 
-      this.roleService.get().subscribe(data => {
-        this.roleData = data;
-      })
+    this.user = this.data?.user;
 
-
-      this.user = this.data?.user;
-
-
-      this.roleService.get().subscribe(data => {
-        this.roleData = data;
-      })
-
-      if (this.user) {
-        this.userForm.patchValue(this.data.user);
-        this.userForm.get('role')?.setValue(this.data.user.role._id);
-      }
+    if (this.user) {
+      this.userForm.patchValue(this.data.user);
+      this.userForm.get('role')?.setValue(this.data.user.role._id);
+    })
     }
   
+
 
   onSubmit() {
 
@@ -81,7 +76,6 @@ export class AddUserComponent implements OnInit {
         this.notification.success("Added successfully!!");
       });
     }
-  }
-
 }
 
+}
