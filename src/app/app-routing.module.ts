@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MasterComponent } from './master/master.component';
+import { MasterComponent } from '../app/main/master/master.component';
+import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: 'master/instrument', pathMatch: 'full' },
+  { path: '', redirectTo: 'main/master', pathMatch: 'full' },
   {
-    path: '', component: MasterComponent, children: [
-      {
-        path: 'master', loadChildren: () => import('./master/master.module').then(m => m.MasterModule),
-      }
-    ]
-  },
+    path:'main' , loadChildren:() => import('./main/main.module').then(m =>m.MainModule)
+  }
+ 
 
 ];
 

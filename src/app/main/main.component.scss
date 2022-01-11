@@ -1,0 +1,33 @@
+.content{
+    height: 88vh;
+}
+
+mat-sidenav mat-drwawer{
+  width: 10%;
+}
+
+mat-toolbar-row{
+  display: block;
+  padding: 1rem;
+}
+
+.title{
+  font-size: medium;
+  font-weight: 500;
+}
+
+.btn{
+  float: right;
+}
+
+*{
+  font-weight: 500;
+}
+
+.master{
+  background-color: cornflowerblue;
+}
+
+.library{
+  background-color: rgb(235, 87, 131);
+}

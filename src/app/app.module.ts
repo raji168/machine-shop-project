@@ -3,20 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MasterRoutingModule } from './master/master-routing.module';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
+import { MainRoutingModule } from './main/main-rotuing.module';
+import { MainModule } from './main/main.module';
 
 @NgModule({
 
   declarations: [
 
     AppComponent,
-    MatConfirmDialogComponent
+    MatConfirmDialogComponent,
 
   ],
 
@@ -25,10 +26,10 @@ import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confi
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MasterRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MainModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
