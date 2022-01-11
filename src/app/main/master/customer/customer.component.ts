@@ -26,10 +26,12 @@ export class CustomerComponent implements OnInit {
 
   customerDataSource$ : Observable<MatTableDataSource<Customer>>;
 
+  dataS;
+
   // @ViewChild('paginator' , {read : MatPaginator , static: false}) paginator:MatPaginator; 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  customerData: any;
+ 
 
   constructor(
     private customerApi: CustomerApiService,
@@ -48,13 +50,25 @@ export class CustomerComponent implements OnInit {
     this.customerDataSource$ = this.customerDataService.customerUpdated$.pipe(map(customers =>{
       return new MatTableDataSource(customers)
     }))
+    this.customerDataSource$.subscribe(res =>{
+      this.dataS = new MatTableDataSource(res.data);
+      this.dataS.paginator = this.paginator;
+      this.dataS.sort = this.sort;
+    })
 
   }
 
+  ngAfterViewInit(){
+
+    this.dataS.paginator = this.paginator;
+    this.dataS.sort = this.sort;
+
+  }
+  
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.customerData.filter = filterValue.trim().toLowerCase();
+    this.dataS.filter = filterValue.trim().toLowerCase();
 
   }
 

@@ -29,6 +29,8 @@ export class MachineComponent implements OnInit {
 
   machineDataSource$ : Observable<MatTableDataSource<Machine>>;
 
+  dataS;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -44,18 +46,23 @@ export class MachineComponent implements OnInit {
 
   ngOnInit(): void {
     
-    // this.machineData = this.machineDataService.getMachine()
-    // this.machineDataService.machineUpdated$.pipe(takeUntil(this.destroyed$)).subscribe(machines => {
-    // this.machineData = machines
-    // this.machineDataSource = new MatTableDataSource(this.machineData);
-    // this.machineDataSource.paginator = this.paginator;
-    // this.machineDataSource.sort = this.sort;
-       
      this.machineDataSource$ = this.machineDataService.machineUpdated$.pipe(map(machines =>{
        return new MatTableDataSource(machines)
      }))
+     this.machineDataSource$.subscribe(res =>{
+      this.dataS = new MatTableDataSource(res.data);
+      this.dataS.paginator = this.paginator;
+      this.dataS.sort = this.sort;
+     })
   }
-  
+
+  ngAfterViewInit(){
+
+    this.dataS.paginator = this.paginator;
+    this.dataS.sort = this.sort;
+
+  }
+
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
