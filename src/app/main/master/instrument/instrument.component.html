@@ -25,12 +25,17 @@
 
             <ng-container matColumnDef="isDelete">
                 <mat-header-cell *matHeaderCellDef>
-                    <mat-checkbox  (change)='selectAll($event)'></mat-checkbox>
+                    <mat-checkbox [(ngModel)]="headerSelector"
+                        (value)="-1"
+                        (change)="onSelect($event)"></mat-checkbox>
                 </mat-header-cell>
                 <mat-cell  *matColumnDef="let instrument">
-                    <mat-checkbox  [checked]="select"></mat-checkbox>
+                    <mat-checkbox  [value]="instrument.id"
+                        [checked]="instrument.select"
+                        (change)="onSelect($event)"></mat-checkbox>
                 </mat-cell>
             </ng-container>
+
 
             <ng-container matColumnDef="sno">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</mat-header-cell>
@@ -82,7 +87,7 @@
         </mat-table>
         <div class="footer">
             <div class="deleteallFun">
-                <button mat-raised-button class="DeleteAll-button" color="accent" (click)="onCreate()">
+                <button mat-raised-button class="DeleteAll-button" color="accent" >
                     <mat-icon>delete</mat-icon>Deleteall
                 </button>
             </div>

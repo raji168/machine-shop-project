@@ -29,7 +29,8 @@ export class InstrumentComponent implements OnInit {
 
   searchKey: string;
   grdlistData;
-  select: boolean = false;
+
+  headerSelector: boolean=false;
   instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
   form = new FormGroup({
@@ -101,15 +102,23 @@ export class InstrumentComponent implements OnInit {
     this.applyFilter();
   }
 
-
-  selectAll(e){
-    if(e.target.select==true){
-      this.select=true;
-    }else{
-      this.select=false;
+  onSelect($event) {
+    const id = $event.target.value;
+    const isChecked = $event.target.checked;
+    this.grdlistData = this.grdlistData.map((d) => {
+    if (d.id == id) {
+      d.select = isChecked;
+      this.headerSelector = false;
+      return d;
     }
-  }
-
+    if (id == -1) {
+      d.select = this.headerSelector;
+      return d;
+    }
+    return d;
+  });
+  console.log(this.grdlistData);
+}
   
   onCreate() {
     const dialogConfig = new MatDialogConfig();
