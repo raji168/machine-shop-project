@@ -8,26 +8,28 @@
         <button mat-raised-button class="create-button" color="accent" (click)="onCreate()">
             <mat-icon>add</mat-icon>Add
         </button>
+<<<<<<< HEAD:src/app/master/user/user.component.html
+        <mat-form-field class="search-form-field" floatLable="never">
+            <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+            <button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+=======
         <!-- <mat-form-field class="search-form-field" floatLable="never">
           <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
           <button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
               <mat-icon>close</mat-icon>
           </button>
       </mat-form-field> -->
+>>>>>>> 1d72636d8662bd65054bda8b77705be574cf4447:src/app/main/master/user/user.component.html
 
     </div>
 
     <div class=" table-user mat-elevation-z8" role="table">
 
         <!-- <mat-table [dataSource]="userDataSource$ | async" matSort> -->
-            <mat-table [dataSource]="userData" matSort>
-
-            <!-- <ng-container matColumnDef="checkBox">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>checkBox</mat-header-cell>
-                <mat-cell *matCellDef="let user ">
-                    <mat-checkbox class="checkBox" [(ngModel)]="user.isDelete"></mat-checkbox>
-                </mat-cell>
-            </ng-container> -->
+            <mat-table [dataSource]="userData " matSort>
 
             <ng-container matColumnDef="sno">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>SNo.</mat-header-cell>

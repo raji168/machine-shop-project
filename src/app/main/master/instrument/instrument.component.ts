@@ -25,10 +25,12 @@ export class InstrumentComponent implements OnInit {
   // instrumentData: InstrumentModel[] = [];
 
 
-  displayedColumns: string[] = ['sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
+  displayedColumns: string[] = ['isDelete','sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
   searchKey: string;
-
+  grdlistData;
+  select: boolean = false;
+  instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
   form = new FormGroup({
     sno: new FormControl(''),
@@ -39,10 +41,10 @@ export class InstrumentComponent implements OnInit {
     calibratedue: new FormControl('')
   });
 
-  instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
 
   constructor(
     private instrumentService: InstrumentService,
@@ -52,11 +54,6 @@ export class InstrumentComponent implements OnInit {
     private dialogsService: DialogsService) {
 
   }
-
-  grdlistData;
-
- 
-
 
 
   ngOnInit(): void {
@@ -79,6 +76,7 @@ export class InstrumentComponent implements OnInit {
 
   // }
 
+<<<<<<< HEAD
   fillGrid() {
     this.instrumentService.get()
       .subscribe(
@@ -89,6 +87,9 @@ export class InstrumentComponent implements OnInit {
 
         }
       );
+=======
+  // fillGrid() {
+>>>>>>> a16877369adc5b1ea8abc99abfb564a7cd8743c7
     // this.instrumentService.get()
     //   .subscribe(
     //     data => {
@@ -104,7 +105,7 @@ export class InstrumentComponent implements OnInit {
     //   }
     // );
 
-  }
+  // }
   applyFilter() {
     this.grdlistData.filter = this.searchKey.trim().toLocaleLowerCase();
   }
@@ -114,7 +115,15 @@ export class InstrumentComponent implements OnInit {
   }
 
 
+  selectAll(e){
+    if(e.target.select==true){
+      this.select=true;
+    }else{
+      this.select=false;
+    }
+  }
 
+  
   onCreate() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

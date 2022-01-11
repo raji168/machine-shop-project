@@ -24,13 +24,24 @@
     justify-content: center;
     gap:10px 10px;
 }
- mat-cell{
+mat-cell{
     justify-content: center;
 }
 mat-header-cell{
     justify-content: center;
 }
+// mat-header-cell:nth-child(even),mat-cell:nth-child(even){
+//     background-color: gray;
+// }
 ng-container{
     display: grid;
 }
 
+mat-row:nth-child(odd):hover{
+    background-color: rgb(172, 168, 168);
+    cursor: pointer;
+}
+mat-row:nth-child(even):hover{
+    background-color: rgb(209, 195, 195);
+    cursor: pointer;
+}
