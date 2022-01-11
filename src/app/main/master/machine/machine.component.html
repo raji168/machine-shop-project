@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="add-shift">
+    <div class="title">
+      Machine List
+    </div>
+    <mat-form-field appearance="standard" color="accent">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex.mac" #input>
+    </mat-form-field>
+    <button mat-raised-button class="add-btn" (click)="onClickAdd()">
+      <mat-icon>add_circle</mat-icon>ADD
+    </button>
+  </div>
+  <div class="table ">
+    <!-- <table class="mat-elevation-z8 "mat-table [dataSource]="machineDataSource$ | async" matSort> -->
+      <table class="mat-elevation-z8 "mat-table [dataSource]="dataS" matSort>
+      <ng-container matColumnDef="sno">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No </th>
+        <td mat-cell *matCellDef="let element ; let i =index "> {{i+1}} </td>
+      </ng-container>
+      <ng-container matColumnDef="machinename">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Machine Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.machinename}} </td>
+      </ng-container>
+      <ng-container matColumnDef="machineno">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Machine No</th>
+        <td mat-cell *matCellDef="let element"> {{element.machineno}} </td>
+      </ng-container>
+      <ng-container matColumnDef="brand">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Machine Brand </th>
+        <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+      </ng-container>
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Machine Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="onClickEdit(element)">
+            <mat-icon>edit_outline</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="onClickDelete(element._id)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator class="mat-elevation-z8" [pageSize]="3" [pageSizeOptions]="[1,5, 10,15,20]" showFirstLastButtons
+      aria-label="Select page Machine">
+    </mat-paginator>
+  </div>
+
+</div>
