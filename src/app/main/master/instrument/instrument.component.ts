@@ -25,7 +25,7 @@ export class InstrumentComponent implements OnInit {
   // instrumentData: InstrumentModel[] = [];
 
 
-  displayedColumns: string[] = ['isDelete','sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
+  displayedColumns: string[] = ['sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
   searchKey: string;
   grdlistData;
@@ -94,6 +94,13 @@ export class InstrumentComponent implements OnInit {
     // );
 
   // }
+
+  ngAfterViewInit(): void{
+    this.grdlistData.paginator = this.paginator;
+    this.grdlistData.sort = this.sort;
+  }
+
+
   applyFilter() {
     this.grdlistData.filter = this.searchKey.trim().toLocaleLowerCase();
   }
