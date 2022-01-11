@@ -13,8 +13,6 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 
-const ELEMENT_DATA: Shift[] = [];
-
 @Component({
   selector: 'app-shift',
   templateUrl: './shift.component.html',
@@ -29,8 +27,8 @@ export class ShiftComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  dataS;
-
+  dataS ;
+ 
 
   constructor(
     private shiftApi: ShiftApiService,
@@ -38,14 +36,28 @@ export class ShiftComponent implements OnInit {
     private alert: AlertService,
     private dialogsService: DialogsService,
     private shiftDataService: ShiftDataService
-  ) { }
+  ) { 
+
+  }
 
   ngOnInit(): void {
     this.shiftDataSource$ = this.shiftDataService.shiftUpdated$.pipe(map(shifts => {
       return new MatTableDataSource(shifts);
     }))
+    this.shiftDataSource$.subscribe(res =>{
+      this.dataS = new MatTableDataSource(res.data);
+      this.dataS.paginator = this.paginator;
+      this.dataS.sort = this.sort;
+    })
 
   }
+
+   ngAfterViewInit(): void{
+
+     this.dataS.paginator = this.paginator;
+     this.dataS.sort = this.sort;
+
+   }
 
   applyFilter(event: Event) {
 
@@ -76,6 +88,8 @@ export class ShiftComponent implements OnInit {
         }
       });
   }
+
 }
+
 
 
