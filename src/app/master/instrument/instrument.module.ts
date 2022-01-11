@@ -5,6 +5,7 @@ import { MaterialModule } from "src/app/material/material.module";
 import { AddInstrumentComponent } from "./add-instrument/add-instrument.component";
 import { InstrumentRoutingModule } from "./instrument-routing.module";
 import { InstrumentComponent } from "./instrument.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations : [
@@ -15,6 +16,7 @@ import { InstrumentComponent } from "./instrument.component";
         CommonModule,
         ReactiveFormsModule,
         MaterialModule,
+        FormsModule,
         InstrumentRoutingModule
     ]
 })

@@ -27,15 +27,6 @@ export class UserComponent implements OnInit {
   searchKey: string;
   userData;
 
-  // userForm: FormGroup = new FormGroup({
-  //   sno: new FormControl(''),
-  //   name: new FormControl(''),
-  //   role: new FormControl(''),
-  //   emailId: new FormControl(''),
-  //   phoneNo: new FormControl(''),
-  //   userName: new FormControl('')
-  // });
-
   userDataSource$: Observable<MatTableDataSource<User>>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -64,7 +55,6 @@ export class UserComponent implements OnInit {
     })
 
   }
-  
 
   applyFilter() {
     this.userData.filter = this.searchKey.trim().toLocaleLowerCase();
@@ -73,7 +63,6 @@ export class UserComponent implements OnInit {
     this.searchKey = "";
     this.applyFilter();
   }
-
 
   onCreate() {
     const dialogConfig = new MatDialogConfig();
