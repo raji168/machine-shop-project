@@ -1,0 +1,60 @@
+<mat-toolbar color="accent">
+    <mat-toolbar-row>
+        <button mat-icon-button >
+            <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
+        </button>
+        <span class="title">MACHINE SHOP</span>
+        <div class="btn">
+            <span>user</span>
+            <button class="account" mat-icon-button>
+                <mat-icon>supervisor_account</mat-icon>
+            </button>
+            <button class="logout" mat-icon-button>
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container >
+    <mat-sidenav #sidenav mode="side" class="mat-elevation-z5" >
+        <mat-accordion class="example-headers-align " multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header class="master" >
+                    <mat-panel-title >
+                        MASTER
+                    </mat-panel-title>
+                </mat-expansion-panel-header >
+                <mat-nav-list class="master-link" >
+                    <mat-list-item  routerLinkActive="active" routerLink="master/role" role="listitem">Role</mat-list-item>
+                    <mat-list-item  routerLinkActive="active" routerLink="master/user" role="listitem">User</mat-list-item>
+                    <mat-list-item  routerLinkActive="active" routerLink="master/customer" role="listitem">Customer</mat-list-item>
+                    <mat-list-item  routerLinkActive="active" routerLink="master/machine" role="listitem">Machine</mat-list-item>
+                    <mat-list-item  routerLinkActive="active" routerLink="master/shift" role="listitem">Shift</mat-list-item>
+                    <mat-list-item  routerLinkActive="active" routerLink="master/instrument"
+                        role="listitem">Instrument</mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel  >
+                <mat-expansion-panel-header class="library">
+                    <mat-panel-title >
+                        PRODUCT LIBRARY
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list >
+                    <mat-list-item routerLinkActive="active" routerLink="master/role" role="listitem">Role</mat-list-item>
+                    <mat-list-item routerLinkActive="active" routerLink="master/user" role="listitem">User</mat-list-item>
+                    <mat-list-item routerLinkActive="active" routerLink="master/customer" role="listitem">Customer</mat-list-item>
+                    <mat-list-item routerLinkActive="active" routerLink="master/machine" role="listitem">Machine</mat-list-item>
+                    <mat-list-item routerLinkActive="active" routerLink="master/shift" role="listitem">Shift</mat-list-item>
+                    <mat-list-item routerLinkActive="active" routerLink="master/instrument"
+                        role="listitem">Instrument</mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
