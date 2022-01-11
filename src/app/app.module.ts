@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
-import { MainRoutingModule } from './main/main-rotuing.module';
 import { MainModule } from './main/main.module';
 
 @NgModule({
