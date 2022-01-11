@@ -11,10 +11,7 @@ import { DialogsService } from 'src/app/services/dialogs.service';
 import { ShiftDataService } from 'src/app/data-services/shift-data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { CustomerDataService } from 'src/app/data-services/customer-data.service';
 
-
-const ELEMENT_DATA: Shift[] = [];
 
 @Component({
   selector: 'app-shift',
@@ -55,7 +52,7 @@ export class ShiftComponent implements OnInit {
 
   }
 
-   ngAfterViewInit(){
+   ngAfterViewInit(): void{
 
      this.dataS.paginator = this.paginator;
      this.dataS.sort = this.sort;

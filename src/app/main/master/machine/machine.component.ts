@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { MachineDataService } from 'src/app/data-services/machine-data.service';
 import { Machine } from 'src/app/models/machine.model';
 import { DialogsService } from 'src/app/services/dialogs.service';
@@ -12,8 +12,6 @@ import { MachineApiService } from 'src/app/services/machine-api.service';
 import { AlertService } from 'src/app/shared/alert.service';
 import { AddMachineComponent } from './add-machine/add-machine.component';
 
-
-const ELEMENT_DATA: Machine[] = [];
 
 @Component({
   selector: 'app-machine',
@@ -27,7 +25,7 @@ export class MachineComponent implements OnInit {
 
   displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
 
-  machineDataSource$ : Observable<MatTableDataSource<Machine>>;
+  machineDataSource$: Observable<MatTableDataSource<Machine>>;
 
   dataS;
 
@@ -45,18 +43,19 @@ export class MachineComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
-     this.machineDataSource$ = this.machineDataService.machineUpdated$.pipe(map(machines =>{
-       return new MatTableDataSource(machines)
-     }))
-     this.machineDataSource$.subscribe(res =>{
+
+    this.machineDataSource$ = this.machineDataService.machineUpdated$.pipe(map(machines => {
+      return new MatTableDataSource(machines)
+    }))
+    this.machineDataSource$.subscribe(res => {
       this.dataS = new MatTableDataSource(res.data);
       this.dataS.paginator = this.paginator;
       this.dataS.sort = this.sort;
-     })
+    })
+
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit(): void {
 
     this.dataS.paginator = this.paginator;
     this.dataS.sort = this.sort;

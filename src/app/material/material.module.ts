@@ -20,30 +20,29 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 
-
 @NgModule({
-    exports: [
-        MatToolbarModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatListModule,
-        MatTableModule,
-        MatButtonModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatDialogModule,
-        MatInputModule,
-        MatDatepickerModule,
-        MatPaginatorModule,
-        MatGridListModule,
-        MatSortModule,
-        MatSnackBarModule,
-        MatSelectModule,
-        MatNativeDateModule,
-        MatCheckboxModule,
-        MatFormFieldModule,
-        MatExpansionModule,
-      ]
+  exports: [
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTableModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatPaginatorModule,
+    MatGridListModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatExpansionModule,
+  ]
 })
 
 

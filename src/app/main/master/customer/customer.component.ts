@@ -58,7 +58,7 @@ export class CustomerComponent implements OnInit {
 
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit(): void{
 
     this.dataS.paginator = this.paginator;
     this.dataS.sort = this.sort;
