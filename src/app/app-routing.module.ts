@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MasterComponent } from './master/master.component';
+import { ProductLibraryComponent } from './product-library/product-library.component';
 
 const routes: Routes = [
 
@@ -12,7 +13,7 @@ const routes: Routes = [
       }
     ]
   },
-
+{ path :'product-library', component:ProductLibraryComponent}
 ];
 
 @NgModule({

@@ -10,13 +10,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
+import { ProductLibraryComponent } from './product-library/product-library.component';
 
 @NgModule({
 
   declarations: [
 
     AppComponent,
-    MatConfirmDialogComponent
+    MatConfirmDialogComponent,
+    ProductLibraryComponent,
 
   ],
 
