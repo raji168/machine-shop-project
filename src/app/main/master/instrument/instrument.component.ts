@@ -72,6 +72,20 @@ export class InstrumentComponent implements OnInit {
     )
   }
 
+
+
+  fillGrid() {
+    this.instrumentService.get()
+      .subscribe(
+        data => {
+          this.grdlistData = new MatTableDataSource(data);
+          this.grdlistData.sort = this.sort;
+          this.grdlistData.paginator = this.paginator;
+
+        }
+      );
+
+      }
   ngAfterViewInit(): void{
     this.grdlistData.paginator = this.paginator;
     this.grdlistData.sort = this.sort;
