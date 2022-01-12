@@ -70,13 +70,13 @@ export class InstrumentComponent implements OnInit {
         this.grdlistData.paginator = this.paginator;
       })
     )
-    // this.fillGrid();
   }
-  // ngAfterInit() {
-  //   this.fillGrid();
 
-  // }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3a9efad18a43533b7c947eb1f5f8c8447fcb52cd
   fillGrid() {
     this.instrumentService.get()
       .subscribe(
@@ -87,6 +87,7 @@ export class InstrumentComponent implements OnInit {
 
         }
       );
+<<<<<<< HEAD
     // this.instrumentService.get()
     //   .subscribe(
     //     data => {
@@ -106,6 +107,11 @@ export class InstrumentComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
+=======
+
+      }
+  ngAfterViewInit(): void{
+>>>>>>> 3a9efad18a43533b7c947eb1f5f8c8447fcb52cd
     this.grdlistData.paginator = this.paginator;
     this.grdlistData.sort = this.sort;
   }
@@ -119,6 +125,7 @@ export class InstrumentComponent implements OnInit {
     this.applyFilter();
   }
 
+<<<<<<< HEAD
   //   onSelect($event) {
   //     const id = $event.target.value;
   //     const isChecked = $event.target.checked;
@@ -137,6 +144,47 @@ export class InstrumentComponent implements OnInit {
   //   console.log(this.grdlistData);
   // }
 
+=======
+//   onSelect($event) {
+//     const id = $event.target.value;
+//     const isChecked = $event.target.checked;
+//     this.grdlistData = this.grdlistData.map((d) => {
+//     if (d.id == id) {
+//       d.select = isChecked;
+//       this.headerSelector = false;
+//       return d;
+//     }
+//     if (id == -1) {
+//       d.select = this.headerSelector;
+//       return d;
+//     }
+//     return d;
+//   });
+//   console.log(this.grdlistData);
+// }
+
+allComplete: boolean = false;
+
+updateAllComplete() {
+  this.allComplete = this.grdlistData != null && this.grdlistData.every(t => t.completed);
+}
+
+someComplete(): boolean {
+  if (this.grdlistData == null) {
+    return false;
+  }
+  return this.grdlistData.filter(t => t.completed).length > 0 && !this.allComplete;
+}
+
+setAll(completed: boolean) {
+  this.allComplete = completed;
+  if (this.grdlistData == null) {
+    return;
+  }
+  this.grdlistData.forEach(t => (t.completed = completed));
+}
+  
+>>>>>>> 3a9efad18a43533b7c947eb1f5f8c8447fcb52cd
   onCreate() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
