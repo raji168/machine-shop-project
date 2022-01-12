@@ -28,10 +28,7 @@ export class InstrumentComponent implements OnInit {
   displayedColumns: string[] = ['sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
   searchKey: string;
-  grdlistData;
 
-  headerSelector: boolean=false;
-  instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
   form = new FormGroup({
     sno: new FormControl(''),
@@ -42,10 +39,10 @@ export class InstrumentComponent implements OnInit {
     calibratedue: new FormControl('')
   });
 
+  instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
 
   constructor(
     private instrumentService: InstrumentService,
@@ -55,6 +52,11 @@ export class InstrumentComponent implements OnInit {
     private dialogsService: DialogsService) {
 
   }
+
+  grdlistData;
+
+ 
+
 
 
   ngOnInit(): void {
@@ -70,28 +72,30 @@ export class InstrumentComponent implements OnInit {
         this.grdlistData.paginator = this.paginator;
       })
     )
+    // this.fillGrid();
   }
+  // ngAfterInit() {
+  //   this.fillGrid();
 
-
+  // }
 
   fillGrid() {
-    this.instrumentService.get()
-      .subscribe(
-        data => {
-          this.grdlistData = new MatTableDataSource(data);
-          this.grdlistData.sort = this.sort;
-          this.grdlistData.paginator = this.paginator;
+    // this.instrumentService.get()
+    //   .subscribe(
+    //     data => {
+    // this.grdlistData = new MatTableDataSource();
+    // this.instrumentDataSource$.subscribe(
+    //   ((res) => {
+    //     this.grdlistData = res.data;
+    //     this.grdlistData = new MatTableDataSource(res.data);
+    //     this.grdlistData.sort = this.sort;
+    //     this.grdlistData.paginator = this.paginator;
+    //   })
+    // )
+    //   }
+    // );
 
-        }
-      );
-
-      }
-  ngAfterViewInit(): void{
-    this.grdlistData.paginator = this.paginator;
-    this.grdlistData.sort = this.sort;
   }
-
-
   applyFilter() {
     this.grdlistData.filter = this.searchKey.trim().toLocaleLowerCase();
   }
@@ -100,45 +104,8 @@ export class InstrumentComponent implements OnInit {
     this.applyFilter();
   }
 
-//   onSelect($event) {
-//     const id = $event.target.value;
-//     const isChecked = $event.target.checked;
-//     this.grdlistData = this.grdlistData.map((d) => {
-//     if (d.id == id) {
-//       d.select = isChecked;
-//       this.headerSelector = false;
-//       return d;
-//     }
-//     if (id == -1) {
-//       d.select = this.headerSelector;
-//       return d;
-//     }
-//     return d;
-//   });
-//   console.log(this.grdlistData);
-// }
 
-allComplete: boolean = false;
 
-updateAllComplete() {
-  this.allComplete = this.grdlistData != null && this.grdlistData.every(t => t.completed);
-}
-
-someComplete(): boolean {
-  if (this.grdlistData == null) {
-    return false;
-  }
-  return this.grdlistData.filter(t => t.completed).length > 0 && !this.allComplete;
-}
-
-setAll(completed: boolean) {
-  this.allComplete = completed;
-  if (this.grdlistData == null) {
-    return;
-  }
-  this.grdlistData.forEach(t => (t.completed = completed));
-}
-  
   onCreate() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -154,7 +121,6 @@ setAll(completed: boolean) {
   onDelete(id) {
     this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
-        // console.log(res);
         if (res) {
           this.instrumentService.deleteInstrument(id).subscribe(res => {
             this._notification.success(' deleted Suceessfully');
