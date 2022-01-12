@@ -77,7 +77,20 @@ export class InstrumentComponent implements OnInit {
 
   // }
 
+<<<<<<< HEAD
+  fillGrid() {
+    this.instrumentService.get()
+      .subscribe(
+        data => {
+          this.grdlistData = new MatTableDataSource(data);
+          this.grdlistData.sort = this.sort;
+          this.grdlistData.paginator = this.paginator;
+
+        }
+      );
+=======
   // fillGrid() {
+>>>>>>> a16877369adc5b1ea8abc99abfb564a7cd8743c7
     // this.instrumentService.get()
     //   .subscribe(
     //     data => {
