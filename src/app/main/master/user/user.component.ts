@@ -56,6 +56,12 @@ export class UserComponent implements OnInit {
 
   }
 
+  ngAfterViewInit(): void{
+    this.userData.paginator = this.paginator;
+    this.userData.sort = this.sort;
+  }
+
+
   applyFilter() {
     this.userData.filter = this.searchKey.trim().toLocaleLowerCase();
   }
