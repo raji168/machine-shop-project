@@ -37,6 +37,22 @@
             </ng-container> -->
 
 
+
+
+            <ng-container matColumnDef="isDelete">
+                <mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox  [checked]="allComplete"
+                    [indeterminate]="someComplete()"
+                    (change)="setAll($event.checked)"></mat-checkbox>
+                </mat-header-cell>
+                <mat-cell  *matColumnDef="let instrument">
+                    <mat-checkbox [(ngModel)]="subtask.completed"
+                    [color]="subtask.color"
+                    (ngModelChange)="updateAllComplete()"></mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+
             <ng-container matColumnDef="sno">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</mat-header-cell>
                 <mat-cell *matCellDef="let instrument ;  let i = index"> {{i+1}} </mat-cell>
