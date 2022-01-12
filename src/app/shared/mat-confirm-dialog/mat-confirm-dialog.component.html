@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
     <div class="content-container">
         <mat-icon id="close-icon"(click)="closeDialog()">close</mat-icon>
@@ -7,4 +8,15 @@
     <button mat-flat-button id="yes-button"[mat-dialog-close]="true">YES</button>
 
 
+=======
+<div>
+    <div class="content-container">
+        <mat-icon id="close-icon"(click)="closeDialog()">close</mat-icon>
+        <span class="content-span full-width">{{data.message}} </span>
+    </div>
+    <button mat-flat-button id="no-button" [mat-dialog-close]="false">NO</button>
+    <button mat-flat-button id="yes-button"[mat-dialog-close]="true">YES</button>
+
+
+>>>>>>> e6a2d9dffa10da60722437935ab2b635b3a09745
 </div>

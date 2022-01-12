@@ -53,8 +53,7 @@ import { UserResolver } from "../../resolvers/user.resolver";
 })
 
 
-export class MasterRoutingModule {
+export class MasterRoutingModule {}
 
 
 
-}
