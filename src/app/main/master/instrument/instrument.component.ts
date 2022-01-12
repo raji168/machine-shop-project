@@ -22,7 +22,6 @@ import { map } from 'rxjs/operators';
 
 export class InstrumentComponent implements OnInit {
 
-  // instrumentData: InstrumentModel[] = [];
 
 
   displayedColumns: string[] = ['sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
@@ -72,30 +71,12 @@ export class InstrumentComponent implements OnInit {
         this.grdlistData.paginator = this.paginator;
       })
     )
-    // this.fillGrid();
+  
   }
-  // ngAfterInit() {
-  //   this.fillGrid();
 
-  // }
 
-  fillGrid() {
-    // this.instrumentService.get()
-    //   .subscribe(
-    //     data => {
-    // this.grdlistData = new MatTableDataSource();
-    // this.instrumentDataSource$.subscribe(
-    //   ((res) => {
-    //     this.grdlistData = res.data;
-    //     this.grdlistData = new MatTableDataSource(res.data);
-    //     this.grdlistData.sort = this.sort;
-    //     this.grdlistData.paginator = this.paginator;
-    //   })
-    // )
-    //   }
-    // );
-
-  }
+ 
+  
   applyFilter() {
     this.grdlistData.filter = this.searchKey.trim().toLocaleLowerCase();
   }

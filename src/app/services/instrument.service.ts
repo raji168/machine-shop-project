@@ -15,7 +15,6 @@ export class InstrumentService {
   
   instruments : InstrumentModel[] = [];  
   
-  // instrumentUpdated = new Subject();
 
   constructor(
     private _http: HttpClient,

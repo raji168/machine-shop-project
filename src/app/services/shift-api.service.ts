@@ -19,7 +19,6 @@ export class ShiftApiService {
 
   shifts: Shift[] = [];
 
-  // shiftUpdated = new Subject();
 
   constructor(
     private http: HttpClient,
