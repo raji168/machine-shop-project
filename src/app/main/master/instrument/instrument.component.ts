@@ -30,7 +30,7 @@ export class InstrumentComponent implements OnInit {
   searchKey: string;
   grdlistData;
 
-  headerSelector: boolean=false;
+  headerSelector: boolean = false;
   instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
   form = new FormGroup({
@@ -77,7 +77,6 @@ export class InstrumentComponent implements OnInit {
 
   // }
 
-<<<<<<< HEAD
   fillGrid() {
     this.instrumentService.get()
       .subscribe(
@@ -88,9 +87,6 @@ export class InstrumentComponent implements OnInit {
 
         }
       );
-=======
-  // fillGrid() {
->>>>>>> a16877369adc5b1ea8abc99abfb564a7cd8743c7
     // this.instrumentService.get()
     //   .subscribe(
     //     data => {
@@ -106,9 +102,10 @@ export class InstrumentComponent implements OnInit {
     //   }
     // );
 
-  // }
+    // }
+  }
 
-  ngAfterViewInit(): void{
+  ngAfterViewInit(): void {
     this.grdlistData.paginator = this.paginator;
     this.grdlistData.sort = this.sort;
   }
@@ -122,24 +119,24 @@ export class InstrumentComponent implements OnInit {
     this.applyFilter();
   }
 
-  onSelect($event) {
-    const id = $event.target.value;
-    const isChecked = $event.target.checked;
-    this.grdlistData = this.grdlistData.map((d) => {
-    if (d.id == id) {
-      d.select = isChecked;
-      this.headerSelector = false;
-      return d;
-    }
-    if (id == -1) {
-      d.select = this.headerSelector;
-      return d;
-    }
-    return d;
-  });
-  console.log(this.grdlistData);
-}
-  
+  //   onSelect($event) {
+  //     const id = $event.target.value;
+  //     const isChecked = $event.target.checked;
+  //     this.grdlistData = this.grdlistData.map((d) => {
+  //     if (d.id == id) {
+  //       d.select = isChecked;
+  //       this.headerSelector = false;
+  //       return d;
+  //     }
+  //     if (id == -1) {
+  //       d.select = this.headerSelector;
+  //       return d;
+  //     }
+  //     return d;
+  //   });
+  //   console.log(this.grdlistData);
+  // }
+
   onCreate() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
