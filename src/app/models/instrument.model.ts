@@ -6,6 +6,7 @@ export interface InstrumentModel {
     range: string;
     calibratedon: Date;
     calibratedue: Date;
-    // isDelete: boolean;
+    isDelete: boolean;
+    subSelect?:InstrumentModel[];
 }
 
