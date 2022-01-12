@@ -46,8 +46,7 @@
                     (change)="setAll($event.checked)"></mat-checkbox>
                 </mat-header-cell>
                 <mat-cell  *matColumnDef="let instrument">
-                    <mat-checkbox [(ngModel)]="subtask.completed"
-                    [color]="subtask.color"
+                    <mat-checkbox 
                     (ngModelChange)="updateAllComplete()"></mat-checkbox>
                 </mat-cell>
             </ng-container>
