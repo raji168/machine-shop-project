@@ -4,6 +4,7 @@ import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "src/app/material/material.module";
 import { MappingComponent } from './mapping/mapping.component';
+import { ProductLibraryRoutingModule } from "./productlibrary-routing.module";
 
 @NgModule({
     declarations:[
@@ -14,6 +15,7 @@ import { MappingComponent } from './mapping/mapping.component';
     imports:[
         CommonModule,
         ReactiveFormsModule,
+        ProductLibraryRoutingModule,
         MaterialModule
     ]
 })
