@@ -7,10 +7,7 @@ import { InstrumentResolver } from "../../resolvers/instrument.resolver";
 import { RoleResolver } from "../../resolvers/role.resolver";
 import { UserResolver } from "../../resolvers/user.resolver";
 
-// const routes: Routes = [
-   
 
-// ];
 
 @NgModule({
 
@@ -56,8 +53,7 @@ import { UserResolver } from "../../resolvers/user.resolver";
 })
 
 
-export class MasterRoutingModule {
+export class MasterRoutingModule {}
 
 
 
-}

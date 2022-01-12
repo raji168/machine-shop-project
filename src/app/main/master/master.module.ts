@@ -4,14 +4,6 @@ import { MatButtonModule} from '@angular/material/button';
 import { MaterialModule } from "../../material/material.module";
 import { MasterRoutingModule } from "./master-routing.module";
 import { ReactiveFormsModule } from "@angular/forms";
-import { InstrumentComponent } from './instrument/instrument.component';
-import { UserComponent } from './user/user.component';
-import { AddUserComponent } from './user/add-user/add-user.component';
-import { AddInstrumentComponent } from './instrument/add-instrument/add-instrument.component';
-import { AddRoleComponent } from './role/add-role/add-role.component';
-
-
-
 import { FormsModule } from "@angular/forms";
 import { MasterComponent } from "./master.component";
 
@@ -26,6 +18,7 @@ import { MasterComponent } from "./master.component";
         MaterialModule,
         ReactiveFormsModule,
         MasterRoutingModule,
+        FormsModule,
         MatButtonModule
     ],
 })

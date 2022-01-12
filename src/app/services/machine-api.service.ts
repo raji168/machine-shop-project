@@ -14,7 +14,6 @@ export class MachineApiService {
 
   machines: Machine[] = [];
 
-  // machineUpdated = new Subject();
 
   constructor(
     private http: HttpClient,

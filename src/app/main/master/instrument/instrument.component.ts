@@ -22,13 +22,11 @@ import { map } from 'rxjs/operators';
 
 export class InstrumentComponent implements OnInit {
 
-  // instrumentData: InstrumentModel[] = [];
 
 
   displayedColumns: string[] = ['sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
   searchKey: string;
-  grdlistData;
 
   headerSelector: boolean = false;
   instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
@@ -42,10 +40,10 @@ export class InstrumentComponent implements OnInit {
     calibratedue: new FormControl('')
   });
 
+ 
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
 
   constructor(
     private instrumentService: InstrumentService,
@@ -55,6 +53,11 @@ export class InstrumentComponent implements OnInit {
     private dialogsService: DialogsService) {
 
   }
+
+  grdlistData;
+
+ 
+
 
 
   ngOnInit(): void {
@@ -70,6 +73,7 @@ export class InstrumentComponent implements OnInit {
         this.grdlistData.paginator = this.paginator;
       })
     )
+  
   }
 
 
@@ -101,7 +105,6 @@ export class InstrumentComponent implements OnInit {
 
 
 
-  
   onCreate() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -117,7 +120,6 @@ export class InstrumentComponent implements OnInit {
   onDelete(id) {
     this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
-        // console.log(res);
         if (res) {
           this.instrumentService.deleteInstrument(id).subscribe(res => {
             this._notification.success(' deleted Suceessfully');
