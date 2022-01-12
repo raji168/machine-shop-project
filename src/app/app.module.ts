@@ -9,11 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
-<<<<<<< HEAD
-import { ProductLibraryComponent } from './product-library/product-library.component';
-=======
 import { MainModule } from './main/main.module';
->>>>>>> d1d70c53707e0cdbbfd15c221496f4b21a45d6ca
 
 @NgModule({
 
@@ -21,10 +17,6 @@ import { MainModule } from './main/main.module';
 
     AppComponent,
     MatConfirmDialogComponent,
-<<<<<<< HEAD
-    ProductLibraryComponent,
-=======
->>>>>>> d1d70c53707e0cdbbfd15c221496f4b21a45d6ca
 
   ],
 
