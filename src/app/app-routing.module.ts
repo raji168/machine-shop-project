@@ -6,8 +6,13 @@ import { ProductLibraryComponent } from './main/productlibrary/productlibrary.co
 
 const routes: Routes = [
 
+
   { path: '', redirectTo: 'main', pathMatch: 'full' },
  {
+
+  { path: '', redirectTo: 'main/master', pathMatch: 'full' },
+  {
+
     path: 'main', loadChildren: () => import('./main/main.module').then(m => m.MainModule)
   }
 
@@ -15,7 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes , { useHash: true, relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

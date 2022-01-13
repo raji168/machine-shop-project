@@ -15,8 +15,13 @@ import { ProductLibraryRoutingModule } from "./productlibrary-routing.module";
     imports:[
         CommonModule,
         ReactiveFormsModule,
+
         MaterialModule,
         ProductLibraryRoutingModule
+
+        ProductLibraryRoutingModule,
+        MaterialModule
+
     ]
 })
 
