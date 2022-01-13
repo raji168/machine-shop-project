@@ -13,7 +13,9 @@
     </div>
     <div class=" table-role mat-elevation-z8" role="table">
         
-        <mat-table [dataSource] = "mappingDataSource$ | async " >
+        <!-- <mat-table [dataSource] = "mappingDataSource$ | async " > -->
+        <mat-table [dataSource] = "dataSource" >
+
             
             <ng-container matColumnDef="sno">
                 <mat-header-cell *matHeaderCellDef >Serial No</mat-header-cell>

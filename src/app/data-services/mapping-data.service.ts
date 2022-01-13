@@ -10,7 +10,7 @@ export class MappingDataService{
     
     private mappings  : Mapping[] =[];
 
-    mappigUpdated$= new BehaviorSubject<Mapping[]>([])
+    mappingUpdated$= new BehaviorSubject<Mapping[]>([])
 
     getMapping(){
         return [...this.mappings]
@@ -18,7 +18,7 @@ export class MappingDataService{
 
     loadMapping(mappings : Mapping[]){
         this.mappings = mappings;
-        this.mappigUpdated$.next(this.mappings)
+        this.mappingUpdated$.next(this.mappings)
     }
 
 
