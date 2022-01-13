@@ -28,6 +28,8 @@ export class InstrumentComponent implements OnInit {
 
   searchKey: string;
 
+  headerSelector: boolean = false;
+  instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
   form = new FormGroup({
     sno: new FormControl(''),
@@ -38,7 +40,7 @@ export class InstrumentComponent implements OnInit {
     calibratedue: new FormControl('')
   });
 
-  instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
+ 
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -75,8 +77,24 @@ export class InstrumentComponent implements OnInit {
   }
 
 
- 
-  
+  fillGrid() {
+    this.instrumentService.get()
+      .subscribe(
+        data => {
+          this.grdlistData = new MatTableDataSource(data);
+          this.grdlistData.sort = this.sort;
+          this.grdlistData.paginator = this.paginator;
+
+        }
+      );
+
+      }
+  ngAfterViewInit(): void{
+    this.grdlistData.paginator = this.paginator;
+    this.grdlistData.sort = this.sort;
+  }
+
+
   applyFilter() {
     this.grdlistData.filter = this.searchKey.trim().toLocaleLowerCase();
   }
