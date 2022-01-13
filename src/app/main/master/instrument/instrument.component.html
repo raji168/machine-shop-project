@@ -45,10 +45,24 @@
                     <mat-cell *matCellDef="let instrument"> {{instrument.referenceno}} </mat-cell>
                 </ng-container>
 
+<<<<<<< HEAD
+            <!-- <ng-container matColumnDef="isDelete">
+                <mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox  [checked]="allComplete"
+                    [indeterminate]="someComplete()"
+                    (change)="setAll($event.checked)"></mat-checkbox>
+                </mat-header-cell>
+                <mat-cell  *matColumnDef="let instrument">
+                    <mat-checkbox 
+                    (ngModelChange)="updateAllComplete()"></mat-checkbox>
+                </mat-cell>
+            </ng-container> -->
+=======
                 <ng-container matColumnDef="range">
                     <mat-header-cell *matHeaderCellDef>Range</mat-header-cell>
                     <mat-cell *matCellDef="let instrument"> {{instrument.range}} </mat-cell>
                 </ng-container>
+>>>>>>> 7ad24020af22c7b94f70b171d3d11c0d3ad25d85
 
                 <ng-container matColumnDef="calibratedon">
                     <mat-header-cell *matHeaderCellDef>Calibrated On</mat-header-cell>

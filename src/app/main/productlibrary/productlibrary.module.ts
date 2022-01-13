@@ -9,14 +9,19 @@ import { ProductLibraryRoutingModule } from "./productlibrary-routing.module";
 @NgModule({
     declarations:[
         ProductLibraryComponent,
-        MappingComponent,
+        MappingComponent
     
     ],
     imports:[
         CommonModule,
         ReactiveFormsModule,
+
+        MaterialModule,
+        ProductLibraryRoutingModule
+
         ProductLibraryRoutingModule,
         MaterialModule
+
     ]
 })
 
