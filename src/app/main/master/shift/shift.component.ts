@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
 })
 export class ShiftComponent implements OnInit {
 
-  displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
   shiftDataSource$: Observable<MatTableDataSource<Shift>>;
 
@@ -28,7 +28,10 @@ export class ShiftComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   dataS ;
+
+  shifts:Shift[] = [];
  
+  isSelected:boolean;
 
   constructor(
     private shiftApi: ShiftApiService,
@@ -87,6 +90,15 @@ export class ShiftComponent implements OnInit {
           })
         }
       });
+  }
+
+  removeSelected(){
+
+   this.shifts = this.dataS.filter((s:Shift)=> s.isSelected);
+    this.shiftApi.deleteSelectShift(this.shifts).subscribe(()=>{
+      this.dataS = this.dataS.filter((s:Shift)=> !s.isSelected);
+    })
+
   }
 
 }

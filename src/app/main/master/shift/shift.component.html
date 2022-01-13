@@ -13,7 +13,9 @@
 
   <div class=" table-shift mat-elevation-z8" role="table">
     <!-- <table mat-table [dataSource]="shiftDataSource$ | async " class="mat-elevation-z8" matSort> -->
+
     <mat-table [dataSource]="dataS" matSort>
+
       <ng-container matColumnDef="sno">
         <mat-header-cell *matHeaderCellDef mat-sort-header> S.No </mat-header-cell>
         <mat-cell *matCellDef="let element ; let i =index "> {{i+1}} </mat-cell>
@@ -41,7 +43,6 @@
           </button>
         </mat-cell>
       </ng-container>
-
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
@@ -57,6 +58,6 @@
       </div>
     </div>
 
-  </div>
+
 
 </div>

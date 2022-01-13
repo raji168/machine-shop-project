@@ -1,0 +1,55 @@
+<div class="Mapping-View">
+
+    <mat-toolbar class="top-menu">
+        <span>Machine & Product Mapping</span>
+    </mat-toolbar>
+
+    <div class="buttons">
+        <button mat-raised-button class="create-button" color="accent">
+            <mat-icon>add</mat-icon>Add
+        </button>
+        <input type="file">
+
+    </div>
+    <div class=" table-role mat-elevation-z8" role="table">
+        
+        <!-- <mat-table [dataSource] = "mappingDataSource$ | async " > -->
+        <mat-table [dataSource] = "dataSource" >
+
+            
+            <ng-container matColumnDef="sno">
+                <mat-header-cell *matHeaderCellDef >Serial No</mat-header-cell>
+                <mat-cell *matCellDef="let mapping "> {{mapping.sno}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="productNo">
+                <mat-header-cell *matHeaderCellDef >Product No</mat-header-cell>
+                <mat-cell *matCellDef="let mapping"> {{mapping.productNo}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="productName">
+                <mat-header-cell *matHeaderCellDef >Product Name</mat-header-cell>
+                <mat-cell *matCellDef="let mapping"> {{mapping.productName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="customerName">
+                <mat-header-cell *matHeaderCellDef >Customer Name</mat-header-cell>
+                <mat-cell *matCellDef="let mapping"> {{mapping.customerName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="process">
+                <mat-header-cell *matHeaderCellDef > No of Process</mat-header-cell>
+                <mat-cell *matCellDef="let mapping"> {{mapping.process}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef >Status</mat-header-cell>
+                <mat-cell *matCellDef="let mapping"> {{mapping.status}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="preparedBy">
+                <mat-header-cell *matHeaderCellDef >PreparedBy</mat-header-cell>
+                <mat-cell *matCellDef="let mapping"> {{mapping.preparedBy}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+    </div>
+</div>

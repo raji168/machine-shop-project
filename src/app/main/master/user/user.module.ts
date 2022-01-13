@@ -18,4 +18,5 @@ import { UserComponent } from "./user.component";
         UserRoutinModule
     ]
 })
-export class UserModule { }
+export class UserModule{}
+
