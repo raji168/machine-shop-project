@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { forkJoin, Observable, Subject } from 'rxjs';
 import { Shift } from '../models/shift.model';
 
 import { tap } from 'rxjs/operators';
@@ -63,7 +63,13 @@ export class ShiftApiService {
       })
     );
   }
-}
+  
+   deleteSelectShift(shifts :Shift[]){
+    return forkJoin(shifts.map(shift => this.http.delete<Shift>(`${this.baseUrl}/${shift._id}`)))
+   }
 
+}
+ 
+   
 
 
