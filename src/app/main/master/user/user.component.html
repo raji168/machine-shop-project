@@ -1,3 +1,4 @@
+
 <div class="container">
 
     <mat-toolbar class="top-menu">
@@ -20,7 +21,7 @@
     <div class=" table-user mat-elevation-z8" role="table">
 
         <!-- <mat-table [dataSource]="userDataSource$ | async" matSort> -->
-        <mat-table [dataSource]="userData" matSort>
+            <mat-table [dataSource]="userData" matSort>
 
             <!-- <ng-container matColumnDef="checkBox">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>checkBox</mat-header-cell>
@@ -76,8 +77,18 @@
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
         </mat-table>
-        <mat-paginator class="mat-elevation-z8" pageSize="3" [pageSizeOptions]="[1,5, 10,15,20]">
-        </mat-paginator>
+        <div class="footer">
+            <div class="deleteallFun">
+                <button mat-raised-button class="DeleteAll-button" color="accent">
+                    <mat-icon >delete</mat-icon>Deleteall
+                </button>
+            </div>
+            <div class="paginator">
+                <mat-paginator [pageSizeOptions]="[1,3,5,10,15,25,100]" pageSize="10" showFirstLastButtons>
+                </mat-paginator>
+            </div>
+        </div>
+
     </div>
 
 </div>

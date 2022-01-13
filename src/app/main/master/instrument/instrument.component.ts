@@ -22,14 +22,14 @@ import { map } from 'rxjs/operators';
 
 export class InstrumentComponent implements OnInit {
 
+  // instrumentData: InstrumentModel[] = [];
 
 
-  displayedColumns: string[] = ['sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
   searchKey: string;
+  isDelete: false;
 
-  headerSelector: boolean = false;
-  instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
   form = new FormGroup({
     sno: new FormControl(''),
@@ -40,7 +40,7 @@ export class InstrumentComponent implements OnInit {
     calibratedue: new FormControl('')
   });
 
- 
+  instrumentDataSource$: Observable<MatTableDataSource<InstrumentModel>>;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -57,9 +57,6 @@ export class InstrumentComponent implements OnInit {
   grdlistData;
 
  
-
-
-
   ngOnInit(): void {
     this.instrumentDataSource$ = this.instrumentDataService.instrumentUpdated$.pipe(map(instruments => {
       return new MatTableDataSource(instruments)
@@ -73,27 +70,12 @@ export class InstrumentComponent implements OnInit {
         this.grdlistData.paginator = this.paginator;
       })
     )
-  
   }
 
-
-  fillGrid() {
-    this.instrumentService.get()
-      .subscribe(
-        data => {
-          this.grdlistData = new MatTableDataSource(data);
-          this.grdlistData.sort = this.sort;
-          this.grdlistData.paginator = this.paginator;
-
-        }
-      );
-
-      }
   ngAfterViewInit(): void{
     this.grdlistData.paginator = this.paginator;
     this.grdlistData.sort = this.sort;
   }
-
 
   applyFilter() {
     this.grdlistData.filter = this.searchKey.trim().toLocaleLowerCase();
@@ -104,6 +86,10 @@ export class InstrumentComponent implements OnInit {
   }
 
 
+  bulkDelete(){
+   var selectedData = this.grdlistData.filter(data =>data.isDelete == true);
+   this.grdlistData = selectedData;
+ }
 
   onCreate() {
     const dialogConfig = new MatDialogConfig();
@@ -120,6 +106,7 @@ export class InstrumentComponent implements OnInit {
   onDelete(id) {
     this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
+        // console.log(res);
         if (res) {
           this.instrumentService.deleteInstrument(id).subscribe(res => {
             this._notification.success(' deleted Suceessfully');
@@ -131,4 +118,5 @@ export class InstrumentComponent implements OnInit {
 
 
 }
+
 
