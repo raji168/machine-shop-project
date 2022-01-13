@@ -47,4 +47,9 @@ export class ShiftDataService {
         this.shiftUpdated$.next(this.shifts);
     }
 
+    deleteSelectShift(shifts :Shift) {
+        this.shifts = this.shifts.filter( (s: Shift) => s._id )
+        this.shiftUpdated$.next(this.shifts);
+    }
+
 } 

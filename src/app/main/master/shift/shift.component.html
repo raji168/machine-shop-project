@@ -14,6 +14,10 @@
   <div class="table ">
     <!-- <table mat-table [dataSource]="shiftDataSource$ | async " class="mat-elevation-z8" matSort> -->
       <table  class="mat-elevation-z8" mat-table [dataSource]="dataS"   matSort>
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No </th>
+          <td mat-cell *matCellDef="let element ; let i =index ">  <mat-checkbox (change)="element.isSelected = $event.checked"></mat-checkbox> </td>
+        </ng-container>
       <ng-container matColumnDef="sno">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No </th>
         <td mat-cell *matCellDef="let element ; let i =index "> {{i+1}} </td>
@@ -45,7 +49,9 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <button mat-raised-button (click)="removeSelected()">Delete All</button>
     <mat-paginator class="mat-elevation-z8" [pageSize]="3" [pageSizeOptions]="[1,5, 10,15,20]" >
+     
     </mat-paginator>
   </div>
 
