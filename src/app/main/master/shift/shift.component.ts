@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
 })
 export class ShiftComponent implements OnInit {
 
-  displayedColumns: string[] = ['select','sno', 'shiftName', 'startTime', 'endTime', 'actions'];
+  displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
   shiftDataSource$: Observable<MatTableDataSource<Shift>>;
 
