@@ -15,7 +15,7 @@
     <!-- <table mat-table [dataSource]="shiftDataSource$ | async " class="mat-elevation-z8" matSort> -->
     <mat-table  [dataSource]="dataS" matSort>
       <ng-container matColumnDef="select">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> S.No </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Select </mat-header-cell>
         <mat-cell *matCellDef="let element ">
           <mat-checkbox (change)="element.isSelected = $event.checked"></mat-checkbox>
         </mat-cell>
@@ -52,7 +52,7 @@
     </mat-table>
     <div class="footer">
       <div class="deleteallFun">
-        <button mat-raised-button class="DeleteAll-button" color="accent">
+        <button mat-raised-button class="DeleteAll-button" color="accent" (click)="removeSelected()">
           <mat-icon>delete</mat-icon>Deleteall
         </button>
       </div>
