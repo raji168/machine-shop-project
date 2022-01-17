@@ -22,7 +22,7 @@ export class CustomerComponent implements OnInit {
 
   // customerData: Customer[] = [];
 
-  displayedColumns: string[] = ['sno', 'customername', 'description', 'productno', 'revisionno', 'drawing', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'customername', 'description', 'productno', 'revisionno', 'drawing', 'actions'];
 
   customerDataSource$ : Observable<MatTableDataSource<Customer>>;
 
@@ -96,6 +96,20 @@ export class CustomerComponent implements OnInit {
       });
 
   }
+
+  removeSelected(){
+    const acustomers = this.dataS.data.filter((c :Customer) => c.isSelected);
+    this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.customerApi.deleteSelectCustomer(acustomers).subscribe(res => {
+            this.dataS.data = this.dataS.data.filter((c:Customer)=> !c.isSelected);
+            this.alert.showError('Shift Selected Records Deleted Successfully...!', 'Shift');
+          })
+        }
+      });
+  }
+
 
 
 }

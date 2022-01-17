@@ -7,5 +7,5 @@ export interface Mapping{
     process: number;
     status: boolean;
     preparedBy: string;
-
+    isSelected: any;
 }

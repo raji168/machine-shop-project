@@ -23,12 +23,12 @@
         <!-- <mat-table [dataSource]="userDataSource$ | async" matSort> -->
             <mat-table [dataSource]="userData" matSort>
 
-            <!-- <ng-container matColumnDef="checkBox">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>checkBox</mat-header-cell>
-                <mat-cell *matCellDef="let user ">
-                    <mat-checkbox class="checkBox" [(ngModel)]="user.isDelete"></mat-checkbox>
+            <ng-container matColumnDef="select">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Select </mat-header-cell>
+                <mat-cell *matCellDef="let element ">
+                    <mat-checkbox (change)="element.isSelected = $event.checked"></mat-checkbox>
                 </mat-cell>
-            </ng-container> -->
+            </ng-container>
 
             <ng-container matColumnDef="sno">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>SNo.</mat-header-cell>
@@ -79,9 +79,9 @@
         </mat-table>
         <div class="footer">
             <div class="deleteallFun">
-                <button mat-raised-button class="DeleteAll-button" color="accent">
-                    <mat-icon >delete</mat-icon>Deleteall
-                </button>
+                <button mat-raised-button class="DeleteAll-button" color="accent" (click)="removeSelected()">
+                    <mat-icon>delete</mat-icon>Deleteall
+                  </button>
             </div>
             <div class="paginator">
                 <mat-paginator [pageSizeOptions]="[1,3,5,10,15,25,100]" pageSize="10" showFirstLastButtons>

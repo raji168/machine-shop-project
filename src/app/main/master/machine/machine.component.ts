@@ -23,7 +23,7 @@ export class MachineComponent implements OnInit {
 
   // machineData: Machine[] = [];
 
-  displayedColumns: string[] = ['sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
 
   machineDataSource$: Observable<MatTableDataSource<Machine>>;
 
@@ -93,4 +93,18 @@ export class MachineComponent implements OnInit {
       });
 
   }
+
+  removeSelected() {
+    const amachines = this.dataS.data.filter((m: Machine) => m.isSelected);
+    this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.machineApi.deleteSelectMachine(amachines).subscribe(res => {
+            this.dataS.data = this.dataS.data.filter((i: Machine) => !i.isSelected);
+            this.alert.showError('Instrument Selected Records Deleted Successfully...!','Machine');
+          })
+        }
+      });
+  }
+
 }
