@@ -13,17 +13,13 @@
 
   <div class=" table-shift mat-elevation-z8" role="table">
     <!-- <table mat-table [dataSource]="shiftDataSource$ | async " class="mat-elevation-z8" matSort> -->
-<<<<<<< HEAD
-      <table  class="mat-elevation-z8" mat-table [dataSource]="dataS"   matSort>
-        <ng-container matColumnDef="select">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No </th>
-          <td mat-cell *matCellDef="let element ">  <mat-checkbox (change)="element.isSelected = $event.checked"></mat-checkbox> </td>
-        </ng-container>
-=======
-
-    <mat-table [dataSource]="dataS" matSort>
-
->>>>>>> bee4263400a1f52797a014a1503530b17690f998
+    <mat-table class="mat-elevation-z8" [dataSource]="dataS" matSort>
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> S.No </mat-header-cell>
+        <mat-cell *matCellDef="let element ">
+          <mat-checkbox (change)="element.isSelected = $event.checked"></mat-checkbox>
+        </mat-cell>
+      </ng-container>
       <ng-container matColumnDef="sno">
         <mat-header-cell *matHeaderCellDef mat-sort-header> S.No </mat-header-cell>
         <mat-cell *matCellDef="let element ; let i =index "> {{i+1}} </mat-cell>
@@ -65,6 +61,5 @@
         </mat-paginator>
       </div>
     </div>
-
-
-
+  </div>
+</div>
