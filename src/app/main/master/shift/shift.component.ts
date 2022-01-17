@@ -96,7 +96,7 @@ export class ShiftComponent implements OnInit {
   removeSelected(){
 
     const ashifts = this.dataS.data.filter((s :Shift) => s.isSelected);
-    this.dialogsService.openConfirmDialog('Are you sure to delete this record  ?')
+    this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
       .afterClosed().subscribe(res => {
         if (res) {
           this.shiftApi.deleteSelectShift(ashifts).subscribe(res => {
