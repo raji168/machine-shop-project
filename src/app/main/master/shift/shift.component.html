@@ -14,7 +14,7 @@
   <div class=" table-shift mat-elevation-z8" role="table">
     <!-- <table mat-table [dataSource]="shiftDataSource$ | async " class="mat-elevation-z8" matSort> -->
 
-      <mat-table  class="mat-elevation-z8" [dataSource]="dataS"   matSort>
+      <mat-table  [dataSource]="dataS"   matSort>
         <ng-container matColumnDef="select">
           <mat-header-cell *matHeaderCellDef > Select</mat-header-cell>>
           <mat-cell *matCellDef="let element ">  <mat-checkbox (change)="element.isSelected = $event.checked"></mat-checkbox> </mat-cell>
