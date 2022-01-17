@@ -47,9 +47,10 @@ export class ShiftDataService {
         this.shiftUpdated$.next(this.shifts);
     }
 
-    deleteSelectShift(shifts :Shift) {
-        this.shifts = this.shifts.filter( (s: Shift) => s._id )
-        this.shiftUpdated$.next(this.shifts);
-    }
+    // deleteSelectShift(shifts :Shift[]) {
+    //     const deleteShift = this.shifts.filter(shift => shift.isSelected);
+    //     this.shifts =  this.shifts.filter(shift => !shift.isSelected);
+    //     this.shiftUpdated$.next(this.shifts);
+    // }
 
 } 
