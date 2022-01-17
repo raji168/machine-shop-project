@@ -8,6 +8,7 @@ export interface InstrumentModel {
     calibratedue: Date;
     isDelete: boolean;
     // document:string;
+    isSelected: any;
 }
 
 

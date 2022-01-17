@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { forkJoin, Observable, Subject } from 'rxjs';
 import { Machine } from '../models/machine.model';
 import { tap } from 'rxjs/operators';
 import { MachineDataService } from '../data-services/machine-data.service';
@@ -61,7 +61,12 @@ export class MachineApiService {
       })
     );
 
-}
+  }
+
+  deleteSelectMachine(machines :Machine[]): Observable<Machine[]>{
+    return forkJoin(machines.map(machine => this.http.delete<Machine>(`${this.baseUrl}/${machine._id}`)))
+   }
+
 
 }
 

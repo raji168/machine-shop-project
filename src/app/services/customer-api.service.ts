@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { forkJoin, Observable, Subject } from 'rxjs';
 import { Customer } from '../models/customer.model';
 import { tap } from 'rxjs/operators';
 import { CustomerDataService } from '../data-services/customer-data.service';
@@ -61,4 +61,8 @@ export class CustomerApiService {
       })
     );
   }
+  deleteSelectCustomer(customers :Customer[]): Observable<Customer[]>{
+    return forkJoin(customers.map(customer => this.http.delete<Customer>(`${this.baseUrl}/${customer._id}`)))
+  }
+
 }

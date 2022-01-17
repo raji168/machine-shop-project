@@ -25,7 +25,7 @@ export class InstrumentComponent implements OnInit {
   // instrumentData: InstrumentModel[] = [];
 
 
-  displayedColumns: string[] = ['select','sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
+  displayedColumns: string[] = ['select', 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
   searchKey: string;
   isDelete: false;
@@ -56,7 +56,7 @@ export class InstrumentComponent implements OnInit {
 
   grdlistData;
 
- 
+
   ngOnInit(): void {
     this.instrumentDataSource$ = this.instrumentDataService.instrumentUpdated$.pipe(map(instruments => {
       return new MatTableDataSource(instruments)
@@ -72,7 +72,7 @@ export class InstrumentComponent implements OnInit {
     )
   }
 
-  ngAfterViewInit(): void{
+  ngAfterViewInit(): void {
     this.grdlistData.paginator = this.paginator;
     this.grdlistData.sort = this.sort;
   }
@@ -84,12 +84,6 @@ export class InstrumentComponent implements OnInit {
     this.searchKey = "";
     this.applyFilter();
   }
-
-
-  bulkDelete(){
-   var selectedData = this.grdlistData.filter(data =>data.isDelete == true);
-   this.grdlistData = selectedData;
- }
 
   onCreate() {
     const dialogConfig = new MatDialogConfig();
@@ -115,6 +109,18 @@ export class InstrumentComponent implements OnInit {
       });
   }
 
+  removeSelected() {
+    const ainstruments = this.grdlistData.data.filter((i: InstrumentModel) => i.isSelected);
+    this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.instrumentService.deleteSelectInstrument(ainstruments).subscribe(res => {
+            this.grdlistData.data = this.grdlistData.data.filter((i: InstrumentModel) => !i.isSelected);
+            this._notification.success('Instrument Selected Records Deleted Successfully...!');
+          })
+        }
+      });
+  }
 
 
 }
