@@ -64,8 +64,17 @@ export class ShiftApiService {
     );
   }
   
-   deleteSelectShift(shifts :Shift[]){
-    return forkJoin(shifts.map(shift => this.http.delete<Shift>(`${this.baseUrl}/${shift._id}`)))
+  //  deleteSelectShift(shifts :Shift[]): Observable<Shift[]>{
+  //   return forkJoin(shifts.map(shift => this.http.delete<Shift>(`${this.baseUrl}/${shift._id}`)))
+  //  }
+
+   deleteSelectShift(shifts:Shift[]){
+    return forkJoin(shifts.map(shift => this.http.delete<Shift>(`${this.baseUrl}/${shift._id}`))).pipe(
+      tap(shifts =>{
+        this.shiftDataService.deleteSelectShift(shifts);
+      })
+    )
+
    }
 
 }
