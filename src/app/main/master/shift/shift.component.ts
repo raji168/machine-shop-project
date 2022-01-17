@@ -21,7 +21,7 @@ import { MatAccordion } from '@angular/material/expansion';
 })
 export class ShiftComponent implements OnInit {
 
-  displayedColumns: string[] = ['sno', 'shiftName', 'startTime', 'endTime', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
   shiftDataSource$: Observable<MatTableDataSource<Shift>>;
 
