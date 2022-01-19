@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerApiService } from 'src/app/services/customer-api.service'
@@ -26,11 +26,11 @@ export class AddCustomerComponent implements OnInit {
     private fb:FormBuilder) {
 
     this.customerForm = this.fb.group({
-      customername: '',
-      description: '',
-      productno: '',
-      revisionno: '',
-      drawing: ''
+      customername: ['',Validators.required],
+      description: ['',Validators.required],
+      productno: ['',Validators.maxLength(5)],
+      revisionno: ['',Validators.maxLength(5)],
+      // drawing: ['',Validators.required],
     });
   }
 

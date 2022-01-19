@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup,FormControl, FormBuilder} from '@angular/forms';
+import { FormGroup,FormControl, FormBuilder, Validators} from '@angular/forms';
 import { InstrumentService } from 'src/app/services/instrument.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -30,12 +30,12 @@ export class AddInstrumentComponent implements OnInit {
   ngOnInit(): void {
     
     this.form = this.fb.group({
-      sno:  '' ,
-      name:  '' ,
-      referenceno:  '' ,
-      range:  '' ,
-      calibratedon:  '' ,
-      calibratedue:  '' 
+      sno:  ['',Validators.required],
+      name: ['',Validators.maxLength(10)],
+      referenceno: ['',Validators.maxLength(5)],
+      range: ['',Validators.required],
+      calibratedon: ['',Validators.required],
+      calibratedue:  ['',Validators.required],
     });
 
     this.instrument = this.data?.instrument;

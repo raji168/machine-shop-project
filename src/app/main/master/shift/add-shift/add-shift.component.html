@@ -10,7 +10,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline" color="accent">
         <mat-label>Start Time</mat-label>
-        <input matInput [ngxMatTimepicker]="picker1" formControlName="startTime" autocomplete="off" >
+        <input matInput [ngxMatTimepicker]="picker1" formControlName="startTime" autocomplete="off"  (invalid)="{start: '00:00', end: '23:59' }">
         <ngx-mat-timepicker #picker1 color="accent"></ngx-mat-timepicker>
       </mat-form-field>
       <mat-form-field appearance="outline" color="accent">

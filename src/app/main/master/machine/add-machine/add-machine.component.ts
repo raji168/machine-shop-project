@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Machine } from 'src/app/models/machine.model';
 import { MachineApiService } from 'src/app/services/machine-api.service';
@@ -27,10 +27,10 @@ export class AddMachineComponent implements OnInit {
 
 
     this.machineForm = this.fb.group({
-      machinename: '',
-      machineno: '',
-      brand: '',
-      category:''
+      machinename: ['',Validators.required],
+      machineno: ['',Validators.maxLength(5)],
+      brand: ['',Validators.required],
+      category:['',Validators.required],
     });
 
   }
