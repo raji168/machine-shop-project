@@ -27,9 +27,9 @@
         <mat-table [dataSource]="grdlistData" matSort>
 
             <ng-container matColumnDef="select">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Select All</mat-header-cell>
-                <mat-cell *matCellDef="let instrument ">
-                    <mat-checkbox class="checkBox" [(ngModel)]="instrument.isDelete"></mat-checkbox>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Select </mat-header-cell>
+                <mat-cell *matCellDef="let element ">
+                  <mat-checkbox (change)="element.isSelected = $event.checked"></mat-checkbox>
                 </mat-cell>
             </ng-container>
 
@@ -96,9 +96,9 @@
 
         <div class="footer">
             <div class="deleteallFun">
-                <button mat-raised-button class="DeleteAll-button" color="accent">
-                    <mat-icon (click)="bulkDelete()">delete</mat-icon>Deleteall
-                </button>
+                <button mat-raised-button class="DeleteAll-button" color="accent" (click)="removeSelected()">
+                    <mat-icon>delete</mat-icon>Deleteall
+                  </button>
             </div>
             <div class="paginator">
                 <mat-paginator [pageSizeOptions]="[1,3,5,10,15,25,100]" pageSize="10" showFirstLastButtons>

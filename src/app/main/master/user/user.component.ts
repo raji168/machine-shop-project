@@ -22,7 +22,7 @@ import { MatSort } from '@angular/material/sort';
 export class UserComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
 
   searchKey: string;
   userData;
@@ -97,6 +97,19 @@ export class UserComponent implements OnInit {
       .afterClosed().subscribe(res => {
         if (res) {
           this.userService.deleteUser(id).subscribe(res => {
+            this.notification.success('deleted successfully!!!');
+          })
+        }
+      });
+  }
+
+  removeSelected() {
+    const ausers = this.userData.data.filter((u: User) => u.isSelected);
+    this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.userService.deleteSelectUser(ausers).subscribe(res => {
+            this.userData.data = this.userData.data.filter((u: User) => !u.isSelected);
             this.notification.success('deleted successfully!!!');
           })
         }

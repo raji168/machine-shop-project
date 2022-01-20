@@ -1,6 +1,7 @@
 import { Role } from "./role.model";
 
 export interface User {
+    isSelected: any;
     _id?: string;
     sno: number;
     name: string;

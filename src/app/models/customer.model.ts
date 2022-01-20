@@ -5,5 +5,5 @@ export interface Customer {
     productno: string;
     drawing: string;
     revisionno: string;
-
+    isSelected: any;
 }
