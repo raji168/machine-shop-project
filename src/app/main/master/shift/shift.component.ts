@@ -11,7 +11,6 @@ import { DialogsService } from 'src/app/services/dialogs.service';
 import { ShiftDataService } from 'src/app/data-services/shift-data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { MatAccordion } from '@angular/material/expansion';
 
 
 @Component({
@@ -101,7 +100,7 @@ export class ShiftComponent implements OnInit {
         if (res) {
           this.shiftApi.deleteSelectShift(ashifts).subscribe(res => {
             this.dataS.data = this.dataS.data.filter((s:Shift)=> !s.isSelected);
-            this.alert.showError('Shift Selected Records Deleted Successfully...!', 'Shift');
+            this.alert.showSuccess('Shifts Deleted Successfully...!', 'Shift');
           })
         }
       });

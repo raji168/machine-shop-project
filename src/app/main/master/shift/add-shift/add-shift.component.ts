@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Shift } from 'src/app/models/shift.model';
 import { ShiftApiService } from 'src/app/services/shift-api.service';
@@ -27,9 +27,13 @@ export class AddShiftComponent implements OnInit {
   ) {
 
     this.shiftForm = this.fb.group({
-      shiftName: '',
-      startTime: '',
-      endTime: ''
+      shiftName: ['',Validators.required],
+      startTime: ['',[
+        Validators.required,
+      ]],
+      endTime:['',[
+        Validators.required,
+      ]]
     });
 
   }

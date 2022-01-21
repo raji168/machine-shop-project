@@ -110,7 +110,7 @@ export class UserComponent implements OnInit {
         if (res) {
           this.userService.deleteSelectUser(ausers).subscribe(res => {
             this.userData.data = this.userData.data.filter((u: User) => !u.isSelected);
-            this.notification.success('deleted successfully!!!');
+            this.notification.success('Users deleted successfully!!!');
           })
         }
       });

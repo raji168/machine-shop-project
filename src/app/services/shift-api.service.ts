@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable, Subject } from 'rxjs';
 import { Shift } from '../models/shift.model';
-
 import { tap } from 'rxjs/operators';
 import { ShiftDataService } from '../data-services/shift-data.service';
 

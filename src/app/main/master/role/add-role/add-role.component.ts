@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Role } from 'src/app/models/role.model';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -31,8 +31,8 @@ export class AddRoleComponent implements OnInit {
   ngOnInit(): void {
 
     this.roleForm = this.fb.group({
-      serialno: '',
-      name: ''
+      // serialno: ['',Validators.required],
+      name: ['',Validators.required],    
     });
 
     this.role = this.data?.role;

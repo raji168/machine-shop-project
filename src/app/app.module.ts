@@ -11,6 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
 import { MainModule } from './main/main.module';
 
+
 @NgModule({
 
   declarations: [

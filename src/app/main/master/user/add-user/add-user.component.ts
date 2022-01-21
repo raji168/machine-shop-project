@@ -1,13 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { User } from 'src/app/models/user.model';
 import { RoleApiService } from 'src/app/services/role-api.service';
 import { Role } from 'src/app/models/role.model';
-import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
 
 
 
@@ -20,10 +18,8 @@ import { Observable } from 'rxjs';
 export class AddUserComponent implements OnInit {
 
   user: User;
-  // dataUser: User[] = [];
+
   userForm: FormGroup;
-  // userData: User[] = [];
-  // _id: string;
 
   roleData: Role[] = [];
 
@@ -37,13 +33,21 @@ export class AddUserComponent implements OnInit {
     public notification: NotificationService,
     private fb: FormBuilder) {
     this.userForm = this.fb.group({
-      sno: '',
-      name: '',
-      role: '',
-      emailId: '',
-      phoneNo: '',
-      userName: '',
-      password: ''
+      // sno: ['',Validators.required],
+      name: ['',Validators.required],
+      role: ['',Validators.required],
+      emailId: ['',[Validators.required, Validators.email]],
+      phoneNo: ['',[
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(10)
+      ]],
+      userName: ['',Validators.required],
+      password: ['',[
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(40)
+      ]],
     });
   }
 
