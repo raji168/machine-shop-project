@@ -3,9 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CustomerDataService } from 'src/app/data-services/customer-data.service';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerApiService } from 'src/app/services/customer-api.service';
@@ -22,7 +21,8 @@ export class CustomerComponent implements OnInit {
 
   // customerData: Customer[] = [];
 
-  displayedColumns: string[] = ['select','sno', 'customername', 'description', 'productno', 'revisionno', 'drawing', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'customername', 'description', 'productno', 'revisionno', 'actions'];
+
 
   customerDataSource$ : Observable<MatTableDataSource<Customer>>;
 
@@ -36,7 +36,6 @@ export class CustomerComponent implements OnInit {
   constructor(
     private customerApi: CustomerApiService,
     private customerDataService: CustomerDataService,
-    private router: Router,
     private dialog: MatDialog,
     private dialogsService: DialogsService,
     private alert: AlertService) { }
@@ -104,7 +103,7 @@ export class CustomerComponent implements OnInit {
         if (res) {
           this.customerApi.deleteSelectCustomer(acustomers).subscribe(res => {
             this.dataS.data = this.dataS.data.filter((c:Customer)=> !c.isSelected);
-            this.alert.showError('Shift Selected Records Deleted Successfully...!', 'Shift');
+            this.alert.showSuccess('Customer Records Deleted Successfully...!', 'Shift');
           })
         }
       });

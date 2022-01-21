@@ -23,13 +23,14 @@ import { map } from 'rxjs/operators';
 export class InstrumentComponent implements OnInit {
 
   // instrumentData: InstrumentModel[] = [];
+  val = this.calculateDiff;
 
-
-  displayedColumns: string[] = ['select', 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
+  displayedColumns: string[] = ['select', 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions','status'];
 
   searchKey: string;
   isDelete: false;
-
+  status:true;
+  
 
   form = new FormGroup({
     sno: new FormControl(''),
@@ -70,6 +71,7 @@ export class InstrumentComponent implements OnInit {
         this.grdlistData.paginator = this.paginator;
       })
     )
+    this.calculateDiff;
   }
 
   ngAfterViewInit(): void {
@@ -122,6 +124,17 @@ export class InstrumentComponent implements OnInit {
       });
   }
 
+
+
+
+  calculateDiff(calibratedon, calibratedue) {
+    var date1:any = new Date(calibratedue);
+    var date2:any = new Date(calibratedon);
+    var diffDays:any = Math.floor((date1 - date2) / (1000 * 3600 * 24));
+    return diffDays;
+    // console.log(diffDays);
+  }
+  
 
 }
 

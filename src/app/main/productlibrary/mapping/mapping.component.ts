@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Observable } from 'rxjs';
 import { MappingDataService } from 'src/app/data-services/mapping-data.service';
 import { Mapping } from 'src/app/models/mapping.model';
@@ -7,20 +8,21 @@ import { MappingApiService } from 'src/app/services/mapping-api.service';
 import { map } from 'rxjs/operators';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatSort } from '@angular/material/sort';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { __values } from 'tslib';
+
+const ELEMENT_DATA: Mapping[] = [];
 
 @Component({
   selector: 'app-mapping',
   templateUrl: './mapping.component.html',
   styleUrls: ['./mapping.component.scss'],
-  // animations: [
-  //   trigger('detailExpand', [
-  //     state('collapsed', style({ height: '0px', minHeight: '0' })),
-  //     state('expanded', style({ height: '*' })),
-  //     transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-  //   ]),
-  // ],
+
+  animations:[
+    trigger('detailExpand',[
+      state('collapsed', style({height:'0',minHeight:'0'})),
+      state('expanded', style({height:'*'})),
+      transition('expanded <=> collapsed' , animate('225ms cublic-bezier(0.4,0.0,0.2,1)')),
+    ]),
+  ],
 })
 export class MappingComponent {
 
