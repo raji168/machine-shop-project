@@ -63,6 +63,14 @@
                 <mat-cell *matCellDef="let instrument"> {{instrument.calibratedue|date}} </mat-cell>
             </ng-container>
 
+            <!-- <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                <mat-cell *matCellDef="let instrument">
+                    <button *ngIf="">status</button>
+                    <div>{{calculateDiff(instrument.calibratedon,instrument.calibratedue)}}</div>
+                </mat-cell>
+            </ng-container> -->
+
             <!-- <ng-container matColumnDef="documents">
                 <mat-header-cell *matHeaderCellDef>Documents</mat-header-cell>
                 <mat-cell *matCellDef="let instrument"> 

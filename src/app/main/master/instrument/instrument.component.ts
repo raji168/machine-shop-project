@@ -29,6 +29,7 @@ export class InstrumentComponent implements OnInit {
 
   searchKey: string;
   isDelete: false;
+  status:true;
 
 
   form = new FormGroup({
@@ -70,6 +71,7 @@ export class InstrumentComponent implements OnInit {
         this.grdlistData.paginator = this.paginator;
       })
     )
+    // this.calculateDiff;
   }
 
   ngAfterViewInit(): void {
@@ -122,7 +124,14 @@ export class InstrumentComponent implements OnInit {
       });
   }
 
-
+  calculateDiff(calibratedon, calibratedue) {
+    var date1:any = new Date(calibratedue);
+    var date2:any = new Date(calibratedon);
+    var diffDays:any = Math.floor((date2 - date1) / (1000 * 3600 * 24));
+    return diffDays;
+    // console.log(diffDays);
+  }
+  
 }
 
 
