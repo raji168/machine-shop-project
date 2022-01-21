@@ -24,7 +24,7 @@
         
 
         <!-- <mat-table [dataSource]="instrumentDataSource$ | async" matSort> -->
-        <mat-table [dataSource]="grdlistData" matSort>
+        <mat-table [dataSource]="grdlistData" matSort class="matTable">
 
             <ng-container matColumnDef="select">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Select </mat-header-cell>
@@ -97,12 +97,12 @@
                 </mat-cell>
             </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
         </mat-table>
 
-        <div class="footer">
+        <div class="footer" style="position: sticky;">
             <div class="deleteallFun">
                 <button mat-raised-button class="DeleteAll-button" color="accent" (click)="removeSelected()">
                     <mat-icon>delete</mat-icon>Deleteall
