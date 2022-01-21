@@ -2,10 +2,11 @@
     <div class="from-title">
         <span>Add Role</span>
     </div>
-    {{ roleForm.value | json }}
+    <!-- {{ roleForm.value | json }} -->
     <form [formGroup]="roleForm" ngRepeat="" (ngSubmit)="onSubmit()" class="normal-form">
 
         <div class="controles-container">
+            
             <!-- <mat-form-field appearance="outline" color="accent">
                 <input formControlName="serialno" matInput placeholder="Serial No" autocomplete="off">
             </mat-form-field> -->
