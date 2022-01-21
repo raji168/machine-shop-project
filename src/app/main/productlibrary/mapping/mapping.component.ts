@@ -163,13 +163,14 @@ export class MappingComponent {
 //   }
 // ];
 dataSource = ELEMENT_DATA;
-columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
+columnsToDisplay = ['serialNo','productName','customerName', 'weight', 'symbol'];
 expandedElement: PeriodicElement | null;
 }
 
 export interface PeriodicElement {
-name: string;
-position: number;
+productName: string;
+serialNo: number;
+customerName :string;
 weight: number;
 symbol: string;
 description: string;
@@ -177,16 +178,18 @@ description: string;
 
 const ELEMENT_DATA: PeriodicElement[] = [
 {
-  position: 1,
-  name: 'Hydrogen',
+  serialNo: 1,
+  productName: 'Hydrogen',
+  customerName: 'Sample',
   weight: 1.0079,
   symbol: 'H',
   description: `Hydrogen is a chemical element with symbol H and atomic number 1. With a standard
       atomic weight of 1.008, hydrogen is the lightest element on the periodic table.`,
 },
 {
-  position: 2,
-  name: 'Helium',
+  serialNo: 2,
+  productName: 'Helium',
+  customerName: 'Sample',
   weight: 4.0026,
   symbol: 'He',
   description: `Helium is a chemical element with symbol He and atomic number 2. It is a
@@ -194,8 +197,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
       group in the periodic table. Its boiling point is the lowest among all the elements.`,
 },
 {
-  position: 3,
-  name: 'Lithium',
+  serialNo: 3,
+  productName: 'Lithium',
+  customerName: 'Sample',
   weight: 6.941,
   symbol: 'Li',
   description: `Lithium is a chemical element with symbol Li and atomic number 3. It is a soft,
@@ -203,8 +207,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
       lightest solid element.`,
 },
 {
-  position: 4,
-  name: 'Beryllium',
+  serialNo: 4,
+  productName: 'Beryllium',
+  customerName: 'Sample',
   weight: 9.0122,
   symbol: 'Be',
   description: `Beryllium is a chemical element with symbol Be and atomic number 4. It is a
@@ -212,8 +217,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
       larger atomic nuclei that have collided with cosmic rays.`,
 },
 {
-  position: 5,
-  name: 'Boron',
+  serialNo: 5,
+  productName: 'Boron',
+  customerName: 'Sample',
   weight: 10.811,
   symbol: 'B',
   description: `Boron is a chemical element with symbol B and atomic number 5. Produced entirely
@@ -221,8 +227,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
       low-abundance element in the Solar system and in the Earth's crust.`,
 },
 {
-  position: 6,
-  name: 'Carbon',
+  serialNo: 6,
+  productName: 'Carbon',
+  customerName: 'Sample',
   weight: 12.0107,
   symbol: 'C',
   description: `Carbon is a chemical element with symbol C and atomic number 6. It is nonmetallic
@@ -230,16 +237,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
       to group 14 of the periodic table.`,
 },
 {
-  position: 7,
-  name: 'Nitrogen',
+  serialNo: 7,
+  productName: 'Nitrogen',
+  customerName: 'Sample',
   weight: 14.0067,
   symbol: 'N',
   description: `Nitrogen is a chemical element with symbol N and atomic number 7. It was first
       discovered and isolated by Scottish physician Daniel Rutherford in 1772.`,
 },
 {
-  position: 8,
-  name: 'Oxygen',
+  serialNo: 8,
+  productName: 'Oxygen',
+  customerName: 'Sample',
   weight: 15.9994,
   symbol: 'O',
   description: `Oxygen is a chemical element with symbol O and atomic number 8. It is a member of
@@ -247,8 +256,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
        agent that readily forms oxides with most elements as well as with other compounds.`,
 },
 {
-  position: 9,
-  name: 'Fluorine',
+  serialNo: 9,
+  productName: 'Fluorine',
+  customerName: 'Sample',
   weight: 18.9984,
   symbol: 'F',
   description: `Fluorine is a chemical element with symbol F and atomic number 9. It is the
@@ -256,8 +266,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
       conditions.`,
 },
 {
-  position: 10,
-  name: 'Neon',
+  serialNo: 10,
+  productName: 'Neon',
+  customerName: 'Sample',
   weight: 20.1797,
   symbol: 'Ne',
   description: `Neon is a chemical element with symbol Ne and atomic number 10. It is a noble gas.
