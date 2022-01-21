@@ -7,6 +7,11 @@
 .top-menu{
  background-color: transparent;   
 }
+.matTable{
+    max-height: 40vh;
+    overflow-y: scroll;
+    background-color: #fff;
+}
 .table-instrument mat-header-cell{
     font-size: 16px;
     background-color: rgb(255, 222, 90);
@@ -29,6 +34,7 @@
 }
 mat-header-cell{
     justify-content: center;
+    
 }
 ng-container{
     display: grid;
@@ -64,4 +70,4 @@ mat-row{
         left: 150%;
       }
     }
-  }
+}
