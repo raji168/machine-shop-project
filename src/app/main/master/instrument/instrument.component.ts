@@ -30,7 +30,7 @@ export class InstrumentComponent implements OnInit {
   searchKey: string;
   isDelete: false;
   status:true;
-
+  
 
   form = new FormGroup({
     sno: new FormControl(''),
@@ -71,7 +71,7 @@ export class InstrumentComponent implements OnInit {
         this.grdlistData.paginator = this.paginator;
       })
     )
-    // this.calculateDiff;
+    this.calculateDiff;
   }
 
   ngAfterViewInit(): void {
