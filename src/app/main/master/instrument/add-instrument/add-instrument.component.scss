@@ -15,6 +15,9 @@ form{
 }
 .controles-container {
     margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
 }
 mat-form-field{
     margin-right: 40px;
