@@ -22,7 +22,7 @@ import { MatSort } from '@angular/material/sort';
 export class UserComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
 
   searchKey: string;
   userData;
@@ -64,7 +64,10 @@ export class UserComponent implements OnInit {
     })
 
   }
-  
+  ngAfterViewInit(): void{
+    this.userData.paginator = this.paginator;
+    this.userData.sort = this.sort;
+  }
 
   applyFilter() {
     this.userData.filter = this.searchKey.trim().toLocaleLowerCase();
@@ -99,7 +102,21 @@ export class UserComponent implements OnInit {
         }
       });
   }
+
+  removeSelected() {
+    const ausers = this.userData.data.filter((u: User) => u.isSelected);
+    this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.userService.deleteSelectUser(ausers).subscribe(res => {
+            this.userData.data = this.userData.data.filter((u: User) => !u.isSelected);
+            this.notification.success('deleted successfully!!!');
+          })
+        }
+      });
+  }
 }
+
 
 
 

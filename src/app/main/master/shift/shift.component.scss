@@ -1,61 +1,47 @@
 .container{
-    margin: 20px;
+    margin:20px;
     padding: 20px;
     box-sizing: border-box;
 }
-.title{
-    padding-left: 10px;
+.top-menu{
+ background-color: transparent;   
+}
+.table-shift mat-header-cell{
     font-size: 16px;
-    font-weight: 500;
-}
-span{
-    align-items: center;
-}
-table{
-    width: 80vw;
-}
-th{
-    text-transform: uppercase; 
-    letter-spacing: 1px;
-    font-weight: 700;
-    color: black;
-    // text-align: justify;
     background-color: rgb(255, 222, 90);
+    color:black;
+} 
+.create-button{
+    float:right;
+}
+.search-form-field{
+    padding-left: 20px;
+    width: 25%;
+}
+.edit-button{
+    display: grid;
+    justify-content: center;
+    gap:10px 10px;
+}
+ mat-cell{
+    justify-content: center;
+}
+mat-header-cell{
+    justify-content: center;
+}
+ng-container{
+    display: grid;
 }
 
-td{
-    // text-align: justify;
-    padding-left: 0px;
+.footer{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.DeleteAll-button{
+    margin-left: 15px;
+    margin-top: 13px;
+}
+.upload-field{
+    float: right;
 }
 
-th.mat-header-cell {
-    border-bottom-width: 3px;
-    border-bottom-style: solid ;
-    // justify-content: center;
-}
-td.mat-cell{
-    border-bottom-width: 3px;
-    border-bottom-style: solid;
-    // text-align: center;
-
-}
-.add-shift{
-    width: 80vw;
-    .add-btn{
-        float: right;
-        padding-bottom: 0px;
-        background-color: rgb(255, 222, 90);
-        background-color: linear();
-        
-    }
-}
-mat-paginator{
-    display: flex;
-    width: 80vw;
-    flex-direction: row-reverse;
-    color: #050505;
-    font-size: 14px;
-    font-weight: 500;
-    height: 50px;
-    
-}

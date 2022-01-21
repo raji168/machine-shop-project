@@ -11,6 +11,7 @@ import { DialogsService } from 'src/app/services/dialogs.service';
 import { ShiftDataService } from 'src/app/data-services/shift-data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { MatAccordion } from '@angular/material/expansion';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class ShiftComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  dataS ;
+  dataS = new MatTableDataSource<Shift>();
 
   shifts:Shift[] = [];
  
@@ -94,12 +95,32 @@ export class ShiftComponent implements OnInit {
 
   removeSelected(){
 
-   this.shifts = this.dataS.filter((s:Shift)=> s.isSelected);
-    this.shiftApi.deleteSelectShift(this.shifts).subscribe(()=>{
-      this.dataS = this.dataS.filter((s:Shift)=> !s.isSelected);
-    })
-
+    const ashifts = this.dataS.data.filter((s :Shift) => s.isSelected);
+    this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
+      .afterClosed().subscribe(res => {
+        if (res) {
+          this.shiftApi.deleteSelectShift(ashifts).subscribe(res => {
+            this.dataS.data = this.dataS.data.filter((s:Shift)=> !s.isSelected);
+            this.alert.showError('Shift Selected Records Deleted Successfully...!', 'Shift');
+          })
+        }
+      });
+ 
   }
+
+  //  removeSelected(shifts:Shift[]){
+
+  //   // const ashifts = this.dataS.data.filter((s :Shift) => s.isSelected);
+  //   this.dialogsService.openConfirmDialog('Are you sure to delete this record  ?')
+  //     .afterClosed().subscribe(res => {
+  //       if (res) {
+  //         this.shiftDataService.deleteSelectShift(shifts).   this.alert.showError('Shift Selected Records Deleted Successfully...!', 'Shift');
+  //         })
+  //       }
+  //     });
+ 
+  // }
+
 
 }
 

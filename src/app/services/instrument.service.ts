@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {  Observable, Subject } from 'rxjs';
+import {  forkJoin, Observable, Subject } from 'rxjs';
 import { InstrumentModel } from '../models/instrument.model'
 import { tap  } from 'rxjs/operators';
 import { InstrumentDataService } from '../data-services/instrument-data.service';
@@ -57,6 +57,10 @@ export class InstrumentService {
         this.instrumentDataServivce.deleteInstrument(instrument._id)
       })
     );
+  }
+
+  deleteSelectInstrument(instruments :InstrumentModel[]): Observable<InstrumentModel[]>{
+    return forkJoin(instruments.map(instrument => this._http.delete<InstrumentModel>(`${this.API_URL}/${instrument._id}`)))
   }
 
 }

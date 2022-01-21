@@ -4,5 +4,6 @@ export interface Machine {
     machineno: string;
     brand: string;
     category: string;
+    isSelected: any;
 }
 
