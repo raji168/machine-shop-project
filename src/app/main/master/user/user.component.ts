@@ -24,8 +24,12 @@ export class UserComponent implements OnInit {
 
   displayedColumns: string[] = ['select','sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
 
+ users:User[] =[];
+
   searchKey: string;
-  userData;
+  userData  = new MatTableDataSource<User>() ;
+
+
 
   // userForm: FormGroup = new FormGroup({
   //   sno: new FormControl(''),
@@ -57,7 +61,7 @@ export class UserComponent implements OnInit {
       return new MatTableDataSource(users)
     }))
     this.userDataSource$.subscribe((res) =>{
-      this.userData = res.data;
+      // this.userData = res.data;
       this.userData = new MatTableDataSource(res.data);
       this.userData.paginator = this.paginator;
       this.userData.sort = this.sort;
