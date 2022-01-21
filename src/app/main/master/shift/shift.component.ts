@@ -65,7 +65,7 @@ export class ShiftComponent implements OnInit {
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataS.filter = filterValue.trim().toLowerCase();
+    this.dataS.filter = filterValue.trim().toLocaleLowerCase();
 
   }
 

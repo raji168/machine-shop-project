@@ -42,10 +42,6 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.customerData = this.customerDataService.getCustomer()
-    // this.customerDataService.customerUpdated$.pipe(takeUntil(this.destroy$)).subscribe(customer => {
-    //   this.customerData = customer
-    // })
     this.customerDataSource$ = this.customerDataService.customerUpdated$.pipe(map(customers =>{
       return new MatTableDataSource(customers)
     }))
@@ -67,7 +63,7 @@ export class CustomerComponent implements OnInit {
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataS.filter = filterValue.trim().toLowerCase();
+    this.dataS.filter = filterValue.trim().toLocaleLowerCase();
 
   }
 
