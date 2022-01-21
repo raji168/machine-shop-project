@@ -61,6 +61,7 @@ export class CustomerApiService {
       })
     );
   }
+  
   deleteSelectCustomer(customers :Customer[]): Observable<Customer[]>{
     return forkJoin(customers.map(customer => this.http.delete<Customer>(`${this.baseUrl}/${customer._id}`)))
   }

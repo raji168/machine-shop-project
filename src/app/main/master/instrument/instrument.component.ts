@@ -23,7 +23,7 @@ import { map } from 'rxjs/operators';
 export class InstrumentComponent implements OnInit {
 
   // instrumentData: InstrumentModel[] = [];
-
+  val = this.calculateDiff;
 
   displayedColumns: string[] = ['select', 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
@@ -121,7 +121,20 @@ export class InstrumentComponent implements OnInit {
         }
       });
   }
+ 
+  calculateDiff(calibratedon, calibratedue) {
+    // var date1:any = new Number(calibratedue);
+    // var date2:any = new Number(calibratedon);
+    // var diffDays:any = Math.floor((date2 - date1) / (1000 * 60 * 60 * 24));
+    // return diffDays;
 
+    var date1 = new Date(calibratedon); 
+    var date2 = new Date(calibratedue); 
+    
+      var Time = date2.getTime() - date1.getTime(); 
+      var Days = Time / (1000 * 3600 * 24);
+      console.log(Days);
+  }
 
 }
 

@@ -33,7 +33,7 @@ export class AddUserComponent implements OnInit {
     public notification: NotificationService,
     private fb: FormBuilder) {
     this.userForm = this.fb.group({
-      sno: ['',Validators.required],
+      // sno: ['',Validators.required],
       name: ['',Validators.required],
       role: ['',Validators.required],
       emailId: ['',[Validators.required, Validators.email]],

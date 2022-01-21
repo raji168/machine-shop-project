@@ -61,8 +61,8 @@ export class AddCustomerComponent implements OnInit {
     } else {
       this.customerApi.addCustomer(this.customerForm.value).subscribe(data => {
         this.dialogRef.close(data);
-        const formData = new FormData();
-        formData.append('drawing', this.customerForm.get('drawing').value);
+        // const formData = new FormData();
+        // formData.append('drawing', this.customerForm.get('drawing').value);
         this.alert.showSuccess('Customer Added Successfully...!', 'Customer');
 
       });

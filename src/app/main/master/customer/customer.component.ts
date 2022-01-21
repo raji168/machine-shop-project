@@ -21,7 +21,7 @@ export class CustomerComponent implements OnInit {
 
   // customerData: Customer[] = [];
 
-  displayedColumns: string[] = ['sno', 'customername', 'description', 'productno', 'revisionno', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'customername', 'description', 'productno', 'revisionno', 'actions'];
 
 
   customerDataSource$ : Observable<MatTableDataSource<Customer>>;
@@ -103,7 +103,7 @@ export class CustomerComponent implements OnInit {
         if (res) {
           this.customerApi.deleteSelectCustomer(acustomers).subscribe(res => {
             this.dataS.data = this.dataS.data.filter((c:Customer)=> !c.isSelected);
-            this.alert.showError('Shift Selected Records Deleted Successfully...!', 'Shift');
+            this.alert.showSuccess('Customer Records Deleted Successfully...!', 'Shift');
           })
         }
       });

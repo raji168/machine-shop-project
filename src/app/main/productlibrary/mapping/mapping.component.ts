@@ -14,7 +14,7 @@ const ELEMENT_DATA: Mapping[] = [];
   styleUrls: ['./mapping.component.scss'],
   animations:[
     trigger('detailExpand',[
-      state('collapsed', style({height:'0px',minHeight:'0'})),
+      state('collapsed', style({height:'0',minHeight:'0'})),
       state('expanded', style({height:'*'})),
       transition('expanded <=> collapsed' , animate('225ms cublic-bezier(0.4,0.0,0.2,1)')),
     ]),
@@ -44,6 +44,9 @@ export class MappingComponent implements OnInit {
       console.log(this.dataSource);
     })
 
+  }
+  findDetails(data) {
+    return this.dataSource.filter(x => x.whoseData === data.name);
   }
 
 }

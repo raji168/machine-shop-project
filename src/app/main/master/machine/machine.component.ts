@@ -101,7 +101,7 @@ export class MachineComponent implements OnInit {
         if (res) {
           this.machineApi.deleteSelectMachine(amachines).subscribe(res => {
             this.dataS.data = this.dataS.data.filter((i: Machine) => !i.isSelected);
-            this.alert.showError('Instrument Selected Records Deleted Successfully...!','Machine');
+            this.alert.showSuccess(' Machine Records Deleted Successfully...!','Machine');
           })
         }
       });

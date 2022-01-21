@@ -30,7 +30,7 @@ export class AddInstrumentComponent implements OnInit {
   ngOnInit(): void {
     
     this.form = this.fb.group({
-      sno:  ['',Validators.required],
+      // sno:  ['',Validators.required],
       name: ['',Validators.maxLength(10)],
       referenceno: ['',Validators.maxLength(5)],
       range: ['',Validators.required],

@@ -31,7 +31,7 @@ export class AddRoleComponent implements OnInit {
   ngOnInit(): void {
 
     this.roleForm = this.fb.group({
-      serialno: ['',Validators.required],
+      // serialno: ['',Validators.required],
       name: ['',Validators.required],    
     });
 
