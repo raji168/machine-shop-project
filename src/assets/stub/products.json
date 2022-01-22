@@ -1,0 +1,98 @@
+[
+    {
+        "_id": "asdasdasd12313",
+        "name": "product 1",
+        "customer": {
+            "name": "honda changed",
+            "description": "valvebody",
+            "drawing": "uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "productno": 51528,
+            "revisionno": "B",
+            "_id": "61ea3ef6c40b3a4f14a90da6"
+        },
+        "processes": [
+         {
+             "name":"operation1",
+             "drawing": {
+                 "no" : "asdasdasdas",
+                 "path": "uploads\\cc655c6d95efedd1fca9b6d545827125"
+             },
+             "jsirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+             "pmsDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+             "pdirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+             "isirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125"
+         },
+         {
+            "name":"operation2",
+            "drawing": {
+                "no" : "asdasdasdas",
+                "path": "uploads\\cc655c6d95efedd1fca9b6d545827125"
+            },
+            "jsirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "pmsDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "pdirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "isirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125"
+        },
+        {
+            "name":"operation3",
+            "drawing": {
+                "no" : "asdasdasdas",
+                "path": "uploads\\cc655c6d95efedd1fca9b6d545827125"
+            },
+            "jsirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "pmsDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "pdirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "isirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125"
+        }
+        ]
+
+    },
+    {
+        "_id": "asdasdasd123asdas13",
+        "name": "product 2",
+        "customer": {
+            "name": "honda changed",
+            "description": "valvebody",
+            "drawing": "uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "productno": 51528,
+            "revisionno": "B",
+            "_id": "61ea3ef6c40b3a4f14a90da6"
+        },
+        "processes": [
+         {
+             "name":"operation1",
+             "drawing": {
+                 "no" : "asdasdasdas",
+                 "path": "uploads\\cc655c6d95efedd1fca9b6d545827125"
+             },
+             "jsirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+             "pmsDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+             "pdirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+             "isirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125"
+         },
+         {
+            "name":"operation2",
+            "drawing": {
+                "no" : "asdasdasdas",
+                "path": "uploads\\cc655c6d95efedd1fca9b6d545827125"
+            },
+            "jsirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "pmsDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "pdirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "isirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125"
+        },
+        {
+            "name":"operation3",
+            "drawing": {
+                "no" : "asdasdasdas",
+                "path": "uploads\\cc655c6d95efedd1fca9b6d545827125"
+            },
+            "jsirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "pmsDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "pdirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "isirDoc":"uploads\\cc655c6d95efedd1fca9b6d545827125"
+        }
+        ]
+
+    }
+]

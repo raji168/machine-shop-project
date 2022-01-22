@@ -1,120 +1,122 @@
-// .Mapping-View{
-//     margin:20px;
-//     padding: 20px;
-//     box-sizing: border-box;
-// }
-// .top-menu{
-//     background-color: transparent;  
-//     margin-bottom: 50px; 
-// }
-// .buttons{
-//     float:right;
-//     margin-top: 10px;
-//     display: flex;
-//     gap: 33%;
-//     width:14%;
-//     align-items:center ; 
-// }
-// .create-button{
-//   border-radius: 24px;
-//   margin-left: -80px;
-// }
-// .search-form-field{
-//   padding-left: 20px;
-//   width: 25%;
-//   margin-left: 0%;
-//   margin-top: 10px;
-// }
-// .uploadfiles{
-//   margin-top: -55px;
-//   margin-right: -5px;
-//   float: right;
-// }
-// table {
-//   box-sizing: border-box;
-//   width: 100%;
-//   margin-left: 0%;
-//   margin-top: 1%;
-// }
-// tr.example-detail-row {
-//   height: 0;
-// }
-// table th{
-//   background-color:  rgb(255, 222, 90);
-// }
-// .footer{
-//  margin-left: 27px;
-//   width: 100%;
-//   background-color: transparent;
-// }
-// mat-cell.example-element-row:not(.example-expanded-row):hover {
-//   background: #777;
-// }
 
-// mat-cell.example-element-row:not(.example-expanded-row):active {
-//   background: #efefef;
-// }
-// tr.example-element-row:not(.example-expanded-row):hover {
-//   background: #777;
-// }
+.Mapping-View{
+    margin:20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.top-menu{
+    background-color: transparent;  
+    margin-bottom: 50px; 
+}
+.buttons{
+    float:right;
+    margin-top: -50px;
+    display: flex;
+    gap: 5%;
+    align-items:center ;
+    
+}
 
-// tr.example-element-row:not(.example-expanded-row):active {
-//   background: #efefef;
-// }
+.table{
+  margin: 5%;
+}
 
+.mat-accordion .mat-header-row {
+  padding-left: 1.5rem;
+  padding-right: 2rem;
+  border-bottom: none;
+}
 
+.mat-expansion-panel-header.mat-row {
+  border-bottom: none;
+}
 
+$mat-header-row-height: 56px;
+$mat-row-height: 48px;
+$mat-row-horizontal-padding: 24px;
 
+.mat-table {
+  display: block;
+}
 
-// table {
-//   width: 100%;
+.mat-header-row {
+  min-height: $mat-header-row-height;
+  background-color: rgb(255, 222, 90);
+}
+
+.mat-row {
+  min-height: $mat-row-height;
+}
+
+.mat-row, .mat-header-row {
+  display: flex;
   
-// }
-// .mat-elevation-z8{
-//   overflow-y: scroll;
-//   max-height: 40vh;
-// }
-// tr.example-detail-row {
-//   height: 0;
-// }
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  align-items: center;
+  padding: 0 $mat-row-horizontal-padding;
+  box-sizing: border-box;
 
-// tr.example-element-row:not(.example-expanded-row):hover {
-//   background: whitesmoke;
-// }
+  &::after {
+    display: inline-block;
+    min-height: inherit;
+    content: '';
+  }
+}
 
-// tr.example-element-row:not(.example-expanded-row):active {
-//   background: #efefef;
-// }
+.mat-cell, .mat-header-cell {
+  flex: 1;
+  overflow: hidden;
+  word-wrap: break-word;
+  
+}
 
-// .example-element-row td {
-//   border-bottom-width: 0;
-// }
+.product-header-cell{
+  padding: 5px;
+  font-weight: 500 ;
+  border-bottom: 1px solid;
+  &.first{
+    padding-left: 16px;
+  }
+  &.last{
+    padding-right: 16px;
+  }
+}
 
-// .example-element-detail {
-//   overflow: hidden;
-//   display: flex;
-// }
+.product-cell{
+  padding: 5px;
+  &.first{
+    padding-left: 16px;
+  }
+  &.last{
+    padding-right: 16px;
+  }
+}
 
-// .example-element-diagram {
-//   // min-width: 80px;
-//   // border: 2px solid black;
-//   // padding: 8px;
-//   // font-weight: lighter;
-//   // margin: 8px 0;
-//   // height: 104px;
-// }
+mat-card{
+  width: 50%;
+  justify-content: center;
+  color: rgb(21, 21, 21);
+  background-color: rgb(75, 143, 245);
+  box-shadow: 0 0 0 0.7px burlywood;
+}
 
-// .example-element-symbol {
-//   font-weight: bold;
-//   font-size: 40px;
-//   line-height: normal;
-// }
+.process-header-cell {
+  padding: 5px;
+  border-bottom: 1px solid;
+  font-weight: 500;
+}
 
-// .example-element-description {
-//   padding: 16px;
-// }
+.expandable-row{
+  grid-column-start: 1;
+  grid-column-end: -1;
+  overflow: hidden;
+}
 
-// .example-element-description-attribution {
-//   opacity: 0.5;
-// }
+.process-cell{
+  padding: 5px;
+  &.b-b{
+    border-bottom: 1px solid #ccc;
+  }
+}
 

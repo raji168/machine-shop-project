@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddInstrumentComponent } from './add-instrument/add-instrument.component';
 import { MatPaginator } from '@angular/material/paginator';
@@ -16,7 +16,8 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-instrument',
   templateUrl: './instrument.component.html',
-  styleUrls: ['./instrument.component.scss']
+  styleUrls: ['./instrument.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 

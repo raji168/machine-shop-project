@@ -21,13 +21,15 @@ import { AddMachineComponent } from './add-machine/add-machine.component';
 export class MachineComponent implements OnInit {
 
 
-  // machineData: Machine[] = [];
+  machines: Machine[] = [];
 
   displayedColumns: string[] = ['select','sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
 
   machineDataSource$: Observable<MatTableDataSource<Machine>>;
 
-  dataS;
+  dataS = new MatTableDataSource<Machine>();
+
+  isSelected:boolean;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -45,7 +47,7 @@ export class MachineComponent implements OnInit {
   ngOnInit(): void {
 
     this.machineDataSource$ = this.machineDataService.machineUpdated$.pipe(map(machines => {
-      return new MatTableDataSource(machines)
+      return new MatTableDataSource(machines);
     }))
     this.machineDataSource$.subscribe(res => {
       this.dataS = new MatTableDataSource(res.data);
@@ -65,7 +67,7 @@ export class MachineComponent implements OnInit {
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    // this.machineDataSource.filter = filterValue.trim().toLowerCase();
+    this.dataS.filter = filterValue.trim().toLocaleLowerCase();
 
   }
 
@@ -95,12 +97,12 @@ export class MachineComponent implements OnInit {
   }
 
   removeSelected() {
-    const amachines = this.dataS.data.filter((m: Machine) => m.isSelected);
+    const amachines = this.dataS.data.filter((m:Machine) => m.isSelected);
     this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
       .afterClosed().subscribe(res => {
         if (res) {
           this.machineApi.deleteSelectMachine(amachines).subscribe(res => {
-            this.dataS.data = this.dataS.data.filter((m: Machine) => !m.isSelected);
+            this.dataS.data = this.dataS.data.filter((m:Machine) => !m.isSelected);
             this.alert.showError('Instrument Selected Records Deleted Successfully...!','Machine');
           })
         }
