@@ -1,20 +1,20 @@
-// .Mapping-View{
-//     margin:20px;
-//     padding: 20px;
-//     box-sizing: border-box;
-// }
-// .top-menu{
-//     background-color: transparent;  
-//     margin-bottom: 50px; 
-// }
-// .buttons{
-//     float:right;
-//     margin-top: -50px;
-//     display: flex;
-//     gap: 5%;
-//     align-items:center ;
+.Mapping-View{
+    margin:20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.top-menu{
+    background-color: transparent;  
+    margin-bottom: 50px; 
+}
+.buttons{
+    float:right;
+    margin-top: -50px;
+    display: flex;
+    gap: 5%;
+    align-items:center ;
     
-// }
+}
 // mat-cell.example-detail-row {
 //   height: 0;
 // }
@@ -58,3 +58,105 @@
 // .example-element-description-attribution {
 //   opacity: 0.5;
 // }
+.table{
+  margin: 5%;
+}
+
+.mat-accordion .mat-header-row {
+  padding-left: 1.5rem;
+  padding-right: 2rem;
+  border-bottom: none;
+}
+
+.mat-expansion-panel-header.mat-row {
+  border-bottom: none;
+}
+
+$mat-header-row-height: 56px;
+$mat-row-height: 48px;
+$mat-row-horizontal-padding: 24px;
+
+.mat-table {
+  display: block;
+}
+
+.mat-header-row {
+  min-height: $mat-header-row-height;
+  background-color: rgb(255, 222, 90);
+}
+
+.mat-row {
+  min-height: $mat-row-height;
+}
+
+.mat-row, .mat-header-row {
+  display: flex;
+  
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  align-items: center;
+  padding: 0 $mat-row-horizontal-padding;
+  box-sizing: border-box;
+
+  &::after {
+    display: inline-block;
+    min-height: inherit;
+    content: '';
+  }
+}
+
+.mat-cell, .mat-header-cell {
+  flex: 1;
+  overflow: hidden;
+  word-wrap: break-word;
+  
+}
+
+.product-header-cell{
+  padding: 5px;
+  font-weight: 500 ;
+  border-bottom: 1px solid;
+  &.first{
+    padding-left: 16px;
+  }
+  &.last{
+    padding-right: 16px;
+  }
+}
+
+.product-cell{
+  padding: 5px;
+  &.first{
+    padding-left: 16px;
+  }
+  &.last{
+    padding-right: 16px;
+  }
+}
+
+mat-card{
+  width: 50%;
+  justify-content: center;
+  color: rgb(21, 21, 21);
+  background-color: rgb(75, 143, 245);
+  box-shadow: 0 0 0 0.7px burlywood;
+}
+
+.process-header-cell {
+  padding: 5px;
+  border-bottom: 1px solid;
+  font-weight: 500;
+}
+
+.expandable-row{
+  grid-column-start: 1;
+  grid-column-end: -1;
+  overflow: hidden;
+}
+
+.process-cell{
+  padding: 5px;
+  &.b-b{
+    border-bottom: 1px solid #ccc;
+  }
+}
