@@ -1,10 +1,15 @@
+import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { MappingDataService } from 'src/app/data-services/mapping-data.service';
 import { Product } from 'src/app/models/mapping.model';
 import { MappingApiService } from 'src/app/services/mapping-api.service';
+import { map } from 'rxjs/operators';
+import { MatAccordion } from '@angular/material/expansion';
+import { MatSort } from '@angular/material/sort';
+
+
 
 const ELEMENT_DATA: Product[] = [];
 
@@ -12,6 +17,7 @@ const ELEMENT_DATA: Product[] = [];
   selector: 'app-mapping',
   templateUrl: './mapping.component.html',
   styleUrls: ['./mapping.component.scss'],
+
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0', minHeight: '0' })),
@@ -19,9 +25,13 @@ const ELEMENT_DATA: Product[] = [];
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4,0.0,0.2,1)')),
     ]),
   ],
-})
-export class MappingComponent implements OnInit {
 
+})
+
+
+export class MappingComponent {
+
+ 
   displayedColumns: string[] = ['S.no', 'Operation Name', 'Drawing No', 'Drawing', 'Jsir Doc', 'Pms Doc', 'PDIR Doc', 'ISIR Doc'];
 
   mappingDataSource$: Observable<MatTableDataSource<Product>>;
@@ -72,3 +82,4 @@ export class MappingComponent implements OnInit {
 
 
 }
+
