@@ -8,4 +8,5 @@ export interface Product {
     processes: Process[];
     // status: boolean;
     // isSelected: any;
+
 }
