@@ -1,11 +1,11 @@
-export interface Mapping{
-    _id? :string;
-    sno: number;
-    productNo :number;
-    productName: string;
-    customerName:string;
-    process: number;
-    status: boolean;
-    preparedBy: string;
-    isSelected: any;
+import { Customer } from "./customer.model";
+import { Process } from './process.model';
+
+export interface Product {
+    _id?: string;
+    name: string;
+    customer: Customer;
+    processes: Process[];
+    // status: boolean;
+    // isSelected: any;
 }

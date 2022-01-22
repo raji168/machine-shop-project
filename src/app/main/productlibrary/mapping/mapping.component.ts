@@ -3,50 +3,72 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { MappingDataService } from 'src/app/data-services/mapping-data.service';
-import { Mapping } from 'src/app/models/mapping.model';
+import { Product } from 'src/app/models/mapping.model';
 import { MappingApiService } from 'src/app/services/mapping-api.service';
 
-const ELEMENT_DATA: Mapping[] = [];
+const ELEMENT_DATA: Product[] = [];
 
 @Component({
   selector: 'app-mapping',
   templateUrl: './mapping.component.html',
   styleUrls: ['./mapping.component.scss'],
-  animations:[
-    trigger('detailExpand',[
-      state('collapsed', style({height:'0',minHeight:'0'})),
-      state('expanded', style({height:'*'})),
-      transition('expanded <=> collapsed' , animate('225ms cublic-bezier(0.4,0.0,0.2,1)')),
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4,0.0,0.2,1)')),
     ]),
   ],
 })
 export class MappingComponent implements OnInit {
 
-  displayedColumns :string[] = ['sno','productNo','productName','customerName','process','status','preparedBy'];
+  displayedColumns: string[] = ['S.no', 'Operation Name', 'Drawing No', 'Drawing', 'Jsir Doc', 'Pms Doc', 'PDIR Doc', 'ISIR Doc'];
 
-  mappingDataSource$ :Observable<MatTableDataSource<Mapping>>;
-  dataSource;
+  mappingDataSource$: Observable<MatTableDataSource<Product>>;
+  products;
 
-  expandedElement:Mapping| null;
+  expandedProduct: Product;
+  expandedProductIdMap: { [productId: string]: string } = {};
+
+  expandedProductIds: string[] = []
 
   constructor(
-    private mappingApiService : MappingApiService,
-    private mappingDataService : MappingDataService
+    private mappingApiService: MappingApiService,
+    private mappingDataService: MappingDataService
   ) { }
 
   ngOnInit(): void {
-  //   this.mappingDataSource$ =this.mappingDataService.mappingUpdated$.pipe(map(data =>{
-  //     return new MatTableDataSource(data);
-  //   }))
-  // }
-    this.mappingApiService.get().subscribe(data =>{
-      this.dataSource =data
-      console.log(this.dataSource);
+    //   this.mappingDataSource$ =this.mappingDataService.mappingUpdated$.pipe(map(data =>{
+    //     return new MatTableDataSource(data);
+    //   }))
+    // }
+    this.mappingApiService.get().subscribe(data => {
+      this.products = data
+      console.log(this.products);
     })
 
   }
-  findDetails(data) {
-    return this.dataSource.filter(x => x.whoseData === data.name);
+
+  // onExpandClick(product: Product) {
+  //   if (this.expandedProductMap[product._id]) {
+  //     delete this.expandedProductMap[product._id]
+  //   } else {
+  //     this.expandedProductMap[product._id] = product._id
+  //   }
+  // }
+
+  onExpandClick(product: Product) {
+    if (this.isExpanded(product._id)) {
+      this.expandedProductIds = this.expandedProductIds.filter(productId => productId !== product._id)
+    } else {
+      this.expandedProductIds = [...this.expandedProductIds, product._id]
+      // this.expandedProducts.push(product._id)
+    }
   }
+
+  isExpanded(productId: string) {
+    return this.expandedProductIds.indexOf(productId) !== -1
+  }
+
 
 }
