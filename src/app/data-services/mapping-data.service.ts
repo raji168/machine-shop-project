@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { Mapping } from "../models/mapping.model";
+import { Product } from "../models/mapping.model";
 
 @Injectable({
         providedIn:'root'
@@ -8,15 +8,15 @@ import { Mapping } from "../models/mapping.model";
 
 export class MappingDataService{
     
-    private mappings  : Mapping[] =[];
+    private mappings  : Product[] =[];
 
-    mappingUpdated$= new BehaviorSubject<Mapping[]>([])
+    mappingUpdated$= new BehaviorSubject<Product[]>([])
 
     getMapping(){
         return [...this.mappings]
     }
 
-    loadMapping(mappings : Mapping[]){
+    loadMapping(mappings : Product[]){
         this.mappings = mappings;
         this.mappingUpdated$.next(this.mappings)
     }

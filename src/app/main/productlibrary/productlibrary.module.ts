@@ -6,6 +6,7 @@ import { MaterialModule } from "src/app/material/material.module";
 import { MappingComponent } from './mapping/mapping.component';
 import { ProductLibraryRoutingModule } from "./productlibrary-routing.module";
 import { FileUploadComponent } from "./file-upload/file-upload.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { FileUploadComponent } from "./file-upload/file-upload.component";
         MaterialModule,
         ProductLibraryRoutingModule,
         MaterialModule,
+        FlexLayoutModule
 
     ]
 })
