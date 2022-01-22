@@ -53,7 +53,7 @@ export class UserApiService {
     return this.http.delete<User>(`${this.url}/${_id}`)
     .pipe(
       tap(user => {
-        this.userDataService.deleteUser(user._id)
+        this.userDataService.deleteUser(user._id);
       })
     );
   }

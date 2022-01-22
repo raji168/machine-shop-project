@@ -27,7 +27,7 @@ export class MachineComponent implements OnInit {
 
   machineDataSource$: Observable<MatTableDataSource<Machine>>;
 
-  dataS = new MatTableDataSource<Machine>();
+  machineData = new MatTableDataSource<Machine>();
 
   isSelected:boolean;
 
@@ -50,24 +50,24 @@ export class MachineComponent implements OnInit {
       return new MatTableDataSource(machines);
     }))
     this.machineDataSource$.subscribe(res => {
-      this.dataS = new MatTableDataSource(res.data);
-      this.dataS.paginator = this.paginator;
-      this.dataS.sort = this.sort;
+      this.machineData = new MatTableDataSource(res.data);
+      this.machineData.paginator = this.paginator;
+      this.machineData.sort = this.sort;
     })
 
   }
 
   ngAfterViewInit(): void {
 
-    this.dataS.paginator = this.paginator;
-    this.dataS.sort = this.sort;
+    this.machineData.paginator = this.paginator;
+    this.machineData.sort = this.sort;
 
   }
 
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataS.filter = filterValue.trim().toLocaleLowerCase();
+    this.machineData.filter = filterValue.trim().toLocaleLowerCase();
 
   }
 
@@ -97,12 +97,12 @@ export class MachineComponent implements OnInit {
   }
 
   removeSelected() {
-    const amachines = this.dataS.data.filter((m:Machine) => m.isSelected);
+    const amachines = this.machineData.data.filter((m:Machine) => m.isSelected);
     this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
       .afterClosed().subscribe(res => {
         if (res) {
           this.machineApi.deleteSelectMachine(amachines).subscribe(res => {
-            this.dataS.data = this.dataS.data.filter((m:Machine) => !m.isSelected);
+            this.machineData.data = this.machineData.data.filter((m:Machine) => !m.isSelected);
             this.alert.showError('Instrument Selected Records Deleted Successfully...!','Machine');
           })
         }

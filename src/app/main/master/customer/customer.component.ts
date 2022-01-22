@@ -26,7 +26,7 @@ export class CustomerComponent implements OnInit {
 
   customerDataSource$ : Observable<MatTableDataSource<Customer>>;
 
-  dataS;
+  customerData;
 
   // @ViewChild('paginator' , {read : MatPaginator , static: false}) paginator:MatPaginator; 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -46,24 +46,24 @@ export class CustomerComponent implements OnInit {
       return new MatTableDataSource(customers)
     }))
     this.customerDataSource$.subscribe(res =>{
-      this.dataS = new MatTableDataSource(res.data);
-      this.dataS.paginator = this.paginator;
-      this.dataS.sort = this.sort;
+      this.customerData = new MatTableDataSource(res.data);
+      this.customerData.paginator = this.paginator;
+      this.customerData.sort = this.sort;
     })
 
   }
 
   ngAfterViewInit(): void{
 
-    this.dataS.paginator = this.paginator;
-    this.dataS.sort = this.sort;
+    this.customerData.paginator = this.paginator;
+    this.customerData.sort = this.sort;
 
   }
   
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataS.filter = filterValue.trim().toLocaleLowerCase();
+    this.customerData.filter = filterValue.trim().toLocaleLowerCase();
 
   }
 
@@ -93,12 +93,12 @@ export class CustomerComponent implements OnInit {
   }
 
   removeSelected(){
-    const acustomers = this.dataS.data.filter((c :Customer) => c.isSelected);
+    const acustomers = this.customerData.data.filter((c :Customer) => c.isSelected);
     this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
       .afterClosed().subscribe(res => {
         if (res) {
           this.customerApi.deleteSelectCustomer(acustomers).subscribe(res => {
-            this.dataS.data = this.dataS.data.filter((c:Customer)=> !c.isSelected);
+            this.customerData.data = this.customerData.data.filter((c:Customer)=> !c.isSelected);
             this.alert.showSuccess('Customer Records Deleted Successfully...!', 'Shift');
           })
         }

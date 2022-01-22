@@ -6,7 +6,7 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogsService } from 'src/app/services/dialogs.service';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserDataService } from 'src/app/data-services/user-data.service';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
@@ -22,15 +22,16 @@ import { MatSort } from '@angular/material/sort';
 export class UserComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['select','sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
+  displayedColumns: string[] = ['select', 'sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
 
- users:User[] =[];
+  users: User[] = [];
 
   searchKey: string;
-  userData  = new MatTableDataSource<User>() ;
 
+  userData = new MatTableDataSource<User>();
 
-
+  isSelected: boolean;
+ 
   // userForm: FormGroup = new FormGroup({
   //   sno: new FormControl(''),
   //   name: new FormControl(''),
@@ -54,13 +55,13 @@ export class UserComponent implements OnInit {
 
   }
 
-  
-  ngOnInit(): void{
+
+  ngOnInit(): void {
 
     this.userDataSource$ = this.userDataService.userUpdated$.pipe(map(users => {
       return new MatTableDataSource(users)
     }))
-    this.userDataSource$.subscribe((res) =>{
+    this.userDataSource$.subscribe((res) => {
       // this.userData = res.data;
       this.userData = new MatTableDataSource(res.data);
       this.userData.paginator = this.paginator;
@@ -68,7 +69,7 @@ export class UserComponent implements OnInit {
     })
 
   }
-  ngAfterViewInit(): void{
+  ngAfterViewInit(): void {
     this.userData.paginator = this.paginator;
     this.userData.sort = this.sort;
   }
@@ -95,7 +96,7 @@ export class UserComponent implements OnInit {
   }
 
 
-  onDelete(id :string ) {
+  onDelete(id: string) {
 
     this.dialogsService.openConfirmDialog('Are you sure to delete this record?')
       .afterClosed().subscribe(res => {
