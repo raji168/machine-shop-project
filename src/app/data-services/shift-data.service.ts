@@ -6,7 +6,6 @@ import { Shift } from "../models/shift.model";
     providedIn: 'root'
 })
 
-
 export class ShiftDataService {
 
     private shifts: Shift[] = [];

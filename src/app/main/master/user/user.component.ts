@@ -11,6 +11,7 @@ import { UserDataService } from 'src/app/data-services/user-data.service';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 
@@ -27,18 +28,18 @@ export class UserComponent implements OnInit {
  users:User[] =[];
 
   searchKey: string;
-  userData  = new MatTableDataSource<User>() ;
+  // userData  = new MatTableDataSource<User>() ;
 
 
 
-  // userForm: FormGroup = new FormGroup({
-  //   sno: new FormControl(''),
-  //   name: new FormControl(''),
-  //   role: new FormControl(''),
-  //   emailId: new FormControl(''),
-  //   phoneNo: new FormControl(''),
-  //   userName: new FormControl('')
-  // });
+  userForm: FormGroup = new FormGroup({
+    sno: new FormControl(''),
+    name: new FormControl(''),
+    role: new FormControl(''),
+    emailId: new FormControl(''),
+    phoneNo: new FormControl(''),
+    userName: new FormControl('')
+  });
 
   userDataSource$: Observable<MatTableDataSource<User>>;
 
@@ -53,20 +54,21 @@ export class UserComponent implements OnInit {
     private dialogsService: DialogsService) {
 
   }
-
+  userData;
   
   ngOnInit(): void{
 
     this.userDataSource$ = this.userDataService.userUpdated$.pipe(map(users => {
       return new MatTableDataSource(users)
     }))
-    this.userDataSource$.subscribe((res) =>{
-      // this.userData = res.data;
-      this.userData = new MatTableDataSource(res.data);
-      this.userData.paginator = this.paginator;
-      this.userData.sort = this.sort;
+    this.userDataSource$.subscribe(
+      ((res) =>{
+        this.userData = res.data;
+        this.userData = new MatTableDataSource(res.data);
+        this.userData.paginator = this.paginator;
+        this.userData.sort = this.sort;
     })
-
+    )
   }
   ngAfterViewInit(): void{
     this.userData.paginator = this.paginator;
