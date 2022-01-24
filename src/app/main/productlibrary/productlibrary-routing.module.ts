@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { MappingComponent } from "./mapping/mapping.component";
+import { ProductComponent } from "./Product/product.component";
 import { FileUploadComponent } from "./file-upload/file-upload.component";
 
 
 const routes: Routes = [
 
     {
-        path: 'mapping', component: MappingComponent
+        path: 'mapping', component: ProductComponent
     },
     {
         path: 'upload', component:FileUploadComponent

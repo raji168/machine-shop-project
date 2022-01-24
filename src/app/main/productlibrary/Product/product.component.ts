@@ -2,12 +2,14 @@ import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildre
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Observable } from 'rxjs';
-import { MappingDataService } from 'src/app/data-services/mapping-data.service';
-import { Product } from 'src/app/models/mapping.model';
-import { MappingApiService } from 'src/app/services/mapping-api.service';
+import { ProductDataService } from 'src/app/data-services/product-data.service';
+import { Product } from 'src/app/models/product.model';
+import { ProductApiService } from 'src/app/services/product-api.service';
 import { map } from 'rxjs/operators';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 
@@ -15,8 +17,8 @@ const ELEMENT_DATA: Product[] = [];
 
 @Component({
   selector: 'app-mapping',
-  templateUrl: './mapping.component.html',
-  styleUrls: ['./mapping.component.scss'],
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss'],
 
   animations: [
     trigger('detailExpand', [
@@ -29,7 +31,7 @@ const ELEMENT_DATA: Product[] = [];
 })
 
 
-export class MappingComponent {
+export class ProductComponent {
 
  
   displayedColumns: string[] = ['S.no', 'Operation Name', 'Drawing No', 'Drawing', 'Jsir Doc', 'Pms Doc', 'PDIR Doc', 'ISIR Doc'];
@@ -43,16 +45,17 @@ export class MappingComponent {
   expandedProductIds: string[] = []
 
   constructor(
-    private mappingApiService: MappingApiService,
-    private mappingDataService: MappingDataService
+    private productApiService: ProductApiService,
+    private productDataService:ProductDataService,
+    private dialog : MatDialog
   ) { }
 
   ngOnInit(): void {
-    //   this.mappingDataSource$ =this.mappingDataService.mappingUpdated$.pipe(map(data =>{
+    //   this.mappingDataSource$ =this.productDataService.mappingUpdated$.pipe(map(data =>{
     //     return new MatTableDataSource(data);
     //   }))
     // }
-    this.mappingApiService.get().subscribe(data => {
+    this.productApiService.get().subscribe(data => {
       this.products = data
       console.log(this.products);
     })
@@ -79,7 +82,13 @@ export class MappingComponent {
   isExpanded(productId: string) {
     return this.expandedProductIds.indexOf(productId) !== -1
   }
-
+  onClickAdd(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "100%";
+    this.dialog.open(AddProductComponent,dialogConfig);
+  }
 
 }
 

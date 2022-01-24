@@ -1,14 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { MappingDataService } from "../data-services/mapping-data.service";
-import { Product } from "../models/mapping.model";
+import { ProductDataService } from "../data-services/product-data.service";
+import { Product } from "../models/product.model";
 import { tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn:'root'
 })
-export class MappingApiService{
+export class ProductApiService{
 
     URL : string = '/assets/stub/products.json';
 
@@ -16,7 +16,7 @@ export class MappingApiService{
 
     constructor(
         private http : HttpClient,
-        private mappingDataService : MappingDataService
+        private mappingDataService : ProductDataService
     ){}
 
     get(): Observable<any>{

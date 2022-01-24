@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { Product } from "../models/mapping.model";
+import { Product } from "../models/product.model";
 
 @Injectable({
         providedIn:'root'
 })
 
-export class MappingDataService{
+export class ProductDataService{
     
     private mappings  : Product[] =[];
 
