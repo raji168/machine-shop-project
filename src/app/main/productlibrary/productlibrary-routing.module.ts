@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ProductComponent } from "./mapping/product.component";
+import { ProductComponent } from "./Product/product.component";
 import { FileUploadComponent } from "./file-upload/file-upload.component";
 
 

@@ -7,18 +7,33 @@
 .top-menu{
     background-color: transparent;  
     margin-bottom: 50px; 
+    font-weight: bold;
+    margin-left: 32px;
 }
 .buttons{
     float:right;
-    margin-top: -50px;
+    margin-top: 20px;
+    margin-right: 45px;
     display: flex;
     gap: 5%;
     align-items:center ;
     
 }
+.file-upload{
+  margin-top: -33px;
+  float: right;
+  margin-right: -45px;
 
+}
+.search-icon{
+  margin: 0;
+}
+.search-form-field{
+  margin-left: 45px;
+  width: 23%;
+}
 .table{
-  margin: 5%;
+  margin: 3%;
 }
 
 .mat-accordion .mat-header-row {
