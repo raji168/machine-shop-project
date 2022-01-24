@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ProductComponent } from "./Product/product.component";
 import { FileUploadComponent } from "./file-upload/file-upload.component";
+import { AddProductComponent } from "./Product/add-product/add-product.component";
 
 
 const routes: Routes = [
@@ -11,6 +12,9 @@ const routes: Routes = [
     },
     {
         path: 'upload', component:FileUploadComponent
+    },
+    {
+        path:' product', component:AddProductComponent
     }
 ]
 

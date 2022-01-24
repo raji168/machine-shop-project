@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatCheckboxModule,
     MatFormFieldModule,
     MatExpansionModule,
+    MatStepperModule
   ]
 })
 

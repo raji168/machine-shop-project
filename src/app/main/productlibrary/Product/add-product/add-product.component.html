@@ -1,1 +1,33 @@
-<p>add-product works!</p>
+<div class="Step-1">
+    <div class="step-progress">
+        <mat-stepper linear #stepper>
+            <mat-step [stepControl]="mapForm1" >
+            <form [formGroup]="mapForm1" (ngSubmit)="onSave()" class="mapping-step-1" gdColumns ="repeat(4,1fr)" gdAlignColumns.gt-md="repeat(1,1fr)" color="primary"> 
+                <mat-form-field appearance="outline" >
+                    <mat-label>Customer Name</mat-label>
+                    <mat-select formControlName="customerName">
+                        <mat-option *ngFor="let client of customerData " [value]="client._id">{{client.customername}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Product Name</mat-label>
+                    <input  matInput type="text" formControlName="productName"> 
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Drawing Number</mat-label>
+                    <input  matInput type="text" formControlName="drawingNo"> 
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Revision Number</mat-label>
+                    <input  matInput type="text" formControlName="revisionNo"> 
+                </mat-form-field>
+                <div class="mapping-btn-1">
+                    <button mat-raised-button type="reset">Clear</button>
+                    <button mat-raised-button type="submit">Save</button>
+                </div >
+            </form>
+        </mat-step>
+        </mat-stepper>
+    </div>
+</div>
+       
