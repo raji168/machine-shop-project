@@ -1,7 +1,4 @@
-
 <div class="Mapping-View">
-
-
     <mat-toolbar class="top-menu">
         <span>Product</span>
     </mat-toolbar>
@@ -9,20 +6,18 @@
         <input class="upload-field" type="file" multiple="false" />
     </div>
     <!-- <div class="search-div"> -->
-        <mat-form-field class="search-form-field" floatLable="never">
-           
-            <input matInput  placeholder="Search" autocomplete="off" >
+    <mat-form-field class="search-form-field" floatLable="never">
 
-            <button mat-button matSuffix mat-icon-button aria-label="clear"  >
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-form-field>
+        <input matInput placeholder="Search" autocomplete="off">
+
+        <button mat-button matSuffix mat-icon-button aria-label="clear">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
     <!-- </div> -->
-    
-    
 
     <div class="buttons">
-        <button mat-raised-button class="create-button" color="accent">
+        <button mat-raised-button class="create-button" color="accent" (click)="onClickAdd()">
             <mat-icon>add</mat-icon>New Product
         </button>
         <mat-icon>more_vert</mat-icon>
@@ -30,15 +25,27 @@
 
     <div class="table mat-elevation-z8">
 
-        <div class="product-table" gdColumns="64px repeat(2, 1fr) 64px">
+        <div class="product-table" gdColumns="64px repeat(3, 1fr) 64px">
             <span class="product-header-cell first">S.No</span>
             <span class="product-header-cell">Product Name</span>
             <span class="product-header-cell">Customer Name</span>
+            <span class="product-header-cell">Action</span>
             <div class="product-header-cell last"></div>
             <ng-container *ngFor="let product of products; let productIndex =index">
                 <span class="product-cell first">{{productIndex + 1}}</span>
                 <span class="product-cell">{{product.name}}</span>
                 <span class="product-cell">{{product.customer.name}}</span>
+                <span class="product-cell">
+                    <button class="edit-button" mat-icon-button color="primary" title="Edit">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="delete-button" color="accent" title="Delete">
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
+                </span>
+
+
+
                 <!-- (click)="expandedProduct === product ? expandedProduct = null : expandedProduct = product" -->
                 <div class="product-cell last" (click)="onExpandClick(product)">
                     <button mat-icon-button>
@@ -50,7 +57,8 @@
                 <div [@detailExpand]="isExpanded(product._id) ? 'expanded' : 'collapsed'" class="expandable-row">
                     <div class="process-table" gdColumns.lt-md="repeat(7, auto)" gdColumns="repeat(8, auto)">
                         <div class="process-header-cell" *ngFor="let column of displayedColumns">{{ column }}</div>
-                        <ng-container *ngFor="let process of product.processes; let operationIndex = index; let lastOperation = last">
+                        <ng-container
+                            *ngFor="let process of product.processes; let operationIndex = index; let lastOperation = last">
                             <div [class.b-b]="!lastOperation" class="process-cell">{{operationIndex+1}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.name}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.drawing.no}}</div>
@@ -63,7 +71,7 @@
                     </div>
                 </div>
             </ng-container>
+
         </div>
     </div>
 </div>
-

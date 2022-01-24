@@ -8,6 +8,8 @@ import { ProductApiService } from 'src/app/services/product-api.service';
 import { map } from 'rxjs/operators';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 
@@ -44,7 +46,8 @@ export class ProductComponent {
 
   constructor(
     private productApiService: ProductApiService,
-    private productDataService:ProductDataService
+    private productDataService:ProductDataService,
+    private dialog : MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -79,7 +82,13 @@ export class ProductComponent {
   isExpanded(productId: string) {
     return this.expandedProductIds.indexOf(productId) !== -1
   }
-
+  onClickAdd(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "100%";
+    this.dialog.open(AddProductComponent,dialogConfig);
+  }
 
 }
 
