@@ -69,6 +69,7 @@
                 <mat-cell *matCellDef="let instrument">
                     <div>{{calculateDiff(instrument.calibratedon,instrument.calibratedue)}}</div>
                     <!-- <mat-icon [ngStyle]="{'color':{{calculateDiff(instrument.calibratedon,instrument.calibratedue)}}>1?'green':'red'}" >status</mat-icon> -->
+                    <button [ngStyle]="{'background-color':calculateDiff(instrument.calibratedon,instrument.calibratedue) > 1 ? 'green' : 'red'}">status</button>
                 </mat-cell>
             </ng-container>
 
