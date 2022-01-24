@@ -1,5 +1,5 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
-import { MappingApiService } from "../services/mapping-api.service";
+import { MappingApiService } from "../services/product-api.service";
 
 export class MappingResolver implements Resolve<any>{
     constructor(
