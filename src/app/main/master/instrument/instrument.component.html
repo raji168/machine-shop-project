@@ -67,9 +67,12 @@
             <ng-container matColumnDef="status">
                 <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
                 <mat-cell *matCellDef="let instrument">
-                    <div>{{calculateDiff(instrument.calibratedon,instrument.calibratedue)}}</div>
+                    <!-- <div>{{calculateDiff(instrument.calibratedon,instrument.calibratedue)}}</div> -->
                     <!-- <mat-icon [ngStyle]="{'color':{{calculateDiff(instrument.calibratedon,instrument.calibratedue)}}>1?'green':'red'}" >status</mat-icon> -->
-                    <button [ngStyle]="{'background-color':calculateDiff(instrument.calibratedon,instrument.calibratedue) > 1 ? 'green' : 'red'}">status</button>
+                    <button mat-button
+                        [ngStyle]="{'background-color':calculateDiff(instrument.calibratedon,instrument.calibratedue) > 1 ? 'green' : 'red'}">
+                        {{calculateDiff(instrument.calibratedon,instrument.calibratedue) > 1 ? 'Active' : 'Inactive'}}
+                    </button>
                 </mat-cell>
             </ng-container>
 
