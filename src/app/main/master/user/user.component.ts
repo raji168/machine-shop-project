@@ -32,7 +32,6 @@ export class UserComponent implements OnInit {
   // userData  = new MatTableDataSource<User>() ;
 
 
-  userData = new MatTableDataSource<User>();
 
 
   userForm: FormGroup = new FormGroup({
