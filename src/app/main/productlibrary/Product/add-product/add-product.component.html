@@ -1,32 +1,74 @@
 <div class="Step-1">
     <div class="step-progress">
         <mat-stepper linear #stepper>
-            <mat-step [stepControl]="mapForm1" >
-            <form [formGroup]="mapForm1" (ngSubmit)="onSave()" class="mapping-step-1" gdColumns ="repeat(4,1fr)" gdAlignColumns.gt-md="repeat(1,1fr)" color="primary"> 
-                <mat-form-field appearance="outline" >
+            <mat-step [stepControl]="addForm" >
+                <div class="form" gdColumns=" repeat(3, auto) 64px">
+                    <form [formGroup]="addForm" (ngSubmit)="onProductSave()" color="primary"> 
+                <mat-form-field appearance="outline" class="sub-Form-1">
                     <mat-label>Customer Name</mat-label>
                     <mat-select formControlName="customerName">
                         <mat-option *ngFor="let client of customerData " [value]="client._id">{{client.customername}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="sub-Form-1">
                     <mat-label>Product Name</mat-label>
                     <input  matInput type="text" formControlName="productName"> 
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="sub-Form-1">
                     <mat-label>Drawing Number</mat-label>
                     <input  matInput type="text" formControlName="drawingNo"> 
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="sub-Form-1">
                     <mat-label>Revision Number</mat-label>
                     <input  matInput type="text" formControlName="revisionNo"> 
                 </mat-form-field>
                 <div class="mapping-btn-1">
-                    <button mat-raised-button type="reset">Clear</button>
-                    <button mat-raised-button type="submit">Save</button>
+                    <button mat-raised-button (click)="stepper.reset()">Clear</button>
+                    <button mat-raised-button matStepperNext type="submit">Next</button>
                 </div >
             </form>
+                </div>
         </mat-step>
+         <!-- <mat-step [stepControl]="processForm" >
+            <div class="form" gdColumns=" repeat(3, auto) 64px">
+                <form [formGroup]="processForm" (ngSubmit)="onProcessSave()" color="primary"> 
+            <mat-form-field appearance="outline" class="sub-Form-2">
+                <mat-label>Process Name</mat-label>
+                <input  matInput type="text" formControlName="processName"> 
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="sub-Form-2">
+                <mat-label>Process Drawing</mat-label>
+                <input type="file" formControlName="processDrawing"><mat-icon>upload</mat-icon> 
+            </mat-form-field>
+           
+            <div class="mapping-btn-1">
+                <button mat-raised-button (click)="stepper.reset()">Clear</button>
+                <button mat-raised-button matStepperPrevious>Back</button>
+                <button mat-raised-button matStepperNext type="submit">Next</button>
+            </div >
+        </form>
+    </div>
+        </mat-step>
+        <mat-step [stepControl]="detailForm" >
+            <div class="form" gdColumns=" repeat(3, auto) 64px">
+                <form [formGroup]="detailForm" (ngSubmit)="onProductDetail()" color="primary"> 
+            <mat-form-field appearance="outline" class="sub-Form-2">
+                <mat-label>Product Name</mat-label>
+                <input  matInput type="text" formControlName="productName"> 
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="sub-Form-2">
+                <mat-label>Process Drawing</mat-label>
+                <input type="text" formControlName="processDrawing"> 
+            </mat-form-field>
+           
+            <div class="mapping-btn-1">
+                <button mat-raised-button (click)="stepper.reset()">Clear</button>
+                <button mat-raised-button matStepperPrevious>Back</button>
+                <button mat-raised-button matStepperNext type="submit">Next</button>
+            </div >
+        </form>
+    </div>
+        </mat-step>  -->
         </mat-stepper>
     </div>
 </div>
