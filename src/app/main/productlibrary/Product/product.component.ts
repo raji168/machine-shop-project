@@ -6,11 +6,12 @@ import { ProductDataService } from 'src/app/data-services/product-data.service';
 import { Product } from 'src/app/models/product.model';
 import { ProductApiService } from 'src/app/services/product-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { AddProductComponent } from './add-product/add-product.component';
+import { AddProductComponent } from '../product/add-product/add-product.component';
 
 
 
 const ELEMENT_DATA: Product[] = [];
+
 
 @Component({
   selector: 'app-mapping',
