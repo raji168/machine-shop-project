@@ -86,7 +86,8 @@ export class ProductComponent {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "100%";
+    dialogConfig.width = "50%";
+    dialogConfig.height = "50%";
     this.dialog.open(AddProductComponent,dialogConfig);
   }
 
