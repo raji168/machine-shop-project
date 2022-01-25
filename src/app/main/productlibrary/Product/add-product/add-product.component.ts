@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList, ViewChild } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {StepperOrientation} from '@angular/material/stepper';
@@ -12,7 +12,6 @@ import {map} from 'rxjs/operators';
 })
 export class AddProductComponent implements OnInit {
 
- 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -29,6 +28,7 @@ export class AddProductComponent implements OnInit {
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
   }
+ 
   ngOnInit(): void {
   }
 
