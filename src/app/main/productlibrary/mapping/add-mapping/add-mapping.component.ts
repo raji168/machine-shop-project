@@ -10,9 +10,9 @@ import { Machine } from 'src/app/models/machine.model';
 import { AlertService } from 'src/app/shared/alert.service';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss'],
+  selector: 'app-add-mapping',
+  templateUrl: './add-mapping.component.html',
+  styleUrls: ['./add-mapping.component.scss'],
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
@@ -20,7 +20,7 @@ import { AlertService } from 'src/app/shared/alert.service';
     },
   ],
 })
-export class AddProductComponent implements OnInit {
+export class AddMappingComponent implements OnInit {
 
   customerData: Customer[] = [];
   productData: Product[] = [];
@@ -28,22 +28,40 @@ export class AddProductComponent implements OnInit {
 
   addForm: FormGroup;
   processForm: FormGroup;
-  
+  detailForm: FormGroup;
+  machineForm: FormGroup;
   
   constructor(
     private customerApi: CustomerApiService,
+    private machineApi: MachineApiService,
+    private productApi: ProductApiService,
     private alert:AlertService,
     private fb: FormBuilder
   ) {
-
     this.addForm = this.fb.group({
       customerName: ['',Validators.required],
       productName: ['',Validators.required],
+      drawingNo: ['',Validators.required],
+      revisionNo: ['',Validators.required]
     })
 
     this.processForm = this.fb.group({
-       
-   
+      processName: ['',Validators.required],
+      processDrawing: ['',Validators.required]
+    })
+
+    this.detailForm = this.fb.group({
+      productName: ['',Validators.required],
+      productDrawing: ['',Validators.required],
+      processName: ['',Validators.required],
+      numberOfProcess: ['',Validators.required],
+      processDrawing: ['',Validators.required]
+    })
+
+    this.machineForm = this.fb.group({
+      processName: ['',Validators.required],
+      machineName: ['',Validators.required]
+
     })
 
   }
@@ -52,6 +70,14 @@ export class AddProductComponent implements OnInit {
 
     this.customerApi.getCustomerAll().subscribe(result => {
       this.customerData = result;
+    })
+
+    this.productApi.get().subscribe(result => {
+      this.productData = result;
+    })
+
+    this.machineApi.getMachineAll().subscribe(result => {
+      this.machineData = result;
     })
 
 
@@ -63,10 +89,26 @@ export class AddProductComponent implements OnInit {
 
   }
 
-  onProcessDetail() {
+  onProcessSave() {
     console.log(this.addForm.value);
     this.alert.showSuccess("Data Saved Suceessfully "," Process ");
 
+  }
+
+  onProductDetail() {
+    console.log(this.addForm.value);
+    this.alert.showSuccess("Data Saved Suceessfully "," Product ");
+
+  }
+
+  onMachineMapping() {
+    console.log(this.addForm.value);
+    this.alert.showSuccess("Data Saved Suceessfully "," Machine  ");
+
+  }
+
+  onclickSaved(){
+    this.alert.showSuccess("Machine Mapping Suceessfully "," Machine  ");
   }
 
 }
