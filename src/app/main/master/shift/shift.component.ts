@@ -20,18 +20,18 @@ import { Observable } from 'rxjs';
 })
 export class ShiftComponent implements OnInit {
 
-  displayedColumns: string[] = ['select','sno', 'shiftName', 'startTime', 'endTime', 'actions'];
+  displayedColumns: string[] = ['select', 'sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
   shiftDataSource$: Observable<MatTableDataSource<Shift>>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  dataS = new MatTableDataSource<Shift>();
+  shiftData = new MatTableDataSource<Shift>();
 
-  shifts:Shift[] = [];
- 
-  isSelected:boolean;
+  shifts: Shift[] = [];
+
+  isSelected: boolean;
 
   constructor(
     private shiftApi: ShiftApiService,
@@ -39,7 +39,7 @@ export class ShiftComponent implements OnInit {
     private alert: AlertService,
     private dialogsService: DialogsService,
     private shiftDataService: ShiftDataService
-  ) { 
+  ) {
 
   }
 
@@ -47,25 +47,25 @@ export class ShiftComponent implements OnInit {
     this.shiftDataSource$ = this.shiftDataService.shiftUpdated$.pipe(map(shifts => {
       return new MatTableDataSource(shifts);
     }))
-    this.shiftDataSource$.subscribe(res =>{
-      this.dataS = new MatTableDataSource(res.data);
-      this.dataS.paginator = this.paginator;
-      this.dataS.sort = this.sort;
+    this.shiftDataSource$.subscribe(res => {
+      this.shiftData = new MatTableDataSource(res.data);
+      this.shiftData.paginator = this.paginator;
+      this.shiftData.sort = this.sort;
     })
 
   }
 
-   ngAfterViewInit(): void{
+  ngAfterViewInit(): void {
 
-     this.dataS.paginator = this.paginator;
-     this.dataS.sort = this.sort;
+    this.shiftData.paginator = this.paginator;
+    this.shiftData.sort = this.sort;
 
-   }
+  }
 
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataS.filter = filterValue.trim().toLocaleLowerCase();
+    this.shiftData.filter = filterValue.trim().toLocaleLowerCase();
 
   }
 
@@ -86,25 +86,25 @@ export class ShiftComponent implements OnInit {
       .afterClosed().subscribe(res => {
         if (res) {
           this.shiftApi.deleteShift(id).subscribe(res => {
-            this.alert.showError('Shift Deleted Successfully...!', 'Shift');
+            this.alert.showSuccess('Shift Deleted Successfully...!', 'Shift');
           })
         }
       });
   }
 
-  removeSelected(){
+  removeSelected() {
 
-    const ashifts = this.dataS.data.filter((s :Shift) => s.isSelected);
+    const ashifts = this.shiftData.data.filter((s: Shift) => s.isSelected);
     this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
       .afterClosed().subscribe(res => {
         if (res) {
           this.shiftApi.deleteSelectShift(ashifts).subscribe(res => {
-            this.dataS.data = this.dataS.data.filter((s:Shift)=> !s.isSelected);
+            this.shiftData.data = this.shiftData.data.filter((s: Shift) => !s.isSelected);
             this.alert.showSuccess('Shifts Deleted Successfully...!', 'Shift');
           })
         }
       });
- 
+
   }
 
   //  removeSelected(shifts:Shift[]){
@@ -117,7 +117,7 @@ export class ShiftComponent implements OnInit {
   //         })
   //       }
   //     });
- 
+
   // }
 
 

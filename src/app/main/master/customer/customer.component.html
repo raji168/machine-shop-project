@@ -15,7 +15,7 @@
 
   <div class=" table-customer mat-elevation-z8" role="table">
     <!-- <table mat-table [dataSource]="customerDataSource$ | async " class="mat-elevation-z8" matSort> -->
-    <mat-table  [dataSource]="dataS "  matSort>
+    <mat-table  [dataSource]="customerData "  matSort>
       <ng-container matColumnDef="select">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Select </mat-header-cell>
         <mat-cell *matCellDef="let element ">
