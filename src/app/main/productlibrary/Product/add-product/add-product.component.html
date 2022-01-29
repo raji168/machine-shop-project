@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- <span class="material-icons">
     add_circle_outline
 </span>
@@ -66,3 +67,39 @@
     </mat-step>
    
 </mat-stepper>
+=======
+<form [formGroup]="productForm">
+<mat-stepper #stepper class="progress" >
+  <mat-step [stepControl]="productForm">
+      <ng-template matStepperIcon="phone">
+        <mat-icon>call_end</mat-icon>
+      </ng-template>
+      <ng-template matStepLabel>Fill out your product detail</ng-template>
+      <mat-form-field appearance="outline" class="sub-Form-1">
+        <mat-label>Customer Name</mat-label>
+        <mat-select formControlName="customerName">
+          <mat-option *ngFor="let client of customerData " [value]="client._id">
+            {{client.customername}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="sub-Form-1">
+        <mat-label>Product Name</mat-label>
+        <input matInput type="text" formControlName="productName">
+      </mat-form-field>
+      <div class="button">
+        <button mat-raised-button (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+  </mat-step>
+  <mat-step  >
+        <div>
+          <button mat-raised-button (click)="onAddProcess()">Add Process</button>
+        </div>
+  </mat-step>
+
+
+
+</mat-stepper>
+</form>
+>>>>>>> 659ad96515dfe9796bee879afa0ca74cb07a19c6

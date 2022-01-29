@@ -3,10 +3,10 @@ import { ProductLibraryComponent } from "./productlibrary.component";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "src/app/material/material.module";
-import {  ProductComponent } from './Product/product.component';
+import { ProductComponent } from '../productlibrary/Product/product.component';
 import { ProductLibraryRoutingModule } from "./productlibrary-routing.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { AddProductComponent } from './Product/add-product/add-product.component';
+import { AddProductComponent } from '../productlibrary/Product/add-product/add-product.component';
 import { MachineMappingComponent } from "./Machine mapping/machine-mapping.component";
 
 
@@ -15,7 +15,9 @@ import { MachineMappingComponent } from "./Machine mapping/machine-mapping.compo
         ProductLibraryComponent,
         ProductComponent,
         AddProductComponent,
-        MachineMappingComponent
+        MachineMappingComponent,
+      
+       
     
     ],
     imports:[

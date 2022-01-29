@@ -1,19 +1,17 @@
-import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Component } from '@angular/core';
+import {  MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Observable } from 'rxjs';
 import { ProductDataService } from 'src/app/data-services/product-data.service';
 import { Product } from 'src/app/models/product.model';
 import { ProductApiService } from 'src/app/services/product-api.service';
-import { map } from 'rxjs/operators';
-import { MatAccordion } from '@angular/material/expansion';
-import { MatSort } from '@angular/material/sort';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { AddProductComponent } from './add-product/add-product.component';
+import { AddProductComponent } from '../product/add-product/add-product.component';
 
 
 
 const ELEMENT_DATA: Product[] = [];
+
 
 @Component({
   selector: 'app-mapping',
