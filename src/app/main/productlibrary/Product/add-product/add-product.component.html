@@ -1,105 +1,48 @@
-<<<<<<< HEAD
-<!-- <span class="material-icons">
-    add_circle_outline
-</span>
-<span class="material-icons">
-    upload
-</span>
-<span class="material-icons">
-    merge
-    </span>
-    <span class="material-icons">
-        post_add
-        </span> -->
-
-<ng-container [ngSwitch]="stepperOrientation | async">
-    <div *ngSwitchCase="'horizontal'">Make your screen smaller to see a vertical stepper</div>
-    <div *ngSwitchCase="'vertical'">Make your screen larger to see a horizontal stepper</div>
-</ng-container>
-
-<mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
-    <mat-step [stepControl]="firstFormGroup" >
-        <form [formGroup]="firstFormGroup">
-            <mat-form-field appearance="fill">
-                <mat-label>Name</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperNext>Next</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" >
-        <form [formGroup]="secondFormGroup">
-            <mat-form-field appearance="fill">
-                <mat-label>Address</mat-label>
-                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup" >
-        <form [formGroup]="thirdFormGroup">
-            <mat-form-field appearance="fill">
-                <mat-label>Phone number</mat-label>
-                <input matInput formControlName="thirdCtrl" placeholder="Ex. 12345678" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup" >
-        <form [formGroup]="thirdFormGroup">
-            <mat-form-field appearance="fill">
-                <mat-label>Phone number</mat-label>
-                <input matInput formControlName="thirdCtrl" placeholder="Ex. 12345678" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-            </div>
-        </form>
-    </mat-step>
-   
-</mat-stepper>
-=======
-<form [formGroup]="productForm">
-<mat-stepper #stepper class="progress" >
-  <mat-step [stepControl]="productForm">
-      <ng-template matStepperIcon="phone">
-        <mat-icon>call_end</mat-icon>
-      </ng-template>
-      <ng-template matStepLabel>Fill out your product detail</ng-template>
-      <mat-form-field appearance="outline" class="sub-Form-1">
-        <mat-label>Customer Name</mat-label>
-        <mat-select formControlName="customerName">
-          <mat-option *ngFor="let client of customerData " [value]="client._id">
-            {{client.customername}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="sub-Form-1">
-        <mat-label>Product Name</mat-label>
-        <input matInput type="text" formControlName="productName">
-      </mat-form-field>
-      <div class="button">
-        <button mat-raised-button (click)="stepper.reset()">Reset</button>
-        <button mat-raised-button matStepperNext>Next</button>
-      </div>
-  </mat-step>
-  <mat-step  >
-        <div>
-          <button mat-raised-button (click)="onAddProcess()">Add Process</button>
+<mat-stepper>
+    <mat-step label="Step 1">
+        <mat-form-field appearance="outline">
+            <mat-label>Customer Name</mat-label>
+            <mat-select formControlName="customer">
+                <mat-option [value]="customer._id" *ngFor="let customer of customerData ">{{customer.customername}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Product Name</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <label >Upload Drawing</label>
+            <span  class="material-icons">
+                file_upload
+            <input type="file">
+            </span>
+            <input matInput>
+        </mat-form-field>
+        <div class="next-button">
+            <button mat-raised-button  color="primary" matStepperNext>Save</button>
         </div>
-  </mat-step>
+    </mat-step>
+    <mat-step label="Step 2" >
+        
+        <div lass="next-button">
+            <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button  color="primary" matStepperNext>Save</button>
+        </div>
+    </mat-step>
+    <mat-step label="Step 3">
+       
+        <div lass="next-button">
+            <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button  color="primary" matStepperNext>Submit</button>
+        </div>
+    </mat-step>
 
-
-
+    <!-- Icon overrides. -->
+    <ng-template matStepperIcon="phone">
+        <mat-icon>call_end</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="chat">
+        <mat-icon>forum</mat-icon>
+    </ng-template>
 </mat-stepper>
-</form>
->>>>>>> 659ad96515dfe9796bee879afa0ca74cb07a19c6

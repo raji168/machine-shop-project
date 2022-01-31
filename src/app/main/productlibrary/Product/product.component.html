@@ -25,16 +25,19 @@
 
     <div class="table mat-elevation-z8">
 
-        <div class="product-table" gdColumns="64px repeat(3, 1fr) 64px">
+        <div class="product-table" gdColumns="64px repeat(4, 1fr) 64px">
             <span class="product-header-cell first">S.No</span>
             <span class="product-header-cell">Product Name</span>
             <span class="product-header-cell">Customer Name</span>
+            <span class="product-header-cell">Customer Drawing</span>
             <span class="product-header-cell">Action</span>
             <div class="product-header-cell last"></div>
             <ng-container *ngFor="let product of products; let productIndex =index">
                 <span class="product-cell first">{{productIndex + 1}}</span>
                 <span class="product-cell">{{product.name}}</span>
                 <span class="product-cell">{{product.customer.name}}</span>
+                <span class="product-cell">{{product.customer.drawing}}</span>
+
                 <span class="product-cell">
                     <button class="edit-button" mat-icon-button color="primary" title="Edit">
                         <mat-icon>edit</mat-icon>
@@ -55,7 +58,7 @@
                 <!-- [@detailExpand]="expandedProduct === product ? 'expanded' : 'collapsed'" -->
                 <!-- [@detailExpand]="!!expandedProductMap[product._id] ? 'expanded' : 'collapsed'"  -->
                 <div [@detailExpand]="isExpanded(product._id) ? 'expanded' : 'collapsed'" class="expandable-row">
-                    <div class="process-table" gdColumns.lt-md="repeat(7, auto)" gdColumns="repeat(8, auto)">
+                    <div class="process-table" gdColumns.lt-md="repeat(8, auto)" gdColumns="repeat(9, auto)">
                         <div class="process-header-cell" *ngFor="let column of displayedColumns">{{ column }}</div>
                         <ng-container
                             *ngFor="let process of product.processes; let operationIndex = index; let lastOperation = last">
@@ -65,6 +68,7 @@
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.drawing.path}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.pmsDoc}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.pdirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.isirDoc}}</div>
                         </ng-container>
