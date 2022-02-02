@@ -1,5 +1,5 @@
 <mat-stepper>
-    <mat-step label="Step 1">
+    <mat-step label="Product">
         <mat-form-field appearance="outline">
             <mat-label>Customer Name</mat-label>
             <mat-select formControlName="customer">
@@ -12,7 +12,7 @@
             <input matInput placeholder="Placeholder">
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <label >Upload Drawing</label>
+            <label>Upload Drawing</label>
             <span  class="material-icons">
                 file_upload
             <input type="file">
@@ -23,26 +23,38 @@
             <button mat-raised-button  color="primary" matStepperNext>Save</button>
         </div>
     </mat-step>
-    <mat-step label="Step 2" >
-        
-        <div lass="next-button">
-            <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
+    <mat-step label="Operation">
+        <mat-form-field appearance="outline">
+            <mat-label>Operation Name</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Drawing No</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <label>Upload Drawing</label>
+            <span  class="material-icons">
+                file_upload
+            <input type="file">
+            </span>
+            <input matInput>
+        </mat-form-field>
+        <div Class="inner-button">
+            <button mat-raised-button  color="primary" matStepperPrevious>Cancel</button>
             <button mat-raised-button  color="primary" matStepperNext>Save</button>
         </div>
     </mat-step>
-    <mat-step label="Step 3">
-       
+    <mat-step label="Mapping">
         <div lass="next-button">
             <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
             <button mat-raised-button  color="primary" matStepperNext>Submit</button>
         </div>
     </mat-step>
-
-    <!-- Icon overrides. -->
-    <ng-template matStepperIcon="phone">
-        <mat-icon>call_end</mat-icon>
-    </ng-template>
-    <ng-template matStepperIcon="chat">
-        <mat-icon>forum</mat-icon>
-    </ng-template>
+    <mat-step label="Preview">
+        <div lass="next-button">
+            <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button  color="primary" matStepperNext>Submit</button>
+        </div>
+    </mat-step>
 </mat-stepper>

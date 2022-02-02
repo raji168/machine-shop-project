@@ -1,5 +1,5 @@
 export interface Machine {
-    _id?: string;
+    _id: string;
     machinename: string;
     machineno: string;
     brand: string;

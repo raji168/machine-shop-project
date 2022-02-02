@@ -14,7 +14,6 @@ const ELEMENT_DATA: Product[] = [];
   selector: 'app-mapping',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
-
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0', minHeight: '0' })),
@@ -28,13 +27,10 @@ const ELEMENT_DATA: Product[] = [];
 export class ProductComponent {
 
   displayedColumns: string[] = ['S.no', 'Operation Name', 'Drawing No', 'Drawing', 'Jsir Doc', 'Pms Doc', 'PIR Doc','PDIR Doc', 'ISIR Doc'];
-
   mappingDataSource$: Observable<MatTableDataSource<Product>>;
   products;
-
   expandedProduct: Product;
   expandedProductIdMap: { [productId: string]: string } = {};
-
   expandedProductIds: string[] = []
 
   constructor(
@@ -79,8 +75,8 @@ export class ProductComponent {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "90%";
-    dialogConfig.height = "90%";
+    dialogConfig.width = "100%";
+    dialogConfig.height = "100%";
     this.dialog.open(AddProductComponent,dialogConfig);
   }
 

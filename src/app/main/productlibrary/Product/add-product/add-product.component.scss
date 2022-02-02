@@ -23,6 +23,12 @@ mat-stepper{
   margin-left: 50px;
 }
 .next-button{
-  margin-top: 60%;
+  margin-top: 80%;
   float: right;
+}
+.inner-button{
+  float: right;
+}
+mat-step {
+  padding: 20px;
 }

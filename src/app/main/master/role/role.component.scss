@@ -8,7 +8,6 @@
 }
 .table-role mat-header-cell{
     font-size: 16px;
-    background-color: rgb(255, 222, 90);
     color:black;
 } 
 .create-button{
@@ -40,14 +39,14 @@ mat-row:nth-child(even){
 }
 
 
-mat-row{
+// mat-row{
      
-    &:hover {
-      transform: translateY(-10%);
-      background-color: rgb(81, 178, 253);
+//     &:hover {
+//       transform: translateY(-10%);
+//       background-color: rgb(81, 178, 253);
       
-      &::before {
-        left: 150%;
-      }
-    }
-  }
+//       &::before {
+//         left: 150%;
+//       }
+//     }
+//   }

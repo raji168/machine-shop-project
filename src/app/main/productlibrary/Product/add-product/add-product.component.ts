@@ -19,7 +19,6 @@ export class AddProductComponent implements OnInit {
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  
   customerData: Customer[] = [];
  
 
