@@ -12,7 +12,7 @@
         </button>
     </mat-form-field>
     <div class="buttons">
-        <button mat-raised-button class="create-button" color="accent" (click)="onClickAdd()">
+        <button mat-raised-button class="create-button"  (click)="onClickAdd()">
             <mat-icon>add</mat-icon>New Product
         </button>
         <mat-icon>more_vert</mat-icon>
@@ -31,10 +31,10 @@
                 <span class="product-cell">{{product.customer.name}}</span>
                 <span class="product-cell">{{product.customer.drawing}}</span>
                 <span class="product-cell">
-                    <button class="edit-button" mat-icon-button color="primary" title="Edit">
+                    <button class="edit-button" mat-icon-button  title="Edit">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button class="delete-button" color="accent" title="Delete">
+                    <button mat-icon-button class="delete-button"  title="Delete">
                         <mat-icon>delete_forever</mat-icon>
                     </button>
                 </span>

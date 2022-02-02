@@ -2,6 +2,14 @@ html, body { height: 100%; }
 body { margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
+.top-menu{
+    background-color: transparent;   
+}
+.create-button{
+    float:right;
+    margin-top: -50px;
+}
+
 // notification
 snack-bar-container.success{
     background-color: #29da29;
@@ -22,7 +30,7 @@ snack-bar-container.notification simple-snack-bar{
 }
 .confirm-dialog-container .content-container{
     margin: 5px 5px 15px 5px;
-    color:#8f9cb5;
+    color:black;
     display: flex;
 }
 .confirm-dialog-container #close-icon{
@@ -36,23 +44,18 @@ snack-bar-container.notification simple-snack-bar{
 .confirm-dialog-container #no-button{
     height: 50px;
     width: 50%;
-    // background-color: rgb(214, 52, 52);
-    // color:rgb(255, 255, 255);
+    color:rgb(255, 255, 255);
     border-radius: 0px;
-    // background-color:rgb(228, 59, 59);
-    // color:black;
-    // border-radius: 5px;
+    color:black;
+    border-radius: 5px;
 }
 .confirm-dialog-container #yes-button{
     height: 50px;
     width: 50%;
-    // background-color: #71c97b;
-    // color: white;
+    color: white;
     border-radius: 0px;
-
-    // background-color: rgb(255, 222, 90);
-    // color:black;
-    // border-radius: 5px;
+    color:black;
+    border-radius: 5px;
 }
 .confirm-dialog-container span.content-span{
     padding:35px 16px;

@@ -1,4 +1,3 @@
-
 .Mapping-View{
     margin:20px;
     padding: 20px;
@@ -17,17 +16,14 @@
     display: flex;
     gap: 5%;
     align-items:center ;
-    
 }
 .create-button{
   border-radius: 24px;
- 
 }
 .file-upload{
   margin-top: -33px;
   float: right;
   margin-right: -35px;
-
 }
 .search-icon{
   margin: 0;
@@ -39,58 +35,44 @@
 .table{
   margin: 3%;
 }
-
 .mat-accordion .mat-header-row {
   padding-left: 1.5rem;
   padding-right: 2rem;
   border-bottom: none;
 }
-
 .mat-expansion-panel-header.mat-row {
   border-bottom: none;
 }
-
 $mat-header-row-height: 56px;
 $mat-row-height: 48px;
 $mat-row-horizontal-padding: 24px;
-
 .mat-table {
   display: block;
 }
-
 .mat-header-row {
   min-height: $mat-header-row-height;
-  background-color: rgb(255, 222, 90);
 }
-
 .mat-row {
   min-height: $mat-row-height;
 }
-
 .mat-row, .mat-header-row {
   display: flex;
-  
   border-bottom-width: 1px;
   border-bottom-style: solid;
   align-items: center;
   padding: 0 $mat-row-horizontal-padding;
   box-sizing: border-box;
-
   &::after {
     display: inline-block;
     min-height: inherit;
     content: '';
   }
 }
-
 .mat-cell, .mat-header-cell {
   flex: 1;
   overflow: hidden;
-  word-wrap: break-word;
-  
-  
+  word-wrap: break-word;  
 }
-
 .product-header-cell{
   padding: 15px;
   font-weight: 500 ;  
@@ -99,14 +81,12 @@ $mat-row-horizontal-padding: 24px;
   background-color: rgb(255, 222, 90);
   &.first{
     padding-left: 16px;
-  
   }
   &.last{
     padding-right: 16px;
     border-bottom: 1px solid;
   }
 }
-
 .product-cell{
   padding: 5px;
   text-align: center;
@@ -118,7 +98,6 @@ $mat-row-horizontal-padding: 24px;
     padding-right: 16px;
   }
 }
-
 mat-card{
   width: 50%;
   justify-content: center;
@@ -126,7 +105,6 @@ mat-card{
   background-color: rgb(75, 143, 245);
   box-shadow: 0 0 0 0.7px burlywood;
 }
-
 .process-header-cell {
   padding: 5px;
   text-align: center;
@@ -134,13 +112,11 @@ mat-card{
   font-weight: 500;
   background-color: rgb(245, 229, 177);
 }
-
 .expandable-row{
   grid-column-start: 1;
   grid-column-end: -1;
   overflow: hidden;
 }
-
 .process-cell{
   padding: 5px;
   text-align: center;

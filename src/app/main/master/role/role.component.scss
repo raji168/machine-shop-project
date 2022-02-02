@@ -3,16 +3,13 @@
     padding: 20px;
     box-sizing: border-box;
 }
-.top-menu{
- background-color: transparent;   
-}
+
 .table-role mat-header-cell{
     font-size: 16px;
     color:black;
 } 
-.create-button{
-    float:right;
-    margin-top: -50px;
+.table-role{
+margin-top: 50px;
 }
 .search-form-field{
     padding-left: 20px;
@@ -35,18 +32,4 @@ ng-container{
 
 mat-row:nth-child(even){
     background-color: rgb(220, 220, 220);
-
 }
-
-
-// mat-row{
-     
-//     &:hover {
-//       transform: translateY(-10%);
-//       background-color: rgb(81, 178, 253);
-      
-//       &::before {
-//         left: 150%;
-//       }
-//     }
-//   }
