@@ -6,7 +6,9 @@ mat-sidenav mat-drawer{
   width: 10%;
 
 }
-
+ mat-expansion-panel {
+  background-color:#fce4ec;
+}
 mat-toolbar-row{
   display: block;
   padding: 1rem;
