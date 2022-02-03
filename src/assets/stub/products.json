@@ -5,7 +5,7 @@
         "customer": {
             "name": "honda changed",
             "description": "valvebody",
-            "drawing": "uploads\\cc655c6d95efedd1fca9b6d545827125",
+            "drawing": "uploads\\cc655c",
             "productno": 51528,
             "revisionno": "B",
             "_id": "61ea3ef6c40b3a4f14a90da6"
@@ -19,6 +19,7 @@
              },
              "jsirDoc":"uploads\\cc655c",
              "pmsDoc":"uploads\\cc655c",
+             "pirDoc":"uploads\\cc655c",
              "pdirDoc":"uploads\\cc655c",
              "isirDoc":"uploads\\cc655c"
          },
@@ -30,6 +31,7 @@
             },
             "jsirDoc":"uploads\\cc655c",
             "pmsDoc":"uploads\\cc655c",
+            "pirDoc":"uploads\\cc655c",
             "pdirDoc":"uploads\\cc655c",
             "isirDoc":"uploads\\cc655c"
         },
@@ -41,6 +43,7 @@
             },
             "jsirDoc":"uploads\\cc655c",
             "pmsDoc":"uploads\\cc655c",
+            "pirDoc":"uploads\\cc655c",
             "pdirDoc":"uploads\\cc655c",
             "isirDoc":"uploads\\cc655c"
         }
@@ -67,6 +70,7 @@
              },
              "jsirDoc":"uploads\\cc655c",
              "pmsDoc":"uploads\\cc655c",
+             "pirDoc":"uploads\\cc655c",
              "pdirDoc":"uploads\\cc655c",
              "isirDoc":"uploads\\cc655c"
          },
@@ -78,6 +82,7 @@
             },
             "jsirDoc":"uploads\\cc655c",
             "pmsDoc":"uploads\\cc655c",
+            "pirDoc":"uploads\\cc655c",
             "pdirDoc":"uploads\\cc655c",
             "isirDoc":"uploads\\cc655c"
         },
@@ -89,10 +94,12 @@
             },
             "jsirDoc":"uploads\\cc655c",
             "pmsDoc":"uploads\\cc655c",
+            "pirDoc":"uploads\\cc655c",
             "pdirDoc":"uploads\\cc655c",
             "isirDoc":"uploads\\cc655c"
         }
         ]
 
     }
+   
 ]

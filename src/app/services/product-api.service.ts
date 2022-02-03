@@ -10,7 +10,8 @@ import { tap } from 'rxjs/operators';
 })
 export class ProductApiService{
 
-    URL : string = 'http://192.168.0.17:3002/products';
+    URL : string = '/assets/stub/products.json';
+    // URL : string = 'http://192.168.0.17:3002/products';
 
     mappings : Product[] =[]
 
@@ -26,13 +27,4 @@ export class ProductApiService{
            })
         )
     }
-
-
-
-
-
-
-
-
-
 }

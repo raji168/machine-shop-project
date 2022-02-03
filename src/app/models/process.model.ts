@@ -13,7 +13,7 @@ export interface Process {
 
 
 export interface Drawing {
-    _id?: string;
+    id:string;
     no: string;
     path: string;
 }
