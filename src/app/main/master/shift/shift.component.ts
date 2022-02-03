@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
 })
 export class ShiftComponent implements OnInit {
 
-  displayedColumns: string[] = ['select', 'sno', 'shiftName', 'startTime', 'endTime', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'shiftName', 'startTime', 'endTime', 'actions'];
 
   shiftDataSource$: Observable<MatTableDataSource<Shift>>;
 
@@ -42,7 +42,6 @@ export class ShiftComponent implements OnInit {
   ) {
 
   }
-
   ngOnInit(): void {
     this.shiftDataSource$ = this.shiftDataService.shiftUpdated$.pipe(map(shifts => {
       return new MatTableDataSource(shifts);
@@ -52,36 +51,22 @@ export class ShiftComponent implements OnInit {
       this.shiftData.paginator = this.paginator;
       this.shiftData.sort = this.sort;
     })
-
   }
-
   ngAfterViewInit(): void {
-
     this.shiftData.paginator = this.paginator;
     this.shiftData.sort = this.sort;
-
   }
-
   applyFilter(event: Event) {
-
     const filterValue = (event.target as HTMLInputElement).value;
     this.shiftData.filter = filterValue.trim().toLocaleLowerCase();
-
   }
-
   onClickAdd() {
-
     this.dialog.open(AddShiftComponent);
-
   }
-
-
   onClickEdit(shift: Shift) {
     this.dialog.open(AddShiftComponent, { data: { shift } });
   }
-
   onClickDelete(id: string) {
-
     this.dialogsService.openConfirmDialog('Are you sure to delete this record  ?')
       .afterClosed().subscribe(res => {
         if (res) {
@@ -91,7 +76,6 @@ export class ShiftComponent implements OnInit {
         }
       });
   }
-
   removeSelected() {
 
     const ashifts = this.shiftData.data.filter((s: Shift) => s.isSelected);
@@ -104,23 +88,7 @@ export class ShiftComponent implements OnInit {
           })
         }
       });
-
   }
-
-  //  removeSelected(shifts:Shift[]){
-
-  //   // const ashifts = this.dataS.data.filter((s :Shift) => s.isSelected);
-  //   this.dialogsService.openConfirmDialog('Are you sure to delete this record  ?')
-  //     .afterClosed().subscribe(res => {
-  //       if (res) {
-  //         this.shiftDataService.deleteSelectShift(shifts).   this.alert.showError('Shift Selected Records Deleted Successfully...!', 'Shift');
-  //         })
-  //       }
-  //     });
-
-  // }
-
-
 }
 
 
