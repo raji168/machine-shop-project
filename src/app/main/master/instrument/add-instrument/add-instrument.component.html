@@ -2,37 +2,27 @@
     <div class="form-title">
         <span>Add Instrument</span>
         <button class="form-close" mat-stroked-button  >
-            <mat-icon mat-dialog-close="false">close</mat-icon>
+            <mat-icon mat-dialog-close="false" >close</mat-icon>
         </button>
     </div>
-    <!-- {{ form.value | json }} -->
     <form [formGroup]="form" ngRepeat="" (ngSubmit)="onSubmit()" class="normal-form">
-
         <div  class="controles-container">
-            <!-- <mat-form-field appearance="outline" color="accent">
-                <input formControlName="sno"   matInput placeholder="Serial No" autocomplete="off">
-            </mat-form-field> -->
-
-            <mat-form-field appearance="outline" color="accent">
+            <mat-form-field appearance="outline" >
                 <input formControlName="name"  matInput placeholder="Instrument Name " autocomplete="off">
             </mat-form-field>
-
-            <mat-form-field appearance="outline" color="accent">
+            <mat-form-field appearance="outline" >
                 <input formControlName="referenceno"  matInput placeholder="Reference Number" autocomplete="off">
             </mat-form-field>
-
-            <mat-form-field appearance="outline" color="accent">
+            <mat-form-field appearance="outline" >
                 <input formControlName="range"   matInput placeholder="Range" autocomplete="off">
             </mat-form-field>
-
-            <mat-form-field appearance="outline" color="accent" >
+            <mat-form-field appearance="outline"  >
                 <mat-label>Calibrated On</mat-label>
                 <input formControlName="calibratedon"matInput [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-
-            <mat-form-field appearance="outline" color="accent">
+            <mat-form-field appearance="outline" >
                 <mat-label>Calibrated  Due</mat-label>
                 <input  formControlName="calibratedue"   matInput [matDatepicker]="picker2">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -40,8 +30,8 @@
             </mat-form-field> 
             <div class="add-form-buttons">
                 <div class="button-row">
-                    <button mat-raised-button color="accent" type="submit">Submit</button>
-                    <button mat-raised-button color="warn" type="reset" >Clear</button>
+                    <button mat-raised-button color="primary" type="submit">Submit</button>
+                    <button mat-raised-button type="reset" >Clear</button>
                 </div>
             </div>
         </div>

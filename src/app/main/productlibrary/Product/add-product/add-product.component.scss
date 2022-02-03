@@ -1,5 +1,33 @@
-.step-1{
-    margin:20px;
-    padding: 20px;
-    box-sizing: border-box;
+.example-stepper {
+  margin-top: 8px;
+}
+mat-stepper{
+  margin-left: 20%;
+  width: 60%;
+}
+.mat-form-field {
+  margin-top: 16px;
+}
+.progress{
+  margin: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: large;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+  width: 40%;
+  margin-left: 50px;
+}
+.next-button{
+  margin-top: 80%;
+  float: right;
+}
+.inner-button{
+  float: right;
+}
+mat-step {
+  padding: 20px;
 }

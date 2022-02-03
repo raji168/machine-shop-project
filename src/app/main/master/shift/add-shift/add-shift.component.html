@@ -4,23 +4,23 @@
       <h1> Shift </h1>
     </div>
     <form [formGroup]="shiftForm" (ngSubmit)="onSave()">
-      <mat-form-field appearance="outline" color="accent">
+      <mat-form-field appearance="outline" >
         <mat-label>Shift Name</mat-label>
         <input matInput placeholder="Shift Name" formControlName="shiftName" autocomplete="off">
       </mat-form-field>
-      <mat-form-field appearance="outline" color="accent">
+      <mat-form-field appearance="outline">
         <mat-label>Start Time</mat-label>
         <input matInput [ngxMatTimepicker]="picker1" formControlName="startTime" autocomplete="off"  (invalid)="{start: '00:00', end: '23:59' }">
-        <ngx-mat-timepicker #picker1 color="accent"></ngx-mat-timepicker>
+        <ngx-mat-timepicker #picker1></ngx-mat-timepicker>
       </mat-form-field>
-      <mat-form-field appearance="outline" color="accent">
+      <mat-form-field appearance="outline">
         <mat-label>End Time</mat-label>
         <input matInput [ngxMatTimepicker]="picker2" formControlName="endTime" autocomplete="off" >
-        <ngx-mat-timepicker #picker2 color="accent"></ngx-mat-timepicker>
+        <ngx-mat-timepicker #picker2></ngx-mat-timepicker>
       </mat-form-field>
       <div class="button">
-        <button mat-raised-button class="btn-save" color="accent" type="submit">Save</button>
-        <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
+        <button mat-raised-button class="btn-save" color="primary" type="submit">Save</button>
+        <button mat-raised-button class="btn-cancel" mat-dialog-close="false">Cancel</button>
       </div>
     </form>
   </div>

@@ -6,9 +6,7 @@ import { ProductDataService } from 'src/app/data-services/product-data.service';
 import { Product } from 'src/app/models/product.model';
 import { ProductApiService } from 'src/app/services/product-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { AddProductComponent } from './add-product/add-product.component';
-
-
+import { AddProductComponent } from '../Product/add-product/add-product.component';
 
 const ELEMENT_DATA: Product[] = [];
 
@@ -16,7 +14,6 @@ const ELEMENT_DATA: Product[] = [];
   selector: 'app-mapping',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
-
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0', minHeight: '0' })),
@@ -27,18 +24,13 @@ const ELEMENT_DATA: Product[] = [];
 
 })
 
-
 export class ProductComponent {
 
- 
-  displayedColumns: string[] = ['S.no', 'Operation Name', 'Drawing No', 'Drawing', 'Jsir Doc', 'Pms Doc', 'PDIR Doc', 'ISIR Doc'];
-
+  displayedColumns: string[] = ['S.no', 'Operation Name', 'Drawing No', 'Drawing', 'Jsir Doc', 'Pms Doc', 'PIR Doc','PDIR Doc', 'ISIR Doc'];
   mappingDataSource$: Observable<MatTableDataSource<Product>>;
   products;
-
   expandedProduct: Product;
   expandedProductIdMap: { [productId: string]: string } = {};
-
   expandedProductIds: string[] = []
 
   constructor(
@@ -84,6 +76,7 @@ export class ProductComponent {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "100%";
+    dialogConfig.height = "100%";
     this.dialog.open(AddProductComponent,dialogConfig);
   }
 

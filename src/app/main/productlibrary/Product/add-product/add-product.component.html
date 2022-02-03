@@ -1,33 +1,60 @@
-<div class="Step-1">
-    <div class="step-progress">
-        <mat-stepper linear #stepper>
-            <mat-step [stepControl]="mapForm1" >
-            <form [formGroup]="mapForm1" (ngSubmit)="onSave()" class="mapping-step-1" gdColumns ="repeat(4,1fr)" gdAlignColumns.gt-md="repeat(1,1fr)" color="primary"> 
-                <mat-form-field appearance="outline" >
-                    <mat-label>Customer Name</mat-label>
-                    <mat-select formControlName="customerName">
-                        <mat-option *ngFor="let client of customerData " [value]="client._id">{{client.customername}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Product Name</mat-label>
-                    <input  matInput type="text" formControlName="productName"> 
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Drawing Number</mat-label>
-                    <input  matInput type="text" formControlName="drawingNo"> 
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Revision Number</mat-label>
-                    <input  matInput type="text" formControlName="revisionNo"> 
-                </mat-form-field>
-                <div class="mapping-btn-1">
-                    <button mat-raised-button type="reset">Clear</button>
-                    <button mat-raised-button type="submit">Save</button>
-                </div >
-            </form>
-        </mat-step>
-        </mat-stepper>
-    </div>
-</div>
-       
+<mat-stepper>
+    <mat-step label="Product">
+        <mat-form-field appearance="outline">
+            <mat-label>Customer Name</mat-label>
+            <mat-select formControlName="customer">
+                <mat-option [value]="customer._id" *ngFor="let customer of customerData ">{{customer.customername}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Product Name</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <label>Upload Drawing</label>
+            <span  class="material-icons">
+                file_upload
+            <input type="file">
+            </span>
+            <input matInput>
+        </mat-form-field>
+        <div class="next-button">
+            <button mat-raised-button  color="primary" matStepperNext>Save</button>
+        </div>
+    </mat-step>
+    <mat-step label="Operation">
+        <mat-form-field appearance="outline">
+            <mat-label>Operation Name</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Drawing No</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <label>Upload Drawing</label>
+            <span  class="material-icons">
+                file_upload
+            <input type="file">
+            </span>
+            <input matInput>
+        </mat-form-field>
+        <div Class="inner-button">
+            <button mat-raised-button  color="primary" matStepperPrevious>Cancel</button>
+            <button mat-raised-button  color="primary" matStepperNext>Save</button>
+        </div>
+    </mat-step>
+    <mat-step label="Mapping">
+        <div lass="next-button">
+            <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button  color="primary" matStepperNext>Submit</button>
+        </div>
+    </mat-step>
+    <mat-step label="Preview">
+        <div lass="next-button">
+            <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button  color="primary" matStepperNext>Submit</button>
+        </div>
+    </mat-step>
+</mat-stepper>

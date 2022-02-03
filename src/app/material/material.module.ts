@@ -20,7 +20,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
 
-
 @NgModule({
   exports: [
     MatToolbarModule,
@@ -43,7 +42,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatCheckboxModule,
     MatFormFieldModule,
     MatExpansionModule,
-    MatStepperModule
+    MatStepperModule,
   ]
 })
 

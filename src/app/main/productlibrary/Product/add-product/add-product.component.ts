@@ -1,40 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Customer } from 'src/app/models/customer.model';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { CustomerApiService } from 'src/app/services/customer-api.service';
+import { Customer } from 'src/app/models/customer.model';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  styleUrls: ['./add-product.component.scss'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {displayDefaultIndicatorType: false},
+    },
+  ],
 })
 export class AddProductComponent implements OnInit {
+
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  customerData: Customer[] = [];
  
-  customerData : Customer[] = [] ;
-  mapForm1 : FormGroup;
 
-  constructor(
-    private customerApi : CustomerApiService,
-    private fb:FormBuilder
-  ) { 
-    
-    this.mapForm1 = this.fb.group({
-       customerName : '',
-       productName:'',
-       drawingNo:'',
-       revisionNo:''
+  constructor(private _formBuilder: FormBuilder,
+    public customerService: CustomerApiService) {}
+
+  ngOnInit(){
+    this.customerService. getCustomerAll().subscribe(data => {
+      this.customerData = data;
     })
-
-  }
-
-  ngOnInit(): void {
-        
-        this.customerApi.getCustomerAll().subscribe(result =>{
-          this.customerData = result ;
-        })
-  }
-
-  onSave(){
-    console.log(this.mapForm1.value);
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required],
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required],
+    });
+    
   }
 }

@@ -5,7 +5,7 @@
     </mat-toolbar>
     <div class="search-div">
 
-        <button mat-raised-button class="create-button" color="accent" (click)="onCreate()">
+        <button mat-raised-button  class="create-button"  (click)="onCreate()">
             <mat-icon>add</mat-icon>Add
         </button>
 
@@ -13,16 +13,16 @@
 
     <!-- {{ roles$ | async | json }} -->
 
-    <div class=" table-role mat-elevation-z8" role="table">
+    <div class=" table-role mat-elevation-z8" role="table" >
 
-        <mat-table [dataSource]="roleDataSource$ | async" matSort>
+        <mat-table [dataSource]="roleDataSource$ | async"  matSort>
             <ng-container matColumnDef="serialno">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header >Serial No</mat-header-cell>
                 <mat-cell *matCellDef="let role ;  let i = index"> {{i+1}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                <mat-header-cell  *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
                 <mat-cell *matCellDef="let role"> {{role.name}} </mat-cell>
             </ng-container>
 
@@ -30,10 +30,10 @@
             <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
                 <mat-cell *matCellDef="let role">
-                    <button class="edit-button" mat-icon-button color="primary" title="Edit" (click)="onEdit(role)">
+                    <button class="edit-button" mat-icon-button  title="Edit" (click)="onEdit(role)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button class="delete-button" color="accent" title="Delete"
+                    <button mat-icon-button class="delete-button"  title="Delete"
                         (click)="onDelete(role._id)">
                         <mat-icon>delete_forever</mat-icon>
                     </button>

@@ -3,18 +3,14 @@
     <span>Customer List</span>
   </mat-toolbar>
   <div class="search-div">
-      <button mat-raised-button class="create-button" color="accent" (click)="onClickAdd()">
+      <button mat-raised-button class="create-button"  (click)="onClickAdd()">
           <mat-icon>add</mat-icon>Add
       </button>
-
       <mat-form-field class="search-form-field" floatLable="never">
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
       </mat-form-field>
   </div>
-
-
   <div class=" table-customer mat-elevation-z8" role="table">
-    <!-- <table mat-table [dataSource]="customerDataSource$ | async " class="mat-elevation-z8" matSort> -->
     <mat-table  [dataSource]="customerData "  matSort>
       <ng-container matColumnDef="select">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Select </mat-header-cell>
@@ -42,19 +38,14 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header> Revision No </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.revisionno}} </mat-cell>
       </ng-container>
-      <!-- <ng-container matColumnDef="drawing">
-        <mat-header-cell *matHeaderCellDef> Drawing </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.drawing}} </mat-cell>
-      </ng-container> -->
-
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <button  class="edit-button" mat-icon-button color="primary" (click)="onClickEdit(element)">
+          <button  class="edit-button" mat-icon-button  (click)="onClickEdit(element)">
             <mat-icon>edit_outline</mat-icon>
           </button>
-          <button class="delete-button" mat-icon-button color="warn" (click)="onClickDelete(element._id)">
-            <mat-icon>delete_outline</mat-icon>
+          <button class="delete-button" mat-icon-button  (click)="onClickDelete(element._id)">
+            <mat-icon>delete_forever</mat-icon>
           </button>
         </mat-cell>
       </ng-container>
@@ -63,7 +54,7 @@
     </mat-table>
     <div class="footer">
       <div class="deleteallFun">
-        <button mat-raised-button class="DeleteAll-button" color="accent" (click)="removeSelected()">
+        <button mat-raised-button class="DeleteAll-button" (click)="removeSelected()">
           <mat-icon>delete</mat-icon>Deleteall
         </button>
       </div>
@@ -73,7 +64,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 

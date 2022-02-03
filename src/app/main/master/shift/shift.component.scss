@@ -3,22 +3,15 @@
     padding: 20px;
     border-radius: 10px;
     box-sizing: border-box;
-    // background-color: rgb(192, 192, 192);
-    // box-shadow: 0 5px 15px rgba(0,0,0,.5);
-    // overflow: hidden;
 }
 .top-menu{
  background-color: transparent;   
 }
 .table-shift mat-header-cell{
     font-size: 16px;
-    background-color: rgb(255, 222, 90);
     color:black;
 } 
-.create-button{
-    float:right;
-    border-radius: 10px;
-}
+
 .search-form-field{
     padding-left: 20px;
     width: 25%;
@@ -36,9 +29,7 @@ mat-header-cell{
 }
 ng-container{
     display: grid;
-    
 }
-
 .footer{
     display: grid;
     grid-template-columns: auto auto;
@@ -46,29 +37,8 @@ ng-container{
 .DeleteAll-button{
     margin-left: 15px;
     margin-top: 13px;
-    
 }
-.upload-field{
-    float: right;
-}
-
 mat-row:nth-child(even){
     background-color: rgb(220, 220, 220);
-
-}
-mat-row:nth-child(odd){
-    background-color: rgb(252, 190, 162);
-
 }
 
-mat-row{
-     
-    &:hover {
-      transform: translateY(-10%);
-      background-color: rgb(81, 178, 253);
-      
-      &::before {
-        left: 150%;
-      }
-    }
-  }

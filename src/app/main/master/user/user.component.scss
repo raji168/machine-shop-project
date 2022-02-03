@@ -4,22 +4,16 @@
     padding: 20px;
     box-sizing: border-box;
 }
-.top-menu{
- background-color: transparent;   
-}
+
 .table-user mat-header-cell{
     font-size: 16px;
-    background-color: rgb(255, 222, 90);
     color:black;
 } 
-.create-button{
-    float:right;
-    margin-top: -50px;
-}
-.search-form-field{
-    padding-left: 20px;
-    width: 25%;
-}
+
+// .search-form-field{
+//     padding-left: 20px;
+//     width: 25%;
+// }
 .edit-button{
     display: grid;
     justify-content: center;
@@ -46,19 +40,15 @@ mat-row:nth-child(even){
     background-color: rgb(220, 220, 220);
 
 }
-mat-row:nth-child(odd){
-    background-color: rgb(252, 190, 162);
 
-}
-
-mat-row{
+// mat-row{
      
-    &:hover {
-      transform: translateY(-10%);
-      background-color: rgb(81, 178, 253);
+//     &:hover {
+//       transform: translateY(-10%);
+//       background-color: rgb(81, 178, 253);
       
-      &::before {
-        left: 150%;
-      }
-    }
-  }
+//       &::before {
+//         left: 150%;
+//       }
+//     }
+//   }
