@@ -7,7 +7,7 @@ import { FileUploadComponent } from "./file-upload/file-upload.component";
 const routes: Routes = [
 
     {
-        path: 'mapping', component: ProductComponent
+        path: 'product', component: ProductComponent
     },
     {
         path: 'upload', component:FileUploadComponent

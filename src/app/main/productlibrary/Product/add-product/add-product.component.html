@@ -1,1 +1,92 @@
-<p>add-product works!</p>
+<mat-stepper>
+  <mat-step class="step-header">
+    <div class="customer">
+      <form [formGroup]="customerForm">
+        <mat-form-field appearance="outline" class="subCustomer">
+          <mat-label>Name</mat-label>
+          <mat-select formControlName="customername">
+            <mat-option [value]="customer._id" *ngFor="let customer of customerData ">{{customer.customername}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="subCustomer">
+          <mat-label>Revision No</mat-label>
+          <input matInput formControlName="revisionNo">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="subCustomer">
+          <mat-label>Part No</mat-label>
+          <input matInput formControlName="partNo">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="subCustomer">
+          <mat-label>Customer Drawing No</mat-label>
+          <input matInput formControlName="customerDrawingNo">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="subCustomer">
+          <mat-label>Product Name</mat-label>
+          <input matInput formControlName="ProductName">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="subCustomer">
+          <mat-label>Customer Drawing </mat-label>
+          <input matInput formControlName="customerDrawing">
+        </mat-form-field>
+        <div>
+          <button mat-raised-button matStepperNext class="nextButton">Next</button>
+        </div>
+      </form>
+    </div>
+  </mat-step>
+  <mat-step class="step-header">
+    <div class="process">
+      <form [formGroup]="processForm">
+        <p>Process</p>
+        <mat-form-field appearance="outline" class="sub-process">
+          <mat-label>Process count</mat-label>
+          <input matInput formControlName="processCount" required>
+        </mat-form-field>
+        <div class="product-form">
+          <mat-form-field appearance="outline" class="sub-process">
+            <mat-label>Process Name</mat-label>
+            <input matInput formControlName="processName" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="sub-process">
+            <mat-label>Process Drawing No</mat-label>
+            <input matInput formControlName="processDrawingNo" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="sub-process">
+            <mat-label>Process Drawing</mat-label>
+            <input matInput formControlName="processDrawing" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="sub-process">
+            <mat-label>JSIR Doc</mat-label>
+            <input matInput formControlName="jsirDoc" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="sub-process">
+            <mat-label>PMS Doc</mat-label>
+            <input matInput formControlName="pmsDoc" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="sub-process">
+            <mat-label>PIR Doc</mat-label>
+            <input matInput formControlName="pirDoc" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="sub-process">
+            <mat-label>PDIR Doc</mat-label>
+            <input matInput formControlName="pdirDoc" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="sub-process">
+            <mat-label>ISIR Doc</mat-label>
+            <input matInput formControlName="isirDoc" required>
+          </mat-form-field>
+          <button mat-raised-button class="add-process-button">Add Process</button>
+        </div>
+        <div>
+          <button mat-raised-button matStepperPrevious class="previousButton">Previous</button>
+          <button mat-raised-button matStepperNext class="nextButton">Next</button>
+        </div>
+      </form>
+    </div>
+  </mat-step>
+  <mat-step class="step-header">
+    <button mat-raised-button matStepperPrevious class="prevousButton">Previous</button>
+    <button mat-raised-button matStepperPreview (click)="onPreview()" class="previewButton">Preview</button>
+  </mat-step>
+</mat-stepper>

@@ -1,0 +1,23 @@
+.subProduct{
+    padding: 20px;
+}
+.nextButton ,.previewButton{
+    float: right;
+}
+.previousButton {
+    float: left;
+}
+.subCustomer{
+    padding: 20px;
+}
+.product-form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    padding: 14px 0px;
+}
+.add-process-button{
+    margin-right: 10px;
+    margin-top: 36px;
+    width: 100px;
+}

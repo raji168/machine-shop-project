@@ -8,7 +8,8 @@ import { ProductLibraryRoutingModule } from "./productlibrary-routing.module";
 import { FileUploadComponent } from "./file-upload/file-upload.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { AddProductComponent } from './Product/add-product/add-product.component';
-
+import { MatStepperModule } from "@angular/material/stepper";
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
     declarations:[
@@ -24,7 +25,8 @@ import { AddProductComponent } from './Product/add-product/add-product.component
         MaterialModule,
         ProductLibraryRoutingModule,
         MaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,MatStepperModule,
+        MatButtonModule
 
     ]
 })

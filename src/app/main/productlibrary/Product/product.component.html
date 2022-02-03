@@ -17,6 +17,11 @@
     <!-- </div> -->
 
     <div class="buttons">
+        <!-- <a routerLink="/add-product" routerLinkActive="active">
+             <button mat-raised-button class="create-button" color="accent" >
+                <mat-icon>add</mat-icon>New Product
+            </button>
+        </a> -->
         <button mat-raised-button class="create-button" color="accent" (click)="onClickAdd()">
             <mat-icon>add</mat-icon>New Product
         </button>
@@ -25,16 +30,18 @@
 
     <div class="table mat-elevation-z8">
 
-        <div class="product-table" gdColumns="64px repeat(3, 1fr) 64px">
+        <div class="product-table" gdColumns="64px repeat(4, 1fr) 64px">
             <span class="product-header-cell first">S.No</span>
             <span class="product-header-cell">Product Name</span>
             <span class="product-header-cell">Customer Name</span>
+            <span class="product-header-cell">Customer Drawing</span>
             <span class="product-header-cell">Action</span>
             <div class="product-header-cell last"></div>
             <ng-container *ngFor="let product of products; let productIndex =index">
                 <span class="product-cell first">{{productIndex + 1}}</span>
                 <span class="product-cell">{{product.name}}</span>
-                <span class="product-cell">{{product.customer.name}}</span>
+                <span class="product-cell">{{product.customer?.name}}</span>
+                <span class="product-cell">{{product.customer?.drawing}}</span>
                 <span class="product-cell">
                     <button class="edit-button" mat-icon-button color="primary" title="Edit">
                         <mat-icon>edit</mat-icon>
@@ -60,10 +67,11 @@
                         <ng-container
                             *ngFor="let process of product.processes; let operationIndex = index; let lastOperation = last">
                             <div [class.b-b]="!lastOperation" class="process-cell">{{operationIndex+1}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.name}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.processName}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.drawing.no}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.drawing.path}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.pirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.pmsDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.pdirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.isirDoc}}</div>
