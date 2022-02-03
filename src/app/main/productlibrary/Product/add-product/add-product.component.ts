@@ -17,24 +17,24 @@ import { Customer } from 'src/app/models/customer.model';
 })
 export class AddProductComponent implements OnInit {
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  customerData: Customer[] = [];
+  // firstFormGroup: FormGroup;
+  // secondFormGroup: FormGroup;
+  // customerData: Customer[] = [];
  
 
-  constructor(private _formBuilder: FormBuilder,
-    public customerService: CustomerApiService) {}
+  // constructor(private _formBuilder: FormBuilder,
+  //   public customerService: CustomerApiService) {}
 
   ngOnInit(){
-    this.customerService. getCustomerAll().subscribe(data => {
-      this.customerData = data;
-    })
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-    });
+    // this.customerService. getCustomerAll().subscribe(data => {
+    //   this.customerData = data;
+    // })
+    // this.firstFormGroup = this._formBuilder.group({
+    //   firstCtrl: ['', Validators.required],
+    // });
+    // this.secondFormGroup = this._formBuilder.group({
+    //   secondCtrl: ['', Validators.required],
+    // });
     
   }
 }

@@ -3,7 +3,7 @@
 $master-primary: mat.define-palette(mat.$pink-palette,300);
 $master-accent: mat.define-palette(mat.$green-palette, A700);
 $master-warn: mat.define-palette(mat.$red-palette);
-$master-theme: mat.define-dark-theme((
+$master-theme: mat.define-light-theme((
   color: (
     primary: $master-primary,
     accent: $master-accent,
