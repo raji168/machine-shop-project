@@ -1,5 +1,5 @@
-import { Component,OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 import { Customer } from "src/app/models/customer.model";
 import { CustomerApiService } from "src/app/services/customer-api.service";
 
@@ -9,53 +9,21 @@ import { CustomerApiService } from "src/app/services/customer-api.service";
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-<<<<<<< HEAD
-
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  customerData: Customer[] = [];
- 
-
-  constructor(private _formBuilder: FormBuilder,
-    public customerService: CustomerApiService) {}
-
-  ngOnInit(){
-    this.customerService. getCustomerAll().subscribe(data => {
-      this.customerData = data;
-    })
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-    });
-    
-=======
-  customerForm:FormGroup;
-  processForm:FormGroup;
+  value = ' ';
+  form: FormGroup;
   customerData: Customer[] = [];
   constructor(
     public customerService: CustomerApiService,
     private formBulider: FormBuilder
-  ){
-    this.customerForm= this.formBulider.group({
-      customerName:"",
-      customerDrawingNo:"",
-      revisionNo:"",
-      productName:"",
-      partNo:"",
-      customerDrawing:""
-    }),
-    this.processForm= this.formBulider.group({
-      processCount:"",
-      processName:"",
-      processDrawingNo:"",
-      processDrawing:"",
-      jsirDoc:"",
-      pmsDoc:"",
-      pirDoc:"",
-      pdirDoc:"",
-      isirDoc:""
+  ) {
+    this.form = this.formBulider.group({
+      customerName: "",
+      customerDrawingNo: "",
+      revisionNo: "",
+      productName: "",
+      partNo: "",
+      customerDrawing: "",
+      process: formBulider.array([])
     })
   }
   ngOnInit(): void {
@@ -63,9 +31,18 @@ export class AddProductComponent implements OnInit {
       this.customerData = data;
     })
   }
-  onPreview(){
-    console.log(this.processForm.value);
-    console.log(this.customerForm.value);
->>>>>>> ec670b0d05ceb8dd923a4716cd73240e0bba1e35
+  addNewProcessGroup() {
+    const add = this.form.get('process') as FormArray;
+    add.push(this.formBulider.group({
+      processName: "",
+      processDrawingNo: "",
+      processDrawing: "",
+      jsirDoc: "",
+      pmsDoc: "",
+      pirDoc: "",
+      pdirDoc: "",
+      isirDoc: ""
+    }))
   }
+
 }

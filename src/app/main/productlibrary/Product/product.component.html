@@ -52,7 +52,7 @@
                 <!-- [@detailExpand]="expandedProduct === product ? 'expanded' : 'collapsed'" -->
                 <!-- [@detailExpand]="!!expandedProductMap[product._id] ? 'expanded' : 'collapsed'"  -->
                 <div [@detailExpand]="isExpanded(product._id) ? 'expanded' : 'collapsed'" class="expandable-row">
-                    <div class="process-table" gdColumns.lt-md="repeat(8, auto)" gdColumns="repeat(9, auto)">
+                    <div class="process-table" gdColumns.lt-md="repeat(9, auto)" gdColumns="repeat(10, auto)">
                         <div class="process-header-cell" *ngFor="let column of displayedColumns">{{ column }}</div>
                         <ng-container
                             *ngFor="let process of product.processes; let operationIndex = index; let lastOperation = last">
