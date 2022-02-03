@@ -6,9 +6,10 @@ import { MaterialModule } from "src/app/material/material.module";
 import { ProductComponent } from '../productlibrary/Product/product.component';
 import { ProductLibraryRoutingModule } from "./productlibrary-routing.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { AddProductComponent } from '../productlibrary/Product/add-product/add-product.component';
+import { AddProductComponent } from './Product/add-product/add-product.component';
+import { MatStepperModule } from "@angular/material/stepper";
+import {MatButtonModule} from '@angular/material/button';
 import { MachineMappingComponent } from "./Machine mapping/machine-mapping.component";
-
 
 @NgModule({
     declarations:[
@@ -16,9 +17,6 @@ import { MachineMappingComponent } from "./Machine mapping/machine-mapping.compo
         ProductComponent,
         AddProductComponent,
         MachineMappingComponent,
-      
-       
-    
     ],
     imports:[
         CommonModule,
@@ -26,7 +24,8 @@ import { MachineMappingComponent } from "./Machine mapping/machine-mapping.compo
         MaterialModule,
         ProductLibraryRoutingModule,
         MaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,MatStepperModule,
+        MatButtonModule
 
     ]
 })
