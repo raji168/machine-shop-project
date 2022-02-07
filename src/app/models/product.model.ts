@@ -10,7 +10,5 @@ export interface Product {
     customerDrawing:Drawing;
     partNo:string;
     processes: Process[];
-    // status: boolean;
-    // isSelected: any;
-
+   
 }

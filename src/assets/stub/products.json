@@ -1,9 +1,9 @@
 [
     {
         "_id": "asdasdasd12313",
-        "name": "product 1",
+        "productName": "product 1",
         "customer": {
-            "name": "honda changed",
+            "customerName": "honda changed",
             "description": "valvebody",
             "drawing": "uploads\\cc655c",
             "productno": 51528,
@@ -52,9 +52,9 @@
     },
     {
         "_id": "asdasdasd123asdas13",
-        "name": "product 2",
+        "productName": "product 2",
         "customer": {
-            "name": "honda changed",
+            "customerName": "honda changed",
             "description": "valvebody",
             "drawing": "uploads\\cc655c",
             "productno": 51528,

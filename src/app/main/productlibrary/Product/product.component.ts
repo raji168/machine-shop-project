@@ -55,8 +55,6 @@ export class ProductComponent {
 
     this.productApiService.get().subscribe(data => {
       this.products = data
-      this.products.paginator = this.paginator;
-      this.products.sort = this.sort;
       console.log(this.products);
     })
 

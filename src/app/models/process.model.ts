@@ -1,6 +1,5 @@
 export interface Process {
     _id?: string;
-    sno:number;
     operationName: string;
     processDrawingNo: Drawing;
     processDrawing: Drawing;

@@ -1,15 +1,16 @@
-<mat-stepper (ngSubmit)="onSubmit()" >
+<div >
+<mat-stepper >
   <mat-step class="step-header">
     <ng-template matStepLabel>Product</ng-template>
     <div class="customer">
-      <form [formGroup]="form">
+      <form [formGroup]="form" >
         <div class="customer-form">
           <mat-form-field appearance="outline" class="subCustomer">
             <mat-label>Product Name</mat-label>
             <input matInput formControlName="productName" ng-model="productName" cdkFocusInitial>
           </mat-form-field>
           <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Name</mat-label>
+            <mat-label>Customer Name</mat-label>
             <mat-select formControlName="customerName">
               <mat-option [value]="customer.customername" *ngFor="let customer of customerData "  ng-model="customerName">
                 {{customer.customername}}
@@ -43,7 +44,7 @@
   <mat-step class="step-header">
     <ng-template matStepLabel>Process</ng-template>
     <div class="process">
-      <form [formGroup]="form">
+      <!-- <form [formGroup]="form"> -->
         <div class="process-header">
           <p class="process-title">Process</p>
           <button mat-raised-button  matTooltip="Add process"
@@ -97,7 +98,7 @@
             <button mat-raised-button matStepperNext class="nextButton" color="primary">Next</button>
           </div>
         </div>
-      </form>
+      <!-- </form> -->
     </div>
   </mat-step>
   <mat-step class="step-header">
@@ -126,8 +127,9 @@
       <button mat-raised-button matStepperPrevious class="previousButton" color="accent">Previous</button>
       <div class="subprocess-button">
         <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="warn">Cancel</button>
-        <button mat-raised-button class="btn-save" type="submit" color="primary">Save</button>
+        <button mat-raised-button class="btn-save" (ngSubmit)="onSubmit()"  type="submit" color="primary">Save</button>
       </div>
     </div>
   </mat-step>
 </mat-stepper>
+</div>
