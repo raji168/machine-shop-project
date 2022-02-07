@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <form [formGroup]="productForm">
   <mat-stepper #stepper class="progress">
     <mat-step [stepControl]="productForm">
@@ -86,54 +87,160 @@
             </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline">
+=======
+<mat-stepper>
+  <mat-step class="step-header">
+    <ng-template matStepLabel>Product</ng-template>
+    <div class="customer">
+      <form [formGroup]="form">
+        <div class="customer-form">
+          <mat-form-field appearance="outline" class="subCustomer">
+>>>>>>> aa67dae8c742ae67242c9cfb2fb744c4b8e075da
             <mat-label>Product Name</mat-label>
-            <input matInput placeholder="Placeholder">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <label>Upload Drawing</label>
-            <span  class="material-icons">
-                file_upload
-            <input type="file">
-            </span>
-            <input matInput>
-        </mat-form-field>
-        <div class="next-button">
-            <button mat-raised-button  color="primary" matStepperNext>Save</button>
+            <input matInput formControlName="productName" cdkFocusInitial>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="subCustomer">
+            <mat-label>Name</mat-label>
+            <mat-select formControlName="customerName">
+              <mat-option [value]="customer._id" *ngFor="let customer of customerData " autofocus>
+                {{customer.customername}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="subCustomer">
+            <mat-label>Revision No</mat-label>
+            <input matInput formControlName="revisionNo" autocomplete="off">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="subCustomer">
+            <mat-label>Part No</mat-label>
+            <input matInput formControlName="partNo">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="subCustomer">
+            <mat-label>Customer Drawing No</mat-label>
+            <input matInput formControlName="customerDrawingNo">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="subCustomer">
+            <mat-label>Customer Drawing </mat-label>
+            <input matInput formControlName="customerDrawing">
+          </mat-form-field>
         </div>
-    </mat-step>
-    <mat-step label="Operation">
-        <mat-form-field appearance="outline">
-            <mat-label>Operation Name</mat-label>
-            <input matInput placeholder="Placeholder">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Drawing No</mat-label>
-            <input matInput placeholder="Placeholder">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <label>Upload Drawing</label>
-            <span  class="material-icons">
-                file_upload
-            <input type="file">
-            </span>
-            <input matInput>
-        </mat-form-field>
-        <div Class="inner-button">
-            <button mat-raised-button  color="primary" matStepperPrevious>Cancel</button>
-            <button mat-raised-button  color="primary" matStepperNext>Save</button>
+      </form>
+      <div>
+        <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="warn">Cancel</button>
+        <button mat-raised-button matStepperNext class="nextButton" color="primary">Next</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step class="step-header">
+    <ng-template matStepLabel>Process</ng-template>
+    <div class="process">
+      <form [formGroup]="form">
+        <div class="process-header">
+          <p class="process-title">Process</p>
+          <button mat-raised-button (click)="addNewProcessGroup()">
+            <mat-icon color="primary" class="add-icon">add_circle</mat-icon>
+          </button>
         </div>
-    </mat-step>
-    <mat-step label="Mapping">
-        <div lass="next-button">
-            <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
-            <button mat-raised-button  color="primary" matStepperNext>Submit</button>
+        <div  *ngFor="let processGroup of form.get('process')['controls']; let i=index"
+          [formGroup]="processGroup">
+          <!-- Process count: {{i+1}} -->
+          <div class="product-form">
+            <mat-form-field appearance="outline" class="sub-process">
+              <mat-label>Process Name</mat-label>
+              <input matInput formControlName="processName" [(ngModel)]="value" required autofocus>
+              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="sub-process">
+              <mat-label>Process Drawing No</mat-label>
+              <input matInput formControlName="processDrawingNo" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="sub-process">
+              <mat-label>Process Drawing</mat-label>
+              <input matInput formControlName="processDrawing" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="sub-process">
+              <mat-label>JSIR Doc</mat-label>
+              <input matInput formControlName="jsirDoc" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="sub-process">
+              <mat-label>PMS Doc</mat-label>
+              <input matInput formControlName="pmsDoc" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="sub-process">
+              <mat-label>PIR Doc</mat-label>
+              <input matInput formControlName="pirDoc" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="sub-process">
+              <mat-label>PDIR Doc</mat-label>
+              <input matInput formControlName="pdirDoc" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="sub-process">
+              <mat-label>ISIR Doc</mat-label>
+              <input matInput formControlName="isirDoc" required>
+            </mat-form-field>
+          </div>
+          <hr>
         </div>
-    </mat-step>
-    <mat-step label="Preview">
-        <div lass="next-button">
-            <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
-            <button mat-raised-button  color="primary" matStepperNext>Submit</button>
+        <div class="process-buttons">
+          <button mat-raised-button matStepperPrevious class="previousButton" color="accent">Previous</button>
+          <div class="subprocess-button">
+            <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="warn">Cancel</button>
+            <button mat-raised-button matStepperNext class="nextButton" color="primary">Next</button>
+          </div>
         </div>
+<<<<<<< HEAD
     </mat-step>
 </mat-stepper>
 >>>>>>> 4cd4800937442283c79251c6f73e75d560fa5fb9
+=======
+      </form>
+    </div>
+  </mat-step>
+  <mat-step class="step-header">
+    <ng-template matStepLabel>Preview</ng-template>
+    <!-- <div class="table mat-elevation-z8">
+      <div class="product-table" gdColumns="64px repeat(4, 1fr) 64px">
+        <span class="product-header-cell first">S.No</span>
+        <span class="product-header-cell">Product Name</span>
+        <span class="product-header-cell">Customer Name</span>
+        <span class="product-header-cell">Customer Drawing</span>
+        <span class="product-header-cell">Action</span>
+        <div class="product-header-cell last"></div>
+        <ng-container *ngFor="let product of form; let productIndex =index">
+          <span class="product-cell first">{{productIndex + 1}}</span>
+          <span class="product-cell">{{product.name}}</span>
+          <span class="product-cell">{{product.customer.name}}</span>
+          <span class="product-cell">{{product.customer.drawing}}</span>
+          <span class="product-cell">
+            <div class="process-table" gdColumns.lt-md="repeat(8, auto)" gdColumns="repeat(9, auto)">
+              <div class="process-header-cell" *ngFor="let column of displayedColumns">{{ column }}</div>
+              <ng-container
+                *ngFor="let process of form; let operationIndex = index; let lastOperation = last">
+                <div [class.b-b]="!lastOperation" class="process-cell">{{operationIndex+1}}</div>
+                <div [class.b-b]="!lastOperation" class="process-cell">{{process.processName}}</div>
+                <div [class.b-b]="!lastOperation" class="process-cell">{{process.drawing.no}}</div>
+                <div [class.b-b]="!lastOperation" class="process-cell">{{process.drawing.path}}</div>
+                <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
+                <div [class.b-b]="!lastOperation" class="process-cell">{{process.pirDoc}}</div>
+                <div [class.b-b]="!lastOperation" class="process-cell">{{process.pmsDoc}}</div>
+                <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
+                <div [class.b-b]="!lastOperation" class="process-cell">{{process.pdirDoc}}</div>
+                <div [class.b-b]="!lastOperation" class="process-cell">{{process.isirDoc}}</div>
+              </ng-container>
+            </div>
+          </span>
+        </ng-container>
+      </div>
+    </div> -->
+    <div class="process-buttons">
+      <button mat-raised-button matStepperPrevious class="previousButton" color="accent">Previous</button>
+      <div class="subprocess-button">
+        <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="warn">Cancel</button>
+        <button mat-raised-button class="btn-save" type="submit" color="primary">Save</button>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>
+>>>>>>> aa67dae8c742ae67242c9cfb2fb744c4b8e075da

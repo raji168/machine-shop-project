@@ -12,6 +12,11 @@
         </button>
     </mat-form-field>
     <div class="buttons">
+        <!-- <a routerLink="/add-product" routerLinkActive="active">
+             <button mat-raised-button class="create-button" color="accent" >
+                <mat-icon>add</mat-icon>New Product
+            </button>
+        </a> -->
         <button mat-raised-button class="create-button"  (click)="onClickAdd()">
             <mat-icon>add</mat-icon>New Product
         </button>
@@ -47,15 +52,16 @@
                 <!-- [@detailExpand]="expandedProduct === product ? 'expanded' : 'collapsed'" -->
                 <!-- [@detailExpand]="!!expandedProductMap[product._id] ? 'expanded' : 'collapsed'"  -->
                 <div [@detailExpand]="isExpanded(product._id) ? 'expanded' : 'collapsed'" class="expandable-row">
-                    <div class="process-table" gdColumns.lt-md="repeat(8, auto)" gdColumns="repeat(9, auto)">
+                    <div class="process-table" gdColumns.lt-md="repeat(9, auto)" gdColumns="repeat(10, auto)">
                         <div class="process-header-cell" *ngFor="let column of displayedColumns">{{ column }}</div>
                         <ng-container
                             *ngFor="let process of product.processes; let operationIndex = index; let lastOperation = last">
                             <div [class.b-b]="!lastOperation" class="process-cell">{{operationIndex+1}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.name}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.processName}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.drawing.no}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.drawing.path}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.pirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.pmsDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.pdirDoc}}</div>

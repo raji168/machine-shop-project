@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {  MatTableDataSource } from '@angular/material/table';
+import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Observable } from 'rxjs';
 import { ProductDataService } from 'src/app/data-services/product-data.service';
@@ -7,6 +7,7 @@ import { Product } from 'src/app/models/product.model';
 import { ProductApiService } from 'src/app/services/product-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddProductComponent } from '../Product/add-product/add-product.component';
+import { Router } from '@angular/router';
 
 const ELEMENT_DATA: Product[] = [];
 
@@ -36,7 +37,8 @@ export class ProductComponent {
   constructor(
     private productApiService: ProductApiService,
     private productDataService:ProductDataService,
-    private dialog : MatDialog
+    private dialog : MatDialog,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -75,8 +77,8 @@ export class ProductComponent {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "100%";
-    dialogConfig.height = "100%";
+    dialogConfig.width = "60%";
+    dialogConfig.height = "80%";
     this.dialog.open(AddProductComponent,dialogConfig);
   }
 

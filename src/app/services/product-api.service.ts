@@ -27,13 +27,4 @@ export class ProductApiService{
            })
         )
     }
-
-
-
-
-
-
-
-
-
 }

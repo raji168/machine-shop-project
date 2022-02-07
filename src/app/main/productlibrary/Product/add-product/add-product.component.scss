@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .example-stepper {
   margin-top: 8px;
 }
@@ -30,4 +31,58 @@ mat-stepper{
 }
 mat-step {
   padding: 20px;
+=======
+.subProduct{
+    padding: 20px;
+}
+.nextButton ,.previewButton{
+    float: right;
+    // margin-top: 400px;
+}
+.previousButton {
+    float: left;
+    // margin-top: 400px;
+
+}
+.subCustomer{
+    padding: 20px;
+}
+.customer-form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    padding: 14px 0px;
+}
+.product-form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    padding: 14px 0px;
+}
+.add-process-button{
+    margin-right: 10px;
+    margin-top: 36px;
+    width: 100px;
+}
+.process-header{
+    display: flex;
+    gap: 640px;
+}
+.subprocess-button{
+    float: right;
+    gap: 10px;
+}
+.btn-cancel{
+    margin-right : 10px;
+    // margin-top: 400px;
+}
+.btn-save{
+    float: right;
+}
+.process-title{
+    font-size: 18px;
+}
+.process-buttons{
+    margin-top: 10px;
+>>>>>>> aa67dae8c742ae67242c9cfb2fb744c4b8e075da
 }

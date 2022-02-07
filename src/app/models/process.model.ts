@@ -1,10 +1,12 @@
 export interface Process {
-    id:string;
-    name: string;
-    drawing: Drawing;
+    _id?: string;
+    processCount:string,
+    processName: string;
+    processDrawingNo: Drawing;
+    processDrawing: Drawing;
     jsirDoc: string;
-    pirDoc:string;
     pmsDoc: string;
+    pirDoc:string;
     pdirDoc: string;
     isirDoc: string;
 }
