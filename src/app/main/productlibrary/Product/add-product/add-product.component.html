@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <form [formGroup]="productForm">
   <mat-stepper #stepper class="progress">
     <mat-step [stepControl]="productForm">
@@ -74,3 +75,65 @@
 
   </mat-stepper>
 </form>
+=======
+<mat-stepper>
+    <mat-step label="Product">
+        <mat-form-field appearance="outline">
+            <mat-label>Customer Name</mat-label>
+            <mat-select formControlName="customer">
+                <mat-option [value]="customer._id" *ngFor="let customer of customerData ">{{customer.customername}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Product Name</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <label>Upload Drawing</label>
+            <span  class="material-icons">
+                file_upload
+            <input type="file">
+            </span>
+            <input matInput>
+        </mat-form-field>
+        <div class="next-button">
+            <button mat-raised-button  color="primary" matStepperNext>Save</button>
+        </div>
+    </mat-step>
+    <mat-step label="Operation">
+        <mat-form-field appearance="outline">
+            <mat-label>Operation Name</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Drawing No</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <label>Upload Drawing</label>
+            <span  class="material-icons">
+                file_upload
+            <input type="file">
+            </span>
+            <input matInput>
+        </mat-form-field>
+        <div Class="inner-button">
+            <button mat-raised-button  color="primary" matStepperPrevious>Cancel</button>
+            <button mat-raised-button  color="primary" matStepperNext>Save</button>
+        </div>
+    </mat-step>
+    <mat-step label="Mapping">
+        <div lass="next-button">
+            <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button  color="primary" matStepperNext>Submit</button>
+        </div>
+    </mat-step>
+    <mat-step label="Preview">
+        <div lass="next-button">
+            <button mat-raised-button  color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button  color="primary" matStepperNext>Submit</button>
+        </div>
+    </mat-step>
+</mat-stepper>
+>>>>>>> 4cd4800937442283c79251c6f73e75d560fa5fb9

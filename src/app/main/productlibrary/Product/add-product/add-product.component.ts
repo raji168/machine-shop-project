@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Customer } from 'src/app/models/customer.model';
-import { CustomerApiService } from 'src/app/services/customer-api.service';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { AlertService } from 'src/app/shared/alert.service';
+import { CustomerApiService } from 'src/app/services/customer-api.service';
+import { Customer } from 'src/app/models/customer.model';
 
 @Component({
   selector: 'app-add-product',
@@ -12,15 +11,18 @@ import { AlertService } from 'src/app/shared/alert.service';
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: { showError: true },
+      useValue: {displayDefaultIndicatorType: false},
     },
   ],
 })
 export class AddProductComponent implements OnInit {
 
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
   customerData: Customer[] = [];
-  
+ 
 
+<<<<<<< HEAD
   
   productForm: FormGroup;
   processForm: FormGroup;
@@ -47,15 +49,24 @@ export class AddProductComponent implements OnInit {
     this.productForm = this.fb.group({
       customerName: [''],
       productName: ['', Validators.required],
+=======
+  constructor(private _formBuilder: FormBuilder,
+    public customerService: CustomerApiService) {}
+
+  ngOnInit(){
+    this.customerService. getCustomerAll().subscribe(data => {
+      this.customerData = data;
+>>>>>>> 4cd4800937442283c79251c6f73e75d560fa5fb9
     })
-
-    // this.setDefaultData();
-    this.customerApi.getCustomerAll().subscribe(result => {
-      this.customerData = result;
-    })
-
-
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required],
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required],
+    });
+    
   }
+<<<<<<< HEAD
 
     onAddProcess() {
       let processes = this.productForm.get('processes') as FormArray;
@@ -83,3 +94,6 @@ export class AddProductComponent implements OnInit {
 
 
 }
+=======
+}
+>>>>>>> 4cd4800937442283c79251c6f73e75d560fa5fb9

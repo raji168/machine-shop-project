@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ProductComponent } from "../productlibrary/product/product.component";
-import { MappingComponent } from "./mapping/mapping.component";
-import { AddProductComponent } from "../productlibrary/product/add-product/add-product.component";
+import {  MachineMappingComponent } from "./Machine mapping/machine-mapping.component";
+import { ProductComponent } from "../productlibrary/Product/product.component";
+import { AddProductComponent } from "../productlibrary/Product/add-product/add-product.component";
 
 
 
@@ -12,7 +12,7 @@ const routes: Routes = [
         path: 'product', component: ProductComponent
     },
     {
-        path: 'mapping', component:MappingComponent
+        path: 'mapping', component: MachineMappingComponent
     },
     {
         path:' add-product', component:AddProductComponent
