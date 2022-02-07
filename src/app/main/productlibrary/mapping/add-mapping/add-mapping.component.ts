@@ -90,19 +90,19 @@ export class AddMappingComponent implements OnInit {
   }
 
   onProcessSave() {
-    console.log(this.addForm.value);
+    console.log(this.processForm.value);
     this.alert.showSuccess("Data Saved Suceessfully "," Process ");
 
   }
 
   onProductDetail() {
-    console.log(this.addForm.value);
+    console.log(this.detailForm.value);
     this.alert.showSuccess("Data Saved Suceessfully "," Product ");
 
   }
 
   onMachineMapping() {
-    console.log(this.addForm.value);
+    console.log(this.machineForm.value);
     this.alert.showSuccess("Data Saved Suceessfully "," Machine  ");
 
   }

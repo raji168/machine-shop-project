@@ -23,7 +23,7 @@ export class AddProductComponent implements OnInit {
 
   
   productForm: FormGroup;
-  // processForm: FormGroup;
+  processForm: FormGroup;
 
 
   constructor(
@@ -31,23 +31,22 @@ export class AddProductComponent implements OnInit {
     private alert: AlertService,
     private fb: FormBuilder
   ) {
-    // this.processForm = this.fb.group({
-    //   name:['',Validators.required],
-    //   drawing:['',Validators.required],
-    //   jsirDoc:['',Validators.required],
-    //   pmsDoc:['',Validators.required],
-    //   pdirDoc:['',Validators.required],
-    //   isirDoc:['',Validators.required]
-    // })
+    this.processForm = this.fb.group({
+      name:['',Validators.required],
+      drawing:['',Validators.required],
+      jsirDoc:['',Validators.required],
+      pmsDoc:['',Validators.required],
+      pdirDoc:['',Validators.required],
+      isirDoc:['',Validators.required]
+    })
 
   }
 
   ngOnInit(): void {
 
     this.productForm = this.fb.group({
-      customerName: ['', Validators.required],
+      customerName: [''],
       productName: ['', Validators.required],
-      process:['']
     })
 
     // this.setDefaultData();
@@ -76,6 +75,10 @@ export class AddProductComponent implements OnInit {
     console.log('data of product ', this.productForm.value);
     this.alert.showSuccess("Data Saved Suceessfully ", " Product ");
 
+  }
+
+  onProcessSave(){
+    console.log(this.processForm.value);
   }
 
 

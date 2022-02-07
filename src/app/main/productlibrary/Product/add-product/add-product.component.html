@@ -1,6 +1,6 @@
 <form [formGroup]="productForm">
-<mat-stepper #stepper class="progress" >
-  <mat-step [stepControl]="productForm">
+  <mat-stepper #stepper class="progress">
+    <mat-step [stepControl]="productForm">
       <ng-template matStepperIcon="phone">
         <mat-icon>call_end</mat-icon>
       </ng-template>
@@ -21,14 +21,56 @@
         <button mat-raised-button (click)="stepper.reset()">Reset</button>
         <button mat-raised-button matStepperNext>Next</button>
       </div>
-  </mat-step>
-  <mat-step  >
-        <div>
-          <button mat-raised-button (click)="onAddProcess()">Add Process</button>
+    </mat-step>
+    <mat-step [stepControl]="processForm">
+      <div>
+        <button mat-raised-button (click)="onAddProcess()">Add Process</button>
+      </div>
+      <form [formGroup]="processForm" (ngSubmit)="onProcessSave()" color="primary">
+        <mat-form-field appearance="outline" class="sub-Form-2">
+          <mat-label>Process Name</mat-label>
+          <input matInput type="text" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="sub-Form-2">
+          <mat-label>Drawing No</mat-label>
+          <input matInput formControlName="drawing">
+          <!-- <mat-icon>upload</mat-icon> -->
+        </mat-form-field>
+        <!-- <mat-form-field appearance="outline" class="sub-Form-2">
+          <mat-label>Drawing Path</mat-label>
+          <input formControlName="drawing">
+          <mat-icon>upload</mat-icon>
+        </mat-form-field> -->
+        <mat-form-field appearance="outline" class="sub-Form-2">
+          <mat-label>JSIR Document</mat-label>
+          <input matInput formControlName="jsirDoc">
+          <!-- <mat-icon>upload</mat-icon> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="sub-Form-2">
+          <mat-label>PMS Document</mat-label>
+          <input matInput formControlName="pmsDoc">
+          <!-- <mat-icon>upload</mat-icon> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="sub-Form-2">
+          <mat-label>PDIR Document</mat-label>
+          <input matInput formControlName="pdirDoc">
+          <!-- <mat-icon>upload</mat-icon> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="sub-Form-2">
+          <mat-label>ISIR Document</mat-label>
+          <input  matInput formControlName="isirDoc">
+          <!-- <mat-icon>upload</mat-icon> -->
+        </mat-form-field>
+        <div class="mapping-btn-2">
+          <!-- <button mat-raised-button (click)="stepper.reset()">Clear</button> -->
+          <button mat-raised-button matStepperPrevious>Back</button>
+          <button mat-raised-button matStepperNext type="submit">Next</button>
         </div>
-  </mat-step>
+      </form>
+
+    </mat-step>
 
 
 
-</mat-stepper>
+  </mat-stepper>
 </form>
