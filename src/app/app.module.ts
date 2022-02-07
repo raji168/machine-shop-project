@@ -10,6 +10,8 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
 import { MainModule } from './main/main.module';
+import { StoreModule } from '@ngrx/store';
+import { _RESOLVED_META_REDUCERS } from '@ngrx/store/src/tokens';
 
 
 @NgModule({
@@ -34,7 +36,12 @@ import { MainModule } from './main/main.module';
       timeOut: 3000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
+    }),
+    StoreModule.forRoot({
+      RoleState: roleReducer
     })
+     
+    
 
   ],
 
