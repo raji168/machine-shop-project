@@ -10,7 +10,8 @@ import { AddProductComponent } from './Product/add-product/add-product.component
 import { MatStepperModule } from "@angular/material/stepper";
 import {MatButtonModule} from '@angular/material/button';
 import { MachineMappingComponent } from "./Machine mapping/machine-mapping.component";
-
+import { FormsModule } from '@angular/forms';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
     declarations:[
         ProductLibraryComponent,
@@ -25,7 +26,7 @@ import { MachineMappingComponent } from "./Machine mapping/machine-mapping.compo
         ProductLibraryRoutingModule,
         MaterialModule,
         FlexLayoutModule,MatStepperModule,
-        MatButtonModule
+        MatButtonModule,FormsModule,MatTooltipModule
 
     ]
 })
