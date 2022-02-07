@@ -22,41 +22,38 @@ export class AddProductComponent implements OnInit {
   customerData: Customer[] = [];
  
 
-<<<<<<< HEAD
   
-  productForm: FormGroup;
-  processForm: FormGroup;
+  // productForm: FormGroup;
+  // processForm: FormGroup;
 
 
-  constructor(
-    private customerApi: CustomerApiService,
-    private alert: AlertService,
-    private fb: FormBuilder
-  ) {
-    this.processForm = this.fb.group({
-      name:['',Validators.required],
-      drawing:['',Validators.required],
-      jsirDoc:['',Validators.required],
-      pmsDoc:['',Validators.required],
-      pdirDoc:['',Validators.required],
-      isirDoc:['',Validators.required]
-    })
+  // constructor(
+  //   private customerApi: CustomerApiService,
+  //   private alert: AlertService,
+  //   private fb: FormBuilder
+  // ) {
+  //   this.processForm = this.fb.group({
+  //     name:['',Validators.required],
+  //     drawing:['',Validators.required],
+  //     jsirDoc:['',Validators.required],
+  //     pmsDoc:['',Validators.required],
+  //     pdirDoc:['',Validators.required],
+  //     isirDoc:['',Validators.required]
+  //   })
 
-  }
+  // }
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
 
-    this.productForm = this.fb.group({
-      customerName: [''],
-      productName: ['', Validators.required],
-=======
+  //   this.productForm = this.fb.group({
+  //     customerName: [''],
+  //     productName: ['', Validators.required],
   constructor(private _formBuilder: FormBuilder,
     public customerService: CustomerApiService) {}
 
   ngOnInit(){
     this.customerService. getCustomerAll().subscribe(data => {
       this.customerData = data;
->>>>>>> 4cd4800937442283c79251c6f73e75d560fa5fb9
     })
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
@@ -66,34 +63,31 @@ export class AddProductComponent implements OnInit {
     });
     
   }
-<<<<<<< HEAD
 
-    onAddProcess() {
-      let processes = this.productForm.get('processes') as FormArray;
-      processes.push(this.fb.group({
-         name:['',Validators.required],
-         drawing:['',Validators.required],
-         jsirDoc:['',Validators.required],
-         pmsDoc:['',Validators.required],
-         pdirDoc:['',Validators.required],
-         isirDoc:['',Validators.required]
-      }));
+  //   onAddProcess() {
+  //     let processes = this.productForm.get('processes') as FormArray;
+  //     processes.push(this.fb.group({
+  //        name:['',Validators.required],
+  //        drawing:['',Validators.required],
+  //        jsirDoc:['',Validators.required],
+  //        pmsDoc:['',Validators.required],
+  //        pdirDoc:['',Validators.required],
+  //        isirDoc:['',Validators.required]
+  //     }));
 
-   }
+  //  }
 
 
-  onProductSave() {
-    console.log('data of product ', this.productForm.value);
-    this.alert.showSuccess("Data Saved Suceessfully ", " Product ");
+  // onProductSave() {
+  //   console.log('data of product ', this.productForm.value);
+  //   this.alert.showSuccess("Data Saved Suceessfully ", " Product ");
 
-  }
+  // }
 
-  onProcessSave(){
-    console.log(this.processForm.value);
-  }
+  // onProcessSave(){
+  //   console.log(this.processForm.value);
+  // }
 
 
 }
-=======
-}
->>>>>>> 4cd4800937442283c79251c6f73e75d560fa5fb9
+
