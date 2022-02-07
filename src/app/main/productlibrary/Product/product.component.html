@@ -6,8 +6,8 @@
         <input class="upload-field" type="file" multiple="false" />
     </div> -->
     <mat-form-field class="search-form-field" floatLable="never">
-        <input matInput placeholder="Search" autocomplete="off">
-        <button mat-button matSuffix mat-icon-button aria-label="clear">
+        <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
             <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
@@ -32,9 +32,9 @@
             <div class="product-header-cell last"></div>
             <ng-container *ngFor="let product of products; let productIndex =index">
                 <span class="product-cell first">{{productIndex + 1}}</span>
-                <span class="product-cell">{{product.name}}</span>
-                <span class="product-cell">{{product.customer.name}}</span>
-                <span class="product-cell">{{product.customer.drawing}}</span>
+                <span class="product-cell">{{product.productName}}</span>
+                <span class="product-cell">{{product.customerName}}</span>
+                <span class="product-cell">{{product.drawing}}</span>
                 <span class="product-cell">
                     <button class="edit-button" mat-icon-button  title="Edit">
                         <mat-icon>edit</mat-icon>
@@ -52,24 +52,34 @@
                 <!-- [@detailExpand]="expandedProduct === product ? 'expanded' : 'collapsed'" -->
                 <!-- [@detailExpand]="!!expandedProductMap[product._id] ? 'expanded' : 'collapsed'"  -->
                 <div [@detailExpand]="isExpanded(product._id) ? 'expanded' : 'collapsed'" class="expandable-row">
-                    <div class="process-table" gdColumns.lt-md="repeat(9, auto)" gdColumns="repeat(10, auto)">
+                    <div class="process-table" gdColumns.lt-md="repeat(8, auto)" gdColumns="repeat(9, auto)">
                         <div class="process-header-cell" *ngFor="let column of displayedColumns">{{ column }}</div>
                         <ng-container
                             *ngFor="let process of product.processes; let operationIndex = index; let lastOperation = last">
                             <div [class.b-b]="!lastOperation" class="process-cell">{{operationIndex+1}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.processName}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.drawing.no}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.drawing.path}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.operationName}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.processDrawingNo}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.processDrawing}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.pirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.pmsDoc}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.pdirDoc}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.isirDoc}}</div>
                         </ng-container>
                     </div>
                 </div>
             </ng-container>
+        </div>
+        <div class="footer">
+            <div class="deleteallFun">
+                <button mat-raised-button class="DeleteAll-button"  >
+                    <mat-icon>delete</mat-icon>Deleteall
+                </button>
+            </div>
+            <div class="paginator">
+                <mat-paginator [pageSizeOptions]="[1,3,5,10,15,25,100]" pageSize="10" showFirstLastButtons>
+                </mat-paginator>
+            </div>
         </div>
     </div>
 </div>

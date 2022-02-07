@@ -125,4 +125,10 @@ mat-card{
     border-bottom: 1px solid #ccc;
   }
 }
-
+.footer{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.DeleteAll-button{
+  margin-left: 15px;
+  margin-top: 13px;}

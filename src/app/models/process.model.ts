@@ -1,7 +1,7 @@
 export interface Process {
     _id?: string;
-    processCount:string,
-    processName: string;
+    sno:number;
+    operationName: string;
     processDrawingNo: Drawing;
     processDrawing: Drawing;
     jsirDoc: string;

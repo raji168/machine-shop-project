@@ -12,7 +12,7 @@
         },
         "processes": [
          {
-             "name":"operation1",
+             "processName":"operation1",
              "drawing": {
                  "no" : "asdasdasdas",
                  "path": "uploads\\cc655c6d95efedd1fca9b6d545827125"
@@ -24,7 +24,7 @@
              "isirDoc":"uploads\\cc655c"
          },
          {
-            "name":"operation2",
+            "processName":"operation2",
             "drawing": {
                 "no" : "asdasdasdas",
                 "path": "uploads\\cc655c"
@@ -36,7 +36,7 @@
             "isirDoc":"uploads\\cc655c"
         },
         {
-            "name":"operation3",
+            "processName":"operation3",
             "drawing": {
                 "no" : "asdasdasdas",
                 "path": "uploads\\cc655c"
