@@ -7,7 +7,6 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
 import { MainModule } from './main/main.module';
 import { StoreModule } from '@ngrx/store';
@@ -24,7 +23,6 @@ import { _RESOLVED_META_REDUCERS } from '@ngrx/store/src/tokens';
   ],
 
   imports: [
-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -37,12 +35,7 @@ import { _RESOLVED_META_REDUCERS } from '@ngrx/store/src/tokens';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    StoreModule.forRoot({
-      RoleState: roleReducer
-    })
-     
-    
-
+    StoreModule.forRoot({})
   ],
 
   providers: [],

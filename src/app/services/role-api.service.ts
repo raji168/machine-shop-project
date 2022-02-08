@@ -12,8 +12,6 @@ import { RoleDataService } from '../data-services/role-data.service';
 export class RoleApiService {
 
   url: string = 'http://192.168.0.17:3002/roles';
-
-
   roles: Role[] = [];
 
   // roleUpdated = new Subject();
