@@ -27,7 +27,7 @@ export class PreloginComponent implements OnInit {
     private authService:AuthService) 
     { 
       if(this.authService.userValue) {
-        this.router.navigate(['/']);
+        this.router.navigate(['main/dashboard']);
       }
     }
 
@@ -38,7 +38,7 @@ export class PreloginComponent implements OnInit {
       password: ['', Validators.required]
     });
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'main/dashboard';
   }
 
   get f() {

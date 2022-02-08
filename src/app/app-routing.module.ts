@@ -7,7 +7,7 @@ import { PreloginComponent } from './prelogin/prelogin.component';
 const routes: Routes = [
 
 
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: '/login' },
   
   {
     path: 'main', loadChildren: () => import('./main/main.module').then(m => m.MainModule),
