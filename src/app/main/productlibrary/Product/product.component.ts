@@ -6,11 +6,12 @@ import { ProductDataService } from 'src/app/data-services/product-data.service';
 import { Product } from 'src/app/models/product.model';
 import { ProductApiService } from 'src/app/services/product-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { AddProductComponent } from '../Product/add-product/add-product.component';
+
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { AddProductComponent } from './add-product/add-product.component';
 
 const ELEMENT_DATA: Product[] = [];
 
@@ -53,27 +54,27 @@ export class ProductComponent {
       return new MatTableDataSource(data);
     }))
 
-    this.productApiService.get().subscribe(data => {
-      this.products = data
-      this.products.paginator = this.paginator;
-      this.products.sort = this.sort;
-      console.log(this.products);
-    })
+    // this.productApiService.get().subscribe(data => {
+    //   this.products = data
+    //   this.products.paginator = this.paginator;
+    //   this.products.sort = this.sort;
+    //   console.log(this.products);
+    // })
 
-    // this.productDataSource$.subscribe(
-    //   ((res) => {
-    //     this.products = res.data;
-    //     this.products = new MatTableDataSource(res.data);
-    //     this.products.paginator = this.paginator;
-    //     this.products.sort = this.sort;
-    //   })
-    // )
+    this.productDataSource$.subscribe(
+      ((res) => {
+        // this.products = res.data;
+        this.products = new MatTableDataSource(res.data);
+        this.products.paginator = this.paginator;
+        this.products.sort = this.sort;
+      })
+    )
   }
 
-  // ngAfterViewInit(): void {
-  //   this.products.paginator = this.paginator;
-  //   this.products.sort = this.sort;
-  // }
+  ngAfterViewInit(): void {
+    this.products.paginator = this.paginator;
+    this.products.sort = this.sort;
+  }
 
 
   // onExpandClick(product: Product) {
