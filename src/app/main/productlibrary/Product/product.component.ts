@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { DialogsService } from 'src/app/services/dialogs.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 const ELEMENT_DATA: Product[] = [];
 
@@ -46,7 +48,9 @@ export class ProductComponent {
     private productApiService: ProductApiService,
     private productDataService: ProductDataService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private dialogsService: DialogsService,
+    private notification: NotificationService
   ) { }
   ngOnInit(): void {
     this.productDataSource$ = this.productDataService.productUpdated$.pipe(map(data => {
@@ -112,5 +116,20 @@ export class ProductComponent {
     this.applyFilter();
   }
 
+  onEdit(product: Product) {
+    this.dialog.open(AddProductComponent, { data: { product } });
+  }
+
+  onDelete(id) {
+    this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
+      .afterClosed().subscribe(res => {
+        // console.log(res);
+        if (res) {
+          this.productApiService.deleteProduct(id).subscribe(res => {
+            this.notification.success(' deleted Suceessfully');
+          })
+        }
+      });
+  }
 }
 

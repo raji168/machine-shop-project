@@ -1,5 +1,5 @@
 import { Component,Inject,OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Customer } from "src/app/models/customer.model";
 import { Product } from "src/app/models/product.model";
@@ -13,7 +13,6 @@ import { ProductApiService } from "src/app/services/product-api.service";
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-
   product : Product;
   value = ' ';
   form:FormGroup;
@@ -27,12 +26,12 @@ export class AddProductComponent implements OnInit {
     private formBulider: FormBuilder
   ){
     this.form=this.formBulider.group({
-      customerName:"",
-      customerDrawingNo:"",
-      revisionNo:"",
-      productName:"",
-      partNo:"",
-      customerDrawing:"",
+      customerName:['', Validators.required],
+      customerDrawingNo:['', Validators.required],
+      revisionNo:['', Validators.required],
+      productName:['', Validators.required],
+      partNo:['', Validators.required],
+      customerDrawing:['', Validators.required],
       process:formBulider.array([])
     })
   }
@@ -46,7 +45,12 @@ export class AddProductComponent implements OnInit {
       this.form.patchValue(this.product);
       this.form.get('customer')?.setValue(this.data.product.customerName);
     }
+
+    // this.form.valueChanges.subscribe((v) => {
+    //       this.isDisable = !this.form.valid;
+    // });
   }
+  
   addNewProcessGroup() {
     const add = this.form.get('process') as FormArray;
     add.push(this.formBulider.group({
@@ -74,10 +78,12 @@ export class AddProductComponent implements OnInit {
     //     this.notification.success("Edited successfully!!");
     //   });
     // } else {
+      this.form.disable();
+      this.dialogRef.close();
       this.productService.addProduct(this.form.value).subscribe(data => {
-        this.dialogRef.close(data);
-        console.log(data)
-        this.notification.success("Added successfully!!");
+        this.notification.success("Product Added successfully!!");
       });
+    console.log('saved');
+    console.log(this.form.value);
     }
 }

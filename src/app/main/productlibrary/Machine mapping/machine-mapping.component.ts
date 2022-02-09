@@ -9,6 +9,7 @@ import { MachineMapping } from 'src/app/models/machinemapping.model';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MachineMappingApiService } from 'src/app/services/machinemapping-api.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { AddMachinemapComponent } from './add-machinemap/add-machinemap.component';
 
 @Component({
   selector: 'app-machine-mapping',
@@ -50,7 +51,7 @@ export class MachineMappingComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "40%";
-    // this.dialog.open(AddMachineMapComponent, dialogConfig);
+    this.dialog.open(AddMachinemapComponent, dialogConfig);
   }
   applyFilter() {
     this.machineMapData.filter = this.searchKey.trim().toLocaleLowerCase();
@@ -60,7 +61,7 @@ export class MachineMappingComponent implements OnInit {
     this.applyFilter();
   }
   onEdit(machineMap: MachineMapping) {
-    // this.dialog.open(AddMachineMaptComponent, { data: { machineMap } });
+    this.dialog.open(AddMachinemapComponent, { data: { machineMap } });
   }
   
   onDelete(id) {

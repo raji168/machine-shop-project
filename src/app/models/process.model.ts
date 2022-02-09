@@ -1,8 +1,8 @@
 export interface Process {
     _id?: string;
     operationName: string;
-    processDrawingNo: Drawing;
-    processDrawing: Drawing;
+    drawingNo: string;
+    drawing: string;
     jsirDoc: string;
     pmsDoc: string;
     pirDoc:string;
@@ -13,6 +13,8 @@ export interface Process {
 
 export interface Drawing {
     id:string;
-    no: string;
-    path: string;
+    customerdrawingNo: string;
+    processdrawingNo: string;
+    customerDrawing:string;
+    processDrawing:string;
 }

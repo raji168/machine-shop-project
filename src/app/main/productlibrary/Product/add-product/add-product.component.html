@@ -36,15 +36,15 @@
         </div>
       </form>
       <div>
-        <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="warn">Cancel</button>
-        <button mat-raised-button matStepperNext class="nextButton" color="primary">Next</button>
+        <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
+        <button mat-raised-button matStepperNext class="nextButton" [disabled]="form.invalid" color="primary">Next</button>
       </div>
     </div>
   </mat-step>
   <mat-step class="step-header">
     <ng-template matStepLabel>Process</ng-template>
     <div class="process">
-      <!-- <form [formGroup]="form"> -->
+      <form [formGroup]="form">
         <div class="process-header">
           <p class="process-title">Process</p>
           <button mat-raised-button  matTooltip="Add process"
@@ -94,11 +94,11 @@
         <div class="process-buttons">
           <button mat-raised-button matStepperPrevious class="previousButton" color="accent">Previous</button>
           <div class="subprocess-button">
-            <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="warn">Cancel</button>
-            <button mat-raised-button matStepperNext class="nextButton" color="primary">Next</button>
+            <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
+            <button mat-raised-button matStepperNext [disabled]="form.invalid"  class="nextButton" color="primary">Next</button>
           </div>
         </div>
-      <!-- </form> -->
+      </form>
     </div>
   </mat-step>
   <mat-step class="step-header">
@@ -126,8 +126,8 @@
     <div class="process-buttons">
       <button mat-raised-button matStepperPrevious class="previousButton" color="accent">Previous</button>
       <div class="subprocess-button">
-        <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="warn">Cancel</button>
-        <button mat-raised-button class="btn-save" (ngSubmit)="onSubmit()"  type="submit" color="primary">Save</button>
+        <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
+        <button mat-raised-button class="btn-save" (click)="onSubmit()" color="primary">Save</button>
       </div>
     </div>
   </mat-step>

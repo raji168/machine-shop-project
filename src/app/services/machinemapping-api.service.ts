@@ -11,7 +11,7 @@ import { MachineMappingDataService } from '../data-services/machinemapping-data.
 })
 export class MachineMappingApiService {
   
-  API_URL : string = 'http://192.168.0.17:3002/';
+  API_URL : string = 'http://192.168.0.17:3002/mappings';
 
   
     machinemapping : MachineMapping [];
