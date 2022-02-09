@@ -1,6 +1,6 @@
-import { Component,OnInit } from "@angular/core";
+import { Component,Inject,OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
-import { MatDialogRef } from "@angular/material/dialog";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Customer } from "src/app/models/customer.model";
 import { Product } from "src/app/models/product.model";
 import { CustomerApiService } from "src/app/services/customer-api.service";
@@ -19,6 +19,7 @@ export class AddProductComponent implements OnInit {
   form:FormGroup;
   customerData: Customer[] = [];
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data : {product: Product},
     public customerService: CustomerApiService,
     public productService : ProductApiService,
     public dialogRef: MatDialogRef<AddProductComponent>,
@@ -39,6 +40,12 @@ export class AddProductComponent implements OnInit {
     this.customerService.getCustomerAll().subscribe(data => {
       this.customerData = data;
     })
+  
+    this.product = this.data?.product;
+    if(this.product) {
+      this.form.patchValue(this.product);
+      this.form.get('customer')?.setValue(this.data.product.customerName);
+    }
   }
   addNewProcessGroup() {
     const add = this.form.get('process') as FormArray;
@@ -60,16 +67,17 @@ export class AddProductComponent implements OnInit {
 
   onSubmit() {
 
-    if (this.product) {
-      this.productService.updateProduct(this.form.value, this.product._id).subscribe(data => {
-        this.dialogRef.close(data);
-        this.notification.success("Edited successfully!!");
-      });
-    } else {
+    // if (this.product) {
+    //   this.productService.updateProduct(this.form.value, this.product._id).subscribe(data => {
+    //     this.dialogRef.close(data);
+    //     console.log(data)
+    //     this.notification.success("Edited successfully!!");
+    //   });
+    // } else {
       this.productService.addProduct(this.form.value).subscribe(data => {
         this.dialogRef.close(data);
+        console.log(data)
         this.notification.success("Added successfully!!");
       });
     }
-}
 }

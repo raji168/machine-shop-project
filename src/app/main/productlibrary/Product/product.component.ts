@@ -54,12 +54,19 @@ export class ProductComponent {
       return new MatTableDataSource(data);
     }))
 
+<<<<<<< HEAD
     // this.productApiService.get().subscribe(data => {
     //   this.products = data
     //   this.products.paginator = this.paginator;
     //   this.products.sort = this.sort;
     //   console.log(this.products);
     // })
+=======
+    this.productApiService.get().subscribe(data => {
+      this.products = data
+      console.log(this.products);
+    })
+>>>>>>> 168e3fc23d9937aa0d008fa4782d183a822586f6
 
     this.productDataSource$.subscribe(
       ((res) => {

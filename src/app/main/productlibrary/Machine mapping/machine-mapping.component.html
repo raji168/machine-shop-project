@@ -1,9 +1,9 @@
-<!-- <div class="container">
+<div class="container">
     <mat-toolbar class="top-menu">
-        <span>Instruments List</span>
+        <span>Machine Mapping</span>
     </mat-toolbar>
     <div class="search-div">
-        <button mat-raised-button class="create-button" >
+        <button mat-raised-button class="create-button"  (click)="onCreate()">
             <mat-icon>add</mat-icon>Add
         </button>
         <mat-form-field class="search-form-field" floatLable="never">
@@ -13,8 +13,8 @@
             </button>
         </mat-form-field>
     </div>
-    <div class=" table-instrument mat-elevation-z8" role="table">
-        <mat-table  matSort class="matTable">
+    <div class=" table-machinemap mat-elevation-z8" role="table">
+        <mat-table [dataSource]="machineMapData" matSort class="matTable">
             <ng-container matColumnDef="select">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Select </mat-header-cell>
                 <mat-cell *matCellDef="let element ">
@@ -23,48 +23,41 @@
             </ng-container>
             <ng-container matColumnDef="sno">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</mat-header-cell>
-                <mat-cell *matCellDef="let instrument ;  let i = index"> {{i+1}} </mat-cell>
+                <mat-cell *matCellDef="let machineMap ;  let i = index"> {{i+1}} </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-                <mat-cell *matCellDef="let instrument"> {{instrument.name}} </mat-cell>
+            <ng-container matColumnDef="productname">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</mat-header-cell>
+                <mat-cell *matCellDef="let machineMap"> {{machineMap.productName}} </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="referenceno">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Reference Number</mat-header-cell>
-                <mat-cell *matCellDef="let instrument"> {{instrument.referenceno}} </mat-cell>
+            <ng-container matColumnDef="processname">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Process Name</mat-header-cell>
+                <mat-cell *matCellDef="let machineMap"> {{machineMap.processName}} </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="range">
-                <mat-header-cell *matHeaderCellDef>Range</mat-header-cell>
-                <mat-cell *matCellDef="let instrument"> {{instrument.range}} </mat-cell>
+            <ng-container matColumnDef="drawingno">
+                <mat-header-cell *matHeaderCellDef>Drawing No</mat-header-cell>
+                <mat-cell *matCellDef="let machineMap"> {{machineMap.drawingNo}} </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="calibratedon">
-                <mat-header-cell *matHeaderCellDef>Calibrated On</mat-header-cell>
-                <mat-cell *matCellDef="let instrument"> {{instrument.calibratedon|date}} </mat-cell>
+            <ng-container matColumnDef="machine">
+                <mat-header-cell *matHeaderCellDef>Machine</mat-header-cell>
+                <mat-cell *matCellDef="let machineMap"> {{machineMap.machineMapping}} </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="calibratedue">
-                <mat-header-cell *matHeaderCellDef>Calibrate Due</mat-header-cell>
-                <mat-cell *matCellDef="let instrument"> {{instrument.calibratedue|date}} </mat-cell>
-            </ng-container>
-           
             <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-                <mat-cell *matCellDef="let instrument">
-                    <button class="edit-button" mat-icon-button  title="Edit"
-                        (click)="onEdit(instrument)">
+                <mat-cell *matCellDef="let machineMap">
+                    <button class="edit-button" mat-icon-button  title="Edit"  (click)="onEdit(machineMap)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button class="delete-button"  title="Delete"
-                        (click)="onDelete(instrument._id)">
+                    <button mat-icon-button class="delete-button"  title="Delete" (click)="onDelete(machineMap._id)">
                         <mat-icon>delete_forever</mat-icon>
                     </button>
                 </mat-cell>
             </ng-container>
-           <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
-        <div class="footer" style="position: sticky;">
+        <!-- <div class="footer" style="position: sticky;">
             <div class="deleteallFun">
-                <button mat-raised-button class="DeleteAll-button" color="primary">
+                <button mat-raised-button class="DeleteAll-button" color="primary" (click)="removeSelected()">
                     <mat-icon>delete</mat-icon>Deleteall
                   </button>
             </div>
@@ -73,6 +66,6 @@
                 </mat-paginator>
             </div>
         </div>
-        <p *ngIf="grdlistData.length === 0" style="text-align: center;">There are no more data's</p>
+        <p *ngIf="grdlistData.length === 0" style="text-align: center;">There are no more data's</p> -->
     </div>
-</div> -->
+</div>
