@@ -7,12 +7,11 @@ import { PreloginComponent } from './prelogin/prelogin.component';
 const routes: Routes = [
 
 
-  { path: '**', redirectTo: '/login' },
+  { path: '', redirectTo: '/login' ,pathMatch:'full' },
   
   {
     path: 'main', loadChildren: () => import('./main/main.module').then(m => m.MainModule),
     canActivate:[AuthGuard]
-    
   },
   {
     path:'login',component:PreloginComponent,
