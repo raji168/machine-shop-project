@@ -12,12 +12,15 @@ import {MatButtonModule} from '@angular/material/button';
 import { MachineMappingComponent } from "./Machine mapping/machine-mapping.component";
 import { FormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { AddMachinemapComponent } from "./Machine mapping/add-machinemap/add-machinemap.component";
+
 @NgModule({
     declarations:[
         ProductLibraryComponent,
         ProductComponent,
         AddProductComponent,
         MachineMappingComponent,
+        AddMachinemapComponent
     ],
     imports:[
         CommonModule,

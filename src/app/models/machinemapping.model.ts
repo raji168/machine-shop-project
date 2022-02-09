@@ -4,8 +4,8 @@ import { Product } from "./product.model";
 
 export interface MachineMapping{
     id:string,
-    produdtName: Product,
+    productName: Product,
     processName: Process,
     drawingNo:Drawing,
-    machineMapping:Machine
+    machine:Machine
 }
