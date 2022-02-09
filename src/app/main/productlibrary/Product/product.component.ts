@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import {  Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Observable } from 'rxjs';
@@ -6,17 +6,13 @@ import { ProductDataService } from 'src/app/data-services/product-data.service';
 import { Product } from 'src/app/models/product.model';
 import { ProductApiService } from 'src/app/services/product-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-<<<<<<< HEAD
-import { AddProductComponent } from './add-product/add-product.component';
-=======
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { NotificationService } from 'src/app/services/notification.service';
->>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63
+import { AddProductComponent } from '../product/add-product/add-product.component';
 
 const ELEMENT_DATA: Product[] = [];
 
@@ -61,34 +57,25 @@ export class ProductComponent {
       return new MatTableDataSource(data);
     }))
 
-<<<<<<< HEAD
-    // this.productApiService.get().subscribe(data => {
-    //   this.products = data
-    //   this.products.paginator = this.paginator;
-    //   this.products.sort = this.sort;
-    //   console.log(this.products);
-    // })
-=======
     this.productApiService.get().subscribe(data => {
       this.products = data
       console.log(this.products);
     })
->>>>>>> 168e3fc23d9937aa0d008fa4782d183a822586f6
 
-    this.productDataSource$.subscribe(
-      ((res) => {
-        // this.products = res.data;
-        this.products = new MatTableDataSource(res.data);
-        this.products.paginator = this.paginator;
-        this.products.sort = this.sort;
-      })
-    )
+    // this.productDataSource$.subscribe(
+    //   ((res) => {
+    //     this.products = res.data;
+    //     this.products = new MatTableDataSource(res.data);
+    //     this.products.paginator = this.paginator;
+    //     this.products.sort = this.sort;
+    //   })
+    // )
   }
 
-  ngAfterViewInit(): void {
-    this.products.paginator = this.paginator;
-    this.products.sort = this.sort;
-  }
+  // ngAfterViewInit(): void {
+  //   this.products.paginator = this.paginator;
+  //   this.products.sort = this.sort;
+  // }
 
 
   // onExpandClick(product: Product) {
@@ -145,4 +132,7 @@ export class ProductComponent {
       });
   }
 }
+
+
+
 

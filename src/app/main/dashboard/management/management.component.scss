@@ -1,0 +1,31 @@
+.container{
+    margin:20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.table-management mat-header-cell{
+    font-size: 16px;
+    color:black;
+} 
+.table-management{
+    margin: 50px;
+}
+.search-form-field{
+    padding-left: 20px;
+    width: 25%;
+}
+
+ mat-cell{
+    justify-content: center;
+}
+mat-header-cell{
+    justify-content: center;
+}
+ng-container{
+    display: grid;
+}
+
+mat-row:nth-child(even){
+    background-color: rgb(220, 220, 220);
+}

@@ -7,29 +7,23 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-<<<<<<< HEAD
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
-import { MainModule } from './main/main.module';
-import { PreloginComponent } from './prelogin/prelogin.component';
-import { AuthInterceptor } from './auth/auth.interceptor';
-import { ErrorInterceptor } from './auth/error.interceptor';
-import { BackendProvider } from './auth/backend';
-
-=======
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
 import { MainModule } from './main/main.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
->>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63
+import { PreloginComponent } from './prelogin/prelogin.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BasicAuthInterceptor } from './auth/basic-auth.interceptor';
+import { ErrorInterceptor } from './auth/error.interceptor';
+
 
 @NgModule({
 
   declarations: [
 
     AppComponent,
-    MatConfirmDialogComponent,
     PreloginComponent,
+    MatConfirmDialogComponent,
 
   ],
 
@@ -41,12 +35,9 @@ import { MatInputModule } from '@angular/material/input';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-<<<<<<< HEAD
     FlexLayoutModule,
-=======
     MatFormFieldModule,
     MatInputModule,
->>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63
     MainModule,
     ToastrModule.forRoot({
       timeOut: 3000,
@@ -55,12 +46,11 @@ import { MatInputModule } from '@angular/material/input';
     })
 
   ],
-
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    BackendProvider
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
+
   bootstrap: [AppComponent],
   entryComponents: [MatConfirmDialogComponent]
 })

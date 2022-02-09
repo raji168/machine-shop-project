@@ -1,0 +1,37 @@
+[
+    {
+        "_id": "asdasdasd12311",
+        "machineName": "Machine 1",
+        "productName": "Engine",
+        "customerName": "Honda",
+        "status": "Run"
+    },
+    {
+        "_id": "asdasdasd12312",
+        "machineName": "Machine 2",
+        "productName": "Disk",
+        "customerName": "TVS",
+        "status": "Run"
+    },
+    {
+        "_id": "asdasdasd12313",
+        "machineName": "Machine 3",
+        "productName": "Disk",
+        "customerName": "Bajaj",
+        "status": "Hold"
+    },
+    {
+        "_id": "asdasdasd12314",
+        "machineName": "Machine 4",
+        "productName": "Yamaha",
+        "customerName": "Engine",
+        "status": "Break Down"
+    },
+    {
+        "_id": "asdasdasd12315",
+        "machineName": "Machine 5",
+        "productName": "Engine",
+        "customerName": "Royal Enfield",
+        "status": "Run"
+    }
+]

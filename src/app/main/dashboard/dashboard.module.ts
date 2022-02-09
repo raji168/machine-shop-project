@@ -4,10 +4,12 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "src/app/material/material.module";
 import { DashBoardRoutingModule } from "./dashboard-routing.module";
 import { DashboardComponent } from "./dashboard.component";
+import { ManagementComponent } from './management/management.component';
 
 @NgModule({
     declarations: [
-        DashboardComponent
+        DashboardComponent,
+        ManagementComponent
     ],
     imports: [
         CommonModule,

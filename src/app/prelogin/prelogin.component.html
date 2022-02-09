@@ -1,38 +1,29 @@
 <div class="main">
-    <div class="login-page">
-        <mat-card class="mat-elevation-z8">
-                <!-- <img src="../../assets/icon/login.png" style="width: 20%;height: 20%;"> -->
-            <form [formGroup]="loginForm" (ngSubmit)="clickLogin()" gdColumns="1fr">
-                <mat-form-field>
-                    <mat-label>Username</mat-label>
-                    <input matInput type="text" formGroupName="username" autocomplete="off" autofocus 
-                    [ngClass]="{ 'is-invalid': submitted && f.username.errors}" required>
-                    <div *ngIf="submitted && f.username.errors">
-                        <!-- <div *ngIf="f.username.errors.required">
-                            Username is required
-                        </div> -->
-                    </div>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input matInput formControlName="password" autocomplete="off" required  [type]="hide ? 'password' : 'text'" 
-                    [ngClass]="{ 'is-invalid': submitted && f.username.errors}" >
-                    <div *ngIf="submitted && f.username.errors">
-                        <!-- <div *ngIf="f.username.errors.required">
-                            Password is required
-                        </div> -->
-                    </div>
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </mat-form-field>
-                <div class="button">
-                    <button [disabled]="loading" class="btn" 
-                    mat-raised-button  color="primary" type="submit">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>login</button>
-                    <button class="btn" mat-raised-button color="warn" type="reset">clear</button>
-                </div>
-                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
-            </form>
-        </mat-card>
-    </div>
+  <div class="login-page">
+    <mat-card class="mat-elevation-z8">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input id="username" type="text" name="username" ngModel required #name="ngModel">
+          <div *ngIf="!name.valid && name.touched" class="help-block">Username is required</div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" minlength="4" ngModel required #pass="ngModel">
+          <div *ngIf="!pass.valid && pass.errors?.minlength" class="help-block">Minimum 4 letters is mandatory</div>
+          <div *ngIf="!pass.valid && !pass.errors?.minlength && pass.touched" class="help-block">Password is
+            required</div>
+          </div>
+        <div class="button">
+          <button [disabled]="!f.valid" mat-raised-button color="primary" type="submit" class="submit">Submit</button>
+          <button mat-raised-button type="reset" color="warn" class="reset">Clear</button>
+        </div>
+
+        <div *ngIf="error" class="alert alert-danger">
+          <strong>Authentication Failed !</strong>
+        </div>
+      </form>
+    </mat-card>
+  </div>
 
 </div>

@@ -3,7 +3,7 @@ import { Drawing, Process } from "./process.model";
 import { Product } from "./product.model";
 
 export interface MachineMapping{
-    id:string,
+    id?:string,
     productName: Product,
     processName: Process,
     drawingNo:Drawing,
