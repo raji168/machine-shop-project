@@ -1,21 +1,74 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-weight: 600;
+}
+
 .main{
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 600;
+ 
 }
 
 .button{
   display: grid;
   grid-template-columns: 1fr 1fr ;
   gap: 10px 10px;
+  padding-top: 30px;
 }
 
 
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
+.login-page{
+  display: grid;
+  grid-template-columns: repeat(2 ,1fr) ;
+  gap: 7rem;
+  font-weight: 600;
+  border-radius: 15px;
+  box-shadow: 0 0 0 5px  rgb(248, 29, 102);
 }
 
-.ng-invalid.ng-touched  {
-  border-left: 5px solid #a94442; /* red */
+.title{
+  display: flex;
+  justify-content: space-around;
+  font-size: large;
+}
+
+.img img {
+  width:100px;
+}
+.left-space img{
+  width: 450px;
+
+}
+
+.right-space{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.user-logo img{
+  width: 100px;
+  padding-bottom: 20px;
+  
+}
+
+form{
+  width: 360px;
+}
+
+label{
+  padding-right: 20px;
+}
+
+.form-group{
+  padding-bottom: 20px;
+}
+
+input{
+  padding: 5px;
 }
