@@ -23,8 +23,7 @@ import { ErrorInterceptor } from './auth/error.interceptor';
 
     AppComponent,
     PreloginComponent,
-    MatConfirmDialogComponent,
-
+    MatConfirmDialogComponent
   ],
 
   imports: [

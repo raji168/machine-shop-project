@@ -1,0 +1,200 @@
+{
+  "managements": [
+    {
+      "_id": "asdasdasd12311",
+      "machineName": "Machine 1",
+      "productName": "Engine",
+      "customerName": "Honda",
+      "status": "Run"
+    },
+    {
+      "_id": "asdasdasd12312",
+      "machineName": "Machine 2",
+      "productName": "Disk",
+      "customerName": "TVS",
+      "status": "Run"
+    },
+    {
+      "_id": "asdasdasd12313",
+      "machineName": "Machine 3",
+      "productName": "Disk",
+      "customerName": "Bajaj",
+      "status": "Hold"
+    },
+    {
+      "_id": "asdasdasd12314",
+      "machineName": "Machine 4",
+      "productName": "Yamaha",
+      "customerName": "Engine",
+      "status": "Break Down"
+    },
+    {
+      "_id": "asdasdasd12315",
+      "machineName": "Machine 5",
+      "productName": "Engine",
+      "customerName": "Royal Enfield",
+      "status": "Hold"
+    },
+    {
+      "_id": "asdasdasd12316",
+      "machineName": "Machine 6",
+      "productName": "Disk",
+      "customerName": "Royal Enfield",
+      "status": "Run"
+    },
+    {
+      "_id": "asdasdasd12317",
+      "machineName": "Machine 7",
+      "productName": "Disk",
+      "customerName": "Yamaha",
+      "status": "Hold"
+    },
+    {
+      "_id": "asdasdasd12318",
+      "machineName": "Machine 8",
+      "productName": "Break",
+      "customerName": "TVS",
+      "status": "Run"
+    }
+  ],
+  "inspectorviews": [
+    {
+      "_id": "asdasdasd12311",
+      "machineName": "Machine 1",
+      "productName": "Engine",
+      "customerName": "Honda",
+      "partNo": "P-8654",
+      "timeSchedule": "one hour",
+      "entry": "JSIR",
+      "status": "Checked "
+    },
+    {
+      "_id": "asdasdasd12312",
+      "machineName": "Machine 2",
+      "productName": "Disk",
+      "customerName": "TVS",
+      "partNo": "P-4231",
+      "timeSchedule": "one hour",
+      "entry": "JSIR",
+      "status": "Not Checked - 30min "
+    },
+    {
+      "_id": "asdasdasd12313",
+      "machineName": "Machine 3",
+      "productName": "Disk",
+      "customerName": "Bajaj",
+      "partNo": "P-8600",
+      "timeSchedule": "one hour",
+      "entry": "PIR",
+      "status": "Checked"
+    },
+    {
+      "_id": "asdasdasd12314",
+      "machineName": "Machine 4",
+      "productName": "Yamaha",
+      "customerName": "Engine",
+      "partNo": "P-5012",
+      "timeSchedule": "one hour",
+      "entry": "JSIR",
+      "status": "Checked"
+    },
+    {
+      "_id": "asdasdasd12315",
+      "machineName": "Machine 5",
+      "productName": "Engine",
+      "customerName": "Royal Enfield",
+      "partNo": "P-6930",
+      "timeSchedule": "one hour",
+      "entry": "PIR",
+      "status": "Checked"
+    },
+    {
+      "_id": "asdasdasd12316",
+      "machineName": "Machine 6",
+      "productName": "Disk",
+      "customerName": "Royal Enfield",
+      "partNo": "P-0120",
+      "timeSchedule": "one hour",
+      "entry": "PDIR",
+      "status": "Checked"
+    },
+    {
+      "_id": "asdasdasd12317",
+      "machineName": "Machine 7",
+      "productName": "Disk",
+      "customerName": "Yamaha",
+      "partNo": "P-2256",
+      "timeSchedule": "one hour",
+      "entry": "PIR",
+      "status": "Not-Checked - 10mins"
+    },
+    {
+      "_id": "asdasdasd12318",
+      "machineName": "Machine 8",
+      "productName": "Break",
+      "customerName": "TVS",
+      "partNo": "P-9680",
+      "timeSchedule": "one hour",
+      "entry": "PIR",
+      "status": "Not-Checked - 45mins"
+    }
+  ],
+  "customerviews": [
+    {
+      "_id": "asdasdasd12311",
+      "productName": "Engine",
+      "lotID": 56389,
+      "partNo": "P-8654",
+      "status": "Completed"
+    },
+    {
+      "_id": "asdasdasd12312",
+      "productName": "Disk",
+      "lotID": 38934,
+      "partNo": "P-8934",
+      "status": "Not Completed"
+    },
+    {
+      "_id": "asdasdasd12313",
+      "productName": "Break",
+      "lotID": 92312,
+      "partNo": "P-2312",
+      "status": "Running"
+    },
+    {
+      "_id": "asdasdasd12314",
+      "productName": "Engine 1",
+      "lotID": 41001,
+      "partNo": "P-1001",
+      "status": "Running"
+    },
+    {
+      "_id": "asdasdasd12315",
+      "productName": "Break 1",
+      "lotID": 76102,
+      "partNo": "P-6102",
+      "status": "Not Completed"
+    },
+    {
+      "_id": "asdasdasd12315",
+      "productName": "Disk 1",
+      "lotID": 10280,
+      "partNo": "P-0280",
+      "status": "Completed"
+    },
+    {
+      "_id": "asdasdasd12315",
+      "productName": "Disk 2",
+      "lotID": 80023,
+      "partNo": "P-0023",
+      "status": "Not Completed"
+    },
+    {
+      "_id": "asdasdasd12315",
+      "productName": "Engine 2",
+      "lotID": 32659,
+      "partNo": "P-2659",
+      "status": "Completed"
+    }
+  ]
+}

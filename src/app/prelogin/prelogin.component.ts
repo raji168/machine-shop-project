@@ -27,12 +27,26 @@ export class PreloginComponent implements OnInit {
 
     console.log("template Model", form);
 
+    const name = form.value.username;
+    
     this.authenticationService
       .login(form.value.username, form.value.password)
       // .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate(["dashboard/management"]);
+          // const name = data.username;
+//           switch (form.value.username == name) {
+//     case admin :
+//         console.log("Result: 0");
+//         break;
+//     case 5:
+//         console.log("Result: 5");
+//         break;
+//     case 10:
+//         console.log("Result: 10");
+//         break;
+// }
+          this.router.navigate(["dashboard/customer-view"]);
         },
         error => {
           this.error = error;

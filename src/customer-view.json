@@ -1,0 +1,60 @@
+{
+    "customerviews": [
+      {
+        "_id": "asdasdasd12311",
+        "productName": "Engine",
+        "lotID": 56389,
+        "partNo": "P-8654",
+        "status": "Completed"
+      },
+      {
+        "_id": "asdasdasd12312",
+        "productName": "Disk",
+        "lotID": 38934,
+        "partNo": "P-8934",
+        "status": "Not Completed"
+      },
+      {
+        "_id": "asdasdasd12313",
+        "productName": "Break",
+        "lotID": 92312,
+        "partNo": "P-2312",
+        "status": "Running"
+      },
+      {
+        "_id": "asdasdasd12314",
+        "productName": "Engine 1",
+        "lotID": 41001,
+        "partNo": "P-1001",
+        "status": "Running"
+      },
+      {
+        "_id": "asdasdasd12315",
+        "productName": "Break 1",
+        "lotID": 76102,
+        "partNo": "P-6102",
+        "status": "Not Completed"
+      },
+      {
+        "_id": "asdasdasd12315",
+        "productName": "Disk 1",
+        "lotID": 10280,
+        "partNo": "P-0280",
+        "status": "Completed"
+      },
+      {
+        "_id": "asdasdasd12315",
+        "productName": "Disk 2",
+        "lotID": 80023,
+        "partNo": "P-0023",
+        "status": "Not Completed"
+      },
+      {
+        "_id": "asdasdasd12315",
+        "productName": "Engine 2",
+        "lotID": 32659,
+        "partNo": "P-2659",
+        "status": "Completed"
+      }
+    ]
+}

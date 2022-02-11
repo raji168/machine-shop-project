@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Router } from '@angular/router';
+import { UserService } from '../auth/user.service';
 
 
 @Component({
@@ -10,10 +11,14 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
+  userData;
+
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private userService:UserService) { }
 
   ngOnInit(): void {
 

@@ -1,0 +1,58 @@
+<div class="container">
+    <mat-toolbar class="top-menu">
+      <span>Management</span>
+    </mat-toolbar>
+    <mat-form-field class="search-form-field" floatLable="never">
+      <input matInput (keyup)="applyFilter($event)" placeholder="">
+    </mat-form-field>
+  </div>
+  
+  <div class=" table-inspector mat-elevation-z8" role="table">
+    <mat-table cdkDropList [dataSource]="inspectorData" 
+    [cdkDropListData]="inspectorData.data"
+    (cdkDropListDropped)="drop($event)"
+    matSort>
+      <ng-container matColumnDef="sno">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> S.No </mat-header-cell>
+        <mat-cell *matCellDef="let element ; let i =index "> {{i+1}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="machineName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Machine </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.machineName}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="customerName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Customer</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.customerName}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="productName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Product </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.productName}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="partNo">
+        <mat-header-cell *matHeaderCellDef> Part No</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.partNo}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="timeSchedule">
+        <mat-header-cell *matHeaderCellDef> Time Schedule </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.timeSchedule}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="entry">
+        <mat-header-cell *matHeaderCellDef> Entry Document </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.entry}} </mat-cell>
+      </ng-container> 
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+      </ng-container>
+      
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></mat-row>
+    </mat-table>
+    <!-- <div class="footer">
+      <div class="paginator">
+        <mat-paginator [pageSizeOptions]="[1,3,5,10,15,25,100]" pageSize="10" showFirstLastButtons>
+        </mat-paginator>
+      </div>
+    </div> -->
+  </div>

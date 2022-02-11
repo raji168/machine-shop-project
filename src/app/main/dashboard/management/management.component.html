@@ -8,8 +8,11 @@
 </div>
 
 <div class=" table-management mat-elevation-z8" role="table">
-  <!-- <table mat-table [dataSource]="shiftDataSource$ | async " class="mat-elevation-z8" matSort> -->
-  <mat-table [dataSource]="managementData" matSort>
+  <mat-table cdkDropList [dataSource]="managementData" 
+  [cdkDropListData]="managementData.data"
+  (cdkDropListDropped)="drop($event)"
+  cdkDrag
+  matSort>
     <ng-container matColumnDef="sno">
       <mat-header-cell *matHeaderCellDef mat-sort-header> S.No </mat-header-cell>
       <mat-cell *matCellDef="let element ; let i =index "> {{i+1}} </mat-cell>
@@ -28,17 +31,15 @@
     </ng-container>
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef> Machine Status </mat-header-cell>
-      <mat-cell *matCellDef="let element">
         <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
-      </mat-cell>
     </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></mat-row>
   </mat-table>
-  <div class="footer">
+  <!-- <div class="footer">
     <div class="paginator">
       <mat-paginator [pageSizeOptions]="[1,3,5,10,15,25,100]" pageSize="10" showFirstLastButtons>
       </mat-paginator>
     </div>
-  </div>
+  </div> -->
 </div>

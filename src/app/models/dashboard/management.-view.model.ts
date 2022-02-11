@@ -1,4 +1,4 @@
-export interface Management {
+export interface ManagementView {
     _id?: string;
     machineName: string;
     customerName: string;
