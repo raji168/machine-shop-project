@@ -34,33 +34,36 @@ export class PreloginComponent implements OnInit {
       // .pipe(first())
       .subscribe(
         data => {
-          // const name = data.username;
-          switch (data) {
-            case data.username == 'customer':
-              this.router.navigate(["dashboard/customer-view"]);
-              break;
-            case data.username == 'admin':
-              this.router.navigate(["dashboard/admin"]);
-              break;
-            case data.username == 'inspector':
-              this.router.navigate(["dashboard/inspector"]);
-              break;
-            case data.username == 'management':
-              this.router.navigate(["dashboard/management"]);
-              break;
-            case data.username == 'manager':
-              this.router.navigate(["dashboard/inspector"]);
-              break;
-            case data.username == 'npd':
-              this.router.navigate(["dashboard/npd"]);
-              break;
-            case data.username == 'supervisor':
-              this.router.navigate(['/dashboard/supervisor']);
-              break;
-            default :
-              this.router.navigate(["dashboard/login"]);
-              break;
-          }
+          this.router.navigate(["dashboard/management"]);
+          const name = data.username;
+          console.log(data);
+          console.log(data.username);
+          // switch (data.username) {
+            // case data.username == 'customer':
+            //   this.router.navigate(["dashboard/customer-view"]);
+            //   break;
+            // case data.username == 'admin':
+            //   this.router.navigate(["dashboard/admin"]);
+            //   break;
+            // case data.username == 'inspector':
+            //   this.router.navigate(["dashboard/inspector"]);
+            //   break;
+            // case data.username == 'management':
+            //   this.router.navigate(["dashboard/management"]);
+            //   break;
+            // case data.username == 'manager':
+            //   this.router.navigate(["dashboard/inspector"]);
+            //   break;
+            // case data.username == 'npd':
+            //   this.router.navigate(["dashboard/npd"]);
+            //   break;
+            // case data.username == 'supervisor':
+            //   this.router.navigate(['/dashboard/supervisor']);
+            //   break;
+            // default :
+            //   this.router.navigate(["dashboard/login"]);
+            //   break;
+          // }
           error => {
             this.error = error;
             // this.loading = false;

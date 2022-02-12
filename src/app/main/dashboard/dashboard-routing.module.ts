@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AdminComponent } from "./admin/admin.component";
 import { CustomerViewComponent } from "./customer-view/customer-view.component";
 import { InspectorComponent } from "./inspector/inspector.component";
 import { ManagementComponent } from "./management/management.component";
@@ -14,9 +13,6 @@ const routes: Routes = [
     },
     {
         path:'manager',component:ManagerComponent
-    },
-    {
-        path:'admin',component:AdminComponent
     },
     {
         path:'customer-view',component:CustomerViewComponent

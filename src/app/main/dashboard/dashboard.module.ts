@@ -5,7 +5,6 @@ import { MaterialModule } from "src/app/material/material.module";
 import { DashBoardRoutingModule } from "./dashboard-routing.module";
 import { DashboardComponent } from "./dashboard.component";
 import { ManagementComponent } from './management/management.component';
-import { AdminComponent } from './admin/admin.component';
 import { ManagerComponent } from './manager/manager.component';
 import { NpdTeamComponent } from './npd-team/npd-team.component';
 import { SupervisorComponent } from './supervisor/supervisor.component';
@@ -17,7 +16,6 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     declarations: [
         DashboardComponent,
         ManagementComponent,
-        AdminComponent,
         ManagerComponent,
         NpdTeamComponent,
         SupervisorComponent,

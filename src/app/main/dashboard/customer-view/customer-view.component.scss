@@ -1,18 +1,20 @@
 .container{
-    margin:20px;
-    padding: 20px;
     box-sizing: border-box;
 }
-
+.title{
+    margin:0;
+}
 .table-customer mat-header-cell{
     font-size: 16px;
     color:black;
 } 
 .table-customer{
-    margin: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
     table-layout:fixed;
     overflow-y: scroll;
-    height: 50%;
+    height: 70%;
+    text-align: left;
 }
 .search-form-field{
     padding-left: 20px;
