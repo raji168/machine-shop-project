@@ -1,11 +1,11 @@
 import { Machine } from "./machine.model";
-import { Drawing, Process } from "./process.model";
+import {Process } from "./process.model";
 import { Product } from "./product.model";
 
 export interface MachineMapping{
-    id:string,
-    productName: Product,
-    processName: Process,
-    drawingNo:Drawing,
-    machine:Machine
+    id:string;
+    product: Product;
+    // process: Process,
+    // drawingNo:Drawing,
+    machine:Machine;
 }

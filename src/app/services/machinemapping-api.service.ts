@@ -12,9 +12,9 @@ import { MachineMappingDataService } from '../data-services/machinemapping-data.
 export class MachineMappingApiService {
   
   API_URL : string = 'http://192.168.0.17:3002/mappings';
-
+  // API_URL : string='/assets/stub/products.json';
   
-    machinemapping : MachineMapping [];
+  machinemapping : MachineMapping [];
 
   constructor(
     private http: HttpClient,
@@ -31,7 +31,11 @@ export class MachineMappingApiService {
       })
     )
   }
+   
 
+    // getAll(){
+    //   return this.http.get<MachineMapping[]>(this.API_URL);
+    // }
 
   addMachineMap(machineMap: MachineMapping) {
     return this.http.post<MachineMapping>(this.API_URL, machineMap)

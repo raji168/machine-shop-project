@@ -1,135 +1,172 @@
 <div >
-<mat-stepper >
-  <mat-step class="step-header">
-    <ng-template matStepLabel>Product</ng-template>
-    <div class="customer">
-      <form [formGroup]="form" >
-        <div class="customer-form">
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Product Name</mat-label>
-            <input matInput formControlName="productName" ng-model="productName" cdkFocusInitial>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Customer Name</mat-label>
-            <mat-select formControlName="customerName">
-              <mat-option [value]="customer.customername" *ngFor="let customer of customerData "  ng-model="customerName">
-                {{customer.customername}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Revision No</mat-label>
-            <input matInput formControlName="revisionNo" autocomplete="off" ng-model="revisionNo">
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Part No</mat-label>
-            <input matInput formControlName="partNo" ng-model="partNo">
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Customer Drawing No</mat-label>
-            <input matInput formControlName="customerDrawingNo" ng-model="customerDrawingNo">
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Customer Drawing </mat-label>
-            <input matInput formControlName="customerDrawing" ng-model="customerDrawing">
-          </mat-form-field>
-        </div>
-      </form>
-      <div>
-        <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
-        <button mat-raised-button matStepperNext class="nextButton" [disabled]="form.invalid" color="primary">Next</button>
-      </div>
-    </div>
-  </mat-step>
-  <mat-step class="step-header">
-    <ng-template matStepLabel>Process</ng-template>
-    <div class="process">
-      <form [formGroup]="form">
-        <div class="process-header">
-          <p class="process-title">Process</p>
-          <button mat-raised-button  matTooltip="Add process"
-          aria-label="Button that displays a tooltip when focused or hovered over" (click)="addNewProcessGroup()">
-            <mat-icon color="primary" class="add-icon">add_circle</mat-icon>
-          </button>
-        </div>
-        <mat-card class="process-form" *ngFor="let processGroup of form.get('process')['controls']; let i=index"
-          [formGroup]="processGroup">
-          <div class="product-form">
-            <mat-form-field appearance="outline" class="sub-process">
-              <mat-label>Process Name</mat-label>
-              <input matInput formControlName="processName" required ng-model="processName" cdkFocusInitial>
+  <mat-stepper >
+    <mat-step class="step-header">
+      <ng-template matStepLabel>Product</ng-template>
+      <div class="customer">
+        <form [formGroup]="form" >
+          <div class="customer-form">
+            <mat-form-field appearance="outline" class="subCustomer">
+              <mat-label>Product Name</mat-label>
+              <input matInput formControlName="productName" autocomplete="off"  cdkFocusInitial required>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="sub-process">
-              <mat-label>Process Drawing No</mat-label>
-              <input matInput formControlName="processDrawingNo" ng-model="processDrawingNo" required>
+            <mat-form-field appearance="outline" class="subCustomer">
+              <mat-label>Customer Name</mat-label>
+              <mat-select formControlName="customerName">
+                <mat-option [value]="customer.customername" *ngFor="let customer of customerData "  >
+                  {{customer.customername}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="sub-process">
-              <mat-label>Process Drawing</mat-label>
-              <input matInput formControlName="processDrawing" ng-model="processDrawing" required>
+            <!-- <mat-form-field appearance="outline" class="subCustomer">
+              <mat-label>Revision No</mat-label>
+              <input matInput formControlName="revisionNo" autocomplete="off" nNo">
             </mat-form-field>
-            <mat-form-field appearance="outline" class="sub-process">
-              <mat-label>JSIR Doc</mat-label>
-              <input matInput formControlName="jsirDoc" ng-model="jsirDoc" required>
+            <mat-form-field appearance="outline" class="subCustomer">
+              <mat-label>Part No</mat-label>
+              <input matInput formControlName="partNo" >
+            </mat-form-field> -->
+            <mat-form-field appearance="outline" class="subCustomer">
+              <mat-label>Customer Drawing No</mat-label>
+              <input matInput formControlName="customerDrawingNo" autocomplete="off" required>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="sub-process">
-              <mat-label>PMS Doc</mat-label>
-              <input matInput formControlName="pmsDoc" ng-model="pmsDoc" required>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="sub-process">
-              <mat-label>PIR Doc</mat-label>
-              <input matInput formControlName="pirDoc" ng-model="pirDoc" required>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="sub-process">
-              <mat-label>PDIR Doc</mat-label>
-              <input matInput formControlName="pdirDoc" ng-model="pdirDoc" required>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="sub-process">
-              <mat-label>ISIR Doc</mat-label>
-              <input matInput formControlName="isirDoc" ng-model="isirDoc" required>
+            <mat-form-field appearance="outline" class="subCustomer">
+              <mat-label>Customer Drawing </mat-label>
+              <input matInput formControlName="customerDrawing" autocomplete="off" required>
             </mat-form-field>
           </div>
-          <button mat-raised-button  (click)="removeGroup(i)" class="btn-close"  matTooltip="cancel"
-          aria-label="Button that displays a tooltip when focused or hovered over" color="warn"><mat-icon>clear</mat-icon></button>
-        </mat-card>
-        <div class="process-buttons">
-          <button mat-raised-button matStepperPrevious class="previousButton" color="accent">Previous</button>
-          <div class="subprocess-button">
-            <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
-            <button mat-raised-button matStepperNext [disabled]="form.invalid"  class="nextButton" color="primary">Next</button>
-          </div>
+        </form>
+        <div>
+          <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
+          <button mat-raised-button matStepperNext [disabled]="form.invalid" class="nextButton"  color="primary">Next</button>
         </div>
-      </form>
-    </div>
-  </mat-step>
-  <mat-step class="step-header">
-    <ng-template matStepLabel>Preview</ng-template>
-    <mat-card>   
-      <div class="customer-form">
-        <span class="preview-form" ng-show="productName">Product name: {{form.value.productName}}</span>
-        <span class="preview-form" ng-show="customerName">Customer name: {{form.value.customerName}}</span>
-        <span class="preview-form" ng-show="revisionNo">Revision no: {{form.value.revisionNo}}</span>
-        <span class="preview-form" ng-show="partNo">Part no: {{form.value.partNo}}</span>
-        <span class="preview-form" ng-show="customerDrawingNo">Drawing no: {{form.value.customerDrawingNo}}</span>
-        <span class="preview-form" ng-show="customerDrawing">Drawing: {{form.value.customerDrawing}}</span>
       </div>
-      <div *ngFor="let processGroup of form.get('process')['controls']" class="product-form"  >
-        <span class="preview-form" ng-show="processName">process name: {{processGroup.value.processName}}</span>
-        <span class="preview-form" ng-show="processDrawingNo">process drawingno: {{processGroup.value.processDrawingNo}}</span>
-        <span class="preview-form" ng-show="processDrawing">process drawing: {{processGroup.value.processDrawing}}</span>
-        <span class="preview-form" ng-show="jsirDoc">JSIR: {{processGroup.value.jsirDoc}}</span>
-        <span class="preview-form" ng-show="pmsDoc">PMS: {{processGroup.value.pmsDoc}}</span>
-        <span class="preview-form" ng-show="pirDoc">PIR: {{processGroup.value.pirDoc}}</span>
-        <span class="preview-form" ng-show="pdirDoc">PDIR: {{processGroup.value.pdirDoc}}</span>
-        <span class="preview-form" ng-show="isirDoc">ISIR: {{processGroup.value.isirDoc}}</span>
+    </mat-step>
+    <mat-step class="step-header">
+      <ng-template matStepLabel>Process</ng-template>
+      <div class="process">
+        <form [formGroup]="form">
+          <div class="process-header">
+            <p class="process-title">Process</p>
+            <button mat-raised-button  matTooltip="Add process"
+            aria-label="Button that displays a tooltip when focused or hovered over" (click)="addNewProcessGroup()">
+              <mat-icon color="primary" class="add-icon">add_circle</mat-icon>
+            </button>
+          </div>
+          <mat-card class="process-form" *ngFor="let processGroup of form.get('process')['controls']; let i=index"
+            [formGroup]="processGroup">
+            <div class="product-form">
+              <mat-form-field appearance="outline" class="sub-process">
+                <mat-label>Process Name</mat-label>
+                <input matInput formControlName="operationName" autocomplete="off" cdkFocusInitial>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="sub-process">
+                <mat-label>Process Drawing No</mat-label>
+                <input matInput formControlName="processDrawingNo" autocomplete="off" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="sub-process">
+                <mat-label>Process Drawing</mat-label>
+                <input matInput formControlName="processDrawing" autocomplete="off" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="sub-process">
+                <mat-label>JSIR Doc</mat-label>
+                <input matInput formControlName="jsirDoc" autocomplete="off" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="sub-process">
+                <mat-label>PMS Doc</mat-label>
+                <input matInput formControlName="pmsDoc" autocomplete="off" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="sub-process">
+                <mat-label>PIR Doc</mat-label>
+                <input matInput formControlName="pirDoc" autocomplete="off" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="sub-process">
+                <mat-label>PDIR Doc</mat-label>
+                <input matInput formControlName="pdirDoc" autocomplete="off" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="sub-process">
+                <mat-label>ISIR Doc</mat-label>
+                <input matInput formControlName="isirDoc" autocomplete="off" required>
+              </mat-form-field>
+            </div>
+            <button mat-raised-button  (click)="removeGroup(i)" class="btn-close"  matTooltip="cancel"
+            aria-label="Button that displays a tooltip when focused or hovered over" color="warn"><mat-icon>clear</mat-icon></button>
+          </mat-card>
+          <div class="process-buttons">
+            <button mat-raised-button matStepperPrevious class="previousButton" color="accent">Previous</button>
+            <div class="subprocess-button">
+              <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
+              <button mat-raised-button matStepperNext   class="nextButton" color="primary">Next</button>
+            </div>
+          </div>
+        </form>
       </div>
-    </mat-card>
-    <div class="process-buttons">
-      <button mat-raised-button matStepperPrevious class="previousButton" color="accent">Previous</button>
-      <div class="subprocess-button">
-        <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
-        <button mat-raised-button class="btn-save" (click)="onSubmit()" color="primary">Save</button>
+    </mat-step>
+    <mat-step class="step-header">
+      <ng-template matStepLabel>Preview</ng-template>
+      <mat-card>   
+        <div class="previewhead-form">
+          <div class="preview-form" >
+            <span class="prview-head">Product name</span>
+            <span>:</span>
+            <span>{{form.value.productName}}</span></div>
+          <div class="preview-form" >
+            <span class="prview-head">Customer name</span>
+            <span>:</span>
+            <span> {{form.value.customerName}}</span>           </div>
+          <!-- <div class="preview-form" >Revision no  : {{form.value.revisionNo}}</div>
+          <div class="preview-form" >Part no      : {{form.value.partNo}}</div> -->
+          <div class="preview-form" >
+            <span class="prview-head">Drawing no</span>
+            <span>:</span>
+            <span>{{form.value.customerDrawingNo}}</span>    </div>
+          <div class="preview-form" >
+            <span class="prview-head">Drawing</span>
+            <span>:</span>
+            <span>{{form.value.customerDrawing}}</span>       </div>
+        </div>
+        <div *ngFor="let processGroup of form.get('process')['controls']" class="product-form"  >
+          <div class="preview-form" >
+            <span class="prview-head">process name </span>
+            <span>:</span>
+            <span>{{processGroup.value.operationName}}</span>     </div>
+          <div class="preview-form" >
+            <span class="prview-head">process drawingno</span>
+            <span>:</span>
+            <span>{{processGroup.value.processDrawingNo}}</span> </div>
+          <div class="preview-form" >
+            <span class="prview-head">process drawing</span>
+            <span>:</span>
+            <span>{{processGroup.value.processDrawing}}</span>   </div>
+          <div class="preview-form" >
+            <span class="prview-head">JSIR</span>
+            <span> :</span>
+            <span>{{processGroup.value.jsirDoc}}</span>  </div>
+          <div class="preview-form" >
+            <span class="prview-head">PMS </span>
+            <span>:</span>
+            <span>{{processGroup.value.pmsDoc}}</span>    </div>
+          <div class="preview-form" >
+            <span class="prview-head">PIR </span>
+            <span>:</span>
+            <span>{{processGroup.value.pirDoc}}</span>     </div>
+          <div class="preview-form" >
+            <span class="prview-head">PDIR </span>
+            <span> :</span>
+            <span>{{processGroup.value.pdirDoc}}</span>      </div>
+          <div class="preview-form" >
+            <span class="prview-head">ISIR </span>
+            <span> :</span>
+            <span>{{processGroup.value.isirDoc}}</span>   </div>
+        </div>
+      </mat-card>
+      <div class="process-buttons">
+        <button mat-raised-button matStepperPrevious class="previousButton" color="accent">Previous</button>
+        <div class="subprocess-button">
+          <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
+          <button mat-raised-button class="btn-save" (click)="onSubmit()" color="primary">Save</button>
+        </div>
       </div>
-    </div>
-  </mat-step>
-</mat-stepper>
+    </mat-step>
+  </mat-stepper>
 </div>
+  

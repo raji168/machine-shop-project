@@ -1,14 +1,15 @@
 import { Customer } from "./customer.model";
-import { Drawing, Process } from './process.model';
+import { Process } from './process.model';
 
 export interface Product {
-    _id?: string;
+    _id: string;
     productName: string;
-    customerName: Customer;
+    customerName: string;
     customerDrawingNo:number;
-    revisionNo:string;
+    // revisionNo:string;
     customerDrawing:string;
-    partNo:string;
-    processes: Process[];
+    // partNo:string;
+    isSelected: any;
+    process: Process[];
    
 }

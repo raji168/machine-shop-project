@@ -13,6 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { MachineMapping } from 'src/app/models/machinemapping.model';
 
 const ELEMENT_DATA: Product[] = [];
 
@@ -59,7 +60,7 @@ export class ProductComponent {
 
     this.productApiService.get().subscribe(data => {
       this.products = data
-      console.log(this.products);
+      // console.log(this.products);
     })
 
     // this.productDataSource$.subscribe(
@@ -130,6 +131,19 @@ export class ProductComponent {
           })
         }
       });
+  }
+
+  removeSelected() {
+    // const aproducts = this.products.data.filter((i: Product) => i.isSelected);
+    // this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
+    //   .afterClosed().subscribe(res => {
+    //     if (res) {
+    //       this.productApiService.deleteSelectProduct(aproducts).subscribe(res => {
+    //         this.products.data = this.products.data.filter((i: Product) => !i.isSelected);
+    //         this.notification.success('product Selected Records Deleted Successfully...!');
+    //       })
+    //     }
+    //   });
   }
 }
 
