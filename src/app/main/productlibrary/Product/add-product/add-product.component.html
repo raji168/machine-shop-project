@@ -52,13 +52,8 @@
             <mat-icon color="primary" class="add-icon">add_circle</mat-icon>
           </button>
         </div>
-<<<<<<< HEAD
-        <div *ngFor="let processGroup of form.get('process')['controls']; let i=index" [formGroup]="processGroup">
-          <!-- Process count: {{i+1}} -->
-=======
         <mat-card class="process-form" *ngFor="let processGroup of form.get('process')['controls']; let i=index"
           [formGroup]="processGroup">
->>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63
           <div class="product-form">
             <mat-form-field appearance="outline" class="sub-process">
               <mat-label>Process Name</mat-label>

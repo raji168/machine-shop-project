@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-import { Component, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
-=======
 import { Component,Inject,OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
->>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63
 import { Customer } from "src/app/models/customer.model";
 import { Product } from "src/app/models/product.model";
 import { CustomerApiService } from "src/app/services/customer-api.service";
@@ -29,17 +24,6 @@ export class AddProductComponent implements OnInit {
     public dialogRef: MatDialogRef<AddProductComponent>,
     public notification: NotificationService,
     private formBulider: FormBuilder
-<<<<<<< HEAD
-  ) {
-    this.form = this.formBulider.group({
-      customerName: "",
-      customerDrawingNo: "",
-      revisionNo: "",
-      productName: "",
-      partNo: "",
-      customerDrawing: "",
-      process: formBulider.array([])
-=======
   ){
     this.form=this.formBulider.group({
       customerName:['', Validators.required],
@@ -49,7 +33,6 @@ export class AddProductComponent implements OnInit {
       partNo:['', Validators.required],
       customerDrawing:['', Validators.required],
       process:formBulider.array([])
->>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63
     })
   }
   ngOnInit(): void {
@@ -81,10 +64,6 @@ export class AddProductComponent implements OnInit {
       isirDoc: ""
     }))
   }
-<<<<<<< HEAD
-
-}
-=======
   removeGroup(index) {
     const form = this.form.get('process') as FormArray
     form.removeAt(index);
@@ -108,4 +87,3 @@ export class AddProductComponent implements OnInit {
     console.log(this.form.value);
     }
 }
->>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63

@@ -9,16 +9,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
 import { MainModule } from './main/main.module';
-<<<<<<< HEAD
 import { StoreModule } from '@ngrx/store';
 import { _RESOLVED_META_REDUCERS } from '@ngrx/store/src/tokens';
 import { EffectsModule } from '@ngrx/effects';
 import { RoleEffects } from './store/effects/role.effects';
 import { roleReducer } from 'src/app/store/reducers/role.reducers'
-=======
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
->>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63
 
 @NgModule({
 
