@@ -1,9 +1,12 @@
+.role-component{
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
+}
 .container{
     margin:20px;
     padding: 20px;
     box-sizing: border-box;
 }
-
 .table-role mat-header-cell{
     font-size: 16px;
     color:black;
@@ -20,14 +23,15 @@ margin-top: 50px;
     justify-content: center;
     gap:10px 10px;
 }
- mat-cell{
-    justify-content: center;
-}
-mat-header-cell{
-    justify-content: center;
-}
+//  mat-cell{
+//     justify-content: center;
+// }
+// mat-header-cell{
+//     justify-content: center;
+// }
 ng-container{
     display: grid;
+    
 }
 
 mat-row:nth-child(even){

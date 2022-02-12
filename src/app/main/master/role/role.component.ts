@@ -50,8 +50,6 @@ export class RoleComponent implements OnInit {
 
     this.role$ = this.store.select(selectRoles);
 
-    this.role$.subscribe(role => console.log(role))
-
   }
 
   onCreate() {

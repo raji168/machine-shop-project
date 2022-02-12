@@ -10,10 +10,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
 import { MainModule } from './main/main.module';
 import { StoreModule } from '@ngrx/store';
-import { _RESOLVED_META_REDUCERS } from '@ngrx/store/src/tokens';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RoleEffects } from './store/effects/role.effects';
-import { roleReducer } from 'src/app/store/reducers/role.reducers'
+import { roleReducer } from './store/reducers/role.reducers'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -42,7 +42,7 @@ import { MatInputModule } from '@angular/material/input';
     StoreModule.forRoot({
       roleState: roleReducer
     }),
-    
+    StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([
       RoleEffects
     ]),

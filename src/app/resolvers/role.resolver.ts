@@ -1,10 +1,8 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
+import {  Resolve } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { filter, finalize, first, tap } from "rxjs/operators";
-import { RoleApiService } from "../services/role-api.service";
 import { RoleActions } from "../store/actions/action-types";
-import { RoleLoaded } from "../store/actions/role.actions";
 import { areRolesLoaded } from "../store/selectors/role.selectors";
 
 @Injectable({
@@ -13,7 +11,7 @@ import { areRolesLoaded } from "../store/selectors/role.selectors";
 export class RoleResolver implements Resolve<any> {
 
     loading = false;
-    
+
     constructor(
         private store: Store
     ) {}

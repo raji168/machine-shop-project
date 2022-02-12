@@ -9,6 +9,7 @@ export interface RoleState {
     roleAdded: boolean;
     roleAddedError: boolean;
     roleAddedFailed: boolean;
+    editRole: any;
 }
 
 const initialState: RoleState = {
@@ -17,6 +18,7 @@ const initialState: RoleState = {
     rolesLoaded: false,
     roleAddedError: false,
     roleAddedFailed: false,
+    editRole:null
 }
 
 export const reducer = createReducer(
@@ -33,7 +35,7 @@ export const reducer = createReducer(
         return {
             ...state,
             roles: action.roles,
-                RoleLoaded: true
+            rolesLoaded: true
         };
     }),
     on(RoleActions.roleUpdated, (state, action) => {
