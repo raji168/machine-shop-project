@@ -28,31 +28,45 @@ export class PreloginComponent implements OnInit {
     console.log("template Model", form);
 
     const name = form.value.username;
-    
+
     this.authenticationService
       .login(form.value.username, form.value.password)
       // .pipe(first())
       .subscribe(
         data => {
           // const name = data.username;
-//           switch (form.value.username == name) {
-//     case admin :
-//         console.log("Result: 0");
-//         break;
-//     case 5:
-//         console.log("Result: 5");
-//         break;
-//     case 10:
-//         console.log("Result: 10");
-//         break;
-// }
-          this.router.navigate(["dashboard/customer-view"]);
-        },
-        error => {
-          this.error = error;
-          // this.loading = false;
-        }
-      );
+          switch (data) {
+            case data.username == 'customer':
+              this.router.navigate(["dashboard/customer-view"]);
+              break;
+            case data.username == 'admin':
+              this.router.navigate(["dashboard/admin"]);
+              break;
+            case data.username == 'inspector':
+              this.router.navigate(["dashboard/inspector"]);
+              break;
+            case data.username == 'management':
+              this.router.navigate(["dashboard/management"]);
+              break;
+            case data.username == 'manager':
+              this.router.navigate(["dashboard/inspector"]);
+              break;
+            case data.username == 'npd':
+              this.router.navigate(["dashboard/npd"]);
+              break;
+            case data.username == 'supervisor':
+              this.router.navigate(['/dashboard/supervisor']);
+              break;
+            default :
+              this.router.navigate(["dashboard/login"]);
+              break;
+          }
+          error => {
+            this.error = error;
+            // this.loading = false;
+          }
+
+        });
   }
-  
+
 }
