@@ -6,6 +6,12 @@ import { ShiftResolver } from "../../resolvers/shift.resolver";
 import { InstrumentResolver } from "../../resolvers/instrument.resolver";
 import { RoleResolver } from "../../resolvers/role.resolver";
 import { UserResolver } from "../../resolvers/user.resolver";
+import { RoleComponent } from "./role/role.component";
+import { InstrumentComponent } from "./instrument/instrument.component";
+import { UserComponent } from "./user/user.component";
+import { ShiftComponent } from "./shift/shift.component";
+import { MachineComponent } from "./machine/machine.component";
+import { CustomerComponent } from "./customer/customer.component";
 
 
 
@@ -13,37 +19,37 @@ import { UserResolver } from "../../resolvers/user.resolver";
 
     imports: [RouterModule.forChild([
         {
-            path: 'role', loadChildren: () => import('../master/role/role.module').then(r => r.RoleModule), 
+            path: 'role', component: RoleComponent, 
             resolve: {
                 roles: RoleResolver
             }
         },
         {
-            path: 'instrument', loadChildren: () => import('../master/instrument/instrument.module').then(i => i.InstrumentModule) , 
+            path: 'instrument', component: InstrumentComponent, 
             resolve: {
                 instrument: InstrumentResolver
             }
         },
         {
-            path: 'user', loadChildren: () => import('../master/user/user.module').then(u => u.UserModule), 
+            path: 'user', component: UserComponent, 
             resolve: {
                 user: UserResolver
             }
         },
         {
-            path: 'shift', loadChildren: () => import('../master/shift/shift.module').then(s => s.ShiftModule),
+            path: 'shift', component: ShiftComponent,
             resolve: {
                 shift: ShiftResolver
             },
         },
         {
-            path: 'machine', loadChildren: () => import('../master/machine/machine.module').then(m => m.MachineModule),
+            path: 'machine', component : MachineComponent,
             resolve: {
                 machine: MachineResolver
             },
         },
         {
-            path: 'customer', loadChildren: () => import('../master/customer/customer.module').then(c => c.CustomerModule),
+            path: 'customer', component : CustomerComponent,
             resolve: {
                 customer: CustomerResolver
             },

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {  MatTableDataSource } from '@angular/material/table';
+import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Observable } from 'rxjs';
 import { ProductDataService } from 'src/app/data-services/product-data.service';
@@ -7,6 +7,13 @@ import { Product } from 'src/app/models/product.model';
 import { ProductApiService } from 'src/app/services/product-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddProductComponent } from '../Product/add-product/add-product.component';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { DialogsService } from 'src/app/services/dialogs.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import { MachineMapping } from 'src/app/models/machinemapping.model';
 
 const ELEMENT_DATA: Product[] = [];
 
@@ -26,30 +33,51 @@ const ELEMENT_DATA: Product[] = [];
 
 export class ProductComponent {
 
-  displayedColumns: string[] = ['S.no', 'Operation Name', 'Drawing No', 'Drawing', 'Jsir Doc', 'Pms Doc', 'PIR Doc','PDIR Doc', 'ISIR Doc'];
-  mappingDataSource$: Observable<MatTableDataSource<Product>>;
+  displayedColumns: string[] = ['S.no', 'Operation Name', 'Drawing No', 'Drawing', 'Jsir Doc', 'Pms Doc', 'PIR Doc', 'PDIR Doc', 'ISIR Doc'];
+  productDataSource$: Observable<MatTableDataSource<Product>>;
   products;
+  searchKey: string;
   expandedProduct: Product;
   expandedProductIdMap: { [productId: string]: string } = {};
   expandedProductIds: string[] = []
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+
   constructor(
     private productApiService: ProductApiService,
-    private productDataService:ProductDataService,
-    private dialog : MatDialog
+    private productDataService: ProductDataService,
+    private dialog: MatDialog,
+    private router: Router,
+    private dialogsService: DialogsService,
+    private notification: NotificationService
   ) { }
-
   ngOnInit(): void {
-    //   this.mappingDataSource$ =this.productDataService.mappingUpdated$.pipe(map(data =>{
-    //     return new MatTableDataSource(data);
-    //   }))
-    // }
+    this.productDataSource$ = this.productDataService.productUpdated$.pipe(map(data => {
+      return new MatTableDataSource(data);
+    }))
+
     this.productApiService.get().subscribe(data => {
       this.products = data
-      console.log(this.products);
+      // console.log(this.products);
     })
 
+    // this.productDataSource$.subscribe(
+    //   ((res) => {
+    //     this.products = res.data;
+    //     this.products = new MatTableDataSource(res.data);
+    //     this.products.paginator = this.paginator;
+    //     this.products.sort = this.sort;
+    //   })
+    // )
   }
+
+  // ngAfterViewInit(): void {
+  //   this.products.paginator = this.paginator;
+  //   this.products.sort = this.sort;
+  // }
+
 
   // onExpandClick(product: Product) {
   //   if (this.expandedProductMap[product._id]) {
@@ -71,14 +99,51 @@ export class ProductComponent {
   isExpanded(productId: string) {
     return this.expandedProductIds.indexOf(productId) !== -1
   }
-  onClickAdd(){
+  onClickAdd() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "100%";
-    dialogConfig.height = "100%";
-    this.dialog.open(AddProductComponent,dialogConfig);
+    dialogConfig.width = "60%";
+    dialogConfig.height = "80%";
+    this.dialog.open(AddProductComponent, dialogConfig);
   }
 
+  applyFilter() {
+    this.products.filter = this.searchKey.trim().toLocaleLowerCase();
+  }
+
+  onSearchClear() {
+    this.searchKey = "";
+    this.applyFilter();
+  }
+
+  onEdit(product: Product) {
+    this.dialog.open(AddProductComponent, { data: { product } });
+  }
+
+  onDelete(id) {
+    this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
+      .afterClosed().subscribe(res => {
+        // console.log(res);
+        if (res) {
+          this.productApiService.deleteProduct(id).subscribe(res => {
+            this.notification.success(' deleted Suceessfully');
+          })
+        }
+      });
+  }
+
+  removeSelected() {
+    // const aproducts = this.products.data.filter((i: Product) => i.isSelected);
+    // this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
+    //   .afterClosed().subscribe(res => {
+    //     if (res) {
+    //       this.productApiService.deleteSelectProduct(aproducts).subscribe(res => {
+    //         this.products.data = this.products.data.filter((i: Product) => !i.isSelected);
+    //         this.notification.success('product Selected Records Deleted Successfully...!');
+    //       })
+    //     }
+    //   });
+  }
 }
 

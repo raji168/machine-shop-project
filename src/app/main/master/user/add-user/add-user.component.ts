@@ -39,7 +39,7 @@ export class AddUserComponent implements OnInit {
       emailId: ['',[Validators.required, Validators.email]],
       phoneNo: ['',[
         Validators.required,
-        Validators.minLength(1),
+        Validators.minLength(10),
         Validators.maxLength(10)
       ]],
       userName: ['',Validators.required],

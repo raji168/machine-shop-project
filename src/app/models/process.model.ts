@@ -1,17 +1,20 @@
 export interface Process {
-    id:string;
-    name: string;
-    drawing: Drawing;
+    _id: string;
+    operationName: string;
+    processDrawing: string;
+    processDrawingNo: string;
     jsirDoc: string;
-    pirDoc:string;
     pmsDoc: string;
+    pirDoc:string;
     pdirDoc: string;
     isirDoc: string;
 }
 
 
-export interface Drawing {
-    id:string;
-    no: string;
-    path: string;
-}
+// export interface Drawing {
+//     id:string;
+//     customerdrawingNo: string;
+//     processdrawingNo: string;
+//     customerDrawing:string;
+//     processDrawing:string;
+// }
