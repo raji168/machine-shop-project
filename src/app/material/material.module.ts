@@ -19,7 +19,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   exports: [
     MatToolbarModule,
@@ -37,12 +37,15 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatGridListModule,
     MatSortModule,
     MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatSelectModule,
     MatNativeDateModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatExpansionModule,
     MatStepperModule,
+    MatButtonModule
   ]
 })
 

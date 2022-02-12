@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="form">
+      <div class="title">Add Machinemap</div>
+      <!-- {{userForm.value | json}} -->
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="normal-form" >
+  
+        <!-- <mat-form-field appearance="outline" >
+          <mat-label>S No</mat-label>
+          <input matInput placeholder="S.No *" formControlName="sno" autocomplete="off">
+        </mat-form-field> -->
+  
+  
+        <mat-form-field appearance="outline" >
+          <mat-label> Product Name </mat-label>
+          <mat-select formControlName="name">
+            <mat-option [value]="product._id" *ngFor="let product of productData " >{{product.productName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+            <mat-label> Process Name </mat-label>
+            <mat-select formControlName="processName">
+              <!-- <mat-option [value]="process._id" *ngFor="let process of product.processData " >{{process.operationName}}</mat-option> -->
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" >
+            <mat-label> Drawing No </mat-label>
+            <mat-select formControlName="drawingNo">
+              <mat-option [value]="drawing.id" *ngFor="let drawing of drawingData " >{{drawing.processdrawingNo}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" >
+            <mat-label> Machine </mat-label>
+            <mat-select formControlName="machine">
+              <mat-option [value]="machine._id" *ngFor="let machine of machineData " >{{machine.machinename}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        
+        <div class="add-form-buttons">
+          <button mat-raised-button class="btn-save" type="submit" color="primary">Save</button>
+          <button mat-raised-button class="btn-cancel" mat-dialog-close >Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>

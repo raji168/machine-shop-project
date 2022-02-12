@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { forkJoin, Observable } from "rxjs";
 import { ProductDataService } from "../data-services/product-data.service";
 import { Product } from "../models/product.model";
 import { tap } from 'rxjs/operators';
@@ -10,21 +10,52 @@ import { tap } from 'rxjs/operators';
 })
 export class ProductApiService{
 
-    URL : string = '/assets/stub/products.json';
-    // URL : string = 'http://192.168.0.17:3002/products';
+    // URL : string = '/assets/stub/products.json';
+    URL : string = 'http://192.168.0.17:3002/products';
 
-    mappings : Product[] =[]
+    products : Product[] =[]
 
     constructor(
         private http : HttpClient,
-        private mappingDataService : ProductDataService
+        private productDataService : ProductDataService
     ){}
 
     get(): Observable<any>{
         return this.http.get<Product[]>(this.URL).pipe(
-           tap((mappings) => {
-               this.mappingDataService.loadMapping(mappings)
+           tap((products) => {
+               this.productDataService.loadProduct(products)
            })
         )
     }
+    addProduct(product: Product) {
+        return this.http.post<Product>(this.URL, product)
+          .pipe(
+            tap((product) => {
+              this.productDataService.addProduct(product)
+            })
+          );
+      }
+    
+      updateProduct(product: Partial<Product>, id) {
+        return this.http.patch<Product>(`${this.URL}/${id}`, product)
+          .pipe(
+            tap(product => {
+              this.productDataService.updateProduct(product)
+            })
+          );
+      }
+    
+      deleteProduct(_id: string) {
+        return this.http.delete<Product>(`${this.URL}/${_id}`)
+        .pipe(
+          tap(product => {
+            this.productDataService.deleteProduct(product._id);
+          })
+        );
+      }
+    
+      deleteSelectProduct(products :Product[]): Observable<Product[]>{
+        return forkJoin(products.map(product => this.http.delete<Product>(`${this.URL}/${product._id}`)))
+      }
+    
 }

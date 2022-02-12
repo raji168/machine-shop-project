@@ -6,9 +6,17 @@
   // margin-top: 400px;
 }
 .previousButton {
+<<<<<<< HEAD
   float: left;
   // margin-top: 400px;
 
+=======
+    float: left;
+    // margin-top: 400px;
+}
+.process-form{
+    margin-top: 10px;
+>>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63
 }
 .subCustomer{
   padding: 20px;
@@ -20,10 +28,18 @@
   padding: 14px 0px;
 }
 .product-form{
+<<<<<<< HEAD
   display: grid;
   grid-template-columns: repeat(2,1fr);
   gap: 10px;
   padding: 14px 0px;
+=======
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    padding: 14px 0px;
+    margin-top: 10px;
+>>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63
 }
 .add-process-button{
   margin-right: 10px;
@@ -49,5 +65,24 @@
   font-size: 18px;
 }
 .process-buttons{
+<<<<<<< HEAD
   margin-top: 10px;
+=======
+    margin-top: 10px;
+}
+.sub-process{
+    padding: 5px;
+}
+.btn-close{
+    float: right;
+    margin-top: -30px;
+}
+.preview-form{
+    padding: 5px;
+    // display: inline-block;
+    // float: left;
+    // clear: left;
+    // width: 250px;
+    // text-align: right;
+>>>>>>> 4f2906ba440fa4ba796bd547e290ff0613be2d63
 }

@@ -1,0 +1,47 @@
+.container{
+    margin:20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.matTable{
+    max-height: 40vh;
+    // overflow-y: scroll;
+    background-color: #fff;
+}
+.table-machinemap mat-header-cell{
+    font-size: 16px;
+    color:black;
+} 
+.search-form-field{
+    padding-left: 20px;
+    width: 25%;
+}
+.edit-button{
+    display: grid;
+    justify-content: center;
+    gap:10px 10px;
+}
+ mat-cell{
+    justify-content: center;
+}
+mat-header-cell{
+    justify-content: center;
+}
+ng-container{
+    display: grid;
+}
+.footer{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.DeleteAll-button{
+    margin-left: 15px;
+    margin-top: 13px;
+}
+mat-row:nth-child(even){
+    background-color: rgb(220, 220, 220);
+
+}
+.status-button{
+    border-radius: 24px;
+}

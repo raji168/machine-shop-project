@@ -1,9 +1,9 @@
 [
     {
         "_id": "asdasdasd12313",
-        "name": "product 1",
+        "productName": "product 1",
         "customer": {
-            "name": "honda changed",
+            "customerName": "honda changed",
             "description": "valvebody",
             "drawing": "uploads\\cc655c",
             "productno": 51528,
@@ -12,7 +12,7 @@
         },
         "processes": [
          {
-             "name":"operation1",
+             "processName":"operation1",
              "drawing": {
                  "no" : "asdasdasdas",
                  "path": "uploads\\cc655c6d95efedd1fca9b6d545827125"
@@ -24,7 +24,7 @@
              "isirDoc":"uploads\\cc655c"
          },
          {
-            "name":"operation2",
+            "processName":"operation2",
             "drawing": {
                 "no" : "asdasdasdas",
                 "path": "uploads\\cc655c"
@@ -36,7 +36,7 @@
             "isirDoc":"uploads\\cc655c"
         },
         {
-            "name":"operation3",
+            "processName":"operation3",
             "drawing": {
                 "no" : "asdasdasdas",
                 "path": "uploads\\cc655c"
@@ -52,9 +52,9 @@
     },
     {
         "_id": "asdasdasd123asdas13",
-        "name": "product 2",
+        "productName": "product 2",
         "customer": {
-            "name": "honda changed",
+            "customerName": "honda changed",
             "description": "valvebody",
             "drawing": "uploads\\cc655c",
             "productno": 51528,

@@ -8,37 +8,33 @@ import { Product } from "../models/product.model";
 
 export class ProductDataService{
     
-    private mappings  : Product[] =[];
+    private products  : Product[] =[];
 
-    mappingUpdated$= new BehaviorSubject<Product[]>([])
+    productUpdated$= new BehaviorSubject<Product[]>([])
 
-    getMapping(){
-        return [...this.mappings]
+    getProduct(){
+        return [...this.products]
     }
 
-    loadMapping(mappings : Product[]){
-        this.mappings = mappings;
-        this.mappingUpdated$.next(this.mappings)
+    loadProduct(products : Product[]){
+        this.products = products;
+        this.productUpdated$.next(this.products)
     }
-    // addMapping(mapping :Mapping){
-    //     this.mappings = [...this.mappings,mapping]
-    //     this.mappingUpdated$.next(this.mappings)
-    // }
-    // updatedMapping(mappingResponse : Mapping){
-    //     const updateMapping = this.mappings.find(mapping => mapping._id === mappingResponse._id)
-    //     const updateMappingIndex =this.mappings.findIndex(mapping => mapping._id == mappingResponse._id )
-    //     const updatedMapping = { ...updateMapping, ...mappingResponse}
-    //     this.mappings[updateMappingIndex] = updatedMapping
-    //     this.mappingUpdated$.next(this.mappings);
-    // }
+    addProduct(product :Product){
+        this.products = [...this.products,product]
+        this.productUpdated$.next(this.products)
+    }
+    updateProduct(productResponse : Product){
+        const updateProduct = this.products.find(product => product._id === productResponse._id)
+        const updateProductIndex =this.products.findIndex(product => product._id == productResponse._id )
+        const updatedProduct = { ...updateProduct, ...productResponse}
+        this.products[updateProductIndex] = updatedProduct
+        this.productUpdated$.next(this.products);
+    }
 
-
-
-
-
-
-
-
-
+    deleteProduct(id: string) {
+        this.products = this.products.filter(product => product._id !== id);
+        this.productUpdated$.next(this.products);
+    }
 
 }

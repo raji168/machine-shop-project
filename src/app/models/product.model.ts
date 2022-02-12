@@ -5,12 +5,10 @@ export interface Product {
     _id?: string;
     productName: string;
     customerName: Customer;
-    customerDrawingNo:string;
+    customerDrawingNo:number;
     revisionNo:string;
-    customerDrawing:Drawing;
+    customerDrawing:string;
     partNo:string;
     processes: Process[];
-    // status: boolean;
-    // isSelected: any;
-
+   
 }
