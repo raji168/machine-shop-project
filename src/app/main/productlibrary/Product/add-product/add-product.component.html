@@ -14,6 +14,7 @@
               <mat-select formControlName="customerName">
                 <mat-option [value]="customer.customername" *ngFor="let customer of customerData "  >
                   {{customer.customername}}
+
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -167,6 +168,8 @@
         </div>
       </div>
     </mat-step>
+
   </mat-stepper>
-</div>
+
   
+
