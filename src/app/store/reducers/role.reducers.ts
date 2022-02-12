@@ -32,7 +32,7 @@ export const reducer = createReducer(
     on(RoleActions.RoleLoaded, (state, action) => {
         return {
             ...state,
-            roles: action.role,
+            roles: action.roles,
                 RoleLoaded: true
         };
     }),

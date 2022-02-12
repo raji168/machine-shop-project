@@ -15,7 +15,7 @@ export const loadRoles = createAction(
 );
 export const RoleLoaded = createAction(
     '[Role Component] Role Loaded',
-    props<{ role: Role[] }>()
+    props<{ roles: Role[] }>()
 );
 export const updateRole = createAction(
     '[Role Component] Update Role',

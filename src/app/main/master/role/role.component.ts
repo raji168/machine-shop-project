@@ -10,6 +10,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Role } from 'src/app/models/role.model';
 import { RoleApiService } from 'src/app/services/role-api.service';
+import { Store } from '@ngrx/store';
+import { selectRoles } from 'src/app/store/selectors/role.selectors';
 
 
 @Component({
@@ -29,7 +31,7 @@ export class RoleComponent implements OnInit {
     name: new FormControl('')
   });
 
-  roleDataSource$: Observable<MatTableDataSource<Role>>;
+  role$: Observable<Role[]>;
 
 
   constructor(
@@ -37,16 +39,18 @@ export class RoleComponent implements OnInit {
     private roleDataService: RoleDataService,
     private dialog: MatDialog,
     private notification: NotificationService,
-    private dialogService: DialogsService,) {
+    private dialogService: DialogsService,
+    private store: Store
+    ) {
 
   }
 
 
   ngOnInit(): void {
 
-    this.roleDataSource$ = this.roleDataService.roleUpdated$.pipe(map(roles => {
-      return new MatTableDataSource(roles)
-    }))
+    this.role$ = this.store.select(selectRoles);
+
+    this.role$.subscribe(role => console.log(role))
 
   }
 

@@ -27,7 +27,7 @@ import { UserResolver } from "../../resolvers/user.resolver";
         {
             path: 'user', loadChildren: () => import('../master/user/user.module').then(u => u.UserModule), 
             resolve: {
-                user: UserResolver
+                user: UserResolver,
             }
         },
         {

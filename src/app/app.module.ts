@@ -11,15 +11,15 @@ import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confi
 import { MainModule } from './main/main.module';
 import { StoreModule } from '@ngrx/store';
 import { _RESOLVED_META_REDUCERS } from '@ngrx/store/src/tokens';
-
+import { EffectsModule } from '@ngrx/effects';
+import { RoleEffects } from './store/effects/role.effects';
+import { roleReducer } from 'src/app/store/reducers/role.reducers'
 
 @NgModule({
 
   declarations: [
-
     AppComponent,
     MatConfirmDialogComponent,
-
   ],
 
   imports: [
@@ -35,7 +35,13 @@ import { _RESOLVED_META_REDUCERS } from '@ngrx/store/src/tokens';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    StoreModule.forRoot({})
+    StoreModule.forRoot({
+      roleState: roleReducer
+    }),
+    
+    EffectsModule.forRoot([
+      RoleEffects
+    ]),
   ],
 
   providers: [],
