@@ -9,7 +9,7 @@
             <button class="account" mat-icon-button>
                 <mat-icon>supervisor_account</mat-icon>
             </button>
-            <button class="logout" mat-icon-button>
+            <button class="logout" mat-icon-button (click)="clickLogout()">
                 <mat-icon>logout</mat-icon>
             </button>
         </div>
@@ -18,6 +18,29 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav mode="side" class="mat-elevation-z5">
         <mat-accordion class="example-headers-align " multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header class="library">
+                    <mat-panel-title>
+                       DASHBOARD
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <mat-list-item routerLinkActive="active" routerLink="dashboard/management" role="listitem"> Management
+                    </mat-list-item>
+                    <!-- <mat-list-item routerLinkActive="active" routerLink="dashboard/manager" role="listitem"> Manager
+                    </mat-list-item>
+                    <mat-list-item routerLinkActive="active" routerLink="dashboard/admin" role="listitem"> Admin
+                    </mat-list-item> -->
+                    <mat-list-item routerLinkActive="active" routerLink="dashboard/customer-view" role="listitem"> Customer
+                    </mat-list-item>
+                    <mat-list-item routerLinkActive="active" routerLink="dashboard/inspector" role="listitem"> Inspector
+                    </mat-list-item>
+                    <!-- <mat-list-item routerLinkActive="active" routerLink="dashboard/npd" role="listitem"> Development
+                    </mat-list-item>
+                    <mat-list-item routerLinkActive="active" routerLink="dashboard/supervisor" role="listitem"> Supervisor
+                    </mat-list-item> -->
+                </mat-nav-list>
+            </mat-expansion-panel>
             <mat-expansion-panel>
                 <mat-expansion-panel-header class="master">
                     <mat-panel-title>
@@ -52,9 +75,8 @@
                     </mat-list-item>
                 </mat-nav-list>
             </mat-expansion-panel>
-            
-            <mat-expansion-panel>
-                <mat-expansion-panel-header class="Report">
+            <!-- <mat-expansion-panel>
+                <mat-expansion-panel-header class="library">
                     <mat-panel-title>
                         REPORT
                     </mat-panel-title>
@@ -73,7 +95,7 @@
                     <mat-list-item routerLinkActive="active" routerLink="report/pms" role="listitem"> PMS Report
                     </mat-list-item>
                 </mat-nav-list>
-            </mat-expansion-panel>
+            </mat-expansion-panel> -->
         </mat-accordion>
     </mat-sidenav>
     <mat-sidenav-content>

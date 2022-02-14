@@ -4,21 +4,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
 import { MainModule } from './main/main.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { PreloginComponent } from './prelogin/prelogin.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BasicAuthInterceptor } from './auth/basic-auth.interceptor';
+import { ErrorInterceptor } from './auth/error.interceptor';
+
 
 @NgModule({
 
   declarations: [
 
     AppComponent,
-    MatConfirmDialogComponent,
-
+    PreloginComponent,
+    MatConfirmDialogComponent
   ],
 
   imports: [
@@ -29,6 +34,7 @@ import { MatInputModule } from '@angular/material/input';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FlexLayoutModule,
     MatFormFieldModule,
     MatInputModule,
     MainModule,
@@ -39,8 +45,11 @@ import { MatInputModule } from '@angular/material/input';
     })
 
   ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
 
-  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [MatConfirmDialogComponent]
 })
