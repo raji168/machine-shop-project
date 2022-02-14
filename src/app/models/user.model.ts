@@ -10,4 +10,5 @@ export interface User {
     phoneNo:number;
     userName:string;
     password: string;
+    token:string;
 }

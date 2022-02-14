@@ -11,10 +11,10 @@ import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confi
 import { MainModule } from './main/main.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { PreloginComponent } from './prelogin/prelogin.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BasicAuthInterceptor } from './auth/basic-auth.interceptor';
 import { ErrorInterceptor } from './auth/error.interceptor';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { PreloginComponent } from './prelogin/prelogin.component';
 
 
 @NgModule({
@@ -22,8 +22,8 @@ import { ErrorInterceptor } from './auth/error.interceptor';
   declarations: [
 
     AppComponent,
-    PreloginComponent,
-    MatConfirmDialogComponent
+    MatConfirmDialogComponent,
+    PreloginComponent
   ],
 
   imports: [
@@ -46,8 +46,8 @@ import { ErrorInterceptor } from './auth/error.interceptor';
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
 
   bootstrap: [AppComponent],

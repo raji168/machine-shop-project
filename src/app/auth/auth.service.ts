@@ -1,34 +1,99 @@
-import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { map } from "rxjs/operators";
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Subject } from "rxjs";
 
-@Injectable({ providedIn: "root" })
+import { AuthData } from "./auth-data.model";
+
+
+
+@Injectable({
+    providedIn: 'root'
+})
+
+
 export class AuthService {
-  constructor(private http: HttpClient) {}
+    private token: string;
+    private tokenTimer: any;
+    private authStatusListener = new Subject<boolean>();
+    private userId: string;
+    private isAuthenticated = false;
 
-  login(username: string, password: string) {
-    return this.http
-      .post<any>(`http://localhost:8081/users/authenticate`, {
-        username,
-        password
-      })
-      .pipe(
-        map(user => {
-          // login successful if there's a user in the response
-          if (user) {
-            // store user details and basic auth credentials in local storage
-            // to keep user logged in between page refreshes
-            user.authdata = window.btoa(username + ":" + password);
-            localStorage.setItem("currentUser", JSON.stringify(user));
-          }
+    constructor(private http: HttpClient,
+        private router: Router) { }
 
-          return user;
-        })
-      );
-  }
+    getToken() {
+        return this.token;
+    }
 
-  logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem("currentUser");
-  }
+    getIsAuth() {
+        return this.isAuthenticated;
+    }
+
+    getAuthStatusListner() {
+        return this.authStatusListener.asObservable();
+    }
+
+    login(username:string , password:string ) {
+        const authData: AuthData = { userName: username, password: password };
+        this.http.post<{
+            token: string , userId:string
+        }>('http://192.168.0.17:3002/users', authData)
+            .subscribe(res => {
+                const token = res.token;
+                this.token = token;
+                console.log(token);
+                if (token) {
+                    this.isAuthenticated = true;
+                    this.userId = res.userId;
+                    this.authStatusListener.next(true);
+                    this.saveAuthData(token,this.userId);
+                    console.log(this.token);
+                    this.router.navigate(["/main/master"]);
+                }
+            })
+    }
+
+    // autoAuthUser(){
+    //     const authInformation = this.getAuthData();
+    //     if(!authInformation){
+    //         return;
+    //     }
+    //   this.token = authInformation.token;
+    //   this.isAuthenticated = true;
+    //   this.userId = authInformation.userId;
+    //   this.authStatusListener.next(true);
+    // } 
+    // }
+
+    logout() {
+        this.token = null;
+        this.isAuthenticated = false;
+        this.authStatusListener.next(false);
+        this.userId = null;
+        this.clearAuthData();
+        this.router.navigate(["/"]);
+    }
+
+    private saveAuthData(token: string , userId:string) {
+        localStorage.setItem("machine:token", token);
+        localStorage.setItem("userId", userId);
+    }
+
+    private clearAuthData() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+    }
+
+    private getAuthData() {
+        let token = '' ;
+        const userId = localStorage.getItem("userId");
+        if (!token) {
+            token = localStorage.getItem('machine:token');
+        }
+        return {
+            token: token,
+            userId: userId
+        }
+    }
 }

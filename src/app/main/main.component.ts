@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Router } from '@angular/router';
-import { UserService } from '../auth/user.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
+
 
 
 @Component({
@@ -11,22 +13,33 @@ import { UserService } from '../auth/user.service';
 })
 export class MainComponent implements OnInit {
 
-  userData;
+  userIsAuthenticated = false  ;
+  private authListenerSubs:Subscription;
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
 
   constructor(
-    private router: Router,
-    private userService:UserService) { }
+    private authService:AuthService
 
-  ngOnInit(): void {
+    ) { }
+
+  ngOnInit() {
+
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+    .getAuthStatusListner()
+    .subscribe(isAuthenticated =>{
+      this.userIsAuthenticated = isAuthenticated ;
+    });
 
   }
 
   clickLogout() {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['login']);
+    this.authService.logout();
   }
 
+  ngOnDestroy(){
+    this.authListenerSubs.unsubscribe();
+  }
 }
