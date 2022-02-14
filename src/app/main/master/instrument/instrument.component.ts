@@ -25,7 +25,7 @@ export class InstrumentComponent implements OnInit {
   // instrumentData: InstrumentModel[] = [];
   val = this.calculateDiff;
 
-  displayedColumns: string[] = ['select', 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions','status'];
+  displayedColumns: string[] = ['select', 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
   searchKey: string;
   isDelete: false;

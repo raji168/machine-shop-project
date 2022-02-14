@@ -6,7 +6,6 @@ import { MaterialModule } from "src/app/material/material.module";
 import { ProductLibraryRoutingModule } from "./productlibrary-routing.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatStepperModule } from "@angular/material/stepper";
-import {MatButtonModule} from '@angular/material/button';
 import { MachineMappingComponent } from "./Machine mapping/machine-mapping.component";
 import { FormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -29,7 +28,7 @@ import { ProductComponent } from "./product/product.component";
         ProductLibraryRoutingModule,
         MaterialModule,
         FlexLayoutModule,MatStepperModule,
-        MatButtonModule,FormsModule,MatTooltipModule
+        FormsModule,MatTooltipModule
 
     ]
 })

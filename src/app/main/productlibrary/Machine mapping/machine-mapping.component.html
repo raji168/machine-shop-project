@@ -14,32 +14,29 @@
         </mat-form-field>
     </div>
     <div class=" table-machinemap mat-elevation-z8" role="table">
-        <mat-table [dataSource]="machineMapData" matSort class="matTable">
-            <ng-container matColumnDef="select">
+        <!-- <mat-table [dataSource]="machineMapDataSource$ | async" matSort class="matTable"> -->
+            <mat-table [dataSource]="mappingData" matSort class="matTable">
+            <!-- <ng-container matColumnDef="select">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Select </mat-header-cell>
                 <mat-cell *matCellDef="let element ">
                   <mat-checkbox (change)="element.isSelected = $event.checked"></mat-checkbox>
                 </mat-cell>
-            </ng-container>
+            </ng-container> -->
             <ng-container matColumnDef="sno">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Serial No</mat-header-cell>
                 <mat-cell *matCellDef="let machineMap ;  let i = index"> {{i+1}} </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="productname">
+            <ng-container matColumnDef="productName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</mat-header-cell>
                 <mat-cell *matCellDef="let machineMap"> {{machineMap.productName}} </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="processname">
+            <!-- <ng-container matColumnDef="processName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Process Name</mat-header-cell>
                 <mat-cell *matCellDef="let machineMap"> {{machineMap.processName}} </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="drawingno">
-                <mat-header-cell *matHeaderCellDef>Drawing No</mat-header-cell>
-                <mat-cell *matCellDef="let machineMap"> {{machineMap.drawingNo}} </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="machine">
+            </ng-container> -->
+            <ng-container matColumnDef="machineName">
                 <mat-header-cell *matHeaderCellDef>Machine</mat-header-cell>
-                <mat-cell *matCellDef="let machineMap"> {{machineMap.machineMapping}} </mat-cell>
+                <mat-cell *matCellDef="let machineMap"> {{machineMap.machineName}} </mat-cell>
             </ng-container>
             <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>

@@ -1,105 +1,17 @@
 [
     {
-        "_id": "asdasdasd12313",
-        "productName": "product 1",
-        "customer": {
-            "customerName": "honda changed",
-            "description": "valvebody",
-            "drawing": "uploads\\cc655c",
-            "productno": 51528,
-            "revisionno": "B",
-            "_id": "61ea3ef6c40b3a4f14a90da6"
-        },
-        "processes": [
-         {
-             "processName":"operation1",
-             "drawing": {
-                 "no" : "asdasdasdas",
-                 "path": "uploads\\cc655c6d95efedd1fca9b6d545827125"
-             },
-             "jsirDoc":"uploads\\cc655c",
-             "pmsDoc":"uploads\\cc655c",
-             "pirDoc":"uploads\\cc655c",
-             "pdirDoc":"uploads\\cc655c",
-             "isirDoc":"uploads\\cc655c"
-         },
-         {
-            "processName":"operation2",
-            "drawing": {
-                "no" : "asdasdasdas",
-                "path": "uploads\\cc655c"
-            },
-            "jsirDoc":"uploads\\cc655c",
-            "pmsDoc":"uploads\\cc655c",
-            "pirDoc":"uploads\\cc655c",
-            "pdirDoc":"uploads\\cc655c",
-            "isirDoc":"uploads\\cc655c"
-        },
-        {
-            "processName":"operation3",
-            "drawing": {
-                "no" : "asdasdasdas",
-                "path": "uploads\\cc655c"
-            },
-            "jsirDoc":"uploads\\cc655c",
-            "pmsDoc":"uploads\\cc655c",
-            "pirDoc":"uploads\\cc655c",
-            "pdirDoc":"uploads\\cc655c",
-            "isirDoc":"uploads\\cc655c"
-        }
-        ]
-
+        "_id": "1dsfs41",
+        "product": "valve1",
+        "machine": "cnc1"
     },
     {
-        "_id": "asdasdasd123asdas13",
-        "productName": "product 2",
-        "customer": {
-            "customerName": "honda changed",
-            "description": "valvebody",
-            "drawing": "uploads\\cc655c",
-            "productno": 51528,
-            "revisionno": "B",
-            "_id": "61ea3ef6c40b3a4f14a90da6"
-        },
-        "processes": [
-         {
-             "name":"operation1",
-             "drawing": {
-                 "no" : "asdasdasdas",
-                 "path": "uploads\\cc655c"
-             },
-             "jsirDoc":"uploads\\cc655c",
-             "pmsDoc":"uploads\\cc655c",
-             "pirDoc":"uploads\\cc655c",
-             "pdirDoc":"uploads\\cc655c",
-             "isirDoc":"uploads\\cc655c"
-         },
-         {
-            "name":"operation2",
-            "drawing": {
-                "no" : "asdasdasdas",
-                "path": "uploads\\cc655c"
-            },
-            "jsirDoc":"uploads\\cc655c",
-            "pmsDoc":"uploads\\cc655c",
-            "pirDoc":"uploads\\cc655c",
-            "pdirDoc":"uploads\\cc655c",
-            "isirDoc":"uploads\\cc655c"
-        },
-        {
-            "name":"operation3",
-            "drawing": {
-                "no" : "asdasdasdas",
-                "path": "uploads\\cc655c"
-            },
-            "jsirDoc":"uploads\\cc655c",
-            "pmsDoc":"uploads\\cc655c",
-            "pirDoc":"uploads\\cc655c",
-            "pdirDoc":"uploads\\cc655c",
-            "isirDoc":"uploads\\cc655c"
-        }
-        ]
-
+        "_id": "1dsfs41",
+        "product": "valve2",
+        "machine": "cnc2"
+    },
+    {
+        "_id": "1dsfs41",
+        "product": "valve3",
+        "machine": "cnc3"
     }
-   
 ]

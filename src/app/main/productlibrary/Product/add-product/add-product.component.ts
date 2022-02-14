@@ -13,6 +13,7 @@ import { ProductApiService } from "src/app/services/product-api.service";
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
+
   product : Product;
   value = ' ';
   form:FormGroup;
@@ -28,9 +29,9 @@ export class AddProductComponent implements OnInit {
     this.form=this.formBulider.group({
       customerName:['', Validators.required],
       customerDrawingNo:['', Validators.required],
-      revisionNo:['', Validators.required],
+      // revisionNo:['', Validators.required],
       productName:['', Validators.required],
-      partNo:['', Validators.required],
+      // partNo:['', Validators.required],
       customerDrawing:['', Validators.required],
       process:formBulider.array([])
     })
@@ -43,6 +44,7 @@ export class AddProductComponent implements OnInit {
     this.product = this.data?.product;
     if(this.product) {
       this.form.patchValue(this.product);
+      this.form.patchValue(this.product.process);
       this.form.get('customer')?.setValue(this.data.product.customerName);
     }
 
@@ -54,30 +56,31 @@ export class AddProductComponent implements OnInit {
   addNewProcessGroup() {
     const add = this.form.get('process') as FormArray;
     add.push(this.formBulider.group({
-      processName:"",
-      processDrawingNo:"",
-      processDrawing:"",
-      jsirDoc:"",
-      pmsDoc:"",
-      pirDoc:"",
-      pdirDoc:"",
-      isirDoc:""
+      operationName: ['',Validators.required],
+      processDrawingNo: ['',Validators.required],
+      processDrawing: ['',Validators.required],
+      jsirDoc: ['',Validators.required],
+      pmsDoc: ['',Validators.required],
+      pirDoc: ['',Validators.required],
+      pdirDoc: ['',Validators.required],
+      isirDoc: ['',Validators.required]
     }))
   }
-  removeGroup(index) {
+  removeGroup(_id) {
     const form = this.form.get('process') as FormArray
-    form.removeAt(index);
+    form.removeAt(_id);
   }
 
   onSubmit() {
 
-    // if (this.product) {
-    //   this.productService.updateProduct(this.form.value, this.product._id).subscribe(data => {
-    //     this.dialogRef.close(data);
-    //     console.log(data)
-    //     this.notification.success("Edited successfully!!");
-    //   });
-    // } else {
+    if (this.product) {
+      // this.form.disable();
+      this.dialogRef.close();
+      this.productService.updateProduct(this.form.value, this.product._id).subscribe(data => {
+        console.log(data)
+        this.notification.success("Edited successfully!!");
+      });
+    } else {
       this.form.disable();
       this.dialogRef.close();
       this.productService.addProduct(this.form.value).subscribe(data => {
@@ -86,4 +89,5 @@ export class AddProductComponent implements OnInit {
     console.log('saved');
     console.log(this.form.value);
     }
+  }
 }

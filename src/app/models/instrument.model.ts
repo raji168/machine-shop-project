@@ -1,5 +1,5 @@
 export interface InstrumentModel {
-    _id?: string;
+    _id: string;
     sno: number;
     name: string;
     referenceno: number;

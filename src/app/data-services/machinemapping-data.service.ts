@@ -14,23 +14,18 @@ export class MachineMappingDataService {
     machineMapUpdated$ = new BehaviorSubject<MachineMapping[]>([])
 
     getMachineMap() {
-
         return [...this.machineMaps]
-
     }
 
     loadMachineMap(machineMaps: MachineMapping[]) {
-
         this.machineMaps = machineMaps;
         this.machineMapUpdated$.next(this.machineMaps);
-
     }
 
     addMachineMap(machineMap: MachineMapping) {
-
         this.machineMaps = [...this.machineMaps, machineMap]
         this.machineMapUpdated$.next(this.machineMaps);
-
+        console.log(this.machineMaps)
     }
 
     updateMachineMap(machineMapResponse: MachineMapping) {

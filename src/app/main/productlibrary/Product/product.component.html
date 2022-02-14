@@ -24,7 +24,7 @@
     </div>
     <div class="table mat-elevation-z8">
         <div class="product-table" gdColumns="64px repeat(5, 1fr) 64px">
-            <span class="product-header-cell first">S.No</span>
+            <span class="product-header-cell first">select</span>
             <span class="product-header-cell">Product Name</span>
             <span class="product-header-cell">Customer Name</span>
             <span class="product-header-cell">Customer Drawingno</span>
@@ -32,7 +32,8 @@
             <span class="product-header-cell">Action</span>
             <div class="product-header-cell last"></div>
             <ng-container *ngFor="let product of products; let productIndex =index">
-                <span class="product-cell first">{{productIndex + 1}}</span>
+                <span class="product-cell first">  <mat-checkbox (change)="product.isSelected = $event.checked"></mat-checkbox>
+                </span>
                 <span class="product-cell">{{product.productName}}</span>
                 <span class="product-cell">{{product.customerName}}</span>
                 <span class="product-cell">{{product.customerDrawingNo}}</span>
@@ -59,7 +60,7 @@
                         <ng-container
                             *ngFor="let process of product.process; let operationIndex = index; let lastOperation = last">
                             <div [class.b-b]="!lastOperation" class="process-cell">{{operationIndex+1}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.processName }}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.operationName }}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.processDrawingNo}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.processDrawing}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
@@ -74,7 +75,7 @@
         </div>
         <div class="footer">
             <div class="deleteallFun">
-                <button mat-raised-button class="DeleteAll-button"  >
+                <button mat-raised-button class="DeleteAll-button" (click)="removeSelected()" >
                     <mat-icon>delete</mat-icon>Deleteall
                 </button>
             </div>

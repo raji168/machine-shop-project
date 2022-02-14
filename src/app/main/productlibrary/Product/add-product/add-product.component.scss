@@ -61,11 +61,19 @@
   float: right;
   margin-top: -30px;
 }
+
 .preview-form{
     padding: 5px;
-    // display: inline-block;
-    // float: left;
-    // clear: left;
-    // width: 250px;
-    // text-align: right;
+    display: grid;
+    grid-template-columns:1fr 5% 1fr;
+}
+.prview-head{
+    margin-left: 40px;
+}
+.previewhead-form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    padding: 14px 0px;
+    // text-align-last: revert  ;
 }

@@ -9,6 +9,8 @@ import { MachineMapping } from 'src/app/models/machinemapping.model';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MachineMappingApiService } from 'src/app/services/machinemapping-api.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { ProductApiService } from 'src/app/services/product-api.service';
+import { AddCustomerComponent } from '../../master/customer/add-customer/add-customer.component';
 import { AddMachinemapComponent } from './add-machinemap/add-machinemap.component';
 
 @Component({
@@ -18,62 +20,74 @@ import { AddMachinemapComponent } from './add-machinemap/add-machinemap.componen
 })
 export class MachineMappingComponent implements OnInit {
 
-  displayedColumns: string[] = [ 'sno','productname', 'processname','drawingno','machine','actions'];
+  displayedColumns: string[] = [ 'sno','productName','machineName','actions'];
   searchKey: string;
 
   form =new FormGroup({
     sno: new FormControl(''),
     productName: new FormControl(''),
-    processName: new FormControl(''),
-    drawingNo: new FormControl(''),
+    // processName: new FormControl(''),
     machineMapping: new FormControl(''),
   });
+  
  machineMapDataSource$: Observable<MatTableDataSource<MachineMapping>>;
 
   constructor(
     private machineMapService : MachineMappingApiService,
+    private machineService:MachineMappingApiService,
+    private productService:ProductApiService,
     private machineMapDataService : MachineMappingDataService,
     private notification : NotificationService,
     private dialog : MatDialog,
     private dialogService : DialogsService
   ) { }
 
-  machineMapData;
+  mapping: MachineMapping[] = [];
+  mappingData;
 
   ngOnInit(): void {
     this.machineMapDataSource$ = this.machineMapDataService.machineMapUpdated$.pipe(map(machineMaps => {
       return new MatTableDataSource(machineMaps)
     }
     ))
+    this.machineMapDataSource$.subscribe(
+      (res)=>{
+        this.mappingData = res.data;
+      }
+    )
+   
+    
   }
   onCreate() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "40%";
-    this.dialog.open(AddMachinemapComponent, dialogConfig);
+    // const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    // dialogConfig.width = "40%";
+    // this.dialog.open(AddMachinemapComponent, dialogConfig);
+
+    this.dialog.open(AddMachinemapComponent);
   }
   applyFilter() {
-    this.machineMapData.filter = this.searchKey.trim().toLocaleLowerCase();
+    // this.machineMapData.filter = this.searchKey.trim().toLocaleLowerCase();
   }
   onSearchClear() {
     this.searchKey = "";
     this.applyFilter();
   }
-  onEdit(machineMap: MachineMapping) {
-    this.dialog.open(AddMachinemapComponent, { data: { machineMap } });
+  onEdit(mapping: MachineMapping) {
+    this.dialog.open(AddMachinemapComponent, { data: { mapping } });
   }
   
   onDelete(id) {
-    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
-      .afterClosed().subscribe(res => {
-        // console.log(res);
-        if (res) {
-          this.machineMapService.deleteMachineMap(id).subscribe(res => {
-            this.notification.success(' deleted Suceessfully');
-          })
-        }
-      });
+    // this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+    //   .afterClosed().subscribe(res => {
+    //     // console.log(res);
+    //     if (res) {
+    //       this.machineMapService.deleteMachineMap(id).subscribe(res => {
+    //         this.notification.success(' deleted Suceessfully');
+    //       })
+    //     }
+    //   });
   }
 
 }
