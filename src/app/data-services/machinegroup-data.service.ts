@@ -13,7 +13,7 @@ export class MachineGroupDataService {
     machineGroupUpdated$ = new BehaviorSubject<machineGroup[]>([])
 
     getMachineGroup() {
-        return [...this.machineGroups] // copy
+        return [...this.machineGroups] 
     }
 
     loadMachineGroups(machineGroups: machineGroup[]) {
@@ -31,7 +31,6 @@ export class MachineGroupDataService {
         const updateMachinegroupIndex = this.machineGroups.findIndex(machinegroup => machinegroup._id === machinegroupResponse._id)
         const updatedMachinegroup = { ...updateMachinegroup, ...machinegroupResponse }
         this.machineGroups[updateMachinegroupIndex] = updatedMachinegroup
-        // console.log(this.machineGroups)
         this.machineGroupUpdated$.next(this.machineGroups);
     }
 

@@ -1,21 +1,13 @@
 <div class="container">
-
     <mat-toolbar class="top-menu">
         <span>Machine Group</span>
     </mat-toolbar>
     <div class="search-div">
-        <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>add </mat-label>
-            <input matInput  autocomplete="off" required>
-          </mat-form-field>
-        <button mat-raised-button  class="create-button" (click)="onAdd()"  >
+        <button mat-raised-button  class="create-button"  (click)="onCreate()"  >
             <mat-icon>add</mat-icon>Add
         </button>
-
     </div>
-
     <!-- {{ machinegroups$ | async | json }} -->
-
     <div class=" table-machinegroup mat-elevation-z8" machinegroup="table" >
         <mat-table [dataSource]="machinegroupDataSource$ | async"  matSort>
             <ng-container matColumnDef="serialno">
@@ -27,15 +19,15 @@
                 <mat-header-cell  *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
                 <mat-cell *matCellDef="let machinegroup"> {{machinegroup.name}} </mat-cell>
             </ng-container>
-
-
             <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
                 <mat-cell *matCellDef="let machinegroup">
-                    <button class="edit-button" mat-icon-button  title="Edit" >
+                    <button class="edit-button" mat-icon-button  title="Edit" 
+                        (click)="onEdit(machinegroup)" >
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button class="delete-button" (click)="onDelete(machinegroup._id)"  title="Delete">
+                    <button mat-icon-button class="delete-button" 
+                        (click)="onDelete(machinegroup._id)"  title="Delete">
                         <mat-icon>delete_forever</mat-icon>
                     </button>
                 </mat-cell>

@@ -14,6 +14,8 @@ import { MachineComponent } from "./machine/machine.component";
 import { CustomerComponent } from "./customer/customer.component";
 import { MachineGroupComponent } from "./machine-group/machine-group.component";
 import { MachineGropuResolver } from "src/app/resolvers/machinegroup.resolver";
+import { MachineCategoryComponent } from "./machine-category/machine-category.component";
+import { MachineCategoryResolver } from "src/app/resolvers/machinecategory.resolver";
 
 
 
@@ -60,6 +62,12 @@ import { MachineGropuResolver } from "src/app/resolvers/machinegroup.resolver";
             path: 'machine-group', component : MachineGroupComponent,
             resolve: {
                 machineGroup : MachineGropuResolver
+            },
+        },
+        {
+            path: 'machine-category', component : MachineCategoryComponent,
+            resolve: {
+                machineCategory : MachineCategoryResolver
             },
         }
     ])],

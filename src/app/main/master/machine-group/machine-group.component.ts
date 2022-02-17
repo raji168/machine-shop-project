@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import { MachineGropuResolver } from 'src/app/resolvers/machinegroup.resolver';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { MachineGroupApiService } from 'src/app/services/machinegroup-api.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { AddMachineGroupComponent } from './add-machine-group/add-machine-group.component';
 
 @Component({
   selector: 'app-machine-group',
@@ -30,6 +31,7 @@ export class MachineGroupComponent implements OnInit {
   constructor(
     private machinegroupService: MachineGroupApiService,
     private machinegroupDataService: MachineGroupDataService,
+    private dialog: MatDialog,
     private notification: NotificationService,
     private dialogService: DialogsService,) {
   }
@@ -40,11 +42,18 @@ export class MachineGroupComponent implements OnInit {
     }))
   }
 
-  onAdd(){
-    this.machinegroupService.addMachineGroup(this.machinegroupForm.value).subscribe(data => {
-      this.notification.success(" Data added successfullly!!");
-    });
+  onCreate() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "20%";
+    this.dialog.open(AddMachineGroupComponent, dialogConfig);
   }
+
+  onEdit(machinegroup: machineGroup) {
+    this.dialog.open(AddMachineGroupComponent, { data: { machinegroup } });
+  }
+  
   onDelete(id) {
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
