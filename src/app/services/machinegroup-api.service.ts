@@ -14,15 +14,10 @@ import { tap } from 'rxjs/operators';
 
 
     machinegroups: machineGroup[] = [];
-  
-    // roleUpdated = new Subject();
-  
     constructor(
       private http: HttpClient,
       private machinegroupDataService: MachineGroupDataService
     ) { }
-  
-  
     get(): Observable<any> {
       return this.http.get<machineGroup[]>(this.url).pipe(
         tap((machinegroups) => {

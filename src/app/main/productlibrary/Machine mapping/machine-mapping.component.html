@@ -32,7 +32,7 @@
             </ng-container>
             <ng-container matColumnDef="processName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Process Name</mat-header-cell>
-                <mat-cell *matCellDef="let machineMap"> {{ getProcess(machineMap.product.process) }} </mat-cell>
+                <mat-cell *matCellDef="let machineMap"> {{ getProcess(machineMap.product,machineMap.process) }} </mat-cell>
             </ng-container>
             <ng-container matColumnDef="machineName">
                 <mat-header-cell *matHeaderCellDef>Machine</mat-header-cell>

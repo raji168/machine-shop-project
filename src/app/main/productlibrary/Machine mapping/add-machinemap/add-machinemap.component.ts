@@ -54,7 +54,6 @@ export class AddMachinemapComponent implements OnInit {
       this.form.patchValue(this.mapping);
       this.form.get('product').setValue(this.data.mapping.product._id);
       this.form.get('machine').setValue(this.data.mapping.machine._id); 
-      // this.form.get('product.process')?.setValue(this.data.mapping.process._id);
     }
   }
   onProductChange(event) {
@@ -72,11 +71,10 @@ export class AddMachinemapComponent implements OnInit {
   }
   
   onSubmit() {
-    // console.log(this.form.value);
     if (this.mapping) {
       this.machinemapService.updateMachineMap(this.form.value, this.mapping.id).subscribe(data => {
+        // console.log(data)
         this.dialogRef.close(data);
-        // console.log(data);
         this.notification.success("Edited successfully!!");
       });
     } else {
@@ -88,45 +86,3 @@ export class AddMachinemapComponent implements OnInit {
     }
 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// onProductChange({productName}) {
-//   this.productData = this.getProduct(this.product.value);
-//   console.log("product" + this.productData.values)
-//   this.product= event.target.value;
-//   console.log(this.product)
-//   if(this.id === this.product.id){
-//     console.log(event.target.value )
-//   }
-  
-//   let dropDownData = this.productData.find(data => data.productName === event);
-//   if (dropDownData) {
-//     this.process = dropDownData.process;
-//     if(this.process){
-//       this.process=this.process[0];
-//     }
-    
-//   } else {
-//     this.process = [];
-//   }
-//   console.log(dropDownData)
-//   if (productName === '') {
-//     this.form.get('operationName').disable();
-//   } else {
-//     this.form.get('operationName').enable();
-//   }
-// }
-
-// getProduct(productId){
-//     return this.productData.filter(product => product._id === productId);
-// }

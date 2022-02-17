@@ -31,7 +31,6 @@ export class RoleDataService {
         const updateRoleIndex = this.roles.findIndex(role => role._id === roleResponse._id)
         const updatedRole = { ...updateRole, ...roleResponse }
         this.roles[updateRoleIndex] = updatedRole
-        // console.log(this.roles)
         this.roleUpdated$.next(this.roles);
     }
 

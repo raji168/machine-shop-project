@@ -31,10 +31,10 @@ export class AddRoleComponent implements OnInit {
   ngOnInit(): void {
 
     this.roleForm = this.fb.group({
-      // serialno: ['',Validators.required],
       name: ['',Validators.required],    
     });
     this.role = this.data?.role;
+    console.log(this.role)
     if (this.role) {
       this.roleForm.patchValue(this.role);
     }
@@ -46,12 +46,12 @@ export class AddRoleComponent implements OnInit {
     if (this.role) {
       this.roleService.updateRole(this.roleForm.value, this.role._id).subscribe(data => {
         this.dialogRef.close(data);
-        this.notification.success(" Edited successfullly!!");
+        this.notification.success("Role edited successfullly!!");
       });
     } else {
       this.roleService.addRole(this.roleForm.value).subscribe(data => {
         this.dialogRef.close(data);
-        this.notification.success(" Data added successfullly!!");
+        this.notification.success(" Role added successfullly!!");
       });
 
     }

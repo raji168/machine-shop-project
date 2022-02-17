@@ -48,7 +48,7 @@ export class MachineMappingComponent implements OnInit {
   mappingData;
   productData;
   machineData;
-  product: any;
+  processData;
   ngOnInit(): void {
     this.machineMapDataSource$ = this.machineMapDataService.machineMapUpdated$.pipe(map(machineMaps => {
       return new MatTableDataSource(machineMaps)
@@ -65,11 +65,8 @@ export class MachineMappingComponent implements OnInit {
   }
   getProduct(productId) {
     if(productId) {
-      for(let index=0; index< this.productData.length; index++) {
-        if(this.productData[index]._id === productId) {
-          return this.productData[index]?.productName
-        }
-      }
+      const product = this.productData.find(product => product._id === productId);
+      return product.productName;
     }
     else {
       return '-';
@@ -77,24 +74,23 @@ export class MachineMappingComponent implements OnInit {
   }
   getMachine(machineId) {
     if(machineId){
-      for(let index=0; index< this.machineData.length; index++) {
-        if(this.machineData[index]._id === machineId) {
-          return this.machineData[index]?.machinename
-        }
-      }
+      const machine = this.machineData.find(machine => machine._id === machineId);
+      return machine.machinename;
     }
     else{
       return '-';
     }
   }
-  getProcess(productId){
+  getProcess(productId,processId){
     if(productId) {
-      for(let index=0; index< this.productData.length; index++) {
-        if(this.productData[index]._id === productId) {
-          const data = this.productData[index]?.productName.process     
-          console.log(data)   
-        }
+      const product = this.productData.find(product => product._id === productId);
+      this.processData= product.process;
+      if(processId){
+        const processValue = this.processData.find(process => process._id === processId)
+        return processValue.operationName
       }
+    } else{
+      return '-';
     }
   }
   onCreate() {
@@ -118,34 +114,3 @@ export class MachineMappingComponent implements OnInit {
 
 }
 
-  // getProduct(productId){
-  //   console.log(productId)
-  //   const productValue = this.productData.filter(product => product.id === productId);
-  //   console.log(productValue);
-  // }
-  // getMachine(machineId){
-  //   const machineValue = this.machineData.filter(machine => machine.id === machineId)
-  //   console.log(machineValue)
-  // }
-  // const data = this.mappingData.filter((product)=> this.productData.includes(product.id));
-
-  // getProduct(machineData,productData){
-    //   let res =[];
-    //    res = machineData.map(obj =>{
-    //     const index = productData.findIndex(el => el["id"] == obj["id"]);
-    //     const product = index != -1 ? productData[index] : {};
-    //     console.log(product)
-  
-    //     return {
-    //       ...obj,
-    //       product
-    //     };
-    //   });
-    // }
-
-    // getProduct(value){
-    //   const data = this.mappingData.filter(product => product.id === value);
-    //   this.product = data[0].product;
-    //   console.log(data)
-    //   console.log(this.product);
-    // }
