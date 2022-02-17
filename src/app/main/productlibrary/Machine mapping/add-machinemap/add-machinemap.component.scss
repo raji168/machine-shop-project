@@ -19,11 +19,13 @@ form{
 
 .add-form-buttons{
     align-self: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    // display: grid;
-    // grid-template-columns: 1fr 1fr 1fr;
-    // grid-gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
-
+.btn-save{
+    width: fit-content;
+}
+.btn-cancel{
+    width: fit-content;
+    margin-left: 120px;
+}
