@@ -9,7 +9,7 @@
             <button class="account" mat-icon-button>
                 <mat-icon>supervisor_account</mat-icon>
             </button>
-            <button *ngIf="!userIsAuthenticated"class="logout" mat-icon-button (click)="clickLogout()">
+            <button *ngIf="userIsAuthenticated"class="logout" mat-icon-button (click)="clickLogout()">
                 <mat-icon>logout</mat-icon>
             </button>
         </div>
@@ -25,20 +25,8 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <!-- <mat-list-item routerLinkActive="active" routerLink="dashboard/management" role="listitem"> Management
-                    </mat-list-item> -->
-                    <!-- <mat-list-item routerLinkActive="active" routerLink="dashboard/manager" role="listitem"> Manager
+                    <mat-list-item *ngIf="!userIsAuthenticated" routerLinkActive="active" routerLink="dashboard/admin" role="listitem"> Admin
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="dashboard/admin" role="listitem"> Admin
-                    </mat-list-item> -->
-                    <!-- <mat-list-item routerLinkActive="active" routerLink="dashboard/customer-view" role="listitem"> Customer
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="dashboard/inspector" role="listitem"> Inspector
-                    </mat-list-item> -->
-                    <!-- <mat-list-item routerLinkActive="active" routerLink="dashboard/npd" role="listitem"> Development
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="dashboard/supervisor" role="listitem"> Supervisor
-                    </mat-list-item> -->
                 </mat-nav-list>
             </mat-expansion-panel>
             <mat-expansion-panel>
@@ -77,27 +65,6 @@
                     </mat-list-item>
                 </mat-nav-list>
             </mat-expansion-panel>
-            <!-- <mat-expansion-panel>
-                <mat-expansion-panel-header class="library">
-                    <mat-panel-title>
-                        REPORT
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-nav-list>
-                    <mat-list-item routerLinkActive="active" routerLink="report/dailyreport" role="listitem"> Daily Report
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="report/jsir" role="listitem"> JSIR Report
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="report/isir" role="listitem"> ISIR Report
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="report/pdir" role="listitem"> PDIR Report
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="report/pir" role="listitem"> PIR Report
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="report/pms" role="listitem"> PMS Report
-                    </mat-list-item>
-                </mat-nav-list>
-            </mat-expansion-panel> -->
         </mat-accordion>
     </mat-sidenav>
     <mat-sidenav-content>

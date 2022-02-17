@@ -2,8 +2,9 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subject } from "rxjs";
+import { User } from "../models/user.model";
 
-import { AuthData } from "./auth-data.model";
+import { AuthData } from "../auth/auth-data.model";
 
 
 
@@ -16,7 +17,7 @@ export class AuthService {
     private token: string;
     private tokenTimer: any;
     private authStatusListener = new Subject<boolean>();
-    private userId: string;
+    private user: string;
     private isAuthenticated = false;
 
     constructor(private http: HttpClient,
@@ -30,70 +31,79 @@ export class AuthService {
         return this.isAuthenticated;
     }
 
+    getUser() {
+        return this.user;
+    }
+
     getAuthStatusListner() {
         return this.authStatusListener.asObservable();
     }
 
-    login(username:string , password:string ) {
-        const authData: AuthData = { userName: username, password: password };
+    login(username: string, password: string) {
+        const authData : AuthData = { userName: username,password : password };
         this.http.post<{
-            token: string , userId:string
-        }>('http://192.168.0.17:3002/users', authData)
+            token: string, user: User
+        }>
+            ('http://192.168.0.17:3002/auths/login',
+                authData
+            )
             .subscribe(res => {
                 const token = res.token;
                 this.token = token;
-                console.log(token);
+                console.log('Generated Token    '+ this.token);
                 if (token) {
                     this.isAuthenticated = true;
-                    this.userId = res.userId;
                     this.authStatusListener.next(true);
-                    this.saveAuthData(token,this.userId);
-                    console.log(this.token);
+                    this.saveAuthData(token, this.user);
+                    console.log('Login Successfully')
+                    console.log('Token is   '+this.token);
                     this.router.navigate(["/main/master"]);
                 }
             })
     }
 
-    // autoAuthUser(){
-    //     const authInformation = this.getAuthData();
-    //     if(!authInformation){
-    //         return;
-    //     }
-    //   this.token = authInformation.token;
-    //   this.isAuthenticated = true;
-    //   this.userId = authInformation.userId;
-    //   this.authStatusListener.next(true);
-    // } 
-    // }
+    autoAuthUser() {
+        const authInformation = this.getAuthData();
+        if (!authInformation) {
+            return;
+        }
+        this.token = authInformation.token;
+        this.isAuthenticated = true;
+        this.user = authInformation.userId;
+        this.authStatusListener.next(true);
+    }
+
 
     logout() {
         this.token = null;
         this.isAuthenticated = false;
         this.authStatusListener.next(false);
-        this.userId = null;
+        this.user = null;
         this.clearAuthData();
-        this.router.navigate(["/"]);
+        console.log('Logout Successfully');
+        console.log('Token is   '+this.token);
+        this.router.navigate(["/login"]);
     }
 
-    private saveAuthData(token: string , userId:string) {
+    private saveAuthData(token: string, user: string) {
         localStorage.setItem("machine:token", token);
-        localStorage.setItem("userId", userId);
+        localStorage.setItem("userId", user);
     }
 
     private clearAuthData() {
         localStorage.removeItem("token");
-        localStorage.removeItem("userId");
+        localStorage.removeItem("user");
     }
 
     private getAuthData() {
-        let token = '' ;
-        const userId = localStorage.getItem("userId");
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem("user");
         if (!token) {
-            token = localStorage.getItem('machine:token');
+
         }
         return {
             token: token,
-            userId: userId
+            userId: user
         }
     }
 }

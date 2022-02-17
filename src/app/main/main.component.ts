@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild , OnDestroy} from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { AlertService } from '../shared/alert.service';
 
 
 
@@ -20,7 +20,8 @@ export class MainComponent implements OnInit {
 
 
   constructor(
-    private authService:AuthService
+    private authService:AuthService,
+    private alert:AlertService
 
     ) { }
 
@@ -37,6 +38,7 @@ export class MainComponent implements OnInit {
 
   clickLogout() {
     this.authService.logout();
+    this.alert.showSuccess('Logout Successfully','User ');
   }
 
   ngOnDestroy(){
