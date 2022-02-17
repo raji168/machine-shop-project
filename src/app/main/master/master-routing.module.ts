@@ -12,6 +12,8 @@ import { UserComponent } from "./user/user.component";
 import { ShiftComponent } from "./shift/shift.component";
 import { MachineComponent } from "./machine/machine.component";
 import { CustomerComponent } from "./customer/customer.component";
+import { MachineGroupComponent } from "./machine-group/machine-group.component";
+import { MachineGropuResolver } from "src/app/resolvers/machinegroup.resolver";
 
 
 
@@ -52,6 +54,12 @@ import { CustomerComponent } from "./customer/customer.component";
             path: 'customer', component : CustomerComponent,
             resolve: {
                 customer: CustomerResolver
+            },
+        },
+        {
+            path: 'machine-group', component : MachineGroupComponent,
+            resolve: {
+                machineGroup : MachineGropuResolver
             },
         }
     ])],

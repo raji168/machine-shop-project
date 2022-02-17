@@ -29,9 +29,7 @@ export class AddProductComponent implements OnInit {
     this.form=this.formBulider.group({
       customerName:['', Validators.required],
       customerDrawingNo:['', Validators.required],
-      // revisionNo:['', Validators.required],
       productName:['', Validators.required],
-      // partNo:['', Validators.required],
       customerDrawing:['', Validators.required],
       process:formBulider.array([])
     })
@@ -43,14 +41,14 @@ export class AddProductComponent implements OnInit {
   
     this.product = this.data?.product;
     if(this.product) {
+      // console.log(this.product);
       this.form.patchValue(this.product);
       this.form.patchValue(this.product.process);
-      this.form.get('customer')?.setValue(this.data.product.customerName);
+      this.form.patchValue(this.customerData)
+      this.form.get('customer').setValue(this.product.customer);
     }
-
-    // this.form.valueChanges.subscribe((v) => {
-    //       this.isDisable = !this.form.valid;
-    // });
+    // const items = (<FormArray>this.form.get('process'));
+    // this.form.get('items').setValue(this.product.process);
   }
   
   addNewProcessGroup() {

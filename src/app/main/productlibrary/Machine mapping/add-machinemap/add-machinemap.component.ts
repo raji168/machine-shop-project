@@ -1,6 +1,8 @@
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { stringify } from 'querystring';
 import { Machine } from 'src/app/models/machine.model';
 import { MachineMapping } from 'src/app/models/machinemapping.model';
 import { Product } from 'src/app/models/product.model';
@@ -17,11 +19,9 @@ import { ProductApiService } from 'src/app/services/product-api.service';
 export class AddMachinemapComponent implements OnInit {
   mapping : MachineMapping;
   form: FormGroup;
-
-  product;
   productData : Product[] =[];
-  // processData : Process [] = [];
   machineData : Machine [] = [];
+  processData : any;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { mapping : MachineMapping },
     public productService : ProductApiService,
@@ -32,9 +32,9 @@ export class AddMachinemapComponent implements OnInit {
     private fb: FormBuilder) {
       
       this.form = this.fb.group({
-        product: '',
-        // operationName : '',
-        machine:''
+        product: this.productData,
+        process : new FormControl({ value: '', disabled: true}),
+        machine:this.machineData
       })
 
   }
@@ -43,42 +43,40 @@ export class AddMachinemapComponent implements OnInit {
     
     this.productService.get().subscribe(data => {
       this.productData = data;
-      // console.log(this.productData);
     })
     this.machineService.getMachineAll().subscribe(data => {
       this.machineData = data;
-      // console.log(this.machineData);
     })
-
+   
     this.mapping = this.data?.mapping;
 
     if (this.mapping) {
-      this.form.patchValue(this.data.mapping);
-      this.form.get('product')?.setValue(this.data.mapping.product._id);
-      this.form.get('machine')?.setValue(this.data.mapping.machine._id); 
+      this.form.patchValue(this.mapping);
+      this.form.get('product').setValue(this.data.mapping.product._id);
+      this.form.get('machine').setValue(this.data.mapping.machine._id); 
       // this.form.get('product.process')?.setValue(this.data.mapping.process._id);
     }
   }
-
-  onSelectionChanged(id:string) {
-    const result = this.productData.filter(x => x._id === id);
-    return result; 
+  onProductChange(event) {
+    this.getProduct(event.value)
+    if(event.value = ''){
+      this.form.get('process').disable();
+    }else {
+      this.form.get('process').enable();
+    }
   }
-  // get product(){
-  //   return this.form.get('name');
-  // }
-  // get process(){
-  //   return this.form.get('operationName');
-  // }
 
-
+  getProduct(productId) {
+    const selectedProductData = this.productData.filter(product => product._id === productId);
+    this.processData = selectedProductData[0].process;
+  }
+  
   onSubmit() {
-    console.log(this.form.value);
-
+    // console.log(this.form.value);
     if (this.mapping) {
       this.machinemapService.updateMachineMap(this.form.value, this.mapping.id).subscribe(data => {
         this.dialogRef.close(data);
-        console.log(data);
+        // console.log(data);
         this.notification.success("Edited successfully!!");
       });
     } else {
@@ -90,3 +88,45 @@ export class AddMachinemapComponent implements OnInit {
     }
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// onProductChange({productName}) {
+//   this.productData = this.getProduct(this.product.value);
+//   console.log("product" + this.productData.values)
+//   this.product= event.target.value;
+//   console.log(this.product)
+//   if(this.id === this.product.id){
+//     console.log(event.target.value )
+//   }
+  
+//   let dropDownData = this.productData.find(data => data.productName === event);
+//   if (dropDownData) {
+//     this.process = dropDownData.process;
+//     if(this.process){
+//       this.process=this.process[0];
+//     }
+    
+//   } else {
+//     this.process = [];
+//   }
+//   console.log(dropDownData)
+//   if (productName === '') {
+//     this.form.get('operationName').disable();
+//   } else {
+//     this.form.get('operationName').enable();
+//   }
+// }
+
+// getProduct(productId){
+//     return this.productData.filter(product => product._id === productId);
+// }

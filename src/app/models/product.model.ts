@@ -4,10 +4,10 @@ import { Process } from './process.model';
 export interface Product {
     _id: string;
     productName: string;
-    customerName: string;
-    customerDrawingNo:number;
+    customer: Customer;
+    DrawingNo:number;
     // revisionNo:string;
-    customerDrawing:string;
+    Drawing:string;
     // partNo:string;
     isSelected: any;
     process: Process[];
