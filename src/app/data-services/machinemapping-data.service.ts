@@ -25,7 +25,6 @@ export class MachineMappingDataService {
     addMachineMap(machineMap: MachineMapping) {
         this.machineMaps = [...this.machineMaps, machineMap]
         this.machineMapUpdated$.next(this.machineMaps);
-        console.log(this.machineMaps)
     }
 
     updateMachineMap(machineMapResponse: MachineMapping) {

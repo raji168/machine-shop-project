@@ -24,7 +24,7 @@
     </div>
     <div class="table mat-elevation-z8">
         <div class="product-table" gdColumns="64px repeat(5, 1fr) 64px">
-            <span class="product-header-cell first">select</span>
+            <span class="product-header-cell first">SNo</span>
             <span class="product-header-cell">Product Name</span>
             <span class="product-header-cell">Customer Name</span>
             <span class="product-header-cell">Customer Drawingno</span>
@@ -32,12 +32,11 @@
             <span class="product-header-cell">Action</span>
             <div class="product-header-cell last"></div>
             <ng-container *ngFor="let product of products; let productIndex =index">
-                <span class="product-cell first">  <mat-checkbox (change)="product.isSelected = $event.checked"></mat-checkbox>
-                </span>
+                <span class="product-cell first"> {{productIndex+1}} </span>
                 <span class="product-cell">{{product.productName}}</span>
-                <span class="product-cell">{{product.customerName}}</span>
-                <span class="product-cell">{{product.customerDrawingNo}}</span>
-                <span class="product-cell">{{product.customerDrawing}}</span>
+                <span class="product-cell">{{product.customer?.coustomername}}</span>
+                <span class="product-cell">{{product.DrawingNo}}</span>
+                <span class="product-cell">{{product.Drawing}}</span>
                 <span class="product-cell">
                     <button class="edit-button" mat-icon-button  title="Edit" (click)="onEdit(product)">
                         <mat-icon>edit</mat-icon>
@@ -74,11 +73,11 @@
             </ng-container>
         </div>
         <div class="footer">
-            <div class="deleteallFun">
+            <!-- <div class="deleteallFun">
                 <button mat-raised-button class="DeleteAll-button" (click)="removeSelected()" >
                     <mat-icon>delete</mat-icon>Deleteall
                 </button>
-            </div>
+            </div> -->
             <div class="paginator">
                 <mat-paginator [pageSizeOptions]="[1,3,5,10,15,25,100]" pageSize="10" showFirstLastButtons>
                 </mat-paginator>

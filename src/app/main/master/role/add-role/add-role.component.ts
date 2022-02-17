@@ -34,9 +34,7 @@ export class AddRoleComponent implements OnInit {
       // serialno: ['',Validators.required],
       name: ['',Validators.required],    
     });
-
     this.role = this.data?.role;
-
     if (this.role) {
       this.roleForm.patchValue(this.role);
     }
