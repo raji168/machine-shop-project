@@ -12,9 +12,10 @@ import { MainModule } from './main/main.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ErrorInterceptor } from './auth/error.interceptor';
+// import { ErrorInterceptor } from './auth/error.interceptor';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { PreloginComponent } from './prelogin/prelogin.component';
+
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { PreloginComponent } from './prelogin/prelogin.component';
       timeOut: 3000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
-    })
+    }),
 
   ],
   providers: [
