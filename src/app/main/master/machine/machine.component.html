@@ -6,14 +6,11 @@
     <button mat-raised-button class="create-button" (click)="onClickAdd()">
         <mat-icon>add</mat-icon>Add
     </button>
-
     <mat-form-field class="search-form-field" floatLable="never">
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex.mac" #input>
     </mat-form-field>
-
   </div>
-
-<div class=" table-customer mat-elevation-z8" role="table">
+<div class=" table-machine mat-elevation-z8" role="table">
     <!-- <table class="mat-elevation-z8 "mat-table [dataSource]="machineDataSource$ | async" matSort> -->
       <mat-table [dataSource]="machineData" matSort>
       <ng-container matColumnDef="select">
@@ -40,7 +37,7 @@
       </ng-container>
       <ng-container matColumnDef="category">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Machine Category </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.machineCategory?.machineCategoryName}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>

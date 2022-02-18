@@ -41,14 +41,11 @@ export class AddProductComponent implements OnInit {
   
     this.product = this.data?.product;
     if(this.product) {
-      // console.log(this.product);
       this.form.patchValue(this.product);
       this.form.patchValue(this.product.process);
       this.form.patchValue(this.customerData)
       this.form.get('customer').setValue(this.product.customer);
     }
-    // const items = (<FormArray>this.form.get('process'));
-    // this.form.get('items').setValue(this.product.process);
   }
   
   addNewProcessGroup() {

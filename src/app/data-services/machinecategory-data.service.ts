@@ -6,9 +6,10 @@ import { MachineCategory } from "../models/machine-category.model";
     providedIn: 'root'
 })
 export class MachineCategoryDataService {
+
     private machineCategories : MachineCategory[] = [];
     
-    machineCategoryUpdated$ = new BehaviorSubject <MachineCategory[]>([])
+    machineCategoryUpdated$ = new BehaviorSubject<MachineCategory[]>([])
     
     getMachineCategory(){
         return[...this.machineCategories]
@@ -30,7 +31,7 @@ export class MachineCategoryDataService {
         this.machineCategoryUpdated$.next(this.machineCategories)
     }
 
-    deleteMachiineCategory(id: string) {
+    deleteMachineCategory(id: string) {
         this.machineCategories = this.machineCategories.filter(machineCategory => machineCategory._id !== id);
         this.machineCategoryUpdated$.next(this.machineCategories)
     }
