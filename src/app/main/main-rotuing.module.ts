@@ -13,7 +13,8 @@ const routes: Routes = [
         path: 'productlibrary', loadChildren: () => import('../main/productlibrary/productlibrary.module').then(p => p.ProductLibraryModule),
       },
       {
-        path: 'report', loadChildren: () => import('../main/report/report.module').then(r => r.ReportModule)
+        path:'dashboard',loadChildren:() => import('../main/dashboard/dashboard.module').then(d=> d.DashboardModule),
+
       }
     ]
   }

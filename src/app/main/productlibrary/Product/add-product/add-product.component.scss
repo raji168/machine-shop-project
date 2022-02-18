@@ -1,65 +1,65 @@
 .subProduct{
-    padding: 20px;
+  padding: 20px;
 }
 .nextButton ,.previewButton{
-    float: right;
-    // margin-top: 400px;
+  float: right;
+  // margin-top: 400px;
 }
 .previousButton {
-    float: left;
-    // margin-top: 400px;
+  float: left;
+  // margin-top: 400px;
 }
 .process-form{
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .subCustomer{
-    padding: 20px;
+  padding: 20px;
 }
 .customer-form{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 10px;
-    padding: 14px 0px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+  padding: 14px 0px;
 }
 .product-form{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 10px;
-    padding: 14px 0px;
-    margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+  padding: 14px 0px;
+  margin-top: 10px;
 }
 .add-process-button{
-    margin-right: 10px;
-    margin-top: 36px;
-    width: 100px;
+  margin-right: 10px;
+  margin-top: 36px;
+  width: 100px;
 }
 .process-header{
-    display: flex;
-    gap: 640px;
+  display: flex;
+  gap: 640px;
 }
 .subprocess-button{
-    float: right;
-    gap: 10px;
+  float: right;
+  gap: 10px;
 }
 .btn-cancel{
-    margin-right : 10px;
-    // margin-top: 400px;
+  margin-right : 10px;
+  // margin-top: 400px;
 }
 .btn-save{
-    float: right;
+  float: right;
 }
 .process-title{
-    font-size: 18px;
+  font-size: 18px;
 }
 .process-buttons{
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .sub-process{
-    padding: 5px;
+  padding: 5px;
 }
 .btn-close{
-    float: right;
-    margin-top: -30px;
+  float: right;
+  margin-top: -30px;
 }
 
 .preview-form{

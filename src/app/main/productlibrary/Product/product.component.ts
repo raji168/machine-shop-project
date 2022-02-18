@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import {  Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Observable } from 'rxjs';
@@ -12,6 +12,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { AddProductComponent } from '../product/add-product/add-product.component';
+import { MachineMapping } from 'src/app/models/machinemapping.model';
+
 
 const ELEMENT_DATA: Product[] = [];
 
@@ -130,4 +133,7 @@ export class ProductComponent {
       });
   }
 }
+
+
+
 
