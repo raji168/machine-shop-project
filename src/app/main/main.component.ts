@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild , OnDestroy} from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { User } from '../models/user.model';
 import { AlertService } from '../shared/alert.service';
 
 
@@ -16,8 +17,10 @@ export class MainComponent implements OnInit {
   userIsAuthenticated = false  ;
   private authListenerSubs:Subscription;
 
-  @ViewChild(MatAccordion) accordion: MatAccordion;
+  user;
 
+  @ViewChild(MatAccordion) accordion: MatAccordion;
+ 
 
   constructor(
     private authService:AuthService,
@@ -26,7 +29,7 @@ export class MainComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-
+    console.log('Initial'+this.userIsAuthenticated);
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
     .getAuthStatusListner()
@@ -34,9 +37,11 @@ export class MainComponent implements OnInit {
       this.userIsAuthenticated = isAuthenticated ;
     });
 
+
   }
 
   clickLogout() {
+    // this.authService.logout(this.user._id);
     this.authService.logout();
     this.alert.showSuccess('Logout Successfully','User ');
   }

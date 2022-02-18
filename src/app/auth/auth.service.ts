@@ -5,6 +5,8 @@ import { Subject } from "rxjs";
 import { User } from "../models/user.model";
 
 import { AuthData } from "../auth/auth-data.model";
+import { AlertService } from "../shared/alert.service";
+import { map } from "rxjs/operators";
 
 
 
@@ -21,6 +23,7 @@ export class AuthService {
     private isAuthenticated = false;
 
     constructor(private http: HttpClient,
+        private alert: AlertService,
         private router: Router) { }
 
     getToken() {
@@ -40,7 +43,7 @@ export class AuthService {
     }
 
     login(username: string, password: string) {
-        const authData : AuthData = { userName: username,password : password };
+        const authData: AuthData = { userName: username, password: password };
         this.http.post<{
             token: string, user: User
         }>
@@ -50,13 +53,15 @@ export class AuthService {
             .subscribe(res => {
                 const token = res.token;
                 this.token = token;
-                console.log('Generated Token    '+ this.token);
+                console.log('Generated Token    ' + this.token);
                 if (token) {
                     this.isAuthenticated = true;
                     this.authStatusListener.next(true);
                     this.saveAuthData(token, this.user);
                     console.log('Login Successfully')
-                    console.log('Token is   '+this.token);
+                    console.log('Token is   ' + this.token);
+                    this.alert.showSuccess('Login Successfully', 'User ' + username);
+                    console.log(username);
                     this.router.navigate(["/main/master"]);
                 }
             })
@@ -74,6 +79,27 @@ export class AuthService {
     }
 
 
+    // logout(id: string) {
+
+    //     this.http.post<{id: User }>
+    //         ('http://192.168.0.17:3002/auths/logout',
+    //             id
+    //         )
+    //         .subscribe(res => {
+    //             if (res) {
+    //                 this.token = null;
+    //                 this.isAuthenticated = false;
+    //                 this.authStatusListener.next(false);
+    //                 this.user = null;
+    //                 this.clearAuthData();
+    //                 console.log('Logout Successfully');
+    //                 console.log('Token is   ' + this.token);
+    //                 this.alert.showSuccess('Logout Successfully', 'User ' + this.user);
+    //                 this.router.navigate(["/login"]);
+    //             }
+    //         })
+    // }
+
     logout() {
         this.token = null;
         this.isAuthenticated = false;
@@ -85,9 +111,16 @@ export class AuthService {
         this.router.navigate(["/login"]);
     }
 
+    verifyUser(token){
+        this.http.post<{user:User}>('http://192.168.0.17:3002/auths/verifyUser' ,
+        {token}).pipe(map((res)=>{
+            res.user;
+        }))
+    }
+
     private saveAuthData(token: string, user: string) {
         localStorage.setItem("machine:token", token);
-        localStorage.setItem("userId", user);
+        localStorage.setItem("user", user);
     }
 
     private clearAuthData() {

@@ -1,20 +1,25 @@
 .container{
    
     box-sizing: border-box;
+    height: fit-content;
 }
 
 .table-management mat-header-cell{
     font-size: 16px;
     color:black;
 } 
+.title{
+    justify-self: start;
+}
 .table-management{
     margin: 50px;
-    table-layout:fixed;
-    overflow-y: scroll;
-    height: 70%;
+    width: 80%;
+    // overflow-y: scroll;
+    // height: 70%;
 }
 .search-form-field{
     padding-left: 20px;
+    padding-right: 20px;
     width: 25%;
 }
 
@@ -30,4 +35,81 @@ ng-container{
 
 mat-row:nth-child(even){
     background-color: rgb(220, 220, 220);
+}
+
+.mat-card{
+    display: flex;
+    padding-bottom: 10px;
+    border: 5px solid rgb(100, 100, 100);
+    font-size: 20px;
+    // font-weight: 600;
+    border-radius: 10px;
+}
+.main{
+    padding: 0;
+    margin: 10px;
+    display: flex;
+}
+
+.machine-status{
+    padding: 0;
+    margin: 10px;
+    height: fit-content;
+}
+.table{
+    padding: 0;
+    margin: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.sno{
+    margin-left: 0;
+}
+
+.status-card{
+    margin: 10px;
+    padding: 10px;
+    font-weight: 600;
+    justify-content: center;
+}
+
+.card{
+    height: 150px;
+    width: 100px;
+    border: 8px solid rgb(85, 84, 84);
+    border-radius:50px;
+    font-weight: 600;
+    justify-content: center;
+}
+
+.green {
+   justify-items: center;
+    font-size:60px;
+    display: block;
+}
+.red {
+    justify-content: center;
+    font-size:60px;
+    display: block;
+}
+.orange{
+    justify-content: center;
+    font-size:60px;
+    display: block;
+}
+
+h3{
+    font-weight:600;
+    font-style: bold;
+    text-align: center;
+}
+.avg {
+    padding-bottom: 5px;
+}
+.per {
+    text-align: center;
+    display: block;
+}
+.status{
+    justify-content: center;
 }

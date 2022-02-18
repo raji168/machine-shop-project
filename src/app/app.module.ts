@@ -15,6 +15,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // import { ErrorInterceptor } from './auth/error.interceptor';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { PreloginComponent } from './prelogin/prelogin.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
 
 
 
@@ -47,7 +49,9 @@ import { PreloginComponent } from './prelogin/prelogin.component';
 
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+    AuthGuard,
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
 

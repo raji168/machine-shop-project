@@ -1,19 +1,54 @@
 <div class="container">
+  <mat-card class="main">
   <mat-toolbar class="top-menu">
-    <span>Management</span>
+    <div class="title">Management</div>
   </mat-toolbar>
   <mat-form-field class="search-form-field" floatLable="never">
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. new">
   </mat-form-field>
+</mat-card>
+<mat-card class="machine-status" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+<div class="status-card"fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px" >
+  <mat-card class="card" >
+    <div class="status">
+      <h3>Running</h3>
+      <span class="material-icons green" style="color: rgb(49, 182, 37);">circle</span>
+      <span class="avg"> 4 of 8</span>
+      <br>
+      <span class="per"> 50%</span>
+      
+    </div>
+  </mat-card>
+  <mat-card class="card" >
+    <div class="status">
+      <h3>Holding</h3>
+      <span class="material-icons orange" style="color: rgb(255, 134, 42);">circle</span>
+      <span class="avg"> 2 of 8</span>
+      <br>
+      <span class="per"> 25%</span>
+    </div>
+  </mat-card>
+  <mat-card class="card">
+      <div class="status">
+        <h3>Holding</h3>
+        <span class="material-icons red" style="color: rgb(255, 41, 41);">circle</span>
+        <span class="avg" > 2 of 8</span>
+        <br>
+        <span class="per"> 25%</span>
+      </div>
+  </mat-card>
 </div>
-
-<div class=" table-management mat-elevation-z8" role="table">
-  <mat-table cdkDropList [dataSource]="managementData" 
+</mat-card>
+<mat-card class="table" >
+<div class=" table-management mat-elevation-z8" role="table" style="width: 100%;">
+  
+  <mat-table  [dataSource]="managementData"   matSort>
+    <!-- <mat-card class="running-status"><mat-icon>circle</mat-icon>{{element.status}}</mat-card> -->
+     <!-- cdkDropList
   [cdkDropListData]="managementData.data"
   (cdkDropListDropped)="drop($event)"
-  cdkDrag
-  matSort>
-    <ng-container matColumnDef="sno">
+  cdkDrag -->
+    <ng-container matColumnDef="sno" class="sno"> 
       <mat-header-cell *matHeaderCellDef mat-sort-header> S.No </mat-header-cell>
       <mat-cell *matCellDef="let element ; let i =index "> {{i+1}} </mat-cell>
     </ng-container>
@@ -31,11 +66,18 @@
     </ng-container>
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef> Machine Status </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.status}}
+        </mat-cell>
+       
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></mat-row>
   </mat-table>
+  </div>
+</mat-card>
+
+
   <!-- <div class="footer">
     <div class="paginator">
       <mat-paginator [pageSizeOptions]="[1,3,5,10,15,25,100]" pageSize="10" showFirstLastButtons>

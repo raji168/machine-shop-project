@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+
 import { PreloginComponent } from './prelogin/prelogin.component';
 
 
@@ -11,17 +12,21 @@ const routes: Routes = [
   
   {
     path: 'main', loadChildren: () => import('./main/main.module').then(m => m.MainModule),
-    // canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path:'login' ,component:PreloginComponent
+  },
+  {
+    path:'',component:PreloginComponent
   }
- 
+
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[AuthGuard]
 })
 export class AppRoutingModule { }

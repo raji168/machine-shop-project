@@ -9,7 +9,7 @@
             <button class="account" mat-icon-button>
                 <mat-icon>supervisor_account</mat-icon>
             </button>
-            <button *ngIf="userIsAuthenticated"class="logout" mat-icon-button (click)="clickLogout()">
+            <button class="logout" mat-icon-button (click)="clickLogout()">
                 <mat-icon>logout</mat-icon>
             </button>
         </div>
@@ -25,7 +25,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <mat-list-item *ngIf="!userIsAuthenticated" routerLinkActive="active" routerLink="dashboard/admin" role="listitem"> Admin
+                    <mat-list-item  routerLinkActive="active" routerLink="dashboard/management" role="listitem"> Management
                     </mat-list-item>
                 </mat-nav-list>
             </mat-expansion-panel>

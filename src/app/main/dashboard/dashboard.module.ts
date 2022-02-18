@@ -11,6 +11,8 @@ import { SupervisorComponent } from './supervisor/supervisor.component';
 import { InspectorComponent } from './inspector/inspector.component';
 import { CustomerViewComponent } from './customer-view/customer-view.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { FlexLayoutModule } from "@angular/flex-layout";
+
 
 @NgModule({
     declarations: [
@@ -28,6 +30,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         ReactiveFormsModule,
         DashBoardRoutingModule,
         DragDropModule,
+        FlexLayoutModule,
         FormsModule
     ]
 })

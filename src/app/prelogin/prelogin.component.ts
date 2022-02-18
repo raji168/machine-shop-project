@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../auth/auth.service";
-import { AlertService } from "../shared/alert.service";
 
 
 
@@ -20,7 +19,6 @@ export class PreloginComponent  {
     public route: ActivatedRoute,
     public router: Router,
     private authService: AuthService,
-    private alert:AlertService
   ) { }
 
   onSubmit(form) {
@@ -30,7 +28,6 @@ export class PreloginComponent  {
     }
     this.isLoading = true;
     this.authService.login(form.value.username , form.value.password);
-    this.alert.showSuccess('Login Successfully','User '+form.value.username);
     console.log(form.value);
   }
 
