@@ -16,7 +16,9 @@
       </mat-form-field>
       <mat-form-field appearance="outline" >
         <mat-label>Machine Category</mat-label>
-        <input matInput placeholder="Machine Category" formControlName="category" autocomplete="off">
+        <mat-select formControlName="category">
+          <mat-option [value]="machineCategory._id" *ngFor="let machineCategory of machineCategoryData " >{{machineCategory.machineCategoryName}}</mat-option>
+        </mat-select>
       </mat-form-field>
       <div class="button">
         <button mat-raised-button class="btn-save" color="primary"  type="submit" >Save</button>

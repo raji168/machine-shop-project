@@ -1,41 +1,34 @@
 <div class="container">
-
     <mat-toolbar class="top-menu">
         <span>Machine Category</span>
     </mat-toolbar>
     <div class="search-div">
-
         <button mat-raised-button  class="create-button"  (click)="onCreate()">
             <mat-icon>add</mat-icon>Add
         </button>
-
     </div>
-
-    <div class=" table-machinecategory mat-elevation-z8" role="table" >
-
+    <div class=" table-machinecategory mat-elevation-z8" machineCategory="table" >
         <mat-table [dataSource]="machineCategoryDataSource$ | async"  matSort>
             <ng-container matColumnDef="serialno">
                 <mat-header-cell *matHeaderCellDef mat-sort-header >Serial No</mat-header-cell>
                 <mat-cell *matCellDef="let machineCategory ;  let i = index"> {{i+1}} </mat-cell>
             </ng-container>
-
-            <ng-container matColumnDef="Machine category">
+            <ng-container matColumnDef="machineCategory">
                 <mat-header-cell  *matHeaderCellDef mat-sort-header>Machine category</mat-header-cell>
                 <mat-cell *matCellDef="let machineCategory"> {{machineCategory.machineCategoryName}} </mat-cell>
             </ng-container>
-            <ng-container matColumnDef="Machine group">
+            <ng-container matColumnDef="machinegroup">
                 <mat-header-cell  *matHeaderCellDef mat-sort-header>Machine group</mat-header-cell>
-                <mat-cell *matCellDef="let machineCategory"> {{machineCategory.machineGroup?.machineGroupName}} </mat-cell>
+                <mat-cell *matCellDef="let machineCategory"> {{machineCategory.machinegroup?.name}} </mat-cell>
             </ng-container>
-
             <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-                <mat-cell *matCellDef="let role">
-                    <button class="edit-button" mat-icon-button  title="Edit" (click)="onEdit(role)">
+                <mat-cell *matCellDef="let machineCategory">
+                    <button class="edit-button" mat-icon-button  title="Edit" (click)="onEdit(machineCategory)">
                         <mat-icon>edit</mat-icon>
                     </button>
                     <button mat-icon-button class="delete-button"  title="Delete"
-                        (click)="onDelete(role._id)">
+                        (click)="onDelete(machineCategory._id)">
                         <mat-icon>delete_forever</mat-icon>
                     </button>
                 </mat-cell>

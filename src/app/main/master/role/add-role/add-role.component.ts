@@ -41,7 +41,6 @@ export class AddRoleComponent implements OnInit {
 
   }
 
-
   onSubmit() {
     if (this.role) {
       this.roleService.updateRole(this.roleForm.value, this.role._id).subscribe(data => {

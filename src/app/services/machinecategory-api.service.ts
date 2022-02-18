@@ -11,7 +11,7 @@ import { MachineCategory } from '../models/machine-category.model';
 })
 export class MachineCategoryApiService {
 
-  url: string = 'http://192.168.0.17:3002/roles';
+  url: string = 'http://192.168.0.17:3002/machinecategorys';
   machineCategories: MachineCategory[] = [];
   constructor(
     private http: HttpClient,
@@ -20,7 +20,8 @@ export class MachineCategoryApiService {
 
 
   get(): Observable<any> {
-    return this.http.get<MachineCategory[]>(this.url).pipe(
+    return this.http.get<MachineCategory[]>(this.url)
+    .pipe(
       tap((machineCategories) => {
         this.machineCategoryDataService.loadMachineCategory(machineCategories)
       })
@@ -46,9 +47,10 @@ export class MachineCategoryApiService {
   }
 
   deleteMachineCategory(_id: string) {
-    return this.http.delete<MachineCategory>(`${this.url}/${_id}`).pipe(
+    return this.http.delete<MachineCategory>(`${this.url}/${_id}`)
+    .pipe(
       tap(machineCategory => {
-        this.machineCategoryDataService.deleteMachiineCategory(machineCategory._id)
+        this.machineCategoryDataService.deleteMachineCategory(machineCategory._id)
       })
     );
 
