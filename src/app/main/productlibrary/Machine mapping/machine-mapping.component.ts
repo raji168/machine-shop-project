@@ -44,7 +44,7 @@ export class MachineMappingComponent implements OnInit {
     private dialogService : DialogsService
   ) { }
 
-  mapping: MachineMapping[] = [];
+  machinemapping: MachineMapping[] = [];
   mappingData;
   productData;
   machineData;
@@ -97,8 +97,9 @@ export class MachineMappingComponent implements OnInit {
     this.dialog.open(AddMachinemapComponent);
   }
   
-  onEdit(mapping: MachineMapping) {
-    this.dialog.open(AddMachinemapComponent, { data: { mapping } });
+  onEdit(machinemapping: MachineMapping) {
+    this.dialog.open(AddMachinemapComponent, { data: { machinemapping } });
+    console.log(machinemapping)
   }
   
   onDelete(id) {

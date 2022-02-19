@@ -5,11 +5,11 @@
       <div class="customer">
         <form [formGroup]="form">
           <div class="customer-form">
-            <mat-form-field appearance="outline" class="subCustomer">
+            <mat-form-field appearance="outline" class="sub-customer">
               <mat-label>Product Name</mat-label>
               <input matInput formControlName="productName" autocomplete="off" cdkFocusInitial required>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="subCustomer">
+            <mat-form-field appearance="outline" class="sub-customer">
               <mat-label>Customer Name</mat-label>
               <mat-select formControlName="customerName">
                 <mat-option [value]="customer.customername" *ngFor="let customer of customerData">
@@ -17,22 +17,28 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <!-- <mat-form-field appearance="outline" class="subCustomer">
+            <!-- <mat-form-field appearance="outline" class="sub-customer">
               <mat-label>Revision No</mat-label>
               <input matInput formControlName="revisionNo" autocomplete="off" nNo">
             </mat-form-field>
-            <mat-form-field appearance="outline" class="subCustomer">
+            <mat-form-field appearance="outline" class="sub-customer">
               <mat-label>Part No</mat-label>
               <input matInput formControlName="partNo" >
             </mat-form-field> -->
-            <mat-form-field appearance="outline" class="subCustomer">
+            <mat-form-field appearance="outline" class="sub-customer">
               <mat-label>Drawing No</mat-label>
               <input matInput formControlName="customerDrawingNo" autocomplete="off" required>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="subCustomer">
-              <mat-label>Drawing </mat-label>
-              <input matInput formControlName="customerDrawing" autocomplete="off" required>
-            </mat-form-field>
+            <div class="file-field" >
+              <input #fileUpload class="file-input"  formControlName="customerDrawing" (change)="onFileSelected($event)" type="file" autocomplete="off" required>
+              <div class="file-upload">
+                {{fileName || "No file uploaded yet."}}
+                 <button mat-mini-fab color="primary" class="upload-btn"
+                 (click)="fileUpload.click()">
+                     <mat-icon>attach_file</mat-icon>
+                 </button>
+             </div>
+            </div>
           </div>
         </form>
         <div>
@@ -64,10 +70,16 @@
                 <mat-label>Process Drawing No</mat-label>
                 <input matInput formControlName="processDrawingNo" autocomplete="off" required>
               </mat-form-field>
-              <mat-form-field appearance="outline" class="sub-process">
-                <mat-label>Process Drawing</mat-label>
-                <input matInput formControlName="processDrawing" autocomplete="off" required>
-              </mat-form-field>
+              <div class="file-field" >
+                <input #fileUpload class="file-input"  formControlName="processDrawing" (change)="onFileSelected($event)" type="file" autocomplete="off" required>
+                <div class="file-upload">
+                  {{fileName || "No file uploaded yet."}}
+                   <button mat-mini-fab color="primary" class="upload-btn"
+                   (click)="fileUpload.click()">
+                       <mat-icon>attach_file</mat-icon>
+                   </button>
+               </div>
+              </div>
               <mat-form-field appearance="outline" class="sub-process">
                 <mat-label>JSIR Doc</mat-label>
                 <input matInput formControlName="jsirDoc" autocomplete="off" required>
