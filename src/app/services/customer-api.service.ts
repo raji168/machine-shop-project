@@ -9,9 +9,7 @@ import { CustomerDataService } from '../data-services/customer-data.service';
   providedIn: 'root'
 })
 export class CustomerApiService {
-  get() {
-    throw new Error('Method not implemented.');
-  }
+ 
 
   baseUrl: string = `http://192.168.0.17:3002/customers`;
 

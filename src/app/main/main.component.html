@@ -9,7 +9,7 @@
             <button class="account" mat-icon-button>
                 <mat-icon>supervisor_account</mat-icon>
             </button>
-            <button class="logout" mat-icon-button>
+            <button *ngIf="userIsAuthenticated"class="logout" mat-icon-button (click)="clickLogout()">
                 <mat-icon>logout</mat-icon>
             </button>
         </div>
@@ -18,6 +18,17 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav mode="side" class="mat-elevation-z5">
         <mat-accordion class="example-headers-align " multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header class="library">
+                    <mat-panel-title>
+                       DASHBOARD
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <mat-list-item *ngIf="!userIsAuthenticated" routerLinkActive="active" routerLink="dashboard/admin" role="listitem"> Admin
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
             <mat-expansion-panel>
                 <mat-expansion-panel-header class="master">
                     <mat-panel-title>
@@ -53,28 +64,6 @@
                     <mat-list-item routerLinkActive="active" routerLink="productlibrary/product" role="listitem"> Product Master
                     </mat-list-item>
                     <mat-list-item routerLinkActive="active" routerLink="productlibrary/mapping" role="listitem"> Machine Mapping
-                    </mat-list-item>
-                </mat-nav-list>
-            </mat-expansion-panel>
-            
-            <mat-expansion-panel>
-                <mat-expansion-panel-header class="Report">
-                    <mat-panel-title>
-                        REPORT
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-nav-list>
-                    <mat-list-item routerLinkActive="active" routerLink="report/dailyreport" role="listitem"> Daily Report
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="report/jsir" role="listitem"> JSIR Report
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="report/isir" role="listitem"> ISIR Report
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="report/pdir" role="listitem"> PDIR Report
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="report/pir" role="listitem"> PIR Report
-                    </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="report/pms" role="listitem"> PMS Report
                     </mat-list-item>
                 </mat-nav-list>
             </mat-expansion-panel>
