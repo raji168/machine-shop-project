@@ -6,14 +6,13 @@ import { ProductDataService } from 'src/app/data-services/product-data.service';
 import { Product } from 'src/app/models/product.model';
 import { ProductApiService } from 'src/app/services/product-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { AddProductComponent } from '../Product/add-product/add-product.component';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { AddProductComponent } from '../product/add-product/add-product.component';
 import { MachineMapping } from 'src/app/models/machinemapping.model';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 const ELEMENT_DATA: Product[] = [];
