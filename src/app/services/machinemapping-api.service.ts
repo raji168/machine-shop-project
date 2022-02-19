@@ -12,7 +12,6 @@ import { MachineMappingDataService } from '../data-services/machinemapping-data.
 export class MachineMappingApiService {
   
   API_URL : string = 'http://192.168.0.17:3002/mappings';
-  // API_URL : string='/assets/stub/products.json';
   
   machinemapping : MachineMapping [];
 
@@ -32,11 +31,6 @@ export class MachineMappingApiService {
     )
   }
    
-
-    // getAll(){
-    //   return this.http.get<MachineMapping[]>(this.API_URL);
-    // }
-
   addMachineMap(machineMap: MachineMapping) {
     return this.http.post<MachineMapping>(this.API_URL, machineMap)
     .pipe(
@@ -58,15 +52,10 @@ export class MachineMappingApiService {
   deleteMachineMap(_id:string){
     return this.http.delete<MachineMapping>(`${this.API_URL}/${_id}`).pipe(
       tap(machineMap =>{
-        this.machineMapDataServivce.deleteMachineMap(machineMap.id)
+        this.machineMapDataServivce.deleteMachineMap(machineMap._id)
       })
     );
   }
-
-  deleteSelectMachineMap(machineMaps :MachineMapping[]): Observable<MachineMapping[]>{
-    return forkJoin(machineMaps.map(machineMap => this.http.delete<MachineMapping>(`${this.API_URL}/${machineMap.id}`)))
-  }
-
 }
 
 
