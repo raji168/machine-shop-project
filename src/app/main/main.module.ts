@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { MaterialModule } from "../material/material.module";
 import { MainRoutingModule } from "./main-rotuing.module";
 import { MainComponent } from "./main.component";
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -15,6 +16,7 @@ import { MainComponent } from "./main.component";
     ],
     imports: [
         CommonModule,
+       
         MaterialModule,
         ReactiveFormsModule,
         MainRoutingModule,

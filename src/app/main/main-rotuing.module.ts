@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { MainComponent } from "./main.component";
+import { RxjsLearningComponent } from "./Rxjs-learning/rxjs-learning.component";
 
 
 const routes: Routes = [
@@ -11,6 +12,9 @@ const routes: Routes = [
       },
       {
         path: 'productlibrary', loadChildren: () => import('../main/productlibrary/productlibrary.module').then(p => p.ProductLibraryModule),
+      },
+      {
+        path : 'Rxjs' , component : RxjsLearningComponent
       }
     ]
   },

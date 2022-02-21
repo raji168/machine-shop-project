@@ -1,7 +1,11 @@
 .content{
     height: 88vh;
 }
-
+.master-link :hover{
+  border-left: 20px solid #eb91c5;
+  transition: border .2s ease-in;
+  
+}
 mat-sidenav mat-drawer{
   width: 10%;
 
