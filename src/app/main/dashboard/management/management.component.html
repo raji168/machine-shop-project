@@ -1,87 +1,46 @@
-<div class="container">
-  <mat-card class="main">
-  <mat-toolbar class="top-menu">
-    <div class="title">Management</div>
-  </mat-toolbar>
-  <mat-form-field class="search-form-field" floatLable="never">
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. new">
-  </mat-form-field>
-</mat-card>
-<mat-card class="machine-status" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
-<div class="status-card"fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px" >
-  <mat-card class="card" >
-    <div class="status">
-      <h3>Running</h3>
-      <span class="material-icons green" style="color: rgb(49, 182, 37);">circle</span>
-      <span class="avg"> 4 of 8</span>
-      <br>
-      <span class="per"> 50%</span>
-      
+<div class="main-container">
+  <span class="dash-title">PROCESS</span>
+  <mat-card class="mat-elevation-z1">
+    <div class="menu-container" gdColumns="250px repeat(2, 2fr) ">
+      <div class="shift" style="color: blueviolet;">Shift : Shift 1</div>
+      <div class="name" style="color: blueviolet;">Supervisor : Sureshkumar</div>
+      <div class="filter-choice">
+        Fliter
+        <mat-select style="width: fit-content;">
+          <mat-option>Machine</mat-option>
+          <mat-option>Document</mat-option>
+          <mat-option>Customer</mat-option>
+        </mat-select>
+        <input matInput (keyup)="applyFilter($event)" placeholder=""> 
+      </div> 
+    </div> 
+  </mat-card>
+  <!-- <div class="title">Process</div> -->
+  <mat-card class="table-card mat-elevation-z1" >
+      <div class="table" >
+          <span class="header first">Lot ID</span>
+          <span class="header">Process</span>
+          <span class="header">Customer</span>
+          <span class="header">Product</span>
+          <span class="header">Machine</span>
+          <span class="header">Drawing No</span>
+          <span class="header">Status</span>
+          <span class="header last">Action</span>
+        <ng-container *ngFor="let process of data">
+          <span class="data-cell first">{{process.lotID}}</span>
+          <span class="data-cell">{{process.processName}}</span>
+          <span class="data-cell">{{process.customerName}}</span>
+          <span class="data-cell">{{process.productName}}</span>
+          <span class="data-cell">{{process.machineName}}</span>
+          <span class="data-cell">{{process.drawingNo}}</span>
+          <span class="data-cell" >{{process.status}}</span>
+          <span class="data-cell last">
+            <div class="button">
+              <button class="btn" mat-raised-button color="primary">Upload</button>
+              <button class="btn" mat-raised-button color="warn">Preview</button>
+            </div>
+          </span>
+        </ng-container>     
     </div>
   </mat-card>
-  <mat-card class="card" >
-    <div class="status">
-      <h3>Holding</h3>
-      <span class="material-icons orange" style="color: rgb(255, 134, 42);">circle</span>
-      <span class="avg"> 2 of 8</span>
-      <br>
-      <span class="per"> 25%</span>
-    </div>
-  </mat-card>
-  <mat-card class="card">
-      <div class="status">
-        <h3>Holding</h3>
-        <span class="material-icons red" style="color: rgb(255, 41, 41);">circle</span>
-        <span class="avg" > 2 of 8</span>
-        <br>
-        <span class="per"> 25%</span>
-      </div>
-  </mat-card>
-</div>
-</mat-card>
-<mat-card class="table" >
-<div class=" table-management mat-elevation-z8" role="table" style="width: 100%;">
-  
-  <mat-table  [dataSource]="managementData"   matSort>
-    <!-- <mat-card class="running-status"><mat-icon>circle</mat-icon>{{element.status}}</mat-card> -->
-     <!-- cdkDropList
-  [cdkDropListData]="managementData.data"
-  (cdkDropListDropped)="drop($event)"
-  cdkDrag -->
-    <ng-container matColumnDef="sno" class="sno"> 
-      <mat-header-cell *matHeaderCellDef mat-sort-header> S.No </mat-header-cell>
-      <mat-cell *matCellDef="let element ; let i =index "> {{i+1}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="machineName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Machine </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.machineName}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="customerName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Customer</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.customerName}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="productName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Product </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.productName}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="status">
-      <mat-header-cell *matHeaderCellDef> Machine Status </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          {{element.status}}
-        </mat-cell>
-       
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag></mat-row>
-  </mat-table>
-  </div>
-</mat-card>
-
-
-  <!-- <div class="footer">
-    <div class="paginator">
-      <mat-paginator [pageSizeOptions]="[1,3,5,10,15,25,100]" pageSize="10" showFirstLastButtons>
-      </mat-paginator>
-    </div>
-  </div> -->
 </div>

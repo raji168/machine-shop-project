@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { ManagementView } from "src/app/models/dashboard/management.-view.model";
+import { ManagementView } from "src/app/models/dashboard/admin.model";
 
 @Injectable({
     providedIn:'root'

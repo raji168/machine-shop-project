@@ -1,5 +1,5 @@
 import { CustomerView } from "./customer-view.model";
-import { ManagementView } from "./management.-view.model";
+import { Admin } from "./admin.model";
 
 // export interface InspectorView{
 //     _id:string;
