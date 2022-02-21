@@ -16,17 +16,17 @@ export const isRolesAdded = createSelector(
     roleState,
     state => state.roleAdded
 );
-export const selectLabError = createSelector(
+export const selectRoleError = createSelector(
     roleState,
     state =>state.roleAddedError
 );
 
-export const isLabAddedFailed = createSelector(
+export const isRoleAddedFailed = createSelector(
     roleState,
     state =>state.roleAddedFailed
 );
 
-export const selectEditlab = createSelector(
+export const selectEditRole = createSelector(
     roleState,
     state => state.editRole
 );

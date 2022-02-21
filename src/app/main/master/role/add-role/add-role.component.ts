@@ -1,9 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import { Role } from 'src/app/models/role.model';
 import { NotificationService } from 'src/app/services/notification.service';
 import { RoleApiService } from 'src/app/services/role-api.service';
+import { RoleActions } from 'src/app/store/actions/action-types';
 
 
 
@@ -18,6 +20,7 @@ export class AddRoleComponent implements OnInit {
   dataRole: Role[] = [];
   roleForm: FormGroup;
   _id: string;
+  
 
 
   constructor(
@@ -25,7 +28,8 @@ export class AddRoleComponent implements OnInit {
     public roleService: RoleApiService,
     public dialogRef: MatDialogRef<AddRoleComponent>,
     public notification: NotificationService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private store: Store,
   ) { }
 
   ngOnInit(): void {
@@ -46,15 +50,11 @@ export class AddRoleComponent implements OnInit {
 
   onSubmit() {
     if (this.role) {
-      this.roleService.updateRole(this.roleForm.value, this.role._id).subscribe(data => {
-        this.dialogRef.close(data);
-        this.notification.success(" Edited successfullly!!");
-      });
+      this.roleForm.disable();
+      this.store.dispatch(RoleActions.updateRole({ role: this.roleForm.value, id :this.role._id, loadedState : true } ));
     } else {
-      this.roleService.addRole(this.roleForm.value).subscribe(data => {
-        this.dialogRef.close(data);
-        this.notification.success(" Data added successfullly!!");
-      });
+      this.roleForm.disable();
+      this.store.dispatch(RoleActions.addRole({role : this.roleForm.value}));
 
     }
   }

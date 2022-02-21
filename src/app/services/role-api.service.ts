@@ -10,6 +10,7 @@ import { RoleDataService } from '../data-services/role-data.service';
   providedIn: 'root'
 })
 export class RoleApiService {
+ 
 
   url: string = 'http://192.168.0.17:3002/roles';
   roles: Role[] = [];
@@ -29,10 +30,7 @@ export class RoleApiService {
       })
     )
   }
-
-
-
-  addRole(role: Role) {
+  addRole(role: Partial<Role>) {
     return this.http.post<Role>(this.url, role)
       .pipe(
         tap((role) => {
@@ -51,7 +49,8 @@ export class RoleApiService {
   }
 
   deleteRole(_id: string) {
-    return this.http.delete<Role>(`${this.url}/${_id}`).pipe(
+    return this.http.delete<Role>(`${this.url}/${_id}`)
+    .pipe(
       tap(role => {
         this.roleDataService.deleteRole(role._id)
       })

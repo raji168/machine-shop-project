@@ -5,13 +5,12 @@ import { AddRoleComponent } from './add-role/add-role.component';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { RoleDataService } from 'src/app/data-services/role-data.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
 import { Role } from 'src/app/models/role.model';
 import { RoleApiService } from 'src/app/services/role-api.service';
 import { Store } from '@ngrx/store';
 import { selectRoles } from 'src/app/store/selectors/role.selectors';
+import { RoleActions } from 'src/app/store/actions/action-types';
 
 
 @Component({
@@ -71,6 +70,8 @@ export class RoleComponent implements OnInit {
           this.roleService.deleteRole(id).subscribe(res => {
             this.notification.success(' deleted Suceessfully');
           })
+          // this.store.dispatch(RoleActions.deleteRole({}));
+          
         }
       });
   }

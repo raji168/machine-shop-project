@@ -1,8 +1,11 @@
+import { state } from "@angular/animations";
+import { identifierModuleUrl } from "@angular/compiler";
 import { createReducer, on } from "@ngrx/store";
+import { Action } from "rxjs/internal/scheduler/Action";
 import { Role } from "src/app/models/role.model";
 import { RoleActions } from "src/app/store/actions/action-types"
-
-export interface RoleState {
+import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
+export interface RoleState extends EntityState<Role> {
    
     roles: Role[];
     rolesLoaded: boolean;
@@ -11,48 +14,77 @@ export interface RoleState {
     roleAddedFailed: boolean;
     editRole: any;
 }
+export const adapter :EntityAdapter<Role> = createEntityAdapter<Role>();
 
-const initialState: RoleState = {
+export const initialState: RoleState = adapter.getInitialState( {
     roles : [],
     roleAdded: false,
     rolesLoaded: false,
     roleAddedError: false,
     roleAddedFailed: false,
-    editRole:null
-}
+    editRole: null
+});
 
 export const reducer = createReducer(
     initialState,
-    on(RoleActions.roleAdded, (state, action) => {
+    on(RoleActions.roleAdded, (state, action) =>
+    // adapter.addOne(action.role,state)
+    {
         return {
             ...state,
             roles: [...state.roles, action.role],
             roleAdded: true
         };
+    }
+    ),
+    on(RoleActions.roleAddFail, (state, action) => {
+        return {
+            ...state,
+            roleAddedFailed: true
+        };
     }),
 
-    on(RoleActions.RoleLoaded, (state, action) => {
+    on(RoleActions.RoleLoaded, (state, action) => 
+    // adapter.setAll(action.roles,state)
+    {
         return {
             ...state,
             roles: action.roles,
             rolesLoaded: true
         };
-    }),
-    on(RoleActions.roleUpdated, (state, action) => {
+    }
+    ),
+    on(RoleActions.roleUpdated, (state, action) => 
+    // adapter.updateOne(action.loadedState,state)
+    {
         const clonedRoles = [...state.roles];
-        const updateRoleIndex = clonedRoles.findIndex(l => l._id === action.role._id);
-        const updateRole = clonedRoles.find(l => l._id === action.role._id);
-
+        const updateRoleIndex = clonedRoles.findIndex(role => role._id === action.role._id);
+        const updateRole = clonedRoles.find(role => role._id === action.role._id);
         const updatedRole = { ...updateRole, ...action.role };
-
         clonedRoles[updateRoleIndex] = updatedRole;
-
         return {
             ...state,
             roles: clonedRoles,
             roleAdded: action.loadedState
         };
-    }),
+    }
+    ),
+    // on(RoleActions.roleDeleted, (state , action) => {
+    //     const updatedRole = state.roles.filter(role => role._id ! == action.id);
+    //     return{
+    //         ...state,
+    //         roles :updatedRole,
+    //     }
+    // }),
+        on(RoleActions.deleteRoleSuccess, (state, action) =>
+        adapter.removeOne(action.id, state)
+      ),
+      on(RoleActions.deleteRoleFailure, (state, action) => {
+        return {
+          ...state,
+          error: action.error
+        };
+      }),
     on(RoleActions.resetRoleAdded, (state, action) => {
         return {
             ...state,
@@ -60,19 +92,14 @@ export const reducer = createReducer(
         };
     }),
 
-    on(RoleActions.resetRoleAddedFailed, (state, Action) => {
+    on(RoleActions.resetRoleAddedFailed, (state, action) => {
         return {
             ...state,
             roleAddedFailed: false
         };
     }),
 
-    on(RoleActions.roleAddFail, (state, action) => {
-        return {
-            ...state,
-            roleAddedFailed: true
-        };
-    }),
+   
 
     on(RoleActions.editRole, (state, action) => {
         return {
