@@ -17,10 +17,11 @@ import { map } from "rxjs/operators";
 
 export class AuthService {
     private token: string;
-    private tokenTimer: any;
+    // private tokenTimer: any;
     private authStatusListener = new Subject<boolean>();
     private user: string;
     private isAuthenticated = false;
+    username;
 
     constructor(private http: HttpClient,
         private alert: AlertService,
@@ -37,6 +38,10 @@ export class AuthService {
     getUser() {
         return this.user;
     }
+
+    // getUserName(){
+    //     return this.username;
+    // }
 
     getAuthStatusListner() {
         return this.authStatusListener.asObservable();
@@ -58,6 +63,8 @@ export class AuthService {
                     this.isAuthenticated = true;
                     this.authStatusListener.next(true);
                     this.saveAuthData(token, this.user);
+                    this.username = this.user;
+                    // this.getUserName();
                     console.log('Login Successfully')
                     console.log('Token is   ' + this.token);
                     this.alert.showSuccess('Login Successfully', 'User ' + username);

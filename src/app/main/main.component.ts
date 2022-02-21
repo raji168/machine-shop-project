@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild , OnDestroy} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
-import { User } from '../models/user.model';
 import { AlertService } from '../shared/alert.service';
 
 
@@ -17,13 +17,14 @@ export class MainComponent implements OnInit {
   userIsAuthenticated = false  ;
   private authListenerSubs:Subscription;
 
-  user;
+  userName ;
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
  
 
   constructor(
     private authService:AuthService,
+    private router:Router,
     private alert:AlertService
 
     ) { }
@@ -37,15 +38,17 @@ export class MainComponent implements OnInit {
       this.userIsAuthenticated = isAuthenticated ;
     });
 
-
+    // this.userName = this.authService
   }
 
   clickLogout() {
-    // this.authService.logout(this.user._id);
     this.authService.logout();
     this.alert.showSuccess('Logout Successfully','User ');
   }
-
+  
+  clickDashboard(){
+    this.router.navigate(['/dashboard/admin']);
+  }
   ngOnDestroy(){
     this.authListenerSubs.unsubscribe();
   }

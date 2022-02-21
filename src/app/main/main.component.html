@@ -5,9 +5,9 @@
         </button>
         <span class="title">MACHINE SHOP</span>
         <div class="btn">
-            <span>Admin</span>
-            <button class="account" mat-icon-button>
-                <mat-icon>supervisor_account</mat-icon>
+            <span>admin</span>
+            <button class="account" mat-icon-button (click)="clickDashboard()">
+                <mat-icon>computer</mat-icon>
             </button>
             <button class="logout" mat-icon-button (click)="clickLogout()">
                 <mat-icon>logout</mat-icon>
@@ -16,19 +16,8 @@
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side" class="mat-elevation-z5">
+    <mat-sidenav #sidenav class="mat-elevation-z5">
         <mat-accordion class="example-headers-align " multi>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header class="library">
-                    <mat-panel-title>
-                       DASHBOARD
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-nav-list>
-                    <mat-list-item  routerLinkActive="active" routerLink="dashboard/management" role="listitem"> Management
-                    </mat-list-item>
-                </mat-nav-list>
-            </mat-expansion-panel>
             <mat-expansion-panel>
                 <mat-expansion-panel-header class="master">
                     <mat-panel-title>

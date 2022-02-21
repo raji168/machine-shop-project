@@ -1,15 +1,15 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AdminComponent } from "./admin/admin.component";
 import { CustomerViewComponent } from "./customer-view/customer-view.component";
 import { InspectorComponent } from "./inspector/inspector.component";
-import { ManagementComponent } from "./management/management.component";
 import { ManagerComponent } from "./manager/manager.component";
 import { NpdTeamComponent } from "./npd-team/npd-team.component";
 import { SupervisorComponent } from "./supervisor/supervisor.component";
 
 const routes: Routes = [
     {
-        path:'management',component:ManagementComponent
+        path:'admin',component:AdminComponent
     },
     {
         path:'manager',component:ManagerComponent

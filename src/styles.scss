@@ -1,11 +1,11 @@
 html, body { height: 100%; }
 body { margin: 0; 
-    font-family: 'Varela Round', sans-serif;
-    // font-family: Roboto, "Helvetica Neue", sans-serif; 
+    font-family: 'Poppins', sans-serif;
+    // font-weight: 600;
 }
-.top-menu{
-    background-color: transparent;   
-}
+// .top-menu{
+//     background-color: transparent;   
+// }
 .create-button{
     float:right;
     margin-top: -50px;
@@ -62,3 +62,4 @@ snack-bar-container.notification simple-snack-bar{
     text-align: center;
     font-size: 20px
 }
+

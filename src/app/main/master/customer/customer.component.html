@@ -1,15 +1,14 @@
 <div class="container">
-  <div></div>
   <div>
-    <mat-toolbar class="top-menu">
-      <span>Customer List</span>
-    </mat-toolbar>
+    <div class="top-menu">
+      <span>CUSTOMER LIST</span>
+    </div>
     <div class="search-div">
-      <button mat-raised-button class="create-button" (click)="onClickAdd()">
+      <button mat-raised-button class="create-button" (click)="onClickAdd()" color="primary">
         <mat-icon>add</mat-icon>Add
       </button>
       <mat-form-field class="search-form-field" floatLable="never">
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search" >
       </mat-form-field>
     </div>
     <div class=" table-customer mat-elevation-z8" role="table">
@@ -56,8 +55,8 @@
       </mat-table>
       <div class="footer">
         <div class="deleteallFun">
-          <button mat-raised-button class="DeleteAll-button" (click)="removeSelected()">
-            <mat-icon>delete</mat-icon>Deleteall
+          <button mat-raised-button class="DeleteAll-button" color="primary" (click)="removeSelected()">
+            <mat-icon>delete</mat-icon> Delete All
           </button>
         </div>
         <div class="paginator">

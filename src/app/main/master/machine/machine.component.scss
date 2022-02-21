@@ -1,21 +1,31 @@
 .container{
     display: grid;
-    grid-template-columns: 10% 1fr 10%;
-    margin:20px;
-    padding: 20px;
+    grid-template-columns:1fr;
+    margin:10px;
     box-sizing: border-box;
 }
 .top-menu{
- background-color: transparent;   
+    // padding-left: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+span{
+    padding-left: 10px;
 }
 .table-machine mat-header-cell{
     font-size: 16px;
-    color:black;
+    color:rgb(255, 255, 255);
+    font-family: 'Poppins', sans-serif;
+ 
 } 
-
+.search-div{
+    height: fit-content;
+}
 .search-form-field{
-    padding-left: 20px;
+    padding-left: 10px;
     width: 25%;
+    margin-bottom: 0;
 }
 .edit-button{
     display: grid;
@@ -23,10 +33,12 @@
     gap:10px 10px;
 }
  mat-cell{
-    justify-content: center;
+    justify-content: left;
+    padding-right: 0;
+    font-family: 'Poppins', sans-serif;
 }
 mat-header-cell{
-    justify-content: center;
+    justify-content: left;
 }
 ng-container{
     display: grid;
@@ -39,7 +51,10 @@ ng-container{
     margin-left: 15px;
     margin-top: 13px;
 }
+mat-header-cell:last-of-type{
+    padding-left: 0px;
+}
 mat-row:nth-child(even){
     background-color: rgb(220, 220, 220);
-}
 
+}

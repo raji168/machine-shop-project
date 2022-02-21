@@ -3,11 +3,11 @@ import { Admin } from 'src/app/models/dashboard/admin.model';
 import { AdminApiService} from 'src/app/services/dashboard/admin-api.service';
 
 @Component({
-  selector: 'app-management',
-  templateUrl: './management.component.html',
-  styleUrls: ['./management.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class ManagementComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
 
    data : Admin[] =[] ;

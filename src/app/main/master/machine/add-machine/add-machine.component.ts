@@ -31,7 +31,7 @@ export class AddMachineComponent implements OnInit {
       machinename: ['',Validators.required],
       machineno: ['',Validators.maxLength(5)],
       brand: ['',Validators.required],
-      category:['',Validators.required],
+      category:'',
     });
 
   }
@@ -39,11 +39,12 @@ export class AddMachineComponent implements OnInit {
   ngOnInit() {
     this.machineCategoryApi.get().subscribe(data =>{
       this.machineCategoryData = data;
+      console.log(this.machineCategoryData);
     })
     this.machine = this.data?.machine;
     if (this.machine) {
-      this.machineForm.patchValue(this.machine);
-      this.machineForm.get('machineCategory')?.setValue(this.machine.category._id)
+      this.machineForm.patchValue(this.data.machine);
+      this.machineForm.get('machineCategory')?.setValue(this.machine.category._id);
     }
   }
 
