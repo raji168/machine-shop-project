@@ -5,7 +5,7 @@ export interface Product {
     _id: string;
     productName: string;
     customer: Customer;
-    DrawingNo:number;
+    DrawingNo:string;
     // revisionNo:string;
     Drawing:string;
     // partNo:string;

@@ -56,6 +56,7 @@ export class AddUserComponent implements OnInit {
       this.roleData = data;
     })
     this.user = this.data?.user;
+    console.log(this.user)
     if (this.user) {
       this.userForm.patchValue(this.data.user);
       this.userForm.get('role')?.setValue(this.data.user.role._id);

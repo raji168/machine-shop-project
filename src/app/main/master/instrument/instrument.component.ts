@@ -91,7 +91,7 @@ export class InstrumentComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "40%";
+    dialogConfig.width = "33%";
     this._dialog.open(AddInstrumentComponent, dialogConfig);
   }
 

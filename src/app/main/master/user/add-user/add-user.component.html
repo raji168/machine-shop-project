@@ -1,6 +1,6 @@
 <div class="container">
   <div class="form">
-    <div class="title">Add User</div>
+    <h1 class="title">Add User</h1>
     <!-- {{userForm.value | json}} -->
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="normal-form" >
 
@@ -42,8 +42,8 @@
       </mat-form-field>
 
       <div class="add-form-buttons">
-        <button mat-raised-button class="btn-save" type="submit" color="primary">Save</button>
-        <button mat-raised-button class="btn-cancel" mat-dialog-close >Cancel</button>
+        <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn" >Cancel</button>
+        <button mat-raised-button class="btn-save" [disabled]="userForm.invalid" type="submit" color="primary">Save</button>
       </div>
 
     </form>

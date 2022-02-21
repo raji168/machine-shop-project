@@ -5,7 +5,7 @@ export interface Machine {
     machinename: string;
     machineno: string;
     brand: string;
-    category: MachineCategory;
+    machinecategory: MachineCategory;
     isSelected: any;
 }
 

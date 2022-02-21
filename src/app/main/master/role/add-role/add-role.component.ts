@@ -34,7 +34,6 @@ export class AddRoleComponent implements OnInit {
       name: ['',Validators.required],    
     });
     this.role = this.data?.role;
-    console.log(this.role)
     if (this.role) {
       this.roleForm.patchValue(this.role);
     }

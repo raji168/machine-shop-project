@@ -1,16 +1,15 @@
 <div class="container">
     <div></div>
     <div>
-        <mat-toolbar class="top-menu">
-            <span>Role List</span>
-        </mat-toolbar>
-        <div class="search-div">
-    
-            <button mat-raised-button  class="create-button"  (click)="onCreate()">
-                <mat-icon>add</mat-icon>Add
-            </button>
-    
+        <div class="top-menu">
+            <h1>Role</h1>
+            <div class="add-button">
+                <button mat-raised-button  class="create-button"  (click)="onCreate()">
+                    <mat-icon>add</mat-icon>Add
+                </button>
+            </div>
         </div>
+        
     
         <!-- {{ roles$ | async | json }} -->
     
@@ -28,8 +27,8 @@
                 </ng-container>
     
     
-                <ng-container matColumnDef="actions">
-                    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                <ng-container matColumnDef="actions" class="role-icons">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
                     <mat-cell *matCellDef="let role">
                         <button class="edit-button" mat-icon-button  title="Edit"
                              (click)="onEdit(role)">
