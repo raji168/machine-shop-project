@@ -21,30 +21,30 @@ export class AddMachineComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { machine: Machine },
     public dialogRef: MatDialogRef<AddMachineComponent>,
-    private machineCategoryApi:MachineCategoryApiService,
+    private machineCategoryService:MachineCategoryApiService,
     private machineApi: MachineApiService,
     private alert: AlertService,
     private fb:FormBuilder) {
-
 
     this.machineForm = this.fb.group({
       machinename: ['',Validators.required],
       machineno: ['',Validators.maxLength(5)],
       brand: ['',Validators.required],
       category:'',
-    });
+    })
 
   }
 
   ngOnInit() {
-    this.machineCategoryApi.get().subscribe(data =>{
+    this.machineCategoryService.get().subscribe(data =>{
       this.machineCategoryData = data;
       console.log(this.machineCategoryData);
     })
     this.machine = this.data?.machine;
+    console.log(this.machine)
     if (this.machine) {
       this.machineForm.patchValue(this.data.machine);
-      this.machineForm.get('machineCategory')?.setValue(this.machine.category._id);
+      this.machineForm.get('machineCategory')?.setValue(this.data.machine.machinecategory._id)
     }
   }
 
@@ -58,6 +58,7 @@ export class AddMachineComponent implements OnInit {
       
     } else {
       this.machineApi.addMachine(this.machineForm.value).subscribe(data => {
+        console.log(data);
         this.dialogRef.close(data);
         this.alert.showSuccess('Machine Added Successfully...!', 'Machine');
       });

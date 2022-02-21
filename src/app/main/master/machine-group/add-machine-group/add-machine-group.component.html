@@ -1,6 +1,6 @@
 <div class="form">
     <div class="from-title">
-        <span>MachineGroup</span>
+        <h1>MachineGroup</h1>
     </div>
         <!-- {{ machineGroupFrom.value | json }} -->
     <form [formGroup]="machineGroupFrom" ngRepeat="" (ngSubmit)="onSubmit()" class="normal-form">
@@ -11,8 +11,8 @@
             </mat-form-field>
             <div class="add-form-buttons">
                 <div class="button-row">
+                    <button mat-raised-button  type="reset" mat-dialog-close color="warn">Close</button>
                     <button mat-raised-button color="primary" [disabled]="machineGroupFrom.invalid" type="submit">Submit</button>
-                    <button mat-raised-button  type="reset" mat-dialog-close >Close</button>
                 </div>
             </div>
         </div>

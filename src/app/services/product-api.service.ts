@@ -13,7 +13,7 @@ export class ProductApiService{
   // URL : string = '/assets/stub/products.json';
   URL : string = 'http://192.168.0.17:3002/products';
 
-  products : Product[] =[]
+  product : Product[] =[]
 
   constructor(
       private http : HttpClient,
@@ -54,11 +54,4 @@ export class ProductApiService{
     );
   }
 
-  deleteSelectProduct(products :Product[]): Observable<Product[]>{
-    return forkJoin(products.map(product => this.http.delete<Product>(`${this.URL}/${product._id}`)))
-  }
-
-  // getProcessByProduct(processId:string){
-  //   return this.products.find(product => product.process[].
-  // }
 }

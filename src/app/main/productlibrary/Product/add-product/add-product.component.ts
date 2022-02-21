@@ -43,9 +43,8 @@ export class AddProductComponent implements OnInit {
     this.product = this.data?.product;
     if(this.product) {
       this.form.patchValue(this.product);
-      // this.form.patchValue(this.product.process);
       this.form.patchValue(this.customerData)
-      this.form.get('customer').setValue(this.product.customer);
+      // this.form.get('customer').setValue(this.product.customer);
     }
   }
   
@@ -78,7 +77,6 @@ export class AddProductComponent implements OnInit {
 }
   onSubmit() {
     if (this.product) {
-      // this.form.disable();
       this.dialogRef.close();
       this.productService.updateProduct(this.form.value, this.product._id).subscribe(data => {
         console.log(data)

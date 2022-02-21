@@ -6,6 +6,13 @@
         <div class="search-div">
           <button mat-raised-button class="create-button" (click)="onClickAdd()" color="primary">
             <mat-icon>add</mat-icon>Add
+
+    <mat-toolbar class="top-menu">
+      <span>Machine List</span>
+  </mat-toolbar>
+  <div class="search-div">
+    <button mat-raised-button class="create-button" (click)="onClickAdd()">
+        <mat-icon>add</mat-icon>Add
           </button>
           <mat-form-field class="search-form-field" floatLable="never">
             <input matInput (keyup)="applyFilter($event)" placeholder="Search">

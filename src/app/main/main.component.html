@@ -25,21 +25,21 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list class="master-link">
-                    <mat-list-item routerLinkActive="active" routerLink="master/role" role="listitem">Role
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/role" role="listitem">Role
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/user" role="listitem">User
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/user" role="listitem">User
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/shift" role="listitem">Shift
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/shift" role="listitem">Shift
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/machine-group" role="listitem">Machine Group
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/machine-group" role="listitem">Machine Group
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/machine-category" role="listitem">Machine category
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/machine-category" role="listitem">Machine category
                     </mat-list-item>    
-                    <mat-list-item routerLinkActive="active" routerLink="master/machine" role="listitem">Machine
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/machine" role="listitem">Machine
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/instrument" role="listitem">Instrument
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/instrument" role="listitem">Instrument
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/customer" role="listitem">Customer 
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/customer" role="listitem">Customer 
                     </mat-list-item>
                 </mat-nav-list>
             </mat-expansion-panel>
@@ -50,9 +50,9 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <mat-list-item routerLinkActive="active" routerLink="productlibrary/product" role="listitem"> Product Master
+                    <mat-list-item routerLinkActive="active"  routerLink="productlibrary/product" role="listitem"> Product Master
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="productlibrary/mapping" role="listitem"> Machine Mapping
+                    <mat-list-item routerLinkActive="active"  routerLink="productlibrary/mapping" role="listitem"> Machine Mapping
                     </mat-list-item>
                 </mat-nav-list>
             </mat-expansion-panel>

@@ -16,9 +16,13 @@ form{
     grid-template-columns: 50% 50%;
     gap: 10px 10px;
 }
-
+.btn-save{
+    margin-right: -235%;
+}
+.btn-cancel{
+    margin-left: -130%;
+}
 .add-form-buttons{
-    align-self: center;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

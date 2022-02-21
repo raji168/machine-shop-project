@@ -22,6 +22,7 @@ export class MainComponent implements OnInit {
   @ViewChild(MatAccordion) accordion: MatAccordion;
  
 
+  skipLocationChange=false;
   constructor(
     private authService:AuthService,
     private router:Router,

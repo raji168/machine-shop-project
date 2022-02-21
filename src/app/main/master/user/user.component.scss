@@ -1,47 +1,21 @@
-
 .container{
-    display: grid;
-    grid-template-columns: 10% 1fr 10%;
-    margin:20px;
-    padding: 20px;
-    box-sizing: border-box;
+    padding: 25px;
 }
-
 .table-user mat-header-cell{
     font-size: 16px;
     color:black;
 } 
-
-// .search-form-field{
-//     padding-left: 20px;
-//     width: 25%;
+.top-menu{
+    letter-spacing: normal;
+    font-size: 21px;
+    font-weight: 800;
+}
+.delete-button{
+    margin-left: 20%;
+}
+// mat-row:nth-child(even){
+//     background-color: rgb(220, 220, 220);
 // }
-.edit-button{
-    display: grid;
-    justify-content: center;
-    gap:10px 10px;
-}
- mat-cell{
-    justify-content: center;
-}
-mat-header-cell{
-    justify-content: center;
-}
-ng-container{
-    display: grid;
-}
-.footer{
-    display: grid;
-    grid-template-columns: auto auto;
-}
-.DeleteAll-button{
-    margin-left: 15px;
-    margin-top: 13px;
-}
-mat-row:nth-child(even){
-    background-color: rgb(220, 220, 220);
-
-}
 
 // mat-row{
      

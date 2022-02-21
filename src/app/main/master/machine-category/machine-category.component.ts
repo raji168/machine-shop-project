@@ -42,7 +42,7 @@ export class MachineCategoryComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "40%";
+    dialogConfig.width = "35%";
     this.dialog.open(AddMachineCategoryComponent, dialogConfig);
   }
 

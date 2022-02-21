@@ -27,14 +27,14 @@
             <span class="product-header-cell first">SNo</span>
             <span class="product-header-cell">Product Name</span>
             <span class="product-header-cell">Customer Name</span>
-            <span class="product-header-cell">Customer Drawingno</span>
-            <span class="product-header-cell">Customer Drawing</span>
+            <span class="product-header-cell">Drawingno</span>
+            <span class="product-header-cell">Drawing</span>
             <span class="product-header-cell">Action</span>
             <div class="product-header-cell last"></div>
-            <ng-container *ngFor="let product of products; let productIndex =index">
+            <ng-container *ngFor="let product of productData; let productIndex =index">
                 <span class="product-cell first"> {{productIndex+1}} </span>
                 <span class="product-cell">{{product.productName}}</span>
-                <span class="product-cell">{{product.Customer?.coustomername}}</span>
+                <span class="product-cell">{{ getCustomer(product.coustomername)}}</span>
                 <span class="product-cell">{{product.DrawingNo}}</span>
                 <span class="product-cell">{{product.Drawing}}</span>
                 <span class="product-cell">
