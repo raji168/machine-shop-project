@@ -17,13 +17,13 @@ import { ProductApiService } from 'src/app/services/product-api.service';
   styleUrls: ['./add-machinemap.component.scss']
 })
 export class AddMachinemapComponent implements OnInit {
-  mapping : MachineMapping;
+  machinemapping : MachineMapping;
   form: FormGroup;
   productData : Product[] =[];
   machineData : Machine [] = [];
   processData : any;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { mapping : MachineMapping },
+    @Inject(MAT_DIALOG_DATA) public data: { machinemapping : MachineMapping },
     public productService : ProductApiService,
     public machineService : MachineApiService,
     public machinemapService : MachineMappingApiService,
@@ -48,12 +48,11 @@ export class AddMachinemapComponent implements OnInit {
       this.machineData = data;
     })
    
-    this.mapping = this.data?.mapping;
-
-    if (this.mapping) {
-      this.form.patchValue(this.mapping);
-      this.form.get('product').setValue(this.data.mapping.product._id);
-      this.form.get('machine').setValue(this.data.mapping.machine._id); 
+    this.machinemapping = this.data?.machinemapping;
+    if (this.machinemapping) {
+      this.form.patchValue(this.data.machinemapping);
+      // this.form.get('product')?.setValue(this.data.machinemapping.product._id);
+      // this.form.get('machine')?.setValue(this.data.machinemapping.machine._id); 
     }
   }
   onProductChange(event) {
@@ -71,16 +70,14 @@ export class AddMachinemapComponent implements OnInit {
   }
   
   onSubmit() {
-    if (this.mapping) {
-      this.machinemapService.updateMachineMap(this.form.value, this.mapping.id).subscribe(data => {
-        // console.log(data)
+    if (this.machinemapping) {
+      this.machinemapService.updateMachineMap(this.form.value, this.machinemapping._id).subscribe(data => {
         this.dialogRef.close(data);
         this.notification.success("Edited successfully!!");
       });
     } else {
       this.machinemapService.addMachineMap(this.form.value).subscribe(data => {
         this.dialogRef.close(data);
-        console.log(data);
         this.notification.success("Added successfully!!");
       });
     }

@@ -12,38 +12,36 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class AddMachineGroupComponent implements OnInit {
 
-  machineGroup: machineGroup;
+  machinegroup: machineGroup;
   dataMachineGroup: machineGroup[] = [];
   machineGroupFrom: FormGroup;
   _id: string;
 
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { machineGroup: machineGroup },
+    @Inject(MAT_DIALOG_DATA) public data: { machinegroup: machineGroup },
     public machineGroupService: MachineGroupApiService,
     public dialogRef: MatDialogRef<AddMachineGroupComponent>,
     public notification: NotificationService,
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder) {
+      this.machineGroupFrom = this.fb.group({
+        name: ['',Validators.required],    
+      });
+   }
 
   ngOnInit(): void {
-
-    this.machineGroupFrom = this.fb.group({
-      name: ['',Validators.required],    
-    });
-    this.machineGroup = this.data?.machineGroup;
-    console.log(this.machineGroup)
-    if (this.machineGroup) {
-      this.machineGroupFrom.patchValue(this.machineGroup);
+    this.machinegroup = this.data?.machinegroup;
+    console.log(this.machinegroup)
+    if (this.machinegroup) {
+      this.machineGroupFrom.patchValue(this.machinegroup);
     }
-
   }
 
   onSubmit() {
-    if (this.machineGroup) {
-      this.machineGroupService.updateMachineGroup(this.machineGroupFrom.value, this.machineGroup._id).subscribe(data => {
+    if (this.machinegroup) {
+      this.machineGroupService.updateMachineGroup(this.machineGroupFrom.value, this.machinegroup._id).subscribe(data => {
         this.dialogRef.close(data);
-        this.notification.success(" Machinegroup edited successfullly!!");
+        this.notification.success("Machinegroup edited successfullly!!");
       });
     } else {
       this.machineGroupService.addMachineGroup(this.machineGroupFrom.value).subscribe(data => {
@@ -54,3 +52,4 @@ export class AddMachineGroupComponent implements OnInit {
     }
   }
 }
+

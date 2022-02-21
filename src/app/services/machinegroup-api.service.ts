@@ -11,8 +11,6 @@ import { tap } from 'rxjs/operators';
   })
   export class MachineGroupApiService {
     url: string = 'http://192.168.0.17:3002/machinegroups';
-
-
     machinegroups: machineGroup[] = [];
     constructor(
       private http: HttpClient,

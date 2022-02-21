@@ -6,14 +6,14 @@ import { ProductDataService } from 'src/app/data-services/product-data.service';
 import { Product } from 'src/app/models/product.model';
 import { ProductApiService } from 'src/app/services/product-api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { AddProductComponent } from '../product/add-product/add-product.component';
 import { MachineMapping } from 'src/app/models/machinemapping.model';
+import { AddProductComponent } from './add-product/add-product.component';
+
 
 const ELEMENT_DATA: Product[] = [];
 
@@ -49,7 +49,6 @@ export class ProductComponent {
     private productApiService: ProductApiService,
     private productDataService: ProductDataService,
     private dialog: MatDialog,
-    private router: Router,
     private dialogsService: DialogsService,
     private notification: NotificationService
   ) { }
@@ -60,7 +59,7 @@ export class ProductComponent {
 
     this.productApiService.get().subscribe(data => {
       this.products = data
-      // console.log(this.products);
+      console.log(this.products);
     })
 
     // this.productDataSource$.subscribe(
@@ -131,19 +130,6 @@ export class ProductComponent {
           })
         }
       });
-  }
-
-  removeSelected() {
-    // const aproducts = this.products.data.filter((i: Product) => i.isSelected);
-    // this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
-    //   .afterClosed().subscribe(res => {
-    //     if (res) {
-    //       this.productApiService.deleteSelectProduct(aproducts).subscribe(res => {
-    //         this.products.data = this.products.data.filter((i: Product) => !i.isSelected);
-    //         this.notification.success('product Selected Records Deleted Successfully...!');
-    //       })
-    //     }
-    //   });
   }
 }
 

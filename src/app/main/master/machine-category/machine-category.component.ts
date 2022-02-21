@@ -18,33 +18,24 @@ import { AddMachineCategoryComponent } from './add-machine-category/add-machine-
 })
 export class MachineCategoryComponent implements OnInit {
 
-  displayedColumns: string[] = ['serialno', 'Machine category','Machine group', 'actions'];
-
+  displayedColumns: string[] = ['serialno', 'machineCategory','machinegroup', 'actions'];
   machineCategoryForm: FormGroup = new FormGroup({
     serialno: new FormControl(''),
     machineCategoryName: new FormControl(''),
-    machineGroupName: new FormControl('')
+    machinegroup: new FormControl('')
   });
-
   machineCategoryDataSource$: Observable<MatTableDataSource<MachineCategory>>;
-
-
   constructor(
     private machineCategoryService: MachineCategoryApiService,
     private machineCategoryDataService: MachineCategoryDataService,
     private dialog: MatDialog,
     private notification: NotificationService,
     private dialogService: DialogsService,) {
-
   }
-
-
   ngOnInit(): void {
-
-    this.machineCategoryDataSource$ = this.machineCategoryDataService.machineCategoryUpdated$.pipe(map(roles => {
-      return new MatTableDataSource(roles)
+    this.machineCategoryDataSource$ = this.machineCategoryDataService.machineCategoryUpdated$.pipe(map(machineCategory => {
+      return new MatTableDataSource(machineCategory)
     }))
-
   }
 
   onCreate() {
@@ -58,8 +49,7 @@ export class MachineCategoryComponent implements OnInit {
   onEdit(machineCategory: MachineCategory) {
     this.dialog.open(AddMachineCategoryComponent, { data: { machineCategory } });
   }
-
-  onDelete(id) {
+  onDelete(id :string) {
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
         if (res) {
@@ -69,6 +59,4 @@ export class MachineCategoryComponent implements OnInit {
         }
       });
   }
-
-
 }

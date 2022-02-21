@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Component,Inject,OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
@@ -13,9 +14,8 @@ import { ProductApiService } from "src/app/services/product-api.service";
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-
+  fileName = '';
   product : Product;
-  value = ' ';
   form:FormGroup;
   customerData: Customer[] = [];
   constructor(
@@ -24,6 +24,7 @@ export class AddProductComponent implements OnInit {
     public productService : ProductApiService,
     public dialogRef: MatDialogRef<AddProductComponent>,
     public notification: NotificationService,
+    private http: HttpClient,
     private formBulider: FormBuilder
   ){
     this.form=this.formBulider.group({
@@ -41,14 +42,11 @@ export class AddProductComponent implements OnInit {
   
     this.product = this.data?.product;
     if(this.product) {
-      // console.log(this.product);
       this.form.patchValue(this.product);
-      this.form.patchValue(this.product.process);
+      // this.form.patchValue(this.product.process);
       this.form.patchValue(this.customerData)
       this.form.get('customer').setValue(this.product.customer);
     }
-    // const items = (<FormArray>this.form.get('process'));
-    // this.form.get('items').setValue(this.product.process);
   }
   
   addNewProcessGroup() {
@@ -68,9 +66,17 @@ export class AddProductComponent implements OnInit {
     const form = this.form.get('process') as FormArray
     form.removeAt(_id);
   }
-
+  onFileSelected(event) {
+    const file:File = event.target.files[0];
+    if (file) {
+        this.fileName = file.name;
+        const formData = new FormData();
+        formData.append("thumbnail", file);
+        const upload$ = this.http.post("/api/thumbnail-upload", formData);
+        upload$.subscribe();
+    }
+}
   onSubmit() {
-
     if (this.product) {
       // this.form.disable();
       this.dialogRef.close();

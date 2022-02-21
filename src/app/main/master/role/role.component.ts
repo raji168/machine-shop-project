@@ -60,6 +60,7 @@ export class RoleComponent implements OnInit {
 
   onEdit(role: Role) {
     this.dialog.open(AddRoleComponent, { data: { role } });
+    console.log(role)
   }
 
   onDelete(id) {
