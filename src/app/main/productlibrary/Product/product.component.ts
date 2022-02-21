@@ -11,11 +11,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { MachineMapping } from 'src/app/models/machinemapping.model';
 import { AddProductComponent } from './add-product/add-product.component';
-
-
-const ELEMENT_DATA: Product[] = [];
+import { CustomerApiService } from 'src/app/services/customer-api.service';
 
 @Component({
   selector: 'app-mapping',
@@ -35,7 +32,8 @@ export class ProductComponent {
 
   displayedColumns: string[] = ['S.no', 'Operation Name', 'Drawing No', 'Drawing', 'Jsir Doc', 'Pms Doc', 'PIR Doc', 'PDIR Doc', 'ISIR Doc'];
   productDataSource$: Observable<MatTableDataSource<Product>>;
-  products;
+  productData;
+  customerData;
   searchKey: string;
   expandedProduct: Product;
   expandedProductIdMap: { [productId: string]: string } = {};
@@ -48,6 +46,7 @@ export class ProductComponent {
   constructor(
     private productApiService: ProductApiService,
     private productDataService: ProductDataService,
+    private customerService: CustomerApiService,
     private dialog: MatDialog,
     private dialogsService: DialogsService,
     private notification: NotificationService
@@ -56,28 +55,23 @@ export class ProductComponent {
     this.productDataSource$ = this.productDataService.productUpdated$.pipe(map(data => {
       return new MatTableDataSource(data);
     }))
-
     this.productApiService.get().subscribe(data => {
-      this.products = data
-      console.log(this.products);
+      this.productData = data
     })
-
-    // this.productDataSource$.subscribe(
-    //   ((res) => {
-    //     this.products = res.data;
-    //     this.products = new MatTableDataSource(res.data);
-    //     this.products.paginator = this.paginator;
-    //     this.products.sort = this.sort;
-    //   })
-    // )
+    this.customerService.getCustomerAll().subscribe(customer=>{
+      this.customerData = customer
+      console.log(this.customerData)
+    })
   }
-
-  // ngAfterViewInit(): void {
-  //   this.products.paginator = this.paginator;
-  //   this.products.sort = this.sort;
-  // }
-
-
+  getCustomer(customerId){
+    console.log(customerId)
+    if(customerId){
+      const customer = this.customerData.find(customer=> customer._id== customerId)
+      return customer.customername;
+    }else{
+      return '-'
+    }
+  }
   // onExpandClick(product: Product) {
   //   if (this.expandedProductMap[product._id]) {
   //     delete this.expandedProductMap[product._id]
@@ -108,7 +102,7 @@ export class ProductComponent {
   }
 
   applyFilter() {
-    this.products.filter = this.searchKey.trim().toLocaleLowerCase();
+    this.productData.filter = this.searchKey.trim().toLocaleLowerCase();
   }
 
   onSearchClear() {
@@ -123,7 +117,6 @@ export class ProductComponent {
   onDelete(id) {
     this.dialogsService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
-        // console.log(res);
         if (res) {
           this.productApiService.deleteProduct(id).subscribe(res => {
             this.notification.success(' deleted Suceessfully');

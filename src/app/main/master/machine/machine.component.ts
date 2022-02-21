@@ -23,7 +23,7 @@ export class MachineComponent implements OnInit {
 
   machines: Machine[] = [];
 
-  displayedColumns: string[] = ['select','sno', 'machinename', 'machineno', 'brand', 'category', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'machinename', 'machineno', 'brand', 'machinecategory', 'actions'];
 
   machineDataSource$: Observable<MatTableDataSource<Machine>>;
 

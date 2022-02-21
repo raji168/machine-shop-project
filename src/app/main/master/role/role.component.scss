@@ -1,37 +1,21 @@
 .container{
     display: grid;
-    grid-template-columns:  20% 1fr 20%;
-    margin:20px;
-    padding: 20px;
-    box-sizing: border-box;
+    grid-template-columns:  10% 1fr 10%
 }
-
+.top-menu{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    justify-items: stretch;
+}
 .table-role mat-header-cell{
     font-size: 16px;
     color:black;
 } 
-.table-role{
-margin-top: 50px;
+.delete-button{
+   margin-left: 20%;
 }
-.search-form-field{
-    padding-left: 20px;
-    width: 25%;
-}
-.edit-button{
-    display: grid;
-    justify-content: center;
-    gap:10px 10px;
-}
- mat-cell{
-    justify-content: center;
-}
-mat-header-cell{
-    justify-content: center;
-}
-ng-container{
-    display: grid;
-}
-
-mat-row:nth-child(even){
-    background-color: rgb(220, 220, 220);
-}
+// mat-row:nth-child(even){
+//     background-color: rgb(220, 220, 220);
+// }

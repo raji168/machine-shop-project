@@ -1,6 +1,6 @@
 <div class="container">
     <div class="form">
-      <div class="title">Add Machine Category</div>
+      <h1 class="title">Add Machine Category</h1>
       <form [formGroup]="machineCategoryForm" class="normal-form" >
         <mat-form-field appearance="outline" >
           <mat-label>Machine Category </mat-label>
@@ -13,8 +13,8 @@
           </mat-select>
         </mat-form-field>
         <div class="add-form-buttons">
+          <button mat-raised-button class="btn-cancel" mat-dialog-close  color="warn">Cancel</button>
           <button mat-raised-button class="btn-save" (click)="onSubmit()" [disabled]="machineCategoryForm.invalid" type="submit" color="primary">Save</button>
-          <button mat-raised-button class="btn-cancel" mat-dialog-close >Cancel</button>
         </div>
   
       </form>
