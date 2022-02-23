@@ -40,7 +40,7 @@ export class RoleComponent implements OnInit {
     private notification: NotificationService,
     private dialogService: DialogsService,
     private store: Store
-    ) {
+  ) {
 
   }
 
@@ -66,14 +66,11 @@ export class RoleComponent implements OnInit {
   onDelete(id) {
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
       .afterClosed().subscribe(res => {
-        if (res) {
-          this.roleService.deleteRole(id).subscribe(res => {
-            this.notification.success(' deleted Suceessfully');
-          })
-          // this.store.dispatch(RoleActions.deleteRole({}));
-          
+        if (res === 'yes') {
+          this.store.dispatch(RoleActions.deleteRole({ id: id }))
         }
-      });
+      })
   }
-
 }
+
+

@@ -5,6 +5,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, catchError, switchMap } from 'rxjs/operators';
 import { of } from "rxjs";
 import { ToastrService } from "ngx-toastr";
+import { Update } from "@ngrx/entity";
+import { Role } from "src/app/models/role.model";
 
 @Injectable({
     providedIn: 'root'
@@ -43,7 +45,11 @@ export class RoleEffects {
         switchMap(action => this.roleApi.updateRole(action.role, action.id).pipe(
             map(role => {
                 this.toastr.success('Role Updated Successfully', 'Success', { timeOut: 4000 });
-                return RoleActions.roleUpdated({ role, loadedState: action.loadedState });
+                const update: Update<Role> = {
+                    id: role._id,
+                    changes: role
+                }
+                return RoleActions.roleUpdated({ update, loadedState: action.loadedState });
             }),
             catchError(err => {
                 this.toastr.error('Error on Update Role , please try again ', 'Error', { timeOut: 4000 });
@@ -53,11 +59,11 @@ export class RoleEffects {
     ));
 
     deleteRole$ = createEffect(() => this.actions$.pipe(
-        ofType(RoleActions.deleteRoleSuccess),
+        ofType(RoleActions.deleteRole),
         switchMap(action => this.roleApi.deleteRole(action.id).pipe(
             map(id => {
                 this.toastr.success('Role Deleted Successfully', 'Success', { timeOut: 4000 });
-                return RoleActions.deleteRoleSuccess({ id :action.id  });
+                return RoleActions.roleDeleted({ id:action.id  });
             }),
             catchError(err => {
                 this.toastr.error('Error on Update Role , please try again ', 'Error', { timeOut: 4000 });
