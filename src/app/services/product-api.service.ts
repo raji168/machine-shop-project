@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpEvent, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { forkJoin, Observable } from "rxjs";
 import { ProductDataService } from "../data-services/product-data.service";
@@ -19,6 +19,18 @@ export class ProductApiService{
       private http : HttpClient,
       private productDataService : ProductDataService
   ){}
+  
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const req = new HttpRequest('POST', `${this.URL}`, formData, {
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+  getFiles(): Observable<any> {
+    return this.http.get(`${this.URL}/files`);
+  }
 
   get(): Observable<any>{
       return this.http.get<Product[]>(this.URL).pipe(

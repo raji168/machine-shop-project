@@ -13,6 +13,7 @@ import { DialogsService } from 'src/app/services/dialogs.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { AddProductComponent } from './add-product/add-product.component';
 import { CustomerApiService } from 'src/app/services/customer-api.service';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-mapping',
@@ -63,8 +64,10 @@ export class ProductComponent {
       console.log(this.customerData)
     })
   }
+
+ 
+  
   getCustomer(customerId){
-    console.log(customerId)
     if(customerId){
       const customer = this.customerData.find(customer=> customer._id== customerId)
       return customer.customername;

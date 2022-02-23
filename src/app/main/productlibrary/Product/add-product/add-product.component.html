@@ -29,20 +29,24 @@
               <mat-label>Drawing No</mat-label>
               <input matInput formControlName="DrawingNo" autocomplete="off" required>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="sub-customer">
+            <!-- <mat-form-field appearance="outline" class="sub-customer">
               <mat-label>Drawing </mat-label>
               <input matInput formControlName="Drawing" autocomplete="off" required>
-            </mat-form-field>
-            <!-- <div class="file-field" >
-              <input #fileUpload class="file-input"  formControlName="customerDrawing" (change)="onFileSelected($event)" type="file" autocomplete="off" required>
-              <div class="file-upload">
+            </mat-form-field> -->
+            <div class="file-field" >
+              <input type="file" class="file-input" 
+              accept="image/*" formControlName="Drawing" 
+              multiple (change)="selectFiles($event)"  #fileInput/>
+              <button type="button" (click)="fileInput.click()">pick file</button>
+              <button  [disabled]="!selectedFiles" (click)="uploadFiles()">upload</button>
+              <!-- <div class="file-upload">
                 {{fileName || "No file uploaded yet."}}
                  <button mat-mini-fab color="primary" class="upload-btn"
-                 (click)="fileUpload.click()">
+                 (click)="uploadFiles()">
                      <mat-icon>attach_file</mat-icon>
                  </button>
-             </div>
-            </div> -->
+             </div> -->
+            </div>
           </div>
         </form>
         <div>
@@ -79,7 +83,7 @@
                 <input matInput formControlName="processDrawing" autocomplete="off" required>
               </mat-form-field>
               <!-- <div class="file-field" >
-                <input #fileUpload class="file-input"  formControlName="processDrawing" (change)="onFileSelected($event)" type="file" autocomplete="off" required>
+                <input #fileUpload class="file-input"  formControlName="processDrawing" (change)="onSelectedFile($event)" type="file" autocomplete="off" required>
                 <div class="file-upload">
                   {{fileName || "No file uploaded yet."}}
                    <button mat-mini-fab color="primary" class="upload-btn"

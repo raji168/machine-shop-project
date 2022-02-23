@@ -15,6 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // import { ErrorInterceptor } from './auth/error.interceptor';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { PreloginComponent } from './prelogin/prelogin.component';
+import { FileUploadComponent } from './shared/file-upload/file-upload.component';
 
 
 
@@ -24,7 +25,8 @@ import { PreloginComponent } from './prelogin/prelogin.component';
 
     AppComponent,
     MatConfirmDialogComponent,
-    PreloginComponent
+    PreloginComponent,
+    FileUploadComponent
   ],
 
   imports: [
