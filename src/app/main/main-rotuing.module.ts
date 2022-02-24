@@ -14,7 +14,7 @@ const routes: Routes = [
         path: 'productlibrary', loadChildren: () => import('../main/productlibrary/productlibrary.module').then(p => p.ProductLibraryModule),
       },
       {
-        path : 'Rxjs' , component : RxjsLearningComponent
+        path : 'rxjs-learning', component :  RxjsLearningComponent
       }
     ]
   },
