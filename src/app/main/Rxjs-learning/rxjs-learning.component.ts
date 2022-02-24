@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { asyncScheduler, combineLatest, concat, forkJoin, from, fromEvent, generate, interval, merge, Observable, of, partition, race, range, timer, zip } from 'rxjs';
 import { GenerateOptions } from 'rxjs/internal/observable/generate';
-import { buffer, bufferCount, bufferTime, bufferToggle, bufferWhen, concatMap, concatMapTo, filter, map, mapTo, mergeMap, mergeMapTo, switchMap, take, tap, toArray } from 'rxjs/operators';
+import { audit, auditTime, buffer, bufferCount, bufferTime, bufferToggle, bufferWhen, concatMap, concatMapTo, debounce, debounceTime, filter, first, map, mapTo, mergeMap, mergeMapTo, sample, skip, skipLast, switchMap, take, tap, toArray } from 'rxjs/operators';
 
 @Component({
     selector: 'rxjs-learning',
@@ -330,6 +330,85 @@ export class RxjsLearningComponent implements OnInit {
         // const clicks = fromEvent(document, 'click');
         // const result = clicks.pipe(mergeMapTo(interval(1000)));
         // result.subscribe(x => console.log(x));
+        //audit
+        // interval(1000)
+        // .pipe(audit((value) =>interval(2000)))
+        // .subscribe((data) =>{
+        //     console.log(data);
+        // });
+        // const clicks = fromEvent(document, 'click');
+        // const result = clicks.pipe(auditTime(1000));
+        // result.subscribe(x => console.log(x));
+        //debounce
+        // interval(1000)
+        // .pipe(debounce((value)=> interval(value*100)))
+        // .subscribe((data)=>{
+        //     console.log(data);
+        // });
+        //debounceTime
+        // const clicks = fromEvent(document, 'click');
+        // const result = clicks.pipe(debounceTime(1000));
+        // result.subscribe(x => console.log(x));
+        //filter
+        // of(1,2,3,4,5).pipe(filter((value)=>value>3))
+        // .subscribe((data)=>{
+        //     console.log(data);
+        // });
+        //FIRST
+        // of(1,2,3,4,5)
+        // .pipe(first())
+        // .subscribe(
+        // (data)=>{
+        //    console.log(data);
+        // },
+        // (error)=>{
+        //     console.log(error);
+        // },
+        // ()=>{
+        //     console.log('complete');
+        // }
+        // );
+        //sample
+        // interval(500)
+        // .pipe(sample(interval(2000))) 
+        // .subscribe((data)=>{
+        //     console.log(data);
+        // })
+        //skip
+        // interval(500)
+        // .pipe(skip(10),take(20))
+        // .subscribe(
+        //     (data)=>{
+        //     console.log(data);
+        // },
+        // (error)=>{
+        //     console.log(error);
+        // },
+        // ()=>{
+        //     console.log('complete');
+        // }
+        // );
+        //skipLast
+        // const numbers = of(1, 2, 3, 4, 5);
+        // const skipLastTwo = numbers.pipe(skipLast(2));
+        // skipLastTwo.subscribe(x => console.log(x));
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
 
