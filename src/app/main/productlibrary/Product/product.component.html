@@ -34,9 +34,9 @@
             <ng-container *ngFor="let product of productData; let productIndex =index">
                 <span class="product-cell first"> {{productIndex+1}} </span>
                 <span class="product-cell">{{product.productName}}</span>
-                <span class="product-cell">{{ getCustomer(product.coustomername)}}</span>
+                <span class="product-cell">{{ getCustomer(product.customer) || '-'}}</span>
                 <span class="product-cell">{{product.DrawingNo}}</span>
-                <span class="product-cell">{{product.Drawing}}</span>
+                <span class="product-cell">{{ getDrawing(product.drawing) }}</span>
                 <span class="product-cell">
                     <button class="edit-button" mat-icon-button  title="Edit" (click)="onEdit(product)">
                         <mat-icon>edit</mat-icon>
@@ -61,12 +61,12 @@
                             <div [class.b-b]="!lastOperation" class="process-cell">{{operationIndex+1}}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.operationName }}</div>
                             <div [class.b-b]="!lastOperation" class="process-cell">{{process.processDrawingNo}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.processDrawing}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.jsirDoc}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.pirDoc}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.pmsDoc}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.pdirDoc}}</div>
-                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.isirDoc}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.processDrawing)}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.jsirDoc)}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.pirDoc)}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.pmsDoc)}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.pdirDoc)}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.isirDoc)}}</div>
                         </ng-container>
                     </div>
                 </div>

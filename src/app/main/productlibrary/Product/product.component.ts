@@ -11,8 +11,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DialogsService } from 'src/app/services/dialogs.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { AddProductComponent } from './add-product/add-product.component';
 import { CustomerApiService } from 'src/app/services/customer-api.service';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @Component({
   selector: 'app-mapping',
@@ -34,6 +34,7 @@ export class ProductComponent {
   productDataSource$: Observable<MatTableDataSource<Product>>;
   productData;
   customerData;
+  fileData;
   searchKey: string;
   expandedProduct: Product;
   expandedProductIdMap: { [productId: string]: string } = {};
@@ -55,21 +56,40 @@ export class ProductComponent {
     this.productDataSource$ = this.productDataService.productUpdated$.pipe(map(data => {
       return new MatTableDataSource(data);
     }))
+    this.productApiService.getFiles().subscribe(data =>{
+      this.fileData = data;
+      // console.log(this.fileData)
+    })
     this.productApiService.get().subscribe(data => {
       this.productData = data
+      // console.log(this.productData)
     })
     this.customerService.getCustomerAll().subscribe(customer=>{
       this.customerData = customer
-      console.log(this.customerData)
     })
   }
+  getDrawing(drawingId) {
+    if(drawingId) {
+      const drawing = this.fileData.find(drawing => drawing._id === drawingId);
+        if(drawing) {
+          return drawing.fileName;
+        }
+        else {
+          return '-';
+        }
+      
+    }
+  }
+ 
+  
   getCustomer(customerId){
-    console.log(customerId)
     if(customerId){
-      const customer = this.customerData.find(customer=> customer._id== customerId)
+      const customer = this.customerData.find(customer=> customer._id == customerId)
+     if(customer){
       return customer.customername;
-    }else{
-      return '-'
+     } else {
+       return '-';
+     }
     }
   }
   // onExpandClick(product: Product) {

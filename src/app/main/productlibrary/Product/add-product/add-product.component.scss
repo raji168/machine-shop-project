@@ -12,7 +12,7 @@
 .process-form{
   margin-top: 10px;
 }
-.file-input{
+.file-inputs{
     display: none;
 }
 .file-field{
@@ -82,4 +82,7 @@
     gap: 10px;
     padding: 14px 0px;
     // text-align-last: revert  ;
+}
+.sub-process-file{
+  margin-left: 110px;
 }
