@@ -10,16 +10,16 @@ import { MachineMappingComponent } from "./Machine mapping/machine-mapping.compo
 import { FormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { AddMachinemapComponent } from "./Machine mapping/add-machinemap/add-machinemap.component";
-import { AddProductComponent } from "./product/add-product/add-product.component";
-import { ProductComponent } from "./product/product.component";
+import { ProductComponent } from "./Product/product.component";
+import { AddProductComponent } from "./Product/add-product/add-product.component";
 
 @NgModule({
     declarations:[
         ProductLibraryComponent,
-        AddProductComponent,
         MachineMappingComponent,
         AddMachinemapComponent,
-        ProductComponent
+        ProductComponent,
+        AddProductComponent
     ],
     imports:[
         CommonModule,

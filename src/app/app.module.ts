@@ -12,10 +12,8 @@ import { MainModule } from './main/main.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
-// import { ErrorInterceptor } from './auth/error.interceptor';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { PreloginComponent } from './prelogin/prelogin.component';
-import { FileUploadComponent } from './shared/file-upload/file-upload.component';
 
 
 
@@ -26,7 +24,6 @@ import { FileUploadComponent } from './shared/file-upload/file-upload.component'
     AppComponent,
     MatConfirmDialogComponent,
     PreloginComponent,
-    FileUploadComponent
   ],
 
   imports: [

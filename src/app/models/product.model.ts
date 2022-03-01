@@ -6,9 +6,9 @@ export interface Product {
     _id: string;
     productName: string;
     customer: Customer;
-    DrawingNo:string;
+    DrawingNo:Number;
     // revisionNo:string;
-    Drawing:Drawing;
+    drawing:Drawing;
     // partNo:string;
     isSelected: any;
     process: Process[];

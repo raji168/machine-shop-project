@@ -8,6 +8,7 @@ mat-sidenav mat-drawer{
 }
  mat-expansion-panel {
   background-color: #303f9f;
+  color: white;
 }
 mat-toolbar-row{
   display: block;
@@ -26,7 +27,15 @@ mat-toolbar-row{
 *{
   font-weight: 400;
 }
-
+.mat-expansion-panel-header-title{
+  color: white;
+}
+.mat-list-base .mat-list-item{
+  color: white;
+}
+.mat-expansion-indicator::after{
+  color: hsl(0, 16%, 91%);
+}
 // .master{
 //   background-color: cornflowerblue;
 // }

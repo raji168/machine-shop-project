@@ -1,5 +1,5 @@
 export interface Drawing {
-    _id:string;
-    drawing:string;
-    processDrawing:string;
+    _id : string;
+    filePath : string;
+    fileName : string;
 }
