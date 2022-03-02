@@ -1,7 +1,7 @@
 @use '~@angular/material' as mat;
 @include mat.core();
-$master-primary: mat.define-palette(mat.$pink-palette,300);
-$master-accent: mat.define-palette(mat.$pink-palette, 100);
+$master-primary: mat.define-palette(mat.$indigo-palette,700);
+$master-accent: mat.define-palette(mat.$indigo-palette, 100);
 $master-warn: mat.define-palette(mat.$red-palette);
 $master-theme: mat.define-light-theme((
   color: (
@@ -14,5 +14,6 @@ $master-theme: mat.define-light-theme((
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 mat-header-cell, .confirm-dialog-container #yes-button, .create-button, .DeleteAll-button,.product-header-cell, .process-header-cell{
-  background-color:#f06292;
+  background-color:#3f4e9b;
+  color:white;
 }

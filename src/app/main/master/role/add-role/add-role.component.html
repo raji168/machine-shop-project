@@ -1,16 +1,11 @@
 <div class="form">
     <div class="from-title">
-        <span>Add Role</span>
+        <h1>Add Role</h1>
     </div>
     <!-- {{ roleForm.value | json }} -->
-    <form [formGroup]="roleForm" ngRepeat="" (ngSubmit)="onSubmit()" class="normal-form">
+    <form [formGroup]="roleForm" ngRepeat=""  class="normal-form">
 
         <div class="controles-container">
-            
-            <!-- <mat-form-field appearance="outline" color="accent">
-                <input formControlName="serialno" matInput placeholder="Serial No" autocomplete="off">
-            </mat-form-field> -->
-
             <mat-form-field appearance="outline" >
                 <mat-label> Name </mat-label>
                 <input matInput placeholder=" Name *" formControlName="name" autocomplete="off">
@@ -18,8 +13,8 @@
 
             <div class="add-form-buttons">
                 <div class="button-row">
-                    <button mat-raised-button color="primary"  type="submit">Submit</button>
-                    <button mat-raised-button  type="reset" mat-dialog-close >Close</button>
+                    <button mat-raised-button  type="reset" mat-dialog-close color="warn" >Close</button>
+                    <button mat-raised-button color="primary" [disabled]="roleForm.invalid" (click)="onSubmit()" type="submit">Submit</button>
                 </div>
             </div>
         </div>

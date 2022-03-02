@@ -25,7 +25,7 @@ export class InstrumentComponent implements OnInit {
   // instrumentData: InstrumentModel[] = [];
   val = this.calculateDiff;
 
-  displayedColumns: string[] = ['select', 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions','status'];
+  displayedColumns: string[] = ['select', 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
   searchKey: string;
   isDelete: false;
@@ -91,7 +91,7 @@ export class InstrumentComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "40%";
+    dialogConfig.width = "33%";
     this._dialog.open(AddInstrumentComponent, dialogConfig);
   }
 

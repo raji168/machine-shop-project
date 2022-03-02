@@ -1,4 +1,6 @@
 .container{
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
     margin:20px;
     padding: 20px;
     box-sizing: border-box;
@@ -6,7 +8,7 @@
 .top-menu{
  background-color: transparent;   
 }
-.table-customer mat-header-cell{
+.table-machine mat-header-cell{
     font-size: 16px;
     color:black;
 } 

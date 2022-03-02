@@ -1,0 +1,25 @@
+.container{
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
+}
+
+.table-machinegroup mat-header-cell{
+    font-size: 16px;
+    color:black;
+} 
+.top-menu{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    justify-items: stretch;
+}
+// .table-machinegroup{
+// margin-top: 50px;
+// }
+.delete-button{
+    margin-left: 20%;
+}
+// mat-row:nth-child(even){
+//     background-color: rgb(220, 220, 220);
+// }

@@ -17,7 +17,10 @@ import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
 import { UserComponent } from "./user/user.component";
 import { AddUserComponent } from "./user/add-user/add-user.component";
 import { NgxMatTimepickerModule } from "ngx-mat-timepicker";
-
+import { MachineGroupComponent } from './machine-group/machine-group.component';
+import { AddMachineGroupComponent } from './machine-group/add-machine-group/add-machine-group.component';
+import { MachineCategoryComponent } from './machine-category/machine-category.component';
+import { AddMachineCategoryComponent } from './machine-category/add-machine-category/add-machine-category.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +36,11 @@ import { NgxMatTimepickerModule } from "ngx-mat-timepicker";
         ShiftComponent,
         AddShiftComponent,
         UserComponent,
-        AddUserComponent
+        AddUserComponent,
+        MachineGroupComponent,
+        AddMachineGroupComponent,
+        MachineCategoryComponent,
+        AddMachineCategoryComponent,
     ],
     imports: [
         CommonModule,

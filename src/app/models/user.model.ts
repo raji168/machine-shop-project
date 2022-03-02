@@ -2,7 +2,7 @@ import { Role } from "./role.model";
 
 export interface User {
     isSelected: any;
-    _id?: string;
+    _id: string;
     sno: number;
     name: string;
     role:Role;
@@ -10,4 +10,5 @@ export interface User {
     phoneNo:number;
     userName:string;
     password: string;
+    token:string;
 }

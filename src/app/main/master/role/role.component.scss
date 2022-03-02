@@ -3,17 +3,24 @@
     grid-template-columns: 10% 1fr 10%;
 }
 .container{
-    margin:20px;
-    padding: 20px;
-    box-sizing: border-box;
+    display: grid;
+    grid-template-columns:  10% 1fr 10%
+}
+.top-menu{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    justify-items: stretch;
 }
 .table-role mat-header-cell{
     font-size: 16px;
     color:black;
 } 
-.table-role{
-margin-top: 50px;
+.delete-button{
+   margin-left: 20%;
 }
+<<<<<<< HEAD
 .search-form-field{
     padding-left: 20px;
     width: 25%;
@@ -37,3 +44,8 @@ ng-container{
 mat-row:nth-child(even){
     background-color: rgb(220, 220, 220);
 }
+=======
+// mat-row:nth-child(even){
+//     background-color: rgb(220, 220, 220);
+// }
+>>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9

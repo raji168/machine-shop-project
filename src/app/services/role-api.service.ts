@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Role } from '../models/role.model';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { RoleDataService } from '../data-services/role-data.service';
 
@@ -14,15 +14,10 @@ export class RoleApiService {
 
   url: string = 'http://192.168.0.17:3002/roles';
   roles: Role[] = [];
-
-  // roleUpdated = new Subject();
-
   constructor(
     private http: HttpClient,
     private roleDataService: RoleDataService
   ) { }
-
-
   get(): Observable<any> {
     return this.http.get<Role[]>(this.url).pipe(
       tap((roles) => {
@@ -30,7 +25,12 @@ export class RoleApiService {
       })
     )
   }
+<<<<<<< HEAD
   addRole(role: Partial<Role>) {
+=======
+
+  addRole(role: Role) {
+>>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
     return this.http.post<Role>(this.url, role)
       .pipe(
         tap((role) => {

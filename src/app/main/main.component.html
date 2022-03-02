@@ -9,15 +9,30 @@
             <button class="account" mat-icon-button>
                 <mat-icon>supervisor_account</mat-icon>
             </button>
-            <button class="logout" mat-icon-button>
+            <button *ngIf="userIsAuthenticated"class="logout" mat-icon-button (click)="clickLogout()">
                 <mat-icon>logout</mat-icon>
             </button>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
+<<<<<<< HEAD
 <mat-sidenav-container class="sidenav">
+=======
+<mat-sidenav-container >
+>>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
     <mat-sidenav #sidenav mode="side" class="mat-elevation-z5">
         <mat-accordion class="example-headers-align " multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header class="library">
+                    <mat-panel-title>
+                       DASHBOARD
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <mat-list-item *ngIf="!userIsAuthenticated" routerLinkActive="active" routerLink="dashboard/admin" role="listitem"> Admin
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
             <mat-expansion-panel>
                 <mat-expansion-panel-header class="master">
                     <mat-panel-title>
@@ -25,17 +40,21 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list class="master-link">
-                    <mat-list-item routerLinkActive="active" routerLink="master/role" role="listitem">Role
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/role" role="listitem">Role
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/user" role="listitem">User
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/user" role="listitem">User
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/customer" role="listitem">Customer
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/shift" role="listitem">Shift
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/machine" role="listitem">Machine
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/machine-group" role="listitem">Machine Group
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/shift" role="listitem">Shift
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/machine-category" role="listitem">Machine category
+                    </mat-list-item>    
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/machine" role="listitem">Machine
                     </mat-list-item>
-                    <mat-list-item routerLinkActive="active" routerLink="master/instrument" role="listitem">Instrument
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/instrument" role="listitem">Instrument
+                    </mat-list-item>
+                    <mat-list-item routerLinkActive="active" [skipLocationChange]="true" routerLink="master/customer" role="listitem">Customer 
                     </mat-list-item>
                 </mat-nav-list>
             </mat-expansion-panel>
@@ -46,8 +65,9 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <mat-list-item routerLinkActive="active" routerLink="productlibrary/product" role="listitem"> Product Master
+                    <mat-list-item routerLinkActive="active"  routerLink="productlibrary/product" role="listitem"> Product Master
                     </mat-list-item>
+<<<<<<< HEAD
                     <mat-list-item routerLinkActive="active" routerLink="productlibrary/mapping" role="listitem"> Machine Mapping
                     </mat-list-item>
                 </mat-nav-list>
@@ -60,6 +80,9 @@
                 </mat-expansion-panel-header>
                 <mat-nav-list>
                     <mat-list-item routerLinkActive="active" routerLink="rxjslearning" role="listitem">Rxjs Operator
+=======
+                    <mat-list-item routerLinkActive="active"  routerLink="productlibrary/mapping" role="listitem"> Machine Mapping
+>>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
                     </mat-list-item>
                 </mat-nav-list>
             </mat-expansion-panel>

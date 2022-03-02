@@ -1,0 +1,33 @@
+*{
+    font-weight: 500;
+    font-size: medium;
+}
+.container{
+    margin:5px;
+    padding: 5px;
+    box-sizing: border-box;
+    display: table-caption;
+}
+.title{
+    padding-bottom: 10px;
+}
+form{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px 10px;
+}
+.btn-save{
+    margin-right: -235%;
+}
+.btn-cancel{
+    margin-left: -130%;
+}
+.add-form-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
+    // grid-gap: 10px;
+}
+

@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MatConfirmDialogComponent } from './shared/mat-confirm-dialog/mat-confirm-dialog.component';
@@ -16,12 +16,21 @@ import { RoleEffects } from './store/effects/role.effects';
 import { roleReducer } from './store/reducers/role.reducers'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { PreloginComponent } from './prelogin/prelogin.component';
+
+
 
 @NgModule({
 
   declarations: [
     AppComponent,
     MatConfirmDialogComponent,
+<<<<<<< HEAD
+=======
+    PreloginComponent,
+>>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
   ],
 
   imports: [
@@ -31,6 +40,7 @@ import { MatInputModule } from '@angular/material/input';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FlexLayoutModule,
     MatFormFieldModule,
     MatInputModule,
     MainModule,
@@ -39,6 +49,7 @@ import { MatInputModule } from '@angular/material/input';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
+<<<<<<< HEAD
     StoreModule.forRoot({
       roleState: roleReducer
     }),
@@ -46,9 +57,15 @@ import { MatInputModule } from '@angular/material/input';
     EffectsModule.forRoot([
       RoleEffects
     ]),
+=======
+
+>>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
+  ],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
 
-  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [MatConfirmDialogComponent]
 })

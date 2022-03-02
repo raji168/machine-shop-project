@@ -35,26 +35,34 @@ export class AddRoleComponent implements OnInit {
   ngOnInit(): void {
 
     this.roleForm = this.fb.group({
-      // serialno: ['',Validators.required],
       name: ['',Validators.required],    
     });
-
     this.role = this.data?.role;
-
     if (this.role) {
       this.roleForm.patchValue(this.role);
     }
 
   }
 
-
   onSubmit() {
     if (this.role) {
+<<<<<<< HEAD
       this.roleForm.disable();
       this.store.dispatch(RoleActions.updateRole({ role: this.roleForm.value, id :this.role._id, loadedState : true } ));
     } else {
       this.roleForm.disable();
       this.store.dispatch(RoleActions.addRole({role : this.roleForm.value}));
+=======
+      this.roleService.updateRole(this.roleForm.value, this.role._id).subscribe(data => {
+        this.dialogRef.close(data);
+        this.notification.success("Role edited successfullly!!");
+      });
+    } else {
+      this.roleService.addRole(this.roleForm.value).subscribe(data => {
+        this.dialogRef.close(data);
+        this.notification.success(" Role added successfullly!!");
+      });
+>>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
 
     }
   }

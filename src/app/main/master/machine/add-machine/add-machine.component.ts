@@ -1,8 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MachineCategory } from 'src/app/models/machine-category.model';
 import { Machine } from 'src/app/models/machine.model';
 import { MachineApiService } from 'src/app/services/machine-api.service';
+import { MachineCategoryApiService } from 'src/app/services/machinecategory-api.service';
 import { AlertService } from 'src/app/shared/alert.service';
 
 @Component({
@@ -13,14 +15,13 @@ import { AlertService } from 'src/app/shared/alert.service';
 export class AddMachineComponent implements OnInit {
 
   machine: Machine;
-
   machineForm: FormGroup;
-
   machineData: Machine[] = [];
-
+  machineCategoryData: MachineCategory[]=[];
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { machine: Machine },
     public dialogRef: MatDialogRef<AddMachineComponent>,
+    private machineCategoryService:MachineCategoryApiService,
     private machineApi: MachineApiService,
     private alert: AlertService,
     private fb:FormBuilder) {
@@ -30,23 +31,25 @@ export class AddMachineComponent implements OnInit {
       machinename: ['',Validators.required],
       machineno: ['',Validators.maxLength(5)],
       brand: ['',Validators.required],
-      category:['',Validators.required],
+      machinecategory:['',Validators.required],
     });
 
   }
 
   ngOnInit() {
-
+    this.machineCategoryService.get().subscribe(data =>{
+      this.machineCategoryData = data;
+      console.log(this.machineCategoryData)
+    })
     this.machine = this.data?.machine;
-
+    console.log(this.machine)
     if (this.machine) {
-      this.machineForm.patchValue(this.machine);
+      this.machineForm.patchValue(this.data.machine);
+      this.machineForm.get('machineCategory')?.setValue(this.data.machine.machinecategory._id)
     }
-
   }
 
   onSave() {
-
     if (this.machine) {
       this.machineApi.updateMachine(this.machineForm.value, this.machine._id).subscribe(data => {
         this.dialogRef.close(data);
@@ -56,6 +59,7 @@ export class AddMachineComponent implements OnInit {
       
     } else {
       this.machineApi.addMachine(this.machineForm.value).subscribe(data => {
+        console.log(data);
         this.dialogRef.close(data);
         this.alert.showSuccess('Machine Added Successfully...!', 'Machine');
       });

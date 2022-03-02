@@ -1,0 +1,49 @@
+<div class="container">
+    <div></div>
+    <div>
+        <div class="top-menu">
+            <h1>Machine Category</h1>
+            <div class="add-button">
+                <button mat-raised-button  class="create-button"  (click)="onCreate()">
+                    <mat-icon>add</mat-icon>Add
+                </button>
+            </div>
+        </div>
+        
+        <div class=" table-machinecategory mat-elevation-z8" machineCategory="table" >
+            <mat-table [dataSource]="machineCategoryDataSource$ | async"  matSort>
+                <ng-container matColumnDef="serialno">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header >Serial No</mat-header-cell>
+                    <mat-cell *matCellDef="let machineCategory ;  let i = index"> {{i+1}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="machineCategory">
+                    <mat-header-cell  *matHeaderCellDef mat-sort-header>Machine category</mat-header-cell>
+                    <mat-cell *matCellDef="let machineCategory"> {{machineCategory.machineCategoryName}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="machinegroup">
+                    <mat-header-cell  *matHeaderCellDef mat-sort-header>Machine group</mat-header-cell>
+                    <mat-cell *matCellDef="let machineCategory"> {{machineCategory.machinegroup?.name}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let machineCategory">
+                        <button class="edit-button" mat-icon-button  title="Edit" (click)="onEdit(machineCategory)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button class="delete-button"  title="Delete"
+                            (click)="onDelete(machineCategory._id)">
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+    
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+            </mat-table>
+    
+        </div>
+    </div>
+    <div></div>
+   
+</div>

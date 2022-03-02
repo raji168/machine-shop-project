@@ -1,8 +1,10 @@
+import { Drawing } from "./drawing.model";
+
 export interface Process {
-    _id?: string;
+    _id: string;
     operationName: string;
-    drawingNo: string;
-    drawing: string;
+    processDrawing: Drawing;
+    processDrawingNo: string;
     jsirDoc: string;
     pmsDoc: string;
     pirDoc:string;
@@ -11,10 +13,3 @@ export interface Process {
 }
 
 
-export interface Drawing {
-    id:string;
-    customerdrawingNo: string;
-    processdrawingNo: string;
-    customerDrawing:string;
-    processDrawing:string;
-}

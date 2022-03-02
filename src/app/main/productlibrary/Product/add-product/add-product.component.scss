@@ -6,11 +6,22 @@
   // margin-top: 400px;
 }
 .previousButton {
-    float: left;
-    // margin-top: 400px;
+  float: left;
+  // margin-top: 400px;
 }
 .process-form{
-    margin-top: 10px;
+  margin-top: 10px;
+}
+<<<<<<< HEAD
+.subCustomer{
+  padding: 20px;
+=======
+.file-inputs{
+    display: none;
+}
+.file-field{
+    padding: 20px;
+>>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
 }
 .subCustomer{
   padding: 20px;
@@ -22,12 +33,62 @@
   padding: 14px 0px;
 }
 .product-form{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+  padding: 14px 0px;
+  margin-top: 10px;
+}
+.add-process-button{
+  margin-right: 10px;
+  margin-top: 36px;
+  width: 100px;
+}
+.process-header{
+  display: flex;
+  gap: 640px;
+}
+.subprocess-button{
+  float: right;
+  gap: 10px;
+}
+.btn-cancel{
+  margin-right : 10px;
+  // margin-top: 400px;
+}
+.btn-save{
+  float: right;
+}
+.process-title{
+  font-size: 18px;
+}
+.process-buttons{
+  margin-top: 10px;
+}
+.sub-process{
+  padding: 5px;
+}
+.btn-close{
+  float: right;
+  margin-top: -30px;
+}
+
+.preview-form{
+    padding: 5px;
+    display: grid;
+    grid-template-columns:1fr 5% 1fr;
+}
+.prview-head{
+    margin-left: 40px;
+}
+.previewhead-form{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 10px;
     padding: 14px 0px;
-    margin-top: 10px;
+    // text-align-last: revert  ;
 }
+<<<<<<< HEAD
 .add-process-button{
   margin-right: 10px;
   margin-top: 36px;
@@ -68,4 +129,8 @@
     // clear: left;
     // width: 250px;
     // text-align: right;
+=======
+.sub-process-file{
+  margin-left: 110px;
+>>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
 }

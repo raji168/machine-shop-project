@@ -21,19 +21,10 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-
-
-  displayedColumns: string[] = ['select', 'sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
-
+  displayedColumns: string[] = ['sno', 'name', 'role', 'phoneNo', 'emailId', 'userName', 'actions'];
   users: User[] = [];
-
   searchKey: string;
-
-  // userData  = new MatTableDataSource<User>() ;
-
-
-
-
+  userData;
   userForm: FormGroup = new FormGroup({
     sno: new FormControl(''),
     name: new FormControl(''),
@@ -54,10 +45,8 @@ export class UserComponent implements OnInit {
     private dialog: MatDialog,
     private notification: NotificationService,
     private dialogsService: DialogsService) {
-
   }
 
-  userData;
   
   ngOnInit(): void{
 
@@ -92,7 +81,7 @@ export class UserComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "40%";
+    dialogConfig.width = "35%";
     this.dialog.open(AddUserComponent, dialogConfig);
   }
 
@@ -102,7 +91,6 @@ export class UserComponent implements OnInit {
 
 
   onDelete(id: string) {
-
     this.dialogsService.openConfirmDialog('Are you sure to delete this record?')
       .afterClosed().subscribe(res => {
         if (res) {
