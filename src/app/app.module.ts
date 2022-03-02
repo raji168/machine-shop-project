@@ -43,7 +43,7 @@ import { PreloginComponent } from './prelogin/prelogin.component';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-
+    
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
