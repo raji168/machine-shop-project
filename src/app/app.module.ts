@@ -27,10 +27,7 @@ import { PreloginComponent } from './prelogin/prelogin.component';
   declarations: [
     AppComponent,
     MatConfirmDialogComponent,
-<<<<<<< HEAD
-=======
     PreloginComponent,
->>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
   ],
 
   imports: [
@@ -49,7 +46,6 @@ import { PreloginComponent } from './prelogin/prelogin.component';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-<<<<<<< HEAD
     StoreModule.forRoot({
       roleState: roleReducer
     }),
@@ -57,9 +53,6 @@ import { PreloginComponent } from './prelogin/prelogin.component';
     EffectsModule.forRoot([
       RoleEffects
     ]),
-=======
-
->>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},

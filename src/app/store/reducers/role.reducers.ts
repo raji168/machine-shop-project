@@ -6,6 +6,7 @@ import { EntityState, createEntityAdapter } from "@ngrx/entity";
 export interface RoleState extends EntityState<Role> {
     rolesLoaded: boolean;
     roleAdded: boolean;
+    
 }
 export const adapter = createEntityAdapter<Role>({
     selectId: role => role._id

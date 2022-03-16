@@ -1,65 +1,3 @@
-<<<<<<< HEAD
-<div >
-<mat-stepper >
-  <mat-step class="step-header">
-    <ng-template matStepLabel>Product</ng-template>
-    <div class="customer">
-      <form [formGroup]="form" >
-        <div class="customer-form">
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Product Name</mat-label>
-            <input matInput formControlName="productName" ng-model="productName" cdkFocusInitial>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Customer Name</mat-label>
-            <mat-select formControlName="customerName">
-              <mat-option [value]="customer.customername" *ngFor="let customer of customerData "  ng-model="customerName">
-                {{customer.customername}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Revision No</mat-label>
-            <input matInput formControlName="revisionNo" autocomplete="off" ng-model="revisionNo">
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Part No</mat-label>
-            <input matInput formControlName="partNo" ng-model="partNo">
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Customer Drawing No</mat-label>
-            <input matInput formControlName="customerDrawingNo" ng-model="customerDrawingNo">
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="subCustomer">
-            <mat-label>Customer Drawing </mat-label>
-            <input matInput formControlName="customerDrawing" ng-model="customerDrawing">
-          </mat-form-field>
-        </div>
-      </form>
-      <div>
-        <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
-        <button mat-raised-button matStepperNext class="nextButton" [disabled]="form.invalid" color="primary">Next</button>
-      </div>
-    </div>
-  </mat-step>
-  <mat-step class="step-header">
-    <ng-template matStepLabel>Process</ng-template>
-    <div class="process">
-      <form [formGroup]="form">
-        <div class="process-header">
-          <p class="process-title">Process</p>
-          <button mat-raised-button  matTooltip="Add process"
-          aria-label="Button that displays a tooltip when focused or hovered over" (click)="addNewProcessGroup()">
-            <mat-icon color="primary" class="add-icon">add_circle</mat-icon>
-          </button>
-        </div>
-        <mat-card class="process-form" *ngFor="let processGroup of form.get('process')['controls']; let i=index"
-          [formGroup]="processGroup">
-          <div class="product-form">
-            <mat-form-field appearance="outline" class="sub-process">
-              <mat-label>Process Name</mat-label>
-              <input matInput formControlName="processName" required ng-model="processName" cdkFocusInitial>
-=======
 <div>
   <mat-stepper>
     <mat-step class="step-header">
@@ -78,7 +16,6 @@
                   {{customer.customername}}
                 </mat-option>
               </mat-select>
->>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
             </mat-form-field>
             <!-- <mat-form-field appearance="outline" class="sub-customer">
               <mat-label>Revision No</mat-label>
@@ -225,43 +162,6 @@
             <span>{{form.value.drawing}}</span>
           </div>
         </div>
-<<<<<<< HEAD
-      </form>
-    </div>
-  </mat-step>
-  <mat-step class="step-header">
-    <ng-template matStepLabel>Preview</ng-template>
-    <mat-card>   
-      <div class="customer-form">
-        <span class="preview-form" ng-show="productName">Product name: {{form.value.productName}}</span>
-        <span class="preview-form" ng-show="customerName">Customer name: {{form.value.customerName}}</span>
-        <span class="preview-form" ng-show="revisionNo">Revision no: {{form.value.revisionNo}}</span>
-        <span class="preview-form" ng-show="partNo">Part no: {{form.value.partNo}}</span>
-        <span class="preview-form" ng-show="customerDrawingNo">Drawing no: {{form.value.customerDrawingNo}}</span>
-        <span class="preview-form" ng-show="customerDrawing">Drawing: {{form.value.customerDrawing}}</span>
-      </div>
-      <div *ngFor="let processGroup of form.get('process')['controls']" class="product-form"  >
-        <span class="preview-form" ng-show="processName">process name: {{processGroup.value.processName}}</span>
-        <span class="preview-form" ng-show="processDrawingNo">process drawingno: {{processGroup.value.processDrawingNo}}</span>
-        <span class="preview-form" ng-show="processDrawing">process drawing: {{processGroup.value.processDrawing}}</span>
-        <span class="preview-form" ng-show="jsirDoc">JSIR: {{processGroup.value.jsirDoc}}</span>
-        <span class="preview-form" ng-show="pmsDoc">PMS: {{processGroup.value.pmsDoc}}</span>
-        <span class="preview-form" ng-show="pirDoc">PIR: {{processGroup.value.pirDoc}}</span>
-        <span class="preview-form" ng-show="pdirDoc">PDIR: {{processGroup.value.pdirDoc}}</span>
-        <span class="preview-form" ng-show="isirDoc">ISIR: {{processGroup.value.isirDoc}}</span>
-      </div>
-    </mat-card>
-    <div class="process-buttons">
-      <button mat-raised-button matStepperPrevious class="previousButton" color="accent">Previous</button>
-      <div class="subprocess-button">
-        <button mat-raised-button class="btn-cancel" mat-dialog-close color="warn">Cancel</button>
-        <button mat-raised-button class="btn-save" (click)="onSubmit()" color="primary">Save</button>
-      </div>
-    </div>
-  </mat-step>
-</mat-stepper>
-</div>
-=======
         <div *ngFor="let processGroup of form.get('process')['controls']" class="product-form">
           <div class="preview-form">
             <span class="prview-head">process name </span>
@@ -315,4 +215,3 @@
     </mat-step>
 
   </mat-stepper>
->>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9

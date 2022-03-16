@@ -8,7 +8,6 @@ import { Product } from "src/app/models/product.model";
 import { CustomerApiService } from "src/app/services/customer-api.service";
 import { NotificationService } from "src/app/services/notification.service";
 import { ProductApiService } from "src/app/services/product-api.service";
-import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-add-product',
@@ -16,19 +15,12 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-<<<<<<< HEAD
-  product : Product;
-  value = ' ';
-  form: FormGroup;
-  customerData: Customer[] = [];
-=======
   selectedFile;
   product: Product;
   form: FormGroup;
   customerData: Customer[] = [];
   drawingData: Drawing[] = [];
 
->>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { product: Product },
     public customerService: CustomerApiService,
@@ -62,16 +54,6 @@ export class AddProductComponent implements OnInit {
   addNewProcessGroup() {
     const add = this.form.get('process') as FormArray;
     add.push(this.formBulider.group({
-<<<<<<< HEAD
-      processName: "",
-      processDrawingNo: "",
-      processDrawing: "",
-      jsirDoc: "",
-      pmsDoc: "",
-      pirDoc: "",
-      pdirDoc: "",
-      isirDoc: ""
-=======
       operationName: ['', Validators.required],
       processDrawingNo: ['', Validators.required],
       processDrawing: ['', Validators.required],
@@ -80,7 +62,6 @@ export class AddProductComponent implements OnInit {
       pirDoc: ['', Validators.required],
       pdirDoc: ['', Validators.required],
       isirDoc: ['', Validators.required]
->>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
     }))
   }
   removeGroup(_id) {

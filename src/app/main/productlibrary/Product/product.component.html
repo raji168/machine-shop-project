@@ -2,9 +2,6 @@
     <mat-toolbar class="top-menu">
         <span>Product</span>
     </mat-toolbar>
-    <!-- <div class="file-upload">
-        <input class="upload-field" type="file" multiple="false" />
-    </div> -->
     <mat-form-field class="search-form-field" floatLable="never">
         <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
         <button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
@@ -12,15 +9,9 @@
         </button>
     </mat-form-field>
     <div class="buttons">
-        <!-- <a routerLink="/add-product" routerLinkActive="active">
-             <button mat-raised-button class="create-button" color="accent" >
-                <mat-icon>add</mat-icon>New Product
-            </button>
-        </a> -->
         <button mat-raised-button class="create-button"  (click)="onClickAdd()">
             <mat-icon>add</mat-icon>New Product
         </button>
-        <!-- <mat-icon>more_vert</mat-icon> -->
     </div>
     <div class="table mat-elevation-z8">
         <div class="product-table" gdColumns="64px repeat(5, 1fr) 64px">
@@ -45,14 +36,11 @@
                         <mat-icon>delete_forever</mat-icon>
                     </button>
                 </span>
-                <!-- (click)="expandedProduct === product ? expandedProduct = null : expandedProduct = product" -->
                 <div class="product-cell last" (click)="onExpandClick(product)">
                     <button mat-icon-button>
                         <mat-icon>expand_more</mat-icon>
                     </button>
                 </div>
-                <!-- [@detailExpand]="expandedProduct === product ? 'expanded' : 'collapsed'" -->
-                <!-- [@detailExpand]="!!expandedProductMap[product._id] ? 'expanded' : 'collapsed'"  -->
                 <div [@detailExpand]="isExpanded(product._id) ? 'expanded' : 'collapsed'" class="expandable-row">
                     <div class="process-table" gdColumns.lt-md="repeat(8, auto)" gdColumns="repeat(9, auto)">
                         <div class="process-header-cell" *ngFor="let column of displayedColumns">{{ column }}</div>

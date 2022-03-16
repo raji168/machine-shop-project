@@ -14,14 +14,8 @@ const routes: Routes = [
         path: 'productlibrary', loadChildren: () => import('../main/productlibrary/productlibrary.module').then(p => p.ProductLibraryModule),
       },
       {
-<<<<<<< HEAD
         path : 'rxjslearning', component: RxjsLearningComponent
       },
-=======
-        path:'dashboard',loadChildren:() => import('../main/dashboard/dashboard.module').then(d=> d.DashboardModule),
-
-      }
->>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
     ]
   }
 ]

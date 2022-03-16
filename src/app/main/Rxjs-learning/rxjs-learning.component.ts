@@ -37,9 +37,9 @@ export class RxjsLearningComponent implements OnInit {
         //    this.employeeName.subscribe(data =>{
         //     console.log(data);
         //    })
-        //     this.employee$.subscribe(result =>{
-        //         console.log(result);
-        //     })
+            // this.employee$.subscribe(result =>{
+            //     console.log(result);
+            // })
         //from
         // this.days$.subscribe(data =>{
         //     console.log(data);
@@ -71,7 +71,7 @@ export class RxjsLearningComponent implements OnInit {
         //     console.log(data);
         // });
 
-        //for (x=0;x<5;i++){}
+        // for (x=0;x<5;i++){}
         // generate
         // const result = generate(0, x => x < 5, x => x + 1, x => x);
         // result.subscribe(data => console.log(data));
@@ -101,22 +101,22 @@ export class RxjsLearningComponent implements OnInit {
         // });
         // console.log('Ending');
         //combineLatest
-        // const input1$ = new Observable((result) =>{
-        //     let number = 0;
-        //     for(let i=1000;i<10000;i +=1000){
-        //         setTimeout(()=> {
-        //             result.next(number++);
-        //         },i);
-        //     }
-        // });
-        // const input2$ = new Observable((result) =>{
-        //     setTimeout(() => {
-        //         result.next(10);
-        //     },5000);
-        // });
-        // combineLatest([input1$,input2$]).subscribe((data)=>{
-        //     console.log(data);
-        // });
+        const input1$ = new Observable((result) =>{
+            let number = 0;
+            for(let i=1000;i<10000;i +=1000){
+                setTimeout(()=> {
+                    result.next(number++);
+                },i);
+            }
+        });
+        const input2$ = new Observable((result) =>{
+            setTimeout(() => {
+                result.next(10);
+            },5000);
+        });
+        combineLatest([input1$,input2$]).subscribe((data)=>{
+            console.log(data);
+        });
         //concat
         // let input1$ =new Observable((source) =>{
         //     source.next(1);
@@ -341,7 +341,7 @@ export class RxjsLearningComponent implements OnInit {
         // result.subscribe(x => console.log(x));
         //debounce
         // interval(1000)
-        // .pipe(debounce((value)=> interval(value*100)))
+        // .pipe(debounce((value)=> interval(value*200)))
         // .subscribe((data)=>{
         //     console.log(data);
         // });

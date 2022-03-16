@@ -25,12 +25,7 @@ export class RoleApiService {
       })
     )
   }
-<<<<<<< HEAD
   addRole(role: Partial<Role>) {
-=======
-
-  addRole(role: Role) {
->>>>>>> c21c468cf16479afc3b1baf05cb350500cb84ea9
     return this.http.post<Role>(this.url, role)
       .pipe(
         tap((role) => {

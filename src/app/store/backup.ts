@@ -52,11 +52,11 @@
 //     ),
 //     on(RoleActions.roleUpdated, (state, action) => 
 //     {
-//         const clonedRoles = [...state.roles];
-//         const updateRoleIndex = clonedRoles.findIndex(role => role._id === action.role._id);
-//         const updateRole = clonedRoles.find(role => role._id === action.role._id);
-//         const updatedRole = { ...updateRole, ...action.role };
-//         clonedRoles[updateRoleIndex] = updatedRole;
+        // const clonedRoles = [...state.roles];
+        // const updateRoleIndex = clonedRoles.findIndex(role => role._id === action.role._id);
+        // const updateRole = clonedRoles.find(role => role._id === action.role._id);
+        // const updatedRole = { ...updateRole, ...action.role };
+        // clonedRoles[updateRoleIndex] = updatedRole;
 //         return {
 //             ...state,
 //             roles: clonedRoles,
