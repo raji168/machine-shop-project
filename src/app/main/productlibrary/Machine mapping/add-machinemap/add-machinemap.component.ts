@@ -1,8 +1,6 @@
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { stringify } from 'querystring';
 import { Machine } from 'src/app/models/machine.model';
 import { MachineMapping } from 'src/app/models/machinemapping.model';
 import { Product } from 'src/app/models/product.model';
