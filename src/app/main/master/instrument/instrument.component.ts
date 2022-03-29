@@ -25,7 +25,7 @@ export class InstrumentComponent implements OnInit {
   // instrumentData: InstrumentModel[] = [];
 
 
-  displayedColumns: string[] = ['select', 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
+  displayedColumns: string[] = [ 'sno', 'name', 'referenceno', 'range', 'calibratedon', 'calibratedue', 'actions'];
 
   searchKey: string;
   isDelete: false;
