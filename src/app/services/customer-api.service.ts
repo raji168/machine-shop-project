@@ -9,6 +9,7 @@ import { CustomerDataService } from '../data-services/customer-data.service';
   providedIn: 'root'
 })
 export class CustomerApiService {
+ 
 
   baseUrl: string = `http://192.168.0.17:3002/customers`;
 
@@ -61,6 +62,7 @@ export class CustomerApiService {
       })
     );
   }
+  
   deleteSelectCustomer(customers :Customer[]): Observable<Customer[]>{
     return forkJoin(customers.map(customer => this.http.delete<Customer>(`${this.baseUrl}/${customer._id}`)))
   }

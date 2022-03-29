@@ -1,5 +1,6 @@
-
 .container{
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
     margin:20px;
     padding: 20px;
     box-sizing: border-box;
@@ -7,14 +8,11 @@
 .top-menu{
  background-color: transparent;   
 }
-.table-customer mat-header-cell{
+.table-machine mat-header-cell{
     font-size: 16px;
-    background-color: rgb(255, 222, 90);
     color:black;
 } 
-.create-button{
-    float:right;
-}
+
 .search-form-field{
     padding-left: 20px;
     width: 25%;
@@ -41,6 +39,7 @@ ng-container{
     margin-left: 15px;
     margin-top: 13px;
 }
-.upload-field{
-    float: right;
+mat-row:nth-child(even){
+    background-color: rgb(220, 220, 220);
 }
+

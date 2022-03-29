@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
-import { forkJoin, Observable, Subject } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserDataService } from '../data-services/user-data.service';
 
@@ -53,7 +53,7 @@ export class UserApiService {
     return this.http.delete<User>(`${this.url}/${_id}`)
     .pipe(
       tap(user => {
-        this.userDataService.deleteUser(user._id)
+        this.userDataService.deleteUser(user._id);
       })
     );
   }

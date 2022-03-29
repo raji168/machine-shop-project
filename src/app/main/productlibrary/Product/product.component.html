@@ -1,0 +1,76 @@
+<div class="Mapping-View">
+    <mat-toolbar class="top-menu">
+        <span>Product</span>
+    </mat-toolbar>
+    <!-- <div class="file-upload">
+        <input class="upload-field" type="file" multiple="false" />
+    </div> -->
+    <mat-form-field class="search-form-field" floatLable="never">
+        <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <div class="buttons">
+        <!-- <a routerLink="/add-product" routerLinkActive="active">
+             <button mat-raised-button class="create-button" color="accent" >
+                <mat-icon>add</mat-icon>New Product
+            </button>
+        </a> -->
+        <button mat-raised-button class="create-button"  (click)="onClickAdd()">
+            <mat-icon>add</mat-icon>New Product
+        </button>
+        <!-- <mat-icon>more_vert</mat-icon> -->
+    </div>
+    <div class="table mat-elevation-z8">
+        <div class="product-table" gdColumns="64px repeat(5, 1fr) 64px">
+            <span class="product-header-cell first">SNo</span>
+            <span class="product-header-cell">Product Name</span>
+            <span class="product-header-cell">Customer Name</span>
+            <span class="product-header-cell">Drawingno</span>
+            <span class="product-header-cell">Drawing</span>
+            <span class="product-header-cell">Action</span>
+            <div class="product-header-cell last"></div>
+            <ng-container *ngFor="let product of productData; let productIndex =index">
+                <span class="product-cell first"> {{productIndex+1}} </span>
+                <span class="product-cell">{{product.productName}}</span>
+                <span class="product-cell">{{ getCustomer(product.customer) || '-'}}</span>
+                <span class="product-cell">{{product.DrawingNo}}</span>
+                <span class="product-cell">{{ getDrawing(product.drawing) }}</span>
+                <span class="product-cell">
+                    <button class="edit-button" mat-icon-button  title="Edit" (click)="onEdit(product)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="delete-button"  title="Delete" (click)="onDelete(product._id)">
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
+                </span>
+                <!-- (click)="expandedProduct === product ? expandedProduct = null : expandedProduct = product" -->
+                <div class="product-cell last" (click)="onExpandClick(product)">
+                    <button mat-icon-button>
+                        <mat-icon>expand_more</mat-icon>
+                    </button>
+                </div>
+                <!-- [@detailExpand]="expandedProduct === product ? 'expanded' : 'collapsed'" -->
+                <!-- [@detailExpand]="!!expandedProductMap[product._id] ? 'expanded' : 'collapsed'"  -->
+                <div [@detailExpand]="isExpanded(product._id) ? 'expanded' : 'collapsed'" class="expandable-row">
+                    <div class="process-table" gdColumns.lt-md="repeat(8, auto)" gdColumns="repeat(9, auto)">
+                        <div class="process-header-cell" *ngFor="let column of displayedColumns">{{ column }}</div>
+                        <ng-container
+                            *ngFor="let process of product.process; let operationIndex = index; let lastOperation = last">
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{operationIndex+1}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.operationName }}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{process.processDrawingNo}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.processDrawing)}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.jsirDoc)}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.pirDoc)}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.pmsDoc)}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.pdirDoc)}}</div>
+                            <div [class.b-b]="!lastOperation" class="process-cell">{{getDrawing(process.isirDoc)}}</div>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

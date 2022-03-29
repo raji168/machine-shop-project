@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable, Subject } from 'rxjs';
 import { Shift } from '../models/shift.model';
-
 import { tap } from 'rxjs/operators';
 import { ShiftDataService } from '../data-services/shift-data.service';
 
@@ -25,13 +24,14 @@ export class ShiftApiService {
     private shiftDataService: ShiftDataService
   ) { }
 
-  getShiftAll():Observable<any> {
+  getShiftAll(): Observable<any> {
 
-    return this.http.get<Shift[]>(this.baseUrl).pipe(
-      tap((shifts) => {
-        this.shiftDataService.loadShift(shifts)
-      })
-    );
+    return this.http.get<Shift[]>(this.baseUrl)
+      .pipe(
+        tap((shifts) => {
+          this.shiftDataService.loadShift(shifts)
+        })
+      );
   }
 
   addShift(shift: Shift) {
@@ -58,15 +58,15 @@ export class ShiftApiService {
   deleteShift(_id: string) {
 
     return this.http.delete<Shift>(`${this.baseUrl}/${_id}`).pipe(
-      tap(shift=>{
+      tap(shift => {
         this.shiftDataService.deleteShift(shift._id);
       })
     );
   }
-  
-   deleteSelectShift(shifts :Shift[]): Observable<Shift[]>{
+
+  deleteSelectShift(shifts: Shift[]): Observable<Shift[]> {
     return forkJoin(shifts.map(shift => this.http.delete<Shift>(`${this.baseUrl}/${shift._id}`)))
-   }
+  }
 
   //  deleteSelectShift(shifts:Shift[]){
   //   return forkJoin(shifts.map(shift => this.http.delete<Shift>(`${this.baseUrl}/${shift._id}`))).pipe(
@@ -78,7 +78,7 @@ export class ShiftApiService {
   //  }
 
 }
- 
-   
+
+
 
 

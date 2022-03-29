@@ -2,30 +2,26 @@
     <div class="table-form">
         <div class="title" > Customer</div>
         <form [formGroup]="customerForm" (ngSubmit)="onSave()">
-            <mat-form-field appearance="outline" color="accent">
+            <mat-form-field appearance="outline" >
                 <mat-label>Customer Name</mat-label>
                 <input matInput type="text" placeholder="Customer Name" formControlName="customername"
                     autocomplete="off">
             </mat-form-field>
-            <mat-form-field appearance="outline" color="accent">
+            <mat-form-field appearance="outline" >
                 <mat-label>Description</mat-label>
                 <input matInput type="text" placeholder="Description" formControlName="description" autocomplete="off">
             </mat-form-field>
-            <mat-form-field appearance="outline" color="accent">
+            <mat-form-field appearance="outline" >
                 <mat-label>Product No</mat-label>
                 <input matInput type="text" placeholder="Product No" formControlName="productno" autocomplete="off">
             </mat-form-field>
-            <mat-form-field appearance="outline" color="accent">
+            <mat-form-field appearance="outline" >
                 <mat-label>Revision No</mat-label>
                 <input matInput type="text" placeholder="Revision No" formControlName="revisionno" autocomplete="off">
             </mat-form-field>
-            <div class="drawing">
-                <mat-label class="drawing-title">Drawing</mat-label>
-                <input type="file" id="image" (change)="onSelectedFile($event)" >
-            </div>
             <div class="button">
-                <button mat-raised-button class="btn-save" color="accent" type="submit" >Save</button>
-                <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
+                <button mat-raised-button class="btn-cancel" mat-dialog-close >Cancel</button>
+                <button mat-raised-button class="btn-save" color="primary" type="submit" >Save</button>
             </div>
         </form>
     </div>

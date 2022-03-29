@@ -1,0 +1,17 @@
+[
+    {
+        "_id": "1dsfs41",
+        "product": "valve1",
+        "machine": "cnc1"
+    },
+    {
+        "_id": "1dsfs41",
+        "product": "valve2",
+        "machine": "cnc2"
+    },
+    {
+        "_id": "1dsfs41",
+        "product": "valve3",
+        "machine": "cnc3"
+    }
+]

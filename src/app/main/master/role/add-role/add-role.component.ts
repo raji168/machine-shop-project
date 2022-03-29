@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Role } from 'src/app/models/role.model';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -31,29 +31,25 @@ export class AddRoleComponent implements OnInit {
   ngOnInit(): void {
 
     this.roleForm = this.fb.group({
-      serialno: '',
-      name: ''
+      name: ['',Validators.required],    
     });
-
     this.role = this.data?.role;
-
     if (this.role) {
       this.roleForm.patchValue(this.role);
     }
 
   }
 
-
   onSubmit() {
     if (this.role) {
       this.roleService.updateRole(this.roleForm.value, this.role._id).subscribe(data => {
         this.dialogRef.close(data);
-        this.notification.success(" Edited successfullly!!");
+        this.notification.success("Role edited successfullly!!");
       });
     } else {
       this.roleService.addRole(this.roleForm.value).subscribe(data => {
         this.dialogRef.close(data);
-        this.notification.success(" Data added successfullly!!");
+        this.notification.success(" Role added successfullly!!");
       });
 
     }

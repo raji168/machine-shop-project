@@ -33,8 +33,8 @@ export class MachineDataService {
 
   updateMachine(machineResponse: Machine) {
 
-    const updateMachine = this.machines.find(machine => machineResponse._id === machine._id)
-    const updateMachineIndex = this.machines.findIndex(machine => machineResponse._id === machine._id)
+    const updateMachine = this.machines.find(machine => machine._id  === machineResponse._id )
+    const updateMachineIndex = this.machines.findIndex(machine => machine._id  === machineResponse._id)
     const updatedMachine = { ...updateMachine, machineResponse }
     this.machines[updateMachineIndex] = updatedMachine
     this.machineUpdated$.next(this.machines);

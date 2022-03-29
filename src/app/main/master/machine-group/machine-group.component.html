@@ -1,0 +1,48 @@
+<div class="container">
+    <div></div>
+    <div>
+        <div class="top-menu">
+            <h1>Machine Group</h1>
+            <div class="add-button">
+                <button mat-raised-button  class="create-button"  (click)="onCreate()"  >
+                    <mat-icon>add</mat-icon>Add
+                </button>
+            </div>
+        </div>
+       
+        <!-- {{ machinegroups$ | async | json }} -->
+        <div class=" table-machinegroup mat-elevation-z8" machinegroup="table" >
+            <mat-table [dataSource]="machinegroupDataSource$ | async"  matSort>
+                <ng-container matColumnDef="serialno">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header >Serial No</mat-header-cell>
+                    <mat-cell *matCellDef="let machinegroup ;  let i = index"> {{i+1}} </mat-cell>
+                </ng-container>
+    
+                <ng-container matColumnDef="name">
+                    <mat-header-cell  *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                    <mat-cell *matCellDef="let machinegroup"> {{machinegroup.name}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let machinegroup">
+                        <button class="edit-button" mat-icon-button  title="Edit" 
+                            (click)="onEdit(machinegroup)" >
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button class="delete-button" 
+                            (click)="onDelete(machinegroup._id)"  title="Delete">
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+    
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+            </mat-table>
+    
+        </div>
+    </div>
+    <div></div>
+    
+</div>

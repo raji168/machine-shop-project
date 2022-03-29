@@ -1,79 +1,17 @@
-// .container{
-//     margin: 20px;
-//     padding: 20px;
-//     box-sizing: border-box;
-// }
-// .title{
-//     padding-left: 10px;
-//     font-size: 16px;
-//     font-weight: 500;
-// }
-// span{
-//     align-items: center;
-// }
-// table{
-//         width: 80vw; 
-//     }
-// th{
-//     text-transform: uppercase; 
-//     letter-spacing: 1px;
-//     font-weight: 700;
-//     color: black;
-//     background-color: rgb(255, 222, 90);
-// }
-
-// td{
-//     padding-left: 0px;
-// }
-
-// th.mat-header-cell {
-//     border-bottom-width: 3px;
-//     border-bottom-style: solid ;
-    
-// }
-// td.mat-cell{
-//     border-bottom-width: 3px;
-//     border-bottom-style: solid;
-
-// }
-// .add-customer{
-//     width: 80vw;
-//     .add-btn{
-//         float: right;
-//         padding-bottom: 0px;
-//         background-color: rgb(255, 222, 90);
-//         background-color: linear();
-        
-//     }
-// }
-
-// mat-paginator{
-//     display: flex;
-//     width: 80vw;
-//     flex-direction: row-reverse;
-//     color: #020202;
-//     font-size: 14px;
-//     font-weight: 500;
-//     height: 50px;
-// }
-
-
 .container{
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
     margin:20px;
     padding: 20px;
     box-sizing: border-box;
 }
 .top-menu{
- background-color: transparent;   
+    background-color: transparent;   
 }
 .table-customer mat-header-cell{
     font-size: 16px;
-    background-color: rgb(255, 222, 90);
     color:black;
 } 
-.create-button{
-    float:right;
-}
 .search-form-field{
     padding-left: 20px;
     width: 25%;
@@ -99,4 +37,8 @@ ng-container{
 .DeleteAll-button{
     margin-left: 15px;
     margin-top: 13px;
+}
+mat-row:nth-child(even){
+    background-color: rgb(220, 220, 220);
+
 }

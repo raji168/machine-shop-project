@@ -1,17 +1,46 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { MatButtonModule} from '@angular/material/button';
 import { MaterialModule } from "../../material/material.module";
 import { MasterRoutingModule } from "./master-routing.module";
-import { ReactiveFormsModule } from "@angular/forms";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MasterComponent } from "./master.component";
-
+import { RoleComponent } from './role/role.component';
+import { AddRoleComponent } from "./role/add-role/add-role.component";
+import { CustomerComponent } from "./customer/customer.component";
+import { AddCustomerComponent } from "./customer/add-customer/add-customer.component";
+import { InstrumentComponent } from "./instrument/instrument.component";
+import { AddInstrumentComponent } from "./instrument/add-instrument/add-instrument.component";
+import { MachineComponent } from "./machine/machine.component";
+import { AddMachineComponent } from "./machine/add-machine/add-machine.component";
+import { ShiftComponent } from "./shift/shift.component";
+import { AddShiftComponent } from "./shift/add-shift/add-shift.component";
+import { UserComponent } from "./user/user.component";
+import { AddUserComponent } from "./user/add-user/add-user.component";
+import { NgxMatTimepickerModule } from "ngx-mat-timepicker";
+import { MachineGroupComponent } from './machine-group/machine-group.component';
+import { AddMachineGroupComponent } from './machine-group/add-machine-group/add-machine-group.component';
+import { MachineCategoryComponent } from './machine-category/machine-category.component';
+import { AddMachineCategoryComponent } from './machine-category/add-machine-category/add-machine-category.component';
 
 @NgModule({
     declarations: [
-        MasterComponent
-
+        MasterComponent,
+        RoleComponent,
+        AddRoleComponent,
+        CustomerComponent,
+        AddCustomerComponent,
+        InstrumentComponent,
+        AddInstrumentComponent,
+        MachineComponent,
+        AddMachineComponent,
+        ShiftComponent,
+        AddShiftComponent,
+        UserComponent,
+        AddUserComponent,
+        MachineGroupComponent,
+        AddMachineGroupComponent,
+        MachineCategoryComponent,
+        AddMachineCategoryComponent,
     ],
     imports: [
         CommonModule,
@@ -19,7 +48,7 @@ import { MasterComponent } from "./master.component";
         ReactiveFormsModule,
         MasterRoutingModule,
         FormsModule,
-        MatButtonModule
+        [NgxMatTimepickerModule.setLocale('en-IN')]
     ],
 })
 

@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="form">
+      <h1 class="title">Add Machine Category</h1>
+      <form [formGroup]="machineCategoryForm" class="normal-form" >
+        <mat-form-field appearance="outline" >
+          <mat-label>Machine Category </mat-label>
+          <input matInput placeholder="machineCategory" formControlName="machineCategoryName" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+          <mat-label> Machine group </mat-label>
+          <mat-select formControlName="machinegroup">
+            <mat-option [value]="machineGroup._id" *ngFor="let machineGroup of machineGroupData " >{{machineGroup.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="add-form-buttons">
+          <button mat-raised-button class="btn-cancel" mat-dialog-close  color="warn">Cancel</button>
+          <button mat-raised-button class="btn-save" (click)="onSubmit()" [disabled]="machineCategoryForm.invalid" type="submit" color="primary">Save</button>
+        </div>
+  
+      </form>
+  
+    </div>
+  
+  </div>

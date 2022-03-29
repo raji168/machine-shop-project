@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="form">
+      <div class="title"> Machinemap </div>
+          <!-- {{form.value | json}} -->
+      <form [formGroup]="form"  class="normal-form" >
+        <mat-form-field appearance="outline" >
+          <mat-label> Product Name </mat-label>
+          <mat-select  formControlName="product" (selectionChange)="onProductChange($event)" >
+            <mat-option [value]="product._id" *ngFor="let product of productData" >{{product.productName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline"  >
+            <mat-label> Process Name </mat-label>
+            <mat-select formControlName="process">
+              <mat-option [value]="process._id" *ngFor="let process of processData" >{{process.operationName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-form-field appearance="outline" >
+          <mat-label> Machine </mat-label>
+          <mat-select formControlName="machine">
+            <mat-option [value]="machine._id" *ngFor="let machine of machineData " >{{machine.machinename }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <div class="add-form-buttons">
+        <button mat-raised-button class="btn-save" [disabled]="form.invalid" (click)="onSubmit()" color="primary">Save</button>
+        <button mat-raised-button class="btn-cancel" mat-dialog-close >Cancel</button>
+      </div>
+    </div>
+  </div>

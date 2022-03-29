@@ -1,4 +1,6 @@
 .container{
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
     margin:20px;
     padding: 20px;
     box-sizing: border-box;
@@ -8,12 +10,9 @@
 }
 .table-shift mat-header-cell{
     font-size: 16px;
-    background-color: rgb(255, 222, 90);
     color:black;
 } 
-.create-button{
-    float:right;
-}
+
 .search-form-field{
     padding-left: 20px;
     width: 25%;
@@ -32,7 +31,6 @@ mat-header-cell{
 ng-container{
     display: grid;
 }
-
 .footer{
     display: grid;
     grid-template-columns: auto auto;
@@ -41,7 +39,7 @@ ng-container{
     margin-left: 15px;
     margin-top: 13px;
 }
-.upload-field{
-    float: right;
+mat-row:nth-child(even){
+    background-color: rgb(220, 220, 220);
 }
 

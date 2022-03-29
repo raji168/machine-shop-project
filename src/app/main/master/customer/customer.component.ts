@@ -3,9 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CustomerDataService } from 'src/app/data-services/customer-data.service';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerApiService } from 'src/app/services/customer-api.service';
@@ -22,11 +21,12 @@ export class CustomerComponent implements OnInit {
 
   // customerData: Customer[] = [];
 
-  displayedColumns: string[] = ['select','sno', 'customername', 'description', 'productno', 'revisionno', 'drawing', 'actions'];
+  displayedColumns: string[] = ['select','sno', 'customername', 'description', 'productno', 'revisionno', 'actions'];
+
 
   customerDataSource$ : Observable<MatTableDataSource<Customer>>;
 
-  dataS;
+  customerData;
 
   // @ViewChild('paginator' , {read : MatPaginator , static: false}) paginator:MatPaginator; 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -36,39 +36,34 @@ export class CustomerComponent implements OnInit {
   constructor(
     private customerApi: CustomerApiService,
     private customerDataService: CustomerDataService,
-    private router: Router,
     private dialog: MatDialog,
     private dialogsService: DialogsService,
     private alert: AlertService) { }
 
   ngOnInit(): void {
 
-    // this.customerData = this.customerDataService.getCustomer()
-    // this.customerDataService.customerUpdated$.pipe(takeUntil(this.destroy$)).subscribe(customer => {
-    //   this.customerData = customer
-    // })
     this.customerDataSource$ = this.customerDataService.customerUpdated$.pipe(map(customers =>{
       return new MatTableDataSource(customers)
     }))
     this.customerDataSource$.subscribe(res =>{
-      this.dataS = new MatTableDataSource(res.data);
-      this.dataS.paginator = this.paginator;
-      this.dataS.sort = this.sort;
+      this.customerData = new MatTableDataSource(res.data);
+      this.customerData.paginator = this.paginator;
+      this.customerData.sort = this.sort;
     })
 
   }
 
   ngAfterViewInit(): void{
 
-    this.dataS.paginator = this.paginator;
-    this.dataS.sort = this.sort;
+    this.customerData.paginator = this.paginator;
+    this.customerData.sort = this.sort;
 
   }
   
   applyFilter(event: Event) {
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataS.filter = filterValue.trim().toLowerCase();
+    this.customerData.filter = filterValue.trim().toLocaleLowerCase();
 
   }
 
@@ -98,13 +93,13 @@ export class CustomerComponent implements OnInit {
   }
 
   removeSelected(){
-    const acustomers = this.dataS.data.filter((c :Customer) => c.isSelected);
+    const acustomers = this.customerData.data.filter((c :Customer) => c.isSelected);
     this.dialogsService.openConfirmDialog('Are you sure to delete this selected records  ?')
       .afterClosed().subscribe(res => {
         if (res) {
           this.customerApi.deleteSelectCustomer(acustomers).subscribe(res => {
-            this.dataS.data = this.dataS.data.filter((c:Customer)=> !c.isSelected);
-            this.alert.showError('Shift Selected Records Deleted Successfully...!', 'Shift');
+            this.customerData.data = this.customerData.data.filter((c:Customer)=> !c.isSelected);
+            this.alert.showSuccess('Customer Records Deleted Successfully...!', 'Shift');
           })
         }
       });

@@ -1,0 +1,21 @@
+<mat-accordion displayMode="flat" multi class="mat-table">
+    <section class=" mat-header-row">
+        <span class="mat-header-cell">S.No</span>
+        <!-- <span class="mat-header-cell">Product No</span> -->
+        <span class="mat-header-cell">Product Name</span>
+        <span class="mat-header-cell">Customer Name</span>
+    </section>
+    <mat-expansion-panel *ngFor="let product of products; let productIndex =index">
+        <mat-expansion-panel-header class="mat-row">
+            <span class="mat-cell">{{productIndex + 1}}</span>
+            <!-- <span class="mat-cell">{{product.productNo}}</span> -->
+            <span class="mat-cell">{{product.name}}</span>
+            <span class="mat-cell">{{product.customer.name}}</span>
+        </mat-expansion-panel-header>
+        <!-- <div class="card">
+            <pre><mat-card>No of Process : {{product.processes}}</mat-card></pre>
+        </div> -->
+        
+    </mat-expansion-panel>
+
+</mat-accordion>

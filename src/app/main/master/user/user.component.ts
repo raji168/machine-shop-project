@@ -6,11 +6,12 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogsService } from 'src/app/services/dialogs.service';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserDataService } from 'src/app/data-services/user-data.service';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 
@@ -20,21 +21,18 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-
-
-  displayedColumns: string[] = ['select','sno', 'name', 'role', 'emailId', 'phoneNo', 'userName', 'actions'];
-
+  displayedColumns: string[] = ['sno', 'name', 'role', 'phoneNo', 'emailId', 'userName', 'actions'];
+  users: User[] = [];
   searchKey: string;
   userData;
-
-  // userForm: FormGroup = new FormGroup({
-  //   sno: new FormControl(''),
-  //   name: new FormControl(''),
-  //   role: new FormControl(''),
-  //   emailId: new FormControl(''),
-  //   phoneNo: new FormControl(''),
-  //   userName: new FormControl('')
-  // });
+  userForm: FormGroup = new FormGroup({
+    sno: new FormControl(''),
+    name: new FormControl(''),
+    role: new FormControl(''),
+    emailId: new FormControl(''),
+    phoneNo: new FormControl(''),
+    userName: new FormControl('')
+  });
 
   userDataSource$: Observable<MatTableDataSource<User>>;
 
@@ -47,7 +45,6 @@ export class UserComponent implements OnInit {
     private dialog: MatDialog,
     private notification: NotificationService,
     private dialogsService: DialogsService) {
-
   }
 
   
@@ -56,15 +53,17 @@ export class UserComponent implements OnInit {
     this.userDataSource$ = this.userDataService.userUpdated$.pipe(map(users => {
       return new MatTableDataSource(users)
     }))
-    this.userDataSource$.subscribe((res) =>{
-      this.userData = res.data;
-      this.userData = new MatTableDataSource(res.data);
-      this.userData.paginator = this.paginator;
-      this.userData.sort = this.sort;
-    })
 
+    this.userDataSource$.subscribe(
+      ((res) =>{
+        this.userData = res.data;
+        this.userData = new MatTableDataSource(res.data);
+        this.userData.paginator = this.paginator;
+        this.userData.sort = this.sort;
+    })
+    )
   }
-  ngAfterViewInit(): void{
+  ngAfterViewInit(): void {
     this.userData.paginator = this.paginator;
     this.userData.sort = this.sort;
   }
@@ -82,7 +81,7 @@ export class UserComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "40%";
+    dialogConfig.width = "35%";
     this.dialog.open(AddUserComponent, dialogConfig);
   }
 
@@ -91,8 +90,7 @@ export class UserComponent implements OnInit {
   }
 
 
-  onDelete(id :string ) {
-
+  onDelete(id: string) {
     this.dialogsService.openConfirmDialog('Are you sure to delete this record?')
       .afterClosed().subscribe(res => {
         if (res) {
@@ -110,7 +108,7 @@ export class UserComponent implements OnInit {
         if (res) {
           this.userService.deleteSelectUser(ausers).subscribe(res => {
             this.userData.data = this.userData.data.filter((u: User) => !u.isSelected);
-            this.notification.success('deleted successfully!!!');
+            this.notification.success('Users deleted successfully!!!');
           })
         }
       });

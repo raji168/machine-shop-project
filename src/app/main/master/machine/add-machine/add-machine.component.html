@@ -2,25 +2,27 @@
   <div class="form">
     <div class="title">Machine</div>
     <form [formGroup]="machineForm" (ngSubmit)="onSave()">
-      <mat-form-field appearance="outline" color="accent">
+      <mat-form-field appearance="outline" >
         <mat-label>Machine Name</mat-label>
         <input matInput placeholder="Machine Name" formControlName="machinename" autocomplete="off">
       </mat-form-field>
-      <mat-form-field appearance="outline" color="accent">
+      <mat-form-field appearance="outline" >
         <mat-label>Machine No</mat-label>
         <input matInput placeholder="Machine No" formControlName="machineno" autocomplete="off">
       </mat-form-field>
-      <mat-form-field appearance="outline" color="accent">
+      <mat-form-field appearance="outline" >
         <mat-label>Machine Brand</mat-label>
         <input matInput placeholder="Machine Brand" formControlName="brand" autocomplete="off">
       </mat-form-field>
-      <mat-form-field appearance="outline" color="accent">
+      <mat-form-field appearance="outline" >
         <mat-label>Machine Category</mat-label>
-        <input matInput placeholder="Machine Category" formControlName="category" autocomplete="off">
+        <mat-select formControlName="machinecategory">
+          <mat-option [value]="machineCategory._id" *ngFor="let machineCategory of machineCategoryData " >{{machineCategory.machineCategoryName}}</mat-option>
+        </mat-select>
       </mat-form-field>
       <div class="button">
-        <button mat-raised-button class="btn-save" color="accent" type="submit" >Save</button>
-        <button mat-raised-button class="btn-cancel" mat-dialog-close="false" color="accent">Cancel</button>
+        <button mat-raised-button class="btn-save" color="primary"  type="submit" >Save</button>
+        <button mat-raised-button class="btn-cancel" mat-dialog-close >Cancel</button>
       </div>
     </form>
   </div>

@@ -1,7 +1,6 @@
 form{
     display:grid;
     width: fit-content;
-  
 }
 .form .form-title{
     align-items: center;
@@ -11,18 +10,22 @@ form{
 .form-close{
     float: right;
     border:transparent;
-
 }
 .controles-container {
     margin-top: 50px;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 mat-form-field{
     margin-right: 40px;
     width: 180px;
 }
-
-.add-form-buttons .button-row{
-    justify-content: center;
-    display: flex;
-    gap: 10%;
+// .add-form-buttons .button-row{
+//     justify-content: center;
+//     display: flex;
+//     gap: 10%;
+// }
+.btn-save{
+    float: right;
+    margin-right: 20px;
 }

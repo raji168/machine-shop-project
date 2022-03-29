@@ -1,44 +1,30 @@
-
 .container{
-    margin:20px;
-    padding: 20px;
-    box-sizing: border-box;
-}
-.top-menu{
- background-color: transparent;   
+    padding: 25px;
 }
 .table-user mat-header-cell{
     font-size: 16px;
-    background-color: rgb(255, 222, 90);
     color:black;
 } 
-.create-button{
-    float:right;
-    margin-top: -50px;
+.top-menu{
+    letter-spacing: normal;
+    font-size: 21px;
+    font-weight: 800;
 }
-.search-form-field{
-    padding-left: 20px;
-    width: 25%;
+.delete-button{
+    margin-left: 20%;
 }
-.edit-button{
-    display: grid;
-    justify-content: center;
-    gap:10px 10px;
-}
- mat-cell{
-    justify-content: center;
-}
-mat-header-cell{
-    justify-content: center;
-}
-ng-container{
-    display: grid;
-}
-.footer{
-    display: grid;
-    grid-template-columns: auto auto;
-}
-.DeleteAll-button{
-    margin-left: 15px;
-    margin-top: 13px;
-}
+// mat-row:nth-child(even){
+//     background-color: rgb(220, 220, 220);
+// }
+
+// mat-row{
+     
+//     &:hover {
+//       transform: translateY(-10%);
+//       background-color: rgb(81, 178, 253);
+      
+//       &::before {
+//         left: 150%;
+//       }
+//     }
+//   }

@@ -16,15 +16,10 @@ form{
     grid-template-columns: 50% 50%;
     gap: 10px 10px;
 }
-.button{
-    align-self: center;
-    display: flex;
-    flex : 1 1 ;
-    flex-direction: row;
-    justify-content: space-evenly;
+.drawing-title{
+    padding-bottom: 5px;
 }
-
-    .drawing-title{
-        padding-bottom: 5px;
-    }
-
+.btn-save{
+    float: right;
+    margin-right: -220px;
+}
